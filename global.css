@@ -1,0 +1,168 @@
+@import url('https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;500;600;700;800&family=Wix+Madefor+Display:wght@400;500&display=swap');
+
+:root{
+    --background-color: #1c1c1c;
+    --white: #fff;
+    --text-color: #ededed;
+    --highlighted-primary-color: hsl(246, 79%, 40%);
+    --primary-color: #1c1089;
+    --secondary-color: #18123f;
+    --error-color: #eb4747;
+    --sucess-color: #47dd3c;
+}
+
+html[data-theme='light'] {
+    --background-color: #ededed;
+    --white: #000;
+    --text-color: #1c1c1c;
+}
+
+html[data-theme='dark'] {
+    --background-color: #1c1c1c;
+    --white: #fff;
+    --text-color: #ededed;
+}
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    background-color: var(--background-color);
+    color: var(--text-color);
+    font-family: 'Baloo 2', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.container{
+    width: 90%;
+    margin: 0 auto;
+}
+
+
+/* HEADER */
+header{
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+}
+
+.containerHeader{
+    width: 90%;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+header ul{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 0;
+    width: 80%;
+}
+
+header li{
+    list-style: none;
+}
+
+.headerLink{
+    text-decoration: none;
+    color: var(--text-color);
+    font-size: 1.2rem;
+    font-weight: 600;
+    transition: 0.2s ease-in-out;
+}
+
+.headerLink:hover{
+    font-weight: 700;
+    transition: 0.2s ease-in-out;
+}
+
+.logo{
+    height: 75px;
+}
+
+.headerBtn{
+    background-color: var(--primary-color);
+    color: var(--text-color);
+    padding: 8px 32px;
+    border-radius: 7px;
+    font-size: 1.2rem;
+    font-weight: 700;
+    text-decoration: none;
+    transition: 0.2s ease-in-out;
+}
+
+.headerBtn:hover{
+    background-color: var(--highlighted-primary-color);
+    transition: 0.2s ease-in-out;
+}
+
+/* Switch */
+.checkboxWrap{
+	cursor: pointer;
+}
+.checkboxWrap .checkboxInput{
+	position: absolute;
+	top: 0;
+	left: 0;
+	opacity: 0;
+	z-index: 1;
+}
+.checkboxWrap .checkboxMark{
+	display: inline-block;
+	position: relative;
+	border-radius: 25px;
+}
+.checkboxWrap .checkboxMark:before,
+.checkboxWrap .checkboxMark:after{
+	content: "";
+	position: absolute;
+	transition: all 0.5s ease;
+}
+.checkboxWrap .checkboxMark{
+	background: var(--primary-color);
+	width: 60px;
+	height: 30px;
+}
+.checkboxWrap .checkboxMark:before{
+	top: 3px;
+	left: 5px;
+	width: 25px;
+	height: 25px;
+	background: url('assets/moonIcon.png') center center no-repeat;
+    background-size: 80%;
+}
+.checkboxWrap .checkboxInput:checked ~ .checkboxMark:before{
+    background: url('assets/sunIcon.png') center center no-repeat;
+    background-size: 80%;
+	left: 30px;
+}
+
+/* HERO */
+.heroContainer{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 2rem 0;
+}
+
+.heroText{
+    font-size: 4.75rem;
+    font-weight: 700;
+    line-height: 100%;
+    padding-bottom: 1rem;
+}
+
+.ascentText{
+    color: var(--primary-color);
+}
+
+.subText{
+    color: var(--text-color);
+    opacity: 70%;
+    font-weight: 400;
+    line-height: 125%;
+    font-size: 1rem;
+}
