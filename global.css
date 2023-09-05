@@ -4,22 +4,23 @@
     --background-color: #1c1c1c;
     --white: #fff;
     --text-color: #ededed;
-    --highlighted-primary-color: hsl(246, 79%, 40%);
-    --primary-color: #1c1089;
-    --secondary-color: #18123f;
     --error-color: #eb4747;
     --sucess-color: #47dd3c;
 }
 
 html[data-theme='light'] {
+    --highlighted-primary-color: hsl(236, 55%, 63%);
+    --primary-color: #454EC9;
+    --secondary-color: #363A7D;
     --background-color: #ededed;
-    --white: #000;
     --text-color: #1c1c1c;
 }
 
 html[data-theme='dark'] {
+    --highlighted-primary-color: hsl(236, 55%, 70%);
+    --primary-color: #6168d1;
+    --secondary-color: #404696;
     --background-color: #1c1c1c;
-    --white: #fff;
     --text-color: #ededed;
 }
 
@@ -85,7 +86,7 @@ header li{
 
 .headerBtn{
     background-color: var(--primary-color);
-    color: var(--text-color);
+    color: #fff;
     padding: 8px 32px;
     border-radius: 7px;
     font-size: 1.2rem;

@@ -4,6 +4,9 @@ var storedTheme = localStorage.getItem('theme') || (window.matchMedia("(prefers-
 if (storedTheme){
     checkbox.checked = storedTheme == "dark" ? false : true;
     document.documentElement.setAttribute('data-theme', storedTheme)
+}else{
+    storedTheme = "dark";
+    document.documentElement.setAttribute('data-theme', storedTheme)
 }
 
 checkbox.addEventListener('change', function() {
