@@ -1,30 +1,3 @@
-@import url('https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;500;600;700;800&family=Wix+Madefor+Display:wght@400;500&display=swap');
-
-
-:root {
-    --background-color: #1c1c1c;
-    --white: #fff;
-    --text-color: #ededed;
-    --error-color: #eb4747;
-    --sucess-color: #47dd3c;
-}
-
-html[data-theme='light'] {
-    --highlighted-primary-color: hsl(236, 55%, 63%);
-    --primary-color: #454EC9;
-    --secondary-color: #363A7D;
-    --background-color: #ededed;
-    --text-color: #1c1c1c;
-}
-
-html[data-theme='dark'] {
-    --highlighted-primary-color: hsl(236, 55%, 70%);
-    --primary-color: #6168d1;
-    --secondary-color: #404696;
-    --background-color: #1c1c1c;
-    --text-color: #ededed;
-}
-
 body {
     min-height: 100vh;
 
