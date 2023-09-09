@@ -1,0 +1,55 @@
+/* HERO */
+.heroContainer{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 2rem 0;
+}
+
+.heroText{
+    font-size: 4.75rem;
+    font-weight: 700;
+    line-height: 100%;
+    padding-bottom: 1rem;
+}
+
+.ascentText{
+    color: var(--primary-color);
+}
+
+.subText{
+    color: var(--text-color);
+    opacity: 70%;
+    font-weight: 400;
+    line-height: 125%;
+    font-size: 1rem;
+}
+
+.illustrationHero{
+    width: 100%;
+    height: auto;
+}
+
+/* RESPONSIVIDADE */
+@media (max-width: 1000px){
+    .heroContainer{
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .heroText{
+        font-size: 3rem;
+        text-align: center;
+    }
+
+    .subText{
+        text-align: center;
+    }
+}
+
+@media (max-width: 500px){
+    .heroText{
+        font-size: 2.5rem;
+    }
+}
