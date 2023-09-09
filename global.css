@@ -1,6 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;500;600;700;800&family=Wix+Madefor+Display:wght@400;500&display=swap');
 
-:root{
+:root {
     --background-color: #1c1c1c;
     --white: #fff;
     --text-color: #ededed;
@@ -24,30 +24,30 @@ html[data-theme='dark'] {
     --text-color: #ededed;
 }
 
-*{
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-body{
+body {
     background-color: var(--background-color);
     color: var(--text-color);
     font-family: 'Baloo 2', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
-.container{
+.container {
     width: 90%;
     margin: 0 auto;
 }
 
 
 /* HEADER */
-header{
+header {
     box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
 }
 
-.containerHeader{
+.containerHeader {
     width: 90%;
     margin: 0 auto;
     display: flex;
@@ -55,7 +55,7 @@ header{
     align-items: center;
 }
 
-header ul{
+header ul {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -63,11 +63,11 @@ header ul{
     width: 80%;
 }
 
-header li{
+header li {
     list-style: none;
 }
 
-.headerLink{
+.headerLink {
     text-decoration: none;
     color: var(--text-color);
     font-size: 1.2rem;
@@ -75,16 +75,16 @@ header li{
     transition: 0.2s ease-in-out;
 }
 
-.headerLink:hover{
+.headerLink:hover {
     font-weight: 700;
     transition: 0.2s ease-in-out;
 }
 
-.logo{
+.logo {
     height: 75px;
 }
 
-.headerBtn{
+.headerBtn {
     background-color: var(--primary-color);
     color: #fff;
     padding: 8px 32px;
@@ -95,72 +95,78 @@ header li{
     transition: 0.2s ease-in-out;
 }
 
-.headerBtn:hover{
+.headerBtn:hover {
     background-color: var(--highlighted-primary-color);
     transition: 0.2s ease-in-out;
 }
 
 /* Switch */
-.checkboxWrap{
-	cursor: pointer;
+.checkboxWrap {
+    cursor: pointer;
 }
-.checkboxWrap .checkboxInput{
-	position: absolute;
-	top: 0;
-	left: 0;
-	opacity: 0;
-	z-index: 1;
+
+.checkboxWrap .checkboxInput {
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0;
+    z-index: 1;
 }
-.checkboxWrap .checkboxMark{
-	display: inline-block;
-	position: relative;
-	border-radius: 25px;
+
+.checkboxWrap .checkboxMark {
+    display: inline-block;
+    position: relative;
+    border-radius: 25px;
 }
+
 .checkboxWrap .checkboxMark:before,
-.checkboxWrap .checkboxMark:after{
-	content: "";
-	position: absolute;
-	transition: all 0.5s ease;
+.checkboxWrap .checkboxMark:after {
+    content: "";
+    position: absolute;
+    transition: all 0.5s ease;
 }
-.checkboxWrap .checkboxMark{
-	background: var(--primary-color);
-	width: 60px;
-	height: 30px;
+
+.checkboxWrap .checkboxMark {
+    background: var(--primary-color);
+    width: 60px;
+    height: 30px;
 }
-.checkboxWrap .checkboxMark:before{
-	top: 3px;
-	left: 5px;
-	width: 25px;
-	height: 25px;
-	background: url('assets/moonIcon.png') center center no-repeat;
+
+.checkboxWrap .checkboxMark:before {
+    top: 3px;
+    left: 5px;
+    width: 25px;
+    height: 25px;
+    background: url('assets/moonIcon.png') center center no-repeat;
     background-size: 80%;
 }
-.checkboxWrap .checkboxInput:checked ~ .checkboxMark:before{
+
+.checkboxWrap .checkboxInput:checked~.checkboxMark:before {
     background: url('assets/sunIcon.png') center center no-repeat;
     background-size: 80%;
-	left: 30px;
+    left: 30px;
 }
 
 /* HERO */
-.heroContainer{
+.heroContainer {
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 2rem 0;
 }
 
-.heroText{
+.heroText {
     font-size: 4.75rem;
     font-weight: 700;
     line-height: 100%;
     padding-bottom: 1rem;
 }
 
-.ascentText{
+.ascentText {
     color: var(--primary-color);
 }
 
-.subText{
+.subText {
     color: var(--text-color);
     opacity: 70%;
     font-weight: 400;
@@ -168,40 +174,40 @@ header li{
     font-size: 1rem;
 }
 
-.illustrationHero{
+.illustrationHero {
     width: 100%;
     height: auto;
 }
 
 /* RESPONSIVIDADE */
 
-@media (max-width: 1000px){
-    .headerLink{
+@media (max-width: 1000px) {
+    .headerLink {
         display: none;
     }
 
-    .logo{
+    .logo {
         height: 60px;
     }
 
-    .heroContainer{
+    .heroContainer {
         flex-direction: column;
         justify-content: center;
         align-items: center;
     }
 
-    .heroText{
+    .heroText {
         font-size: 3rem;
         text-align: center;
     }
 
-    .subText{
+    .subText {
         text-align: center;
     }
 }
 
-@media (max-width: 500px){
-    .heroText{
+@media (max-width: 500px) {
+    .heroText {
         font-size: 2.5rem;
     }
 }
