@@ -19,7 +19,7 @@ html[data-theme='light'] {
 html[data-theme='dark'] {
     --highlighted-primary-color: hsl(236, 55%, 70%);
     --primary-color: #6168d1;
-    --secondary-color: #404696;
+    --secondary-color: #2f3374;
     --background-color: #1c1c1c;
     --text-color: #ededed;
 }
@@ -37,8 +37,8 @@ body {
 }
 
 .container {
-    width: 90%;
     margin: 0 auto;
+    height: 90vh;
 }
 
 

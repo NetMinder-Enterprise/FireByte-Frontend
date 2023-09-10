@@ -4,6 +4,8 @@
     justify-content: space-between;
     align-items: center;
     padding: 2rem 0;
+    width: 90%;
+    margin: 0 auto;
 }
 
 .heroText{
@@ -30,26 +32,254 @@
     height: auto;
 }
 
+.fade {
+    animation-name: fade;
+    animation-duration: 0.3s;
+}
+  
+@keyframes fade {
+    from {opacity: .7} 
+    to {opacity: 1}
+}
+
+/* ABOUT US */
+.aboutUsContainer{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem 0;
+    width: 90%;
+    margin: 0 auto;
+}
+
+.aboutUsContainer h1{
+    font-size: 4rem;
+    font-weight: 700;
+    color: var(--text-color);
+}
+
+.aboutUsContainer hr{
+    border: 2px solid var(--primary-color);
+    border-radius: 15px;
+    width: 450px;
+    margin-top: -10px;
+    margin-bottom: 2rem;
+}
+
+.aboutUsContainer p{
+    color: var(--text-color);
+    text-align: center;
+}
+
+.aboutUsHighlight{
+    background-color: var(--secondary-color);
+    padding: 5rem 0;
+    width: 100%;
+}
+
+.aboutUsCards{
+    width: 90%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0 auto;
+}
+
+.aboutUsCard{
+    width: 30%;
+    padding: 1rem;
+    border-radius: 1rem;
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.aboutUsCard .title{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 2rem;
+    padding-bottom: 3rem;
+}
+
+.aboutUsCard .title img{
+    height: 100px;
+}
+
+.aboutUsCard h1{
+    font-size: 4rem;
+    color: #fff;
+}
+
+.aboutUsCard p{
+    text-align: center;
+}
+
+/* PRODUCT */
+.produtoContainer{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 90%;
+    margin: 0 auto;
+}
+
+.produtoContainer img{
+    margin-bottom: 2rem;
+    height: 80px;
+}
+
+.produtoContainer p{
+    width: 80%;
+    text-align: center;
+}
+/* Slide */
+.slideContainer{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 90%;
+    margin: 0 auto;
+}
+
+.slide{
+    width: 90%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin: 0 auto;
+}
+
+.slideText h1{
+    font-size: 3rem;
+    font-weight: 700;
+    color: var(--text-color);
+}
+
+.slideText p{
+    color: var(--text-color);
+    opacity: 70%;
+    font-weight: 400;
+}
+
+.slideImg{
+    width: 500px;
+    height: 500px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.slideImg img{
+    width: 100%;
+    height: 100%;
+    object-fit:contain;
+}
+
+.prev, .next{
+    cursor: pointer;
+    color: var(--text-color);
+    font-weight: bold;
+    font-size: 2rem;
+    transition: 0.3s ease;
+}
+
+.prev:hover, .next:hover{
+    color: var(--primary-color);
+}
+
+.dot {
+    cursor: pointer;
+    height: 15px;
+    width: 15px;
+    margin: 0 2px;
+    background-color: var(--text-color);
+    border-radius: 50%;
+    display: inline-block;
+    transition: background-color 0.6s ease;
+}
+
+.active, .dot:hover {
+    background-color: var(--primary-color);
+}
+
+
 /* RESPONSIVIDADE */
 @media (max-width: 1000px){
+    /* Hero */
     .heroContainer{
         flex-direction: column;
         justify-content: center;
         align-items: center;
     }
-
     .heroText{
         font-size: 3rem;
         text-align: center;
     }
-
     .subText{
         text-align: center;
+    }
+    /* About Us */
+    #aboutUsContainer{
+        height: 125vh;
+    }
+    .aboutUsHighlight{
+        background-color: var(--secondary-color);
+        padding: 1rem 0;
+        width: 100%;
+    }
+    .aboutUsCards{
+        flex-direction: column;
+    }
+    .aboutUsCard{
+        width: 100%;
+    }
+    .aboutUsCard .title{
+        padding-bottom: 1rem;
+    }
+    /* Product */
+    .slide{
+        flex-direction: column;
+    }
+    .slideText h1{
+        font-size: 2rem;
+        text-align: center;
+    }
+    .slideText p{
+        font-size: 0.8rem;
+        text-align: center;
+    }
+    .slideImg{
+        width: 300px;
+        height: 300px;
     }
 }
 
 @media (max-width: 500px){
+    /* Hero */
     .heroText{
         font-size: 2.5rem;
+    }
+    /* About Us */
+    .aboutUsContainer h1{
+        font-size: 3rem;
+    }
+    .aboutUsContainer hr{
+        width: 300px;
+    }
+    .aboutUsCard .title img{
+        height: 75px;
+    }
+    .aboutUsCard .title h1{
+        font-size: 3rem;
+    }
+    /* Product */
+    .slideImg{
+        width: 200px;
+        height: 200px;
     }
 }

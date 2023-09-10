@@ -10,6 +10,7 @@
     <link rel="shortcut icon" href="assets/favicon.png" type="image/x-icon">
 </head>
 <body>
+    <!-- Header -->
     <header>
         <div class="containerHeader">
             <div class="switch">
@@ -28,6 +29,7 @@
             <a class="headerBtn" href="login.html"><span>Entrar</span></a>
         </div>
     </header>
+    <!-- Hero -->
     <div class="container">
         <div class="heroContainer">
             <div>
@@ -45,7 +47,125 @@
             </div>
         </div>
     </div>
+    <!-- About Us -->
+    <div class="container" id="aboutUsContainer">
+        <div class="aboutUsContainer">
+            <h1>Quem Somos</h1>
+            <hr>
+            <p>
+                Somos a empresa NetMinder e trabalhamos com monitoramento de componentes de rede, tais como switches, roteadores, access points e firewalls.<br>
+                Temos um projeto inovador chamado FireByte onde nosso foco está em oferecer um ambiente de monitoramento em tempo real que capacita a<br>
+                rápida detecção de sobrecargas e problemas nos dispositivos, combinado com uma funcionalidade de automação inovadora.<br>
+            </p>
+        </div>
+        <div class="aboutUsHighlight">
+            <div class="aboutUsCards">
+                <div class="aboutUsCard">
+                    <div class="title">
+                        <img src="assets/targetIcon.png" alt="">
+                        <h1>Missão</h1>
+                    </div>
+                    <p>
+                        Nossa missão é oferecer um serviço de monitoramento de rede de alta qualidade, com um preço acessível e com uma interface intuitiva e de fácil utilização.
+                    </p>
+                </div>
+                <div class="aboutUsCard">
+                    <div class="title">
+                        <img src="assets/binocularsIcon.png" alt="">
+                        <h1>Visão</h1>
+                    </div>
+                    <p>
+                        Nossa visão é ser uma empresa de referência no mercado de monitoramento de rede, com um serviço de alta qualidade e com um preço acessível.
+                    </p>
+                </div>
+                <div class="aboutUsCard">
+                    <div class="title">
+                        <img src="assets/coreValueIcon.png" alt="">
+                        <h1>Valores</h1>
+                    </div>
+                    <p>
+                        Nossos valores são a ética, a transparência, a qualidade, a inovação e a sustentabilidade.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Produto -->
+    <div class="container">
+        <div class="produtoContainer">
+            <img src="assets/fireByteLogo.png" alt="">
+            <p>Bem-vindo ao futuro da gestão de dispositivos e monitoramento em tempo real. Apresentamos o FireByte, uma revolução no setor, dedicada à detecção instantânea de sobrecargas e problemas em seus dispositivos, impulsionada por uma funcionalidade de automação verdadeiramente inovadora</p>
+        </div>
+        <div class="slideContainer">
+            <a class="prev" onclick="plusSlides(-1)">❮</a>
+            
+            <div class="slide fade">
+                <div class="slideText">
+                    <h1>Dashboard Unificada</h1>
+                    <p>Nossa solução provê uma dashboard que une o monitoramento<br>
+                        de todos os dispositivos de rede em um único lugar.</p>
+                </div>
+                <div class="slideImg"><img src="assets/dashboardIllustration.png" alt=""></div>
+            </div>
+            <div class="slide fade">
+                <div class="slideText">
+                    <h1>Controle Remoto</h1>
+                    <p>Nossa solução provê um switch para ligar/desligar ou reiniciar <br>
+                        seus dispositivos remotamente caso algo dê errado.</p>
+                </div>
+                <div class="slideImg"><img src="assets/remoteControlIllustration.png" alt=""></div>
+            </div>
+            <div class="slide fade">
+                <div class="slideText">
+                    <h1>Monitoramento</h1>
+                    <p>Nossa solução provê um monitoramento em tempo real de todos <br>
+                        os dispositivos de rede, com alertas de sobrecarga e problemas.</p>
+                </div>
+                <div class="slideImg"><img src="assets/monitoringIllustration.png" alt=""></div>
+            </div>
+
+            <a class="next" onclick="plusSlides(1)">❯</a>
+        </div>
+        <div style="text-align:center">
+            <span class="dot" onclick="currentSlide(1)"></span>
+            <span class="dot" onclick="currentSlide(2)"></span>
+            <span class="dot" onclick="currentSlide(3)"></span>
+        </div>
+    </div>
 </body>
 </html>
 
 <script src="changeTheme.js"></script>
+
+<script>
+    let slideIndex = 1;
+    showSlides(slideIndex);
+
+    function plusSlides(n) {
+        showSlides(slideIndex += n);
+    }
+
+    function currentSlide(n) {
+        showSlides(slideIndex = n);
+    }
+
+    function showSlides(n) {
+        let i;
+        let slides = document.getElementsByClassName("slide");
+        let dots = document.getElementsByClassName("dot");
+        if (n > slides.length){
+            slideIndex = 1;
+        }
+        if (n < 1) {
+            slideIndex = slides.length;
+        }
+        for (i = 0; i < slides.length; i++) {
+            slides[i].style.display = "none";
+        }
+        for (i = 0; i < dots.length; i++) {
+            dots[i].className = dots[i].className.replace(" active", "");
+        }
+        slides[slideIndex-1].style.display = "flex";
+        dots[slideIndex-1].className += " active";
+    }
+</script>
