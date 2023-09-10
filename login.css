@@ -99,6 +99,23 @@ input:valid~label {
     transition: 0.2s ease-in-out;
 }
 
+.signUpBtn{
+    background-color: var(--primary-color);
+    color: #fff;
+    padding: 9px 120px;
+    border-radius: 1rem;
+    font-size: 1.2rem;
+    font-weight: 700;
+    text-decoration: none;
+    transition: 0.2s ease-in-out;
+}
+
+.signUpBtn:hover {
+    background-color: var(--highlighted-primary-color);
+    transition: 0.2s ease-in-out;
+}
+
 .letra{
-    color: var(--secondary-color);
+    color: var(--primary-color);
+    text-decoration: none;
 }
