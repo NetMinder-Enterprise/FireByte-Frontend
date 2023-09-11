@@ -76,26 +76,21 @@
 .aboutUsContainer p {
     color: var(--text-color);
     text-align: center;
-}
-
-.aboutUsHighlight {
-    padding: 3rem 0;
-    width: 100%;
+    width: 90%;
 }
 
 .aboutUsCards {
     width: 90%;
-    height: 190px;
     display: flex;
     justify-content: space-evenly;
     align-items: center;
     margin: 0 auto;
-    
+    margin-bottom: 2rem;
 }
 
 .aboutUsCard {
     width: 30%;
-    padding: 5px 10px 40px 10px;
+    padding: 5px 10px 30px 10px;
     border-radius: 1rem;
     color: var(--text-color);
     display: flex;
@@ -112,8 +107,6 @@
     display: flex;
     flex-direction: row;
     align-items: center;
-    gap: 2rem;
-    padding-bottom: 2rem;
 }
 
 .aboutUsCard .title img {
@@ -127,16 +120,16 @@
 
 .aboutUsCard p {
     text-align: center;
+    width: 90%;
 }
 
 .aboutUsBanner{
     background-color: var(--secondary-color);
-     padding: 2rem 0;
-     width: 100%; 
-     display: flex;
-     flex-direction: row;
-     justify-content: space-around;
-    
+    padding: 2rem 0;
+    width: 100%; 
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
 }
 
 .aboutUsBanner .img-Banner{
@@ -287,8 +280,9 @@
     display: flex;
     flex-direction: row;
     justify-content: space-evenly;
+    flex-wrap: wrap;
+    gap: 1rem;
     margin-top: 4%;
-
 }
 
 .title {
@@ -366,6 +360,7 @@ p {
     color: var(--text-color);
     font-size: 3rem;
     font-weight: 700;
+    width: 80%;
 }
 
 .img {
@@ -586,13 +581,7 @@ footer {
 
     /* About Us */
     #aboutUsContainer {
-        height: 125vh;
-    }
-
-    .aboutUsHighlight {
-        background-color: var(--secondary-color);
-        padding: 1rem 0;
-        width: 100%;
+        height: 190vh;
     }
 
     .aboutUsCards {
@@ -600,11 +589,27 @@ footer {
     }
 
     .aboutUsCard {
-        width: 100%;
+        width: 90%;
+        padding: 5px 10px 20px 10px;
+        margin-bottom: 1rem;
+    }
+    
+    .aboutUsCard .title {
+        padding-bottom: 0rem;
+        margin-top: 0rem;
+    }
+    
+    .aboutUsCard h1 {
+        font-size: 2rem;
+        color: var(--text-color);
+    }
+    
+    .aboutUsCard p {
+        text-align: center;
     }
 
-    .aboutUsCard .title {
-        padding-bottom: 1rem;
+    .aboutUsBanner .img-Banner{
+        width: 250px;
     }
 
     /* Product */
@@ -625,6 +630,41 @@ footer {
     .slideImg {
         width: 300px;
         height: 300px;
+    }
+
+    /* Contato */
+    .contact p{
+        font-size: 2rem;
+    }
+
+    .contact img{
+        width: 300px;
+    }
+}
+
+@media (max-width: 655px){
+    /* Discurso */
+    #discursoContainer{
+        height: 160vh;
+    }
+
+    /* Contato */
+    .contact{
+        display: none;
+    }
+
+    /* Footer */
+    .footer{
+        flex-direction: column;
+    }
+    .informacion{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+    .social-buttons{
+        margin-top: 22px;
     }
 }
 
@@ -647,9 +687,17 @@ footer {
     .aboutUsCard .title img {
         height: 75px;
     }
+    
+    .aboutUsBanner .img-Banner{
+        display: none;
+    }
 
-    .aboutUsCard .title h1 {
-        font-size: 3rem;
+    .aboutUsBannerInformation{
+        align-items: center;
+    }
+
+    .aboutUsBannerInformation p{
+        text-align: center;
     }
 
     /* Product */
