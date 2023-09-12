@@ -353,12 +353,11 @@ p {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: center;
 }
 
 .text {
     color: var(--text-color);
-    font-size: 3rem;
+    font-size: 2rem;
     font-weight: 700;
     width: 80%;
 }
@@ -581,7 +580,7 @@ footer {
 
     /* About Us */
     #aboutUsContainer {
-        height: 190vh;
+        height: auto;
     }
 
     .aboutUsCards {
@@ -645,7 +644,7 @@ footer {
 @media (max-width: 655px){
     /* Discurso */
     #discursoContainer{
-        height: 160vh;
+        height: auto;
     }
 
     /* Contato */

@@ -36,15 +36,11 @@ body {
     font-family: 'Baloo 2', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
-.container {
+.container{
+    width: 90%;
     margin: 0 auto;
-    height: 87vh;
-}
-
-
-.container-aboutUs{
-    margin: 0 auto;
-    height: 120vh;
+    margin-top: 5%;
+    margin-bottom: 5%;
 }
 
 
