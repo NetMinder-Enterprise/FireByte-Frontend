@@ -85,12 +85,13 @@ input:valid~label {
 .loginBtn {
     background-color: var(--primary-color);
     color: #fff;
-    padding: 9px 135px;
+    padding: 13px 135px;
     border-radius: 1rem;
     font-size: 1.2rem;
     font-weight: 700;
     text-decoration: none;
     transition: 0.2s ease-in-out;
+    border: none;
 }
 
 
