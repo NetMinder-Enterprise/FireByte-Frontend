@@ -174,12 +174,12 @@ header li {
     left: 5px;
     width: 25px;
     height: 25px;
-    background: url('assets/moonIcon.png') center center no-repeat;
+    background: url('../assets/moonIcon.png') center center no-repeat;
     background-size: 80%;
 }
 
 .checkboxWrap .checkboxInput:checked~.checkboxMark:before {
-    background: url('assets/sunIcon.png') center center no-repeat;
+    background: url('../assets/sunIcon.png') center center no-repeat;
     background-size: 80%;
     left: 30px;
 }

@@ -25,15 +25,15 @@ function changeLogo(){
     logo = document.getElementById("logo");
     if (window.matchMedia("(max-width: 500px)").matches) {
         if (storedTheme == "dark"){
-            logo.src = "assets/netMinderLogoSmallDark.png";
+            logo.src = "./assets/netMinderLogoSmallDark.png";
         }else{
-            logo.src = "assets/netMinderLogoSmallLight.png";
+            logo.src = "./assets/netMinderLogoSmallLight.png";
         }
     } else {
         if (storedTheme == "dark"){
-            logo.src = "assets/netMinderLogoDark.png";
+            logo.src = "./assets/netMinderLogoDark.png";
         }else{
-            logo.src = "assets/netMinderLogoLight.png";
+            logo.src = "./assets/netMinderLogoLight.png";
         }
     }
 }
