@@ -1,0 +1,234 @@
+@import url('https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;500;600;700;800&family=Wix+Madefor+Display:wght@400;500&display=swap');
+
+:root {
+  --background-color: #1c1c1c;
+  --white: #fff;
+  --text-color: #ededed;
+  --error-color: #eb4747;
+  --sucess-color: #47dd3c;
+}
+
+html[data-theme='light'] {
+  --highlighted-primary-color: hsl(236, 55%, 63%);
+  --primary-color: #454EC9;
+  --secondary-color: #363A7D;
+  --background-color: #ededed;
+  --text-color: #1c1c1c;
+}
+
+html[data-theme='dark'] {
+  --highlighted-primary-color: hsl(236, 55%, 70%);
+  --primary-color: #6168d1;
+  --secondary-color: #2f3374;
+  --background-color: #1c1c1c;
+  --text-color: #ededed;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: var(--background-color);
+  color: var(--text-color);
+  font-family: 'Baloo 2', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.container {
+  width: 90%;
+  margin: 0 auto;
+  margin-top: 5%;
+  margin-bottom: 5%;
+}
+
+/* Switch */
+.checkboxWrap {
+  cursor: pointer;
+}
+
+.checkboxWrap .checkboxInput {
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: 0;
+  z-index: 1;
+}
+
+.checkboxWrap .checkboxMark {
+  display: inline-block;
+  position: relative;
+  border-radius: 25px;
+}
+
+.checkboxWrap .checkboxMark:before,
+.checkboxWrap .checkboxMark:after {
+  content: "";
+  position: absolute;
+  transition: all 0.5s ease;
+}
+
+.checkboxWrap .checkboxMark {
+  background: var(--primary-color);
+  width: 50px;
+  height: 25px;
+  margin-top: 430px;
+}
+
+.checkboxWrap .checkboxMark:before {
+  top: 3px;
+  left: 5px;
+  width: 18px;
+  height: 18px;
+  background: url('../moonIcon.png') center center no-repeat;
+  background-size: 80%;
+}
+
+.checkboxWrap .checkboxInput:checked~.checkboxMark:before {
+  background: url('../sunIcon.png') center center no-repeat;
+  background-size: 80%;
+  left: 30px;
+}
+
+/* Header */
+.body_menu {
+  position: absolute;
+  min-height: 100vh;
+  overflow: hidden;
+  width: 100%;
+}
+
+.sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 78px;
+  background-color: var(--text-color);
+  padding: 6px 14px;
+  transition: all 0.5s ease;
+}
+
+.sidebar.active {
+  width: 240px;
+}
+
+
+.sidebar .logo_content .logo {
+  color: var(--background-color);
+  display: flex;
+  height: 50px;
+  width: 100%;
+  align-items: center;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.sidebar.active .logo_content .logo {
+  opacity: 1;
+  pointer-events: none;
+}
+
+.logo_content .logo i {
+  font-size: 28px;
+  margin-right: 5px;
+}
+
+.sidebar .links_name {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.sidebar.active .links_name {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.logo_content .logo .logo_name {
+  font-size: 20px;
+  font-weight: 400;
+
+}
+
+.sidebar #btn {
+  position: absolute;
+  color: var(--background-color);
+  left: 50%;
+  top: 6px;
+  font-size: 20px;
+  height: 50px;
+  width: 50px;
+  text-align: center;
+  line-height: 50px;
+  transform: translateX(-50%);
+}
+
+.sidebar.active #btn {
+  left: 90%;
+}
+
+.sidebar ul {
+  margin-top: 20px;
+
+}
+
+.sidebar ul li {
+  position: relative;
+  height: 50px;
+  width: 100%;
+  list-style: none;
+  line-height: 50px;
+
+}
+
+.sidebar ul li .tooltip {
+  position: absolute;
+  left: 122px;
+  top: 0;
+  transform: translate(-50%, -50%);
+  border-radius: 6px;
+  height: 35px;
+  width: 122px;
+  line-height: 35px;
+  text-align: center;
+  background: var(--background-color);
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+  transition: 0s;
+  opacity: 0;
+  pointer-events: none;
+  display: block;
+}
+
+.sidebar.active ul li .tooltip {
+  display: none;
+}
+
+.sidebar ul li:hover .tooltip {
+  transition: all 0.5s ease;
+  opacity: 1;
+  top: 50%;
+}
+
+.sidebar ul li a {
+  color: var(--background-color);
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  transition: all 0.4s ease;
+  border-radius: 12px;
+  white-space: nowrap;
+}
+
+.sidebar ul li a:hover {
+  color: var(--primary-color);
+  background: var(--background-color);
+}
+
+.sidebar ul li a i {
+  height: 50px;
+  min-width: 50px;
+  border-radius: 12px;
+  line-height: 50px;
+  text-align: center;
+}

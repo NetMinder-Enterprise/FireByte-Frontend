@@ -1,16 +1,81 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dashboard</title>
-    
-    <link rel="stylesheet" href="./css/global.css">
+    <title>Dashboard || Home </title>
+
+    <link rel="stylesheet" href="./css/dashboard.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+
 </head>
+
 <body>
-    <div class="container" style=" display: flex; height: 70vh; flex-direction: column; align-items: center; justify-content: center;">
-        <h1 style="font-size: 3rem;">Site em Desenvolvimento!</h1>
-        <img src="https://www.sultan.com.br/App/Images/icones/load.gif">
+    <div class="container"></div>
+    <div class="body_menu">
+        <div class="sidebar">
+            <div class="logo_content">
+                <div class="logo">
+                    <!-- <ion-icon name="rocket-outline"></ion-icon>
+            <div class="logo_name">SpaceQuiz</div> -->
+                </div>
+                <i class='bx bx-menu' id="btn"></i>
+            </div>
+            <ul class="nav_list">
+                <li>
+                    <a href="">
+                        <i class='bx bxs-home'></i>
+                        <span class="links_name">Home</span>
+                    </a>
+                    <span class="tooltip">Home</span>
+                </li>
+                <li>
+                    <a href="./desempenho.html">
+                        <i class='bx bx-task'></i>
+                        <span class="links_name">Desempenho</span>
+                    </a>
+                    <span class="tooltip">Desempenho</span>
+                </li>
+                <li>
+                    <a onclick="seila()">
+                        <i class='bx bx-bar-chart-alt-2'></i>
+                        <span class="links_name">Ranking</span>
+                    </a>
+                    <span class="tooltip">Ranking</span>
+                </li>
+                <li>
+                    <a href="../index.html">
+                        <i class='bx bx-log-out'></i>
+                        <span class="links_name">Sair</span>
+                    </a>
+                    <span class="tooltip">Sair</span>
+                </li>
+                <div class="switch">
+                    <label class="checkboxWrap">
+                        <input type="checkbox" id="themeSwitcher" class="checkboxInput">
+                        <span class="checkboxMark"></span>
+                    </label>
+                </div>
+            </ul>
+        </div>
     </div>
+
+    <script>
+        let btn = document.querySelector("#btn");
+        let sidebar = document.querySelector(".sidebar");
+
+        btn.onclick = function () {
+            sidebar.classList.toggle("active");
+        }
+
+    </script>
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+    <script src="../js/changeTheme.js"></script>
+
 </body>
+
+</body>
+
 </html>
