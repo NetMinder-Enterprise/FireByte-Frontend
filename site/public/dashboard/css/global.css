@@ -39,7 +39,7 @@ body {
 .container {
   width: 90%;
   margin: 0 auto;
-  margin-top: 5%;
+  margin-top: 1%;
   margin-bottom: 5%;
 }
 
@@ -73,7 +73,7 @@ body {
   background: var(--primary-color);
   width: 50px;
   height: 25px;
-  margin-top: 430px;
+  margin-top: 520px;
 }
 
 .checkboxWrap .checkboxMark:before {
