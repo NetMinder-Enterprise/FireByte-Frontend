@@ -104,16 +104,31 @@
                 <div class="information">
                     <div class="data">
                         <p>
-                          <span id="name_dispositivo">CPU</span>
+                            <span id="name_dispositivo">CPU</span>
                         </p>
                         <div class="range">
-                            <div class="fill" id="fill">
-                                <div class="percentage" id="percentage">0%</div>
-                            </div>
+                            <div class="fill" id="fill1"></div>
                         </div>
+                        <div class="percentage" id="percentage1">0%</div>
+                    </div>
+                    <div class="data">
                         <p>
-                            <span id="porcentagem">90%</span>
-                          </p>
+                            <span id="name_dispositivo">RAM</span>
+                        </p>
+                        <div class="range">
+                            <div class="fill" id="fill2"></div>
+                        </div>
+                        <div class="percentage" id="percentage2">0%</div>
+                    </div>
+                    <div class="data">
+                        <p>
+                            <span id="name_dispositivo">Disco</span>
+                        </p>
+                        <div class="range">
+                            <div class="fill" id="fill3"></div>
+                        </div>
+                        <div class="percentage" id="percentage3">0%</div>
+
                     </div>
                 </div>
             </div>
@@ -126,29 +141,9 @@
         </div>
     </div>
 
-    <script>
-        function updateProgressBar(percentage) {
-            const fill = document.getElementById('fill');
-            const percentageDiv = document.getElementById('percentage');
 
-            percentageDiv.textContent = percentage + '%';
+    <script src="script.js"></script>
 
-            if (percentage <= 50) {
-                fill.style.width = percentage + '%';
-                fill.className = 'fill blue';
-            } else if (percentage <= 75) {
-                fill.style.width = percentage + '%';
-                fill.className = 'fill yellow';
-            } else {
-                fill.style.width = percentage + '%';
-                fill.className = 'fill red';
-            }
-        }
-
-        // Exemplo de uso: atualiza a barra de porcentagem para 50%
-        updateProgressBar(90);
-
-    </script>
 
 
     <!-- Link do video para vê notificação

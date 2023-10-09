@@ -181,20 +181,34 @@
 
 .card {
     width: 300px;
-    height: 200px;
+    height: 190px;
     border: 1px solid var(--text-color);
     border-radius: 10px;
 }
 
+h4{
+    font-size: 1.5rem;
+    font-weight: 800;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 3%;
+}
+
+
 /*Barra de porcentagem*/
 .information{
-    
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
 }
+
 .data {
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: center;
+    gap:5px;
 }
 
 .data p {
@@ -204,6 +218,8 @@
 }
 
 .range {
+    display: flex;
+    flex-direction: row;
     width: 60%;
     height: 20px;
     background-color: #ccc;
@@ -218,26 +234,24 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    color: #fff;
+    color: var(--background-color);
     transition: width 0.3s ease;
     border-radius: 50px;
 }
 
 .percentage {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-}
+    font-size: 1.2rem;
+    margin-left: 10px; /* Espaço entre o medidor e a porcentagem */
+    font-weight: 800;
+  }
 
 .blue {
-    background-color: #007bff;
+    background-color: blue;
 }
 
 .yellow {
     background-color: yellow;
 }
-
 .red {
     background-color: red;
 }
