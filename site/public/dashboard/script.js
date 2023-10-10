@@ -20,4 +20,78 @@ function updateProgressBar(percentage, fillId, percentageId) {
   updateProgressBar(90, 'fill1', 'percentage1');
   updateProgressBar(75, 'fill2', 'percentage2');
   updateProgressBar(30, 'fill3', 'percentage3');
+  updateProgressBar(10, 'fill4', 'percentage4');
+  updateProgressBar(80, 'fill5', 'percentage5');
+  updateProgressBar(50, 'fill6', 'percentage6');
+  updateProgressBar(40, 'fill7', 'percentage7');
+  updateProgressBar(95, 'fill8', 'percentage8');
+  updateProgressBar(72, 'fill9', 'percentage9');
+
+
+  var notificationCount = 0;
+
+  function updateNotificationBadge() {
+      var notificationBadge = document.getElementById("notification-badge");
+      notificationBadge.textContent = notificationCount;
+  
+      if (notificationCount === 0) {
+          notificationBadge.style.display = "none";
+      } else {
+          notificationBadge.style.display = "block";
+      }
+  }
+  
+  function addNotification(notification, imageUrl) {
+      var notificationList = document.getElementById("notification-list");
+      var listItem = document.createElement("li");
+  
+      var image = document.createElement("img");
+      image.src = imageUrl;
+  
+      var message = document.createElement("p");
+      message.textContent = notification;
+  
+      listItem.appendChild(image);
+      listItem.appendChild(message);
+  
+      notificationList.appendChild(listItem);
+  
+      notificationCount++;
+      updateNotificationBadge();
+  }
+  
+  function clearNotifications() {
+      var notificationList = document.getElementById("notification-list");
+      notificationList.innerHTML = "";
+      notificationCount = 0;
+      updateNotificationBadge();
+  }
+  
+  function toggleNotificationModal() {
+      var modal = document.getElementById("notification-modal");
+      modal.classList.toggle("show");
+  }
+  
+  var notificationButton = document.getElementById("notification-button");
+  notificationButton.addEventListener("click", toggleNotificationModal);
+  
+  var clearButton = document.getElementById("clear-button");
+  clearButton.addEventListener("click", clearNotifications);
+
+  addNotification("Nova mensagem recebida.", "aviso.png");
+  addNotification("Bora estudar", "aviso.png");
+  addNotification("Lembrete: Pagar a conta de luz.", "aviso.png");
+  addNotification("teste", "aviso.png");
+  
+
+
+
+
+
+
+
+
+
+
+
   
