@@ -40,7 +40,7 @@ body {
   width: 90%;
   margin: 0 auto;
   margin-top: 1%;
-  margin-bottom: 5%;
+  margin-bottom: 2%;
 }
 
 /* Switch */
@@ -162,6 +162,7 @@ body {
   text-align: center;
   line-height: 50px;
   transform: translateX(-50%);
+  cursor: pointer;
 }
 
 .sidebar.active #btn {

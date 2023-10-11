@@ -204,7 +204,7 @@
     padding: 10px;
     width: 300px;
     max-height: 70%;
-    overflow-y: auto; 
+    overflow-y: auto;
     margin-left: -16.5%;
     margin-top: 0.5%;
 }
@@ -212,11 +212,12 @@
 
 /* Personalize a barra de rolagem, o polegar e o fundo dentro da modal */
 .modal::-webkit-scrollbar {
-    width: 12px; /* Largura da barra de rolagem */
+    width: 12px;
+    /* Largura da barra de rolagem */
 }
 
 .modal::-webkit-scrollbar-thumb {
-    background-color:  rgba(21, 5, 111, 0.542); 
+    background-color: rgba(21, 5, 111, 0.542);
     border-radius: 35px;
 }
 
@@ -239,7 +240,7 @@
     color: white;
 }
 
-.title-notifiction{
+.title-notifiction {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -256,7 +257,7 @@
     width: 270px;
     height: 45px;
     margin-bottom: 10px;
-    background-color:  rgba(0, 0, 0, 0.253);
+    background-color: rgba(0, 0, 0, 0.253);
     border-radius: 5px;
     color: black;
     display: flex;
@@ -264,12 +265,13 @@
     border: 1px solid white;
     color: #fff;
 }
-#notification-list li img{
+
+#notification-list li img {
     width: 45px;
     height: 55px;
 }
 
-.divisao{
+.divisao {
     display: flex;
     flex-direction: row;
     gap: 15px;
@@ -418,7 +420,7 @@ h4 {
 
 
 /* box dos dispositivos */
-.content-box{
+.content-box {
     width: 90%;
     height: 363px;
     background-color: var(--terciary-color);
@@ -429,24 +431,24 @@ h4 {
     flex-direction: row;
 }
 
-.meter{
+.meter {
     width: 70%;
 }
 
-.time-meter{
+.time-meter {
     display: flex;
     flex-direction: row;
     gap: 220px;
     margin-left: 17%;
 }
 
-.meter-color{
+.meter-color {
     display: flex;
     flex-direction: row;
-    
+
 }
 
-.meter-cor1{
+.meter-cor1 {
     width: 270px;
     height: 8px;
     background-color: green;
@@ -454,7 +456,7 @@ h4 {
     margin-left: 2%;
 }
 
-.meter-cor2{
+.meter-cor2 {
     width: 300px;
     height: 8px;
     background-color: yellow;
@@ -462,7 +464,7 @@ h4 {
     margin-left: -1%;
 }
 
-.meter-cor3{
+.meter-cor3 {
     width: 280px;
     height: 8px;
     background-color: red;
@@ -471,12 +473,12 @@ h4 {
 }
 
 /*Botão de ordenar*/
-.order{
+.order {
     width: 100%;
     margin-left: 3%;
 }
 
-select{
+select {
     width: 200px;
     height: 35px;
     border: 1px solid var(--text-color);
@@ -486,32 +488,25 @@ select{
     margin-top: 2%;
 }
 
-option{
+option {
     background-color: var(--background-color);
 }
 
 /*imagem*/
 /* Estilos anteriores permanecem aqui */
-
+/* 
 .profile {
     text-align: center;
-  }
-  
-  .image-container {
-    max-width: 200px;
-    max-height: 200px;
-    min-width: 30px;
-    min-height: 30px;
-    border-radius: 50%;
-    overflow: hidden;
-  }
+}
 
-  #userImage{
+#userImage {
+    width: 60%;
     max-width: 200px;
     max-height: 200px;
-    min-width: 30px;
+    min-width: 20px;
     min-height: 30px;
-  }
+    overflow: hidden;
+}
 
 .modal-user {
     display: none;
@@ -521,32 +516,34 @@ option{
     top: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0,0,0,0.7);
-  }
-  
-  .modal-content {
+    background-color: rgba(0, 0, 0, 0.7);
+}
+
+.modal-content {
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    background-color: #fff;
-    padding: 20px;
+    background-color: rgba(0, 0, 0, 0.7);
+    width: 250px;
+    height: 250px;
     text-align: center;
-  }
-  
-  .close {
+}
+
+.close {
     position: absolute;
     top: 0;
     right: 0;
     padding: 10px;
     cursor: pointer;
-  }
-  
-  #removeButton, #replaceButton {
+}
+
+#removeButton,
+#replaceButton {
     margin-top: 10px;
-  }
-  
-  .small-button {
+}
+
+.small {
     background-color: transparent;
     color: white;
     border: none;
@@ -556,15 +553,32 @@ option{
     font-size: 16px;
     cursor: pointer;
     border-radius: 5px;
-  }
+}
 
-  .img-lapis{
+.small-button {
+    background-color: white;
+    color: black;
+    border: none;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 5px;
+    width: 100px;
+    height: 40px;
+}
+
+.img-lapis {
     width: 20px;
     height: 20px;
-  }
-  
-  .small-button:hover {
+}
+
+.small:hover {
     background-color: #08080825;
-  }
-  
-  
+}
+
+
+.small-button:hover {
+    background-color: #e2dce98a;
+} */
