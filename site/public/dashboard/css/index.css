@@ -414,3 +414,157 @@ h4 {
 .red {
     background-color: red;
 }
+
+
+
+/* box dos dispositivos */
+.content-box{
+    width: 90%;
+    height: 363px;
+    background-color: var(--terciary-color);
+    margin-left: 7%;
+    border-radius: 20px;
+    border: 1px solid var(--text-color);
+    display: flex;
+    flex-direction: row;
+}
+
+.meter{
+    width: 70%;
+}
+
+.time-meter{
+    display: flex;
+    flex-direction: row;
+    gap: 220px;
+    margin-left: 17%;
+}
+
+.meter-color{
+    display: flex;
+    flex-direction: row;
+    
+}
+
+.meter-cor1{
+    width: 270px;
+    height: 8px;
+    background-color: green;
+    border-radius: 50px;
+    margin-left: 2%;
+}
+
+.meter-cor2{
+    width: 300px;
+    height: 8px;
+    background-color: yellow;
+    border-radius: 50px;
+    margin-left: -1%;
+}
+
+.meter-cor3{
+    width: 280px;
+    height: 8px;
+    background-color: red;
+    border-radius: 50px;
+    margin-left: -1%;
+}
+
+/*Botão de ordenar*/
+.order{
+    width: 100%;
+    margin-left: 3%;
+}
+
+select{
+    width: 200px;
+    height: 35px;
+    border: 1px solid var(--text-color);
+    border-radius: 30px;
+    background-color: rgba(217, 217, 217, 0.1);
+    color: var(--text-color);
+    margin-top: 2%;
+}
+
+option{
+    background-color: var(--background-color);
+}
+
+/*imagem*/
+/* Estilos anteriores permanecem aqui */
+
+.profile {
+    text-align: center;
+  }
+  
+  .image-container {
+    max-width: 200px;
+    max-height: 200px;
+    min-width: 30px;
+    min-height: 30px;
+    border-radius: 50%;
+    overflow: hidden;
+  }
+
+  #userImage{
+    max-width: 200px;
+    max-height: 200px;
+    min-width: 30px;
+    min-height: 30px;
+  }
+
+.modal-user {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.7);
+  }
+  
+  .modal-content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #fff;
+    padding: 20px;
+    text-align: center;
+  }
+  
+  .close {
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: 10px;
+    cursor: pointer;
+  }
+  
+  #removeButton, #replaceButton {
+    margin-top: 10px;
+  }
+  
+  .small-button {
+    background-color: transparent;
+    color: white;
+    border: none;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 5px;
+  }
+
+  .img-lapis{
+    width: 20px;
+    height: 20px;
+  }
+  
+  .small-button:hover {
+    background-color: #08080825;
+  }
+  
+  

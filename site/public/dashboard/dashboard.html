@@ -19,12 +19,28 @@
             <div class="sidebar">
                 <div class="logo_content">
                     <div class="logo">
-                        <!-- <ion-icon name="rocket-outline"></ion-icon>
-            <div class="logo_name">SpaceQuiz</div> -->
                     </div>
                     <i class='bx bx-menu' id="btn"></i>
                 </div>
                 <ul class="nav_list">
+
+                    <div class="profile">
+                        <div class="image-container">
+                          <img id="userImage" src="./do-utilizador 1.png" alt="Imagem do perfil">
+                        </div>
+                        <button id="uploadButton" class="small-button"><img src="./ferramenta-lapis.png" class="img-lapis"></button>
+                      </div>
+                    
+                      <div id="imageModal" class="modal-user">
+                        <div class="modal-content">
+                          <span class="close" id="closeModal">&times;</span>
+                          <img id="modalImage" src="default.jpg" alt="Imagem do perfil">
+                          <button id="removeButton" class="small-button">Remover</button>
+                          <input type="file" id="fileInput" accept="image/*" style="display: none;">
+                          <button id="replaceButton" class="small-button">Trocar</button>
+                        </div>
+                      </div>
+
                     <li>
                         <a href="">
                             <i class='bx bxs-home'></i>
@@ -224,6 +240,33 @@
                     </div>
                 </div>
             </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="content-box">
+            <div class="meter">
+                <div class="time-meter">
+                    <h3>Bom</h3>
+                    <h3>Atenção</h3>
+                    <h3>Ruim</h3>
+            </div>
+                <div class="meter-color">
+                    <div class="meter-cor1"></div>
+                    <div class="meter-cor2"></div>
+                    <div class="meter-cor3"></div>
+                </div>
+                
+            </div>
+         <div class="order">
+            <label for="ordernar">Ordenado por: </label>
+                <select id="opcao" name="estado">
+                    <option value="opcao1">Alerta</option>
+                    <option value="opcao2">Atenção</option>
+                    <option value="opcao3">Dispositivo</option>
+                    <option value="opcao3">Alfabetica</option>
+                </select>
+         </div>
         </div>
     </div>
 
