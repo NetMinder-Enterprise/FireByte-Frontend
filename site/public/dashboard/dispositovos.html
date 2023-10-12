@@ -8,6 +8,8 @@
 
     <link rel="stylesheet" href="./css/global.css">
     <link rel="stylesheet" href="./css/index.css">
+    <link rel="stylesheet" href="./css/dispositivos.css">
+
 
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
 
@@ -44,23 +46,23 @@
                                 <button id="replaceButton" class="small-button">Trocar</button>
                             </div>
                         </div>
-                    </div> 
+                    </div>
                     <div class="divisao-botoes">
-                    <li>
-                        <a href="">
-                            <i class='bx bxs-home'></i>
-                            <span class="links_name">Home</span>
-                        </a>
-                        <span class="tooltip">Home</span>
-                    </li>
-                    <li>
-                        <a href="../index.html">
-                            <i class='bx bx-log-out'></i>
-                            <span class="links_name">Sair</span>
-                        </a>
-                        <span class="tooltip">Sair</span>
-                    </li>
-                </div>
+                        <li>
+                            <a href="">
+                                <i class='bx bxs-home'></i>
+                                <span class="links_name">Home</span>
+                            </a>
+                            <span class="tooltip">Home</span>
+                        </li>
+                        <li>
+                            <a href="../index.html">
+                                <i class='bx bx-log-out'></i>
+                                <span class="links_name">Sair</span>
+                            </a>
+                            <span class="tooltip">Sair</span>
+                        </li>
+                    </div>
                     <div class="switch">
                         <label class="checkboxWrap">
                             <input type="checkbox" id="themeSwitcher" class="checkboxInput">
@@ -85,21 +87,20 @@
         <div class="content">
             <div class="content-title">
                 <div class="title">
-                    <h1>Seja bem vindo de volta <span id="name_user">Adimin</span></h1>
+                    <h1><span id="name_user">Firewall 3</span></h1>
                     <div class="subTitle">
-                        <h3>Acompanhe seus dispositivos de rede</h3>
+                        <h3>Acompanhe seu dispositivo de rede</h3>
                     </div>
                 </div>
             </div>
             <div class="content-bottons">
-                <div class="pesquisa">
-                    <input checked="" class="checkbox" type="checkbox"> 
-                    <div class="mainbox">
-                        <div class="iconContainer">
-                            <svg viewBox="0 0 512 512" height="1em" xmlns="http://www.w3.org/2000/svg" class="search_icon"><path d="M416 208c0 45.9-14.9 88.3-40 122.7L502.6 457.4c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L330.7 376c-34.4 25.2-76.8 40-122.7 40C93.1 416 0 322.9 0 208S93.1 0 208 0S416 93.1 416 208zM208 352a144 144 0 1 0 0-288 144 144 0 1 0 0 288z"></path></svg>
-                        </div>
-                     <input class="search_input" placeholder="search" type="text">
-                    </div>
+                <div class="order-disp">
+                    <select id="opcao" name="estado" class="select">
+                        <option value="opcao1">Firewall 2</option>
+                        <option value="opcao2">Firewall 3</option>
+                        <option value="opcao3">Firewall 4</option>
+                        <option value="opcao4">Firewall 1</option>
+                    </select>
                 </div>
 
 
@@ -138,136 +139,67 @@
     </div>
     </div>
 
-    <div class="container">
-        <div class="content-card">
-            <div class="card">
-                <h4><span id="name_card1"> Firewall</span></h4>
-                <div class="information">
-                    <div class="data">
-                        <p>
-                            <span id="name_dispositivo">CPU</span>
-                        </p>
-                        <div class="range">
-                            <div class="fill" id="fill1"></div>
-                        </div>
-                        <div class="percentage" id="percentage1">0%</div>
-                    </div>
-                    <div class="data">
-                        <p>
-                            <span id="name_dispositivo">RAM</span>
-                        </p>
-                        <div class="range">
-                            <div class="fill" id="fill2"></div>
-                        </div>
-                        <div class="percentage" id="percentage2">0%</div>
-                    </div>
-                    <div class="data">
-                        <p>
-                            <span id="name_dispositivo">Disco</span>
-                        </p>
-                        <div class="range">
-                            <div class="fill" id="fill3"></div>
-                        </div>
-                        <div class="percentage" id="percentage3">0%</div>
+    <div class="conteiner">
+        <div class="cards-principal">
+            <div class="card-segury">
+                <span class="h4" id="monitoramento1">CPU</span>
 
+                <div class="information">
+                    <div class="data-card">
+                        <div class="percentagem" id="percentage1">0%</div>
+                        <div class="range-card">
+                            <div class="range-card" id="fill1"></div>
+                        </div>
+                        <p>
+                            de 100%
+                        </p>
                     </div>
                 </div>
             </div>
-            <div class="card">
-                <h4><span id="name_card2">Modem</span></h4>
-                <div class="information">
-                    <div class="data">
-                        <p>
-                            <span id="name_dispositivo">CPU</span>
-                        </p>
-                        <div class="range">
-                            <div class="fill" id="fill4"></div>
-                        </div>
-                        <div class="percentage" id="percentage4">0%</div>
-                    </div>
-                    <div class="data">
-                        <p>
-                            <span id="name_dispositivo">RAM</span>
-                        </p>
-                        <div class="range">
-                            <div class="fill" id="fill5"></div>
-                        </div>
-                        <div class="percentage" id="percentage5">0%</div>
-                    </div>
-                    <div class="data">
-                        <p>
-                            <span id="name_dispositivo">Disco</span>
-                        </p>
-                        <div class="range">
-                            <div class="fill" id="fill6"></div>
-                        </div>
-                        <div class="percentage" id="percentage6">0%</div>
 
+            <div class="card-segury">
+                <span class="h4" id="monitoramento2">RAM</span>
+
+
+                <div class="information">
+                    <div class="data-card">
+                        <div class="percentagem" id="percentage2">0%</div>
+                        <div class="range-card">
+                            <div class="fill-card" id="fill2"></div>
+                        </div>
+                        <p>
+                            de 100%
+                        </p>
                     </div>
                 </div>
+
             </div>
-            <div class="card">
-                <h4><span id="name_card3">Switch</span></h4>
-                <div class="information">
-                    <div class="data">
-                        <p>
-                            <span id="name_dispositivo">CPU</span>
-                        </p>
-                        <div class="range">
-                            <div class="fill" id="fill7"></div>
-                        </div>
-                        <div class="percentage" id="percentage7">0%</div>
-                    </div>
-                    <div class="data">
-                        <p>
-                            <span id="name_dispositivo">RAM</span>
-                        </p>
-                        <div class="range">
-                            <div class="fill" id="fill8"></div>
-                        </div>
-                        <div class="percentage" id="percentage8">0%</div>
-                    </div>
-                    <div class="data">
-                        <p>
-                            <span id="name_dispositivo">Rede</span>
-                        </p>
-                        <div class="range">
-                            <div class="fill" id="fill9"></div>
-                        </div>
-                        <div class="percentage" id="percentage9">0%</div>
 
+            <div class="card-segury">
+                <span class="h4" id="monitoramento2">Disco</span>
+
+                <div class="information">
+                    <div class="data-card">
+                        <div class="percentagem" id="percentage3">0%</div>
+                        <div class="range-card">
+                            <div class="fill-card" id="fill3"></div>
+                        </div>
+                        <p>
+                            de 100%
+                        </p>
                     </div>
                 </div>
+
+            </div>
+            <div class="card-segury2">
+                <h4>Descrição </h4>
+                <p>Firewall 2 está localizado no 11º andar e é responsavel por monitorar do 5º andar até o 12º andar.</p>
             </div>
         </div>
     </div>
 
-    <div class="container">
-        <div class="content-box">
-            <div class="meter">
-                <div class="time-meter">
-                    <h3>Bom</h3>
-                    <h3>Atenção</h3>
-                    <h3>Ruim</h3>
-                </div>
-                <div class="meter-color">
-                    <div class="meter-cor1"></div>
-                    <div class="meter-cor2"></div>
-                    <div class="meter-cor3"></div>
-                </div>
 
-            </div>
-            <div class="order">
-                <label for="ordernar">Ordenado por: </label>
-                <select id="opcao" name="estado">
-                    <option value="opcao1">Alerta</option>
-                    <option value="opcao2">Atenção</option>
-                    <option value="opcao3">Dispositivo</option>
-                    <option value="opcao3">Alfabetica</option>
-                </select>
-            </div>
-        </div>
-    </div>
+
 
 
     <script src="script.js"></script>
@@ -288,4 +220,3 @@
 </body>
 
 </html>
-

@@ -1,0 +1,94 @@
+/*Card com as informações do dispositivo*/
+
+.cards-principal {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    gap: 65px;
+
+}
+
+.card-segury {
+    width: 230px;
+    height: 200px;
+    border: 1px solid var(--text-color);
+    border-radius: 10px;
+}
+
+.card-segury .h4{
+    font-size: 1.5rem;
+    font-weight: 800;
+    display: flex;
+    margin-bottom: 4%;
+    margin-left: 3%;
+}
+
+.card-segury2{
+    text-align: center;
+    width: 300px;
+    border-radius: 10px;
+    border: 1px solid var(--text-color);
+}
+
+.data-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+}
+
+.data-card p {
+    font-size: 1rem;
+    font-weight: 500;
+}
+
+.percentagem {
+    font-size: 3rem;
+    margin-left: 10px;
+    font-weight: 700;
+}
+
+.range-card {
+    display: flex;
+    flex-direction: row;
+    width: 80%;
+    height: 30px;
+    background-color: #ccc;
+    position: relative;
+    border-radius: 50px;
+}
+
+.fill-card {
+    height: 100%;
+    width: 0;
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: var(--background-color);
+    transition: width 0.3s ease;
+    border-radius: 50px;
+}
+
+/*Botão de ordenar*/
+.order-disp {
+    margin-right: 2.5%;
+    margin-top: 0.5%;
+}
+
+.select {
+    width: 210px;
+    height: 40px;
+    border: 1px solid var(--text-color);
+    border-radius: 30px;
+    background-color: rgba(217, 217, 217, 0.1);
+    color: var(--text-color);
+    margin-top: 2%;
+}
+
+option {
+    background-color: var(--background-color);
+}
