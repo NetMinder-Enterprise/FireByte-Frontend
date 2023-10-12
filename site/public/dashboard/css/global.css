@@ -73,7 +73,7 @@ body {
   background: var(--primary-color);
   width: 50px;
   height: 25px;
-  margin-top: 520px;
+  margin-top: 400px;
 }
 
 .checkboxWrap .checkboxMark:before {
@@ -174,13 +174,16 @@ body {
 
 }
 
+.divisao-botoes{
+    margin-top: 80%;
+}
+
 .sidebar ul li {
   position: relative;
   height: 50px;
   width: 100%;
   list-style: none;
   line-height: 50px;
-
 }
 
 .sidebar ul li .tooltip {
