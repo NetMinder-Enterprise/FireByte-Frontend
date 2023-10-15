@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="./css/index.css">
     <link rel="stylesheet" href="./css/dispositivos.css">
 
-
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
 
 </head>
@@ -39,7 +39,7 @@
                         <div class="modal-contente">
                             <span class="close" id="closeModal">&times;</span>
                             <img id="modalImage" src="./do-utilizador 1.png" alt="Imagem do perfil">
-                            <h5>Para melhor visualização coloque</h5>
+                            <h5>Para melhor visualização coloque uma imagem redonda</h5>
                             <div class="divisor-bottons">
                                 <button id="removeButton" class="small-button">Remover</button>
                                 <input type="file" id="fileInput" accept="image/*" style="display: none;">
@@ -191,14 +191,65 @@
                 </div>
 
             </div>
+
+            <div class="card-segury">
+                <span class="h4" id="monitoramento2">Rede</span>
+
+                <div class="information">
+                    <div class="data-card">
+                        <div class="percentagem" id="percentage4">0%</div>
+                        <div class="range-card">
+                            <div class="fill-card" id="fill4"></div>
+                        </div>
+                        <p>
+                            de 100%
+                        </p>
+                    </div>
+                </div>
+
+            </div>
             <div class="card-segury2">
                 <h4>Descrição </h4>
-                <p>Firewall 2 está localizado no 11º andar e é responsavel por monitorar do 5º andar até o 12º andar.</p>
+                <p>Firewall 2 está localizado no 11º andar e é responsavel por monitorar do 5º andar até o 12º andar.
+                </p>
             </div>
         </div>
     </div>
 
+    <div class="container">
+        <div class="container-grafico">
 
+            <div class="grafico-divisao">
+                <div class="chart">
+                    <p>% de utilização</p>
+                    <canvas id="myChart" style="position: relative; height:40vh; width:40vw"></canvas>
+                    <p>tempo em minutos</p>
+                </div>
+
+                <div class="chart">
+                    <p>Uso da memoria</p>
+                    <canvas id="myChart2" style="position: relative; height:40vh; width:40vw"></canvas>
+                    <p>tempo em minutos</p>
+                </div>
+            </div>
+
+            <div class="grafico-divisao">
+                <div class="chart">
+                    <p>Uso da memoria</p>
+                    <canvas id="myChart3" style="position: relative; height:40vh; width:40vw"></canvas>
+                    <p>tempo em minutos</p>
+                </div>
+
+                <div class="chart">
+                    <p>Taxa de transferência</p>
+                    <canvas id="myChart4" style="position: relative; height:40vh; width:40vw;"></canvas>
+                    <p>tempo em minutos</p>
+                </div>
+            </div>
+
+
+        </div>
+    </div>
 
 
 
@@ -217,6 +268,202 @@
 
 </body>
 
-</body>
+<script>
+    const labels = [
+        '1:00',
+        '2:00',
+        '3:00',
+        '4:00',
+        '5:00',
+        '6:00',
+    ];
+
+    const data = {
+        labels: labels,
+        datasets: [{
+            label: 'CPU',
+            backgroundColor: 'rgba(0, 153, 255, 1)',
+            borderColor: 'rgba(0, 153, 255, 1)',
+            data: [0, 50, 40, 20, 60, 25],
+        },
+
+        ]
+
+    };
+
+    const data2 = {
+        labels: labels,
+        datasets: [{
+            label: 'RAM',
+            backgroundColor: 'rgba(0, 153, 255, 1)',
+            borderColor: 'rgba(0, 153, 255, 1)',
+            data: [0, 50, 40, 20, 60, 25],
+        },
+        ]
+
+    };
+    const data3 = {
+        labels: labels,
+        datasets: [{
+            label: 'DISCO',
+            backgroundColor: 'rgba(0, 153, 255, 1)',
+            borderColor: 'rgba(0, 153, 255, 1)',
+            data: [0, 50, 40, 20, 60, 25],
+        },
+        ]
+
+    };
+    const data4 = {
+        labels: labels,
+        datasets: [{
+            label: 'REDE',
+            backgroundColor: 'rgba(0, 153, 255, 1)',
+            borderColor: 'rgba(0, 153, 255, 1)',
+            data: [0, 50, 40, 20, 60, 20],
+        },
+        ]
+
+    };
+
+    const config = {
+        type: 'line',
+        data: data,
+        options: {
+            plugins: {
+                legend: {
+                    labels: {
+                        fontSize: 15, // Ajusta o tamanho da fonte para a legenda
+                        color: 'rgba(0, 0, 0, 1)' // Ajusta a cor do texto da legenda
+                    }
+                }
+            },
+            scales: {
+                y: {
+                    ticks: {
+                        fontSize: 15, // Ajusta o tamanho da fonte para os ticks do eixo y
+                        color: 'rgba(0, 0, 0, 1)' // Ajusta a cor do texto dos ticks do eixo y
+                    }
+                },
+                x: {
+                    ticks: {
+                        fontSize: 15, // Ajusta o tamanho da fonte para os ticks do eixo x
+                        color: 'rrgba(0, 0, 0, 1)' // Ajusta a cor do texto dos ticks do eixo x
+                    }
+                }
+            }
+        }
+    };
+
+    const config2 = {
+        type: 'line',
+        data: data2,
+        options: {
+            plugins: {
+                legend: {
+                    labels: {
+                        fontSize: 15, // Ajusta o tamanho da fonte para a legenda
+                        color: 'rgba(0, 0, 0, 1)' // Ajusta a cor do texto da legenda
+                    }
+                }
+            },
+            scales: {
+                y: {
+                    ticks: {
+                        fontSize: 15, // Ajusta o tamanho da fonte para os ticks do eixo y
+                        color: 'rgba(0, 0, 0, 1)' // Ajusta a cor do texto dos ticks do eixo y
+                    }
+                },
+                x: {
+                    ticks: {
+                        fontSize: 15, // Ajusta o tamanho da fonte para os ticks do eixo x
+                        color: 'rrgba(0, 0, 0, 1)' // Ajusta a cor do texto dos ticks do eixo x
+                    }
+                }
+            }
+        }
+    };
+
+    const config3 = {
+        type: 'line',
+        data: data3,
+        options: {
+            plugins: {
+                legend: {
+                    labels: {
+                        fontSize: 15, // Ajusta o tamanho da fonte para a legenda
+                        color: 'rgba(0, 0, 0, 1)' // Ajusta a cor do texto da legenda
+                    }
+                }
+            },
+            scales: {
+                y: {
+                    ticks: {
+                        fontSize: 15, // Ajusta o tamanho da fonte para os ticks do eixo y
+                        color: 'rgba(0, 0, 0, 1)' // Ajusta a cor do texto dos ticks do eixo y
+                    }
+                },
+                x: {
+                    ticks: {
+                        fontSize: 15, // Ajusta o tamanho da fonte para os ticks do eixo x
+                        color: 'rrgba(0, 0, 0, 1)' // Ajusta a cor do texto dos ticks do eixo x
+                    }
+                }
+            }
+        }
+    };
+
+    const config4 = {
+        type: 'line',
+        data: data4,
+        options: {
+            plugins: {
+                legend: {
+                    labels: {
+                        fontSize: 15, // Ajusta o tamanho da fonte para a legenda
+                        color: 'rgba(0, 0, 0, 1)' // Ajusta a cor do texto da legenda
+                    }
+                }
+            },
+            scales: {
+                y: {
+                    ticks: {
+                        fontSize: 15, // Ajusta o tamanho da fonte para os ticks do eixo y
+                        color: 'rgba(0, 0, 0, 1)' // Ajusta a cor do texto dos ticks do eixo y
+                    }
+                },
+                x: {
+                    ticks: {
+                        fontSize: 15, // Ajusta o tamanho da fonte para os ticks do eixo x
+                        color: 'rrgba(0, 0, 0, 1)' // Ajusta a cor do texto dos ticks do eixo x
+                    }
+                }
+            }
+        }
+    };
+
+
+</script>
+<script>
+    const myChart = new Chart(
+        document.getElementById('myChart'),
+        config
+    );
+
+    const myChart2 = new Chart(
+        document.getElementById('myChart2'),
+        config2
+    );
+
+    const myChart3 = new Chart(
+        document.getElementById('myChart3'),
+        config3
+    );
+
+    const myChart4 = new Chart(
+        document.getElementById('myChart4'),
+        config4
+    );
+</script>
+
 
 </html>

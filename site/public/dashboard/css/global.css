@@ -92,7 +92,7 @@ body {
 }
 
 /* Header */
-.body_menu {
+.body {
   position: absolute;
   min-height: 100vh;
   overflow: hidden;
@@ -108,6 +108,7 @@ body {
   background-color: var(--text-color);
   padding: 6px 14px;
   transition: all 0.5s ease;
+  z-index: 1;
 }
 
 .sidebar.active {
