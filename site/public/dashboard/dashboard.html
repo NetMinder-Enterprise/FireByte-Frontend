@@ -4,13 +4,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dashboard || Home </title>
+    <title>Dashboard || Home</title>
 
     <link rel="stylesheet" href="./css/global.css">
     <link rel="stylesheet" href="./css/index.css">
-
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
 
+      <!-- JavaScript para notificações Toastr -->
+      <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
+      <script src="../js/notificacoesToastr.js"></script>
+    
+      <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+      <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
 </head>
 
 <body>
@@ -23,7 +30,6 @@
                     <i class='bx bx-menu' id="btn"></i>
                 </div>
                 <ul class="nav_list">
-
                     <div class="profile">
                         <div class="image-container">
                             <img id="userImage" src="./do-utilizador 1.png" alt="Imagem do perfil">
@@ -38,29 +44,29 @@
                             <span class="close" id="closeModal">&times;</span>
                             <img id="modalImage" src="./do-utilizador 1.png" alt="Imagem do perfil">
                             <h5>Para melhor visualização coloque</h5>
-                            <div class="divisor-bottons">
+                            <div class="divisor-botoes">
                                 <button id="removeButton" class="small-button">Remover</button>
                                 <input type="file" id="fileInput" accept="image/*" style="display: none;">
                                 <button id="replaceButton" class="small-button">Trocar</button>
                             </div>
                         </div>
-                    </div> 
+                    </div>
                     <div class="divisao-botoes">
-                    <li>
-                        <a href="">
-                            <i class='bx bxs-home'></i>
-                            <span class="links_name">Home</span>
-                        </a>
-                        <span class="tooltip">Home</span>
-                    </li>
-                    <li>
-                        <a href="../index.html">
-                            <i class='bx bx-log-out'></i>
-                            <span class="links_name">Sair</span>
-                        </a>
-                        <span class="tooltip">Sair</span>
-                    </li>
-                </div>
+                        <li>
+                            <a href="#">
+                                <i class='bx bxs-home'></i>
+                                <span class="links_name">Home</span>
+                            </a>
+                            <span class="tooltip">Home</span>
+                        </li>
+                        <li>
+                            <a href="../index.html">
+                                <i class='bx bx-log-out'></i>
+                                <span class="links_name">Sair</span>
+                            </a>
+                            <span class="tooltip">Sair</span>
+                        </li>
+                    </div>
                     <div class="switch">
                         <label class="checkboxWrap">
                             <input type="checkbox" id="themeSwitcher" class="checkboxInput">
@@ -81,11 +87,11 @@
         }
     </script>
 
-    <div class="container" id="">
+    <div class="container">
         <div class="content">
             <div class="content-title">
                 <div class="title">
-                    <h1>Seja bem vindo de volta <span id="name_user">Adimin</span></h1>
+                    <h1>Seja bem-vindo de volta <span id="name_user">Admin</span></h1>
                     <div class="subTitle">
                         <h3>Acompanhe seus dispositivos de rede</h3>
                     </div>
@@ -93,23 +99,22 @@
             </div>
             <div class="content-bottons">
                 <div class="pesquisa">
-                    <input checked="" class="checkbox" type="checkbox"> 
+                    <input checked="" class="checkbox" type="checkbox">
                     <div class="mainbox">
                         <div class="iconContainer">
-                            <svg viewBox="0 0 512 512" height="1em" xmlns="http://www.w3.org/2000/svg" class="search_icon"><path d="M416 208c0 45.9-14.9 88.3-40 122.7L502.6 457.4c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L330.7 376c-34.4 25.2-76.8 40-122.7 40C93.1 416 0 322.9 0 208S93.1 0 208 0S416 93.1 416 208zM208 352a144 144 0 1 0 0-288 144 144 0 1 0 0 288z"></path></svg>
+                            <svg viewBox="0 0 512 512" height="1em" xmlns="http://www.w3.org/2000/svg" class="search_icon">
+                                <path d="M416 208c0 45.9-14.9 88.3-40 122.7L502.6 457.4c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L330.7 376c-34.4 25.2-76.8 40-122.7 40C93.1 416 0 322.9 0 208S93.1 0 208 0S416 93.1 416 208zM208 352a144 144 0 1 0 0-288 144 144 0 1 0 0 288z"></path>
+                            </svg>
                         </div>
-                     <input class="search_input" placeholder="search" type="text">
+                        <input class="search_input" placeholder="search" type="text">
                     </div>
                 </div>
-
 
                 <div class="notification">
                     <button id="notification-button" class="button">
                         <span id="notification-badge" class="notification-badge">0</span>
                         <svg viewBox="0 0 448 512" class="bell">
-                            <path
-                                d="M224 0c-17.7 0-32 14.3-32 32V49.9C119.5 61.4 64 124.2 64 200v33.4c0 45.4-15.5 89.5-43.8 124.9L5.3 377c-5.8 7.2-6.9 17.1-2.9 25.4S14.8 416 24 416H424c9.2 0 17.6-5.3 21.6-13.6s2.9-18.2-2.9-25.4l-14.9-18.6C399.5 322.9 384 278.8 384 233.4V200c0-75.8-55.5-138.6-128-150.1V32c0-17.7-14.3-32-32-32zm0 96h8c57.4 0 104 46.6 104 104v33.4c0 47.9 13.9 94.6 39.7 134.6H72.3C98.1 328 112 281.3 112 233.4V200c0-57.4 46.6-104 104-104h8zm64 352H224 160c0 17 6.7 33.3 18.7 45.3s28.3 18.7 45.3 18.7s33.3-6.7 45.3-18.7s18.7-28.3 18.7-45.3z">
-                            </path>
+                            <path d="M224 0c-17.7 0-32 14.3-32 32V49.9C119.5 61.4 64 124.2 64 200v33.4c0 45.4-15.5 89.5-43.8 124.9L5.3 377c-5.8 7.2-6.9 17.1-2.9 25.4S14.8 416 24 416H424c9.2 0 17.6-5.3 21.6-13.6s2.9-18.2-2.9-25.4l-14.9-18.6C399.5 322.9 384 278.8 384 233.4V200c0-75.8-55.5-138.6-128-150.1V32c0-17.7-14.3-32-32-32zm0 96h8c57.4 0 104 46.6 104 104v33.4c0 47.9 13.9 94.6 39.7 134.6H72.3C98.1 328 112 281.3 112 233.4V200c0-57.4 46.6-104 104-104h8zm64 352H224 160c0 17 6.7 33.3 18.7 45.3s28.3 18.7 45.3 18.7s33.3-6.7 45.3-18.7s18.7-28.3 18.7-45.3z"></path>
                         </svg>
                     </button>
                     <div id="notification-modal" class="modal">
@@ -124,7 +129,7 @@
                                     </svg>
                                     <span class="tooltiptext">Limpar</span>
                                 </button>
-                                <div class="title-notifiction">
+                                <div class="title-notification">
                                     <h2>Suas Notificações</h2>
                                 </div>
                             </div>
@@ -136,12 +141,11 @@
             </div>
         </div>
     </div>
-    </div>
 
     <div class="container">
         <div class="content-card">
             <div class="card">
-                <h4><span id="name_card1"> Firewall</span></h4>
+                <h4><span id="name_card1">Firewall</span></h4>
                 <div class="information">
                     <div class="data">
                         <p>
@@ -169,7 +173,6 @@
                             <div class="fill" id="fill3"></div>
                         </div>
                         <div class="percentage" id="percentage3">0%</div>
-
                     </div>
                 </div>
             </div>
@@ -202,7 +205,6 @@
                             <div class="fill" id="fill6"></div>
                         </div>
                         <div class="percentage" id="percentage6">0%</div>
-
                     </div>
                 </div>
             </div>
@@ -235,7 +237,6 @@
                             <div class="fill" id="fill9"></div>
                         </div>
                         <div class="percentage" id="percentage9">0%</div>
-
                     </div>
                 </div>
             </div>
@@ -255,37 +256,21 @@
                     <div class="meter-cor2"></div>
                     <div class="meter-cor3"></div>
                 </div>
-
             </div>
             <div class="order">
-                <label for="ordernar">Ordenado por: </label>
+                <label for="ordenar">Ordenado por: </label>
                 <select id="opcao" name="estado">
                     <option value="opcao1">Alerta</option>
                     <option value="opcao2">Atenção</option>
                     <option value="opcao3">Dispositivo</option>
-                    <option value="opcao3">Alfabetica</option>
+                    <option value="opcao4">Alfabética</option>
                 </select>
             </div>
         </div>
     </div>
 
-
-    <script src="script.js"></script>
-
-
-
-    <!-- Link do video para vê notificação
-    https://www.youtube.com/watch?v=jJWYZqlhv3A-->
-
-
-
-    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
-    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
     <script src="../js/changeTheme.js"></script>
-
-</body>
-
+    <script src="script.js"></script>
 </body>
 
 </html>
-
