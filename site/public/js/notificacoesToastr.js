@@ -1,22 +1,26 @@
-var usoCPU = 85;
+        var usoCPU = 85;
         var usoRAM = 80;
         var usoDISCO = 98;
         var usoREDE = 97;
+        var componente = "CPU"
+
+    
     
         function showNotification() {
-            var dispositivos = [
+            var notificationBuilder = [
             //Interesante pensar em algo que não dependa de uma URL!!!
-                { nome: "CPU", uso: usoCPU, dispositivo: "1", url: "https://www.youtube.com/watch?v=dQw4w9WgXcQ" },
-                { nome: "RAM", uso: usoRAM, dispositivo: "2", url: "https://www.youtube.com/watch?v=dQw4w9WgXcQ" },
-                { nome: "DISCO", uso: usoDISCO, dispositivo: "3", url: "https://www.youtube.com/watch?v=dQw4w9WgXcQ" },
-                { nome: "REDE", uso: usoREDE, dispositivo: "4", url: "https://www.youtube.com/watch?v=dQw4w9WgXcQ" }
+            //Tambem vamos ter de correr essa lista pra resgatar dados do banco...
+                { nome: componente, uso: usoCPU, dispositivo: "1", url: "./dispositovos.html" },
+                { nome: componente, uso: usoRAM, dispositivo: "2", url: "./dispositovos.html" },
+                { nome: componente, uso: usoDISCO, dispositivo: "3", url: "./dispositovos.html" },
+                { nome: componente, uso: usoREDE, dispositivo: "4", url: "./dispositovos.html" }
             ];
     
-            for (var i = 0; i < dispositivos.length; i++) {
-                var dispositivo = dispositivos[i];
+            for (var i = 0; i < notificationBuilder.length; i++) {
+                var notification = notificationBuilder[i];
     
-                if (dispositivo.uso > 60) {
-                    setTimeout(function (dispositivo) {
+                if (notification.uso > 60) {
+                    setTimeout(function (notification) {
                         toastr.options = {
                             "closeButton": true,
                             "debug": false,
@@ -26,7 +30,7 @@ var usoCPU = 85;
                             "preventDuplicates": false,
                             "onclick": function () {
                                 // Redirecionar para a página da dashboard do dispositivo
-                                window.location.href = dispositivo.url;
+                                window.location.href = notification.url;
                             },
                             "showDuration": "300",
                             "hideDuration": "1000",
@@ -38,11 +42,11 @@ var usoCPU = 85;
                             "hideMethod": "fadeOut"
                         };
     
-                        toastr.info("Uso da " + dispositivo.nome + " do dispositivo " + dispositivo.dispositivo + " está em: " + dispositivo.uso + "%.<br><a href='" + dispositivo.url + "'>Clique para abrir a dashboard</a>");
-                    }, i * 2000, dispositivo);
+                        toastr.info("Uso da " + notification.nome + " do dispositivo " + notification.dispositivo + " está em: " + notification.uso + "%.<br><a href='" + notification.url + "'>Clique para abrir a dashboard</a>");
+                    }, i * 2000, notification);
                 }
             }
         }
     
         // Chamada da função para exibir notificações após 2 segundos
-        setTimeout(showNotification, 1000);
+        setTimeout(showNotification, 2000);
