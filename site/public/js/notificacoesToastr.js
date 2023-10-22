@@ -3,8 +3,6 @@
         var usoDISCO = 98;
         var usoREDE = 97;
         var componente = "CPU"
-
-    
     
         function showNotification() {
             var notificationBuilder = [
@@ -26,7 +24,7 @@
                             "debug": false,
                             "newestOnTop": false,
                             "progressBar": true,
-                            "positionClass": "toast-top-left",
+                            "positionClass": "toast-top-right",
                             "preventDuplicates": false,
                             "onclick": function () {
                                 // Redirecionar para a página da dashboard do dispositivo
