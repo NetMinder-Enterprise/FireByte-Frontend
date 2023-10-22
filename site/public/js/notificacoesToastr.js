@@ -3,7 +3,6 @@
         var usoDISCO = 98;
         var usoREDE = 97;
         var componente = "CPU"
-    
         function showNotification() {
             var notificationBuilder = [
             //Interesante pensar em algo que não dependa de uma URL!!!
