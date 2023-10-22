@@ -29,7 +29,6 @@ function entrar(req, res) {
                 }
             );
     }
-
 }
 
 // function pegarInformacoes(req, res) {

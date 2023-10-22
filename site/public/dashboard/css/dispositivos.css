@@ -6,13 +6,13 @@
     width: 100%;
     justify-content: center;
     align-items: center;
-    gap: 65px;
+    gap: 30px;
 
 }
 
 .card-segury {
-    width: 230px;
-    height: 200px;
+    width: 220px;
+    height: 190px;
     border: 1px solid var(--text-color);
     border-radius: 10px;
 }
@@ -92,3 +92,39 @@
 option {
     background-color: var(--background-color);
 }
+
+/*Gráfico*/
+.container-grafico{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 2%;
+}
+
+.grafico-divisao{
+    display: flex;
+    flex-direction: row;
+    gap: 40px;
+    margin-top: 2%;
+}
+
+ .chart{
+    background-color: rgba(217, 216, 216, 0.682);
+    /* border: 1px solid var(--text-color); */
+    border-radius: 10px;
+ }
+
+ .chart p{
+    font-size: 0.8rem;
+    color: black;
+    margin-left: 1%;
+ }
+
+ label{
+    color: red;
+ }
+
+ /*Barra p*/
+
