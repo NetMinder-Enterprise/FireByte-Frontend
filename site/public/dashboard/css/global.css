@@ -92,13 +92,6 @@ body {
 }
 
 /* Header */
-.body {
-  position: absolute;
-  min-height: 100vh;
-  overflow: hidden;
-  width: 100%;
-}
-
 .sidebar {
   position: fixed;
   top: 0;
@@ -215,7 +208,7 @@ body {
   top: 50%;
 }
 
-.sidebar ul li a {
+.sidebar ul li .a {
   color: var(--background-color);
   display: flex;
   align-items: center;
@@ -230,7 +223,7 @@ body {
   background: var(--background-color);
 }
 
-.sidebar ul li a i {
+.sidebar ul li .a i {
   height: 50px;
   min-width: 50px;
   border-radius: 12px;
@@ -238,4 +231,20 @@ body {
   text-align: center;
 }
 
+/* Estilo das notificações*/
+#toast-container {
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  background-color: #454EC9;
+}
 
+#toast-container>div {
+  position: relative;
+  pointer-events: auto;
+  overflow: hidden;
+  margin: 0 0 6px;
+  padding: 15px 15px 15px 50px;
+  width: 300px;
+  box-shadow: 0 0 5px rgba(255, 255, 255, 0.573);
+}

@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NetMinder - Login</title>
+
+    <link rel="stylesheet" href="./css/index.css">
+    <link rel="stylesheet" href="/site/public/css/global.css">
+</head>
+
+<body>
+    <div class="container">
+        <div class="go-out">
+            <a href="form2.html"><ion-icon name="chevron-back-outline"></ion-icon></a>
+            <div class="switch">
+                <label class="checkboxWrap">
+                    <input type="checkbox" id="themeSwitcher" class="checkboxInput">
+                    <span class="checkboxMark"></span>
+                </label>
+            </div>
+        </div>
+        <div class="content">
+                <h1>Precisamos saber mais sobre seu dispositivo</h1>
+                <h4>Selecione quais componentes deseja monitorar:</h4>
+            
+            <div class="form">
+                <div class="divisoria">
+
+                    <input type="checkbox" id="option1" onchange="toggleInputs('option1')" class="checkbox">
+                    <label for="option1">CPU</label>
+                    <div id="inputs1" class="hidden">
+                        <div class="hidden2">
+                            <div class="hidden3">
+                                <p>Limite para alerta: </p>
+                                <input required="" type="number" name="text" autocomplete="off" class="input" id="limitAlert1"
+                                    placeholder="xx%" >
+                            </div>
+                            <div class="hidden3">
+                                <p>Limite para crítico: </p>
+                                <input required="" type="number" name="text" autocomplete="off" class="input" id="limitCritico1"
+                                    placeholder="xx%">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="divisoria">
+                    <input type="checkbox" id="option2" onchange="toggleInputs('option2')" class="checkbox">
+                    <label for="option2">RAM</label>
+                    <div id="inputs2" class="hidden">
+                        <div class="hidden2">
+                            <div class="hidden3">
+                                <p>Limite para alerta: </p>
+                                <input required="" type="number" name="text" autocomplete="off" class="input" id="limitAlert2"
+                                    placeholder="xx%">
+                            </div>
+                            <div class="hidden3">
+                                <p>Limite para crítico: </p>
+                                <input required="" type="number" name="text" autocomplete="off" class="input"  id="limitCritico2"
+                                    placeholder="xx%">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="divisoria">
+                    <input type="checkbox" id="option3" onchange="toggleInputs('option3')" class="checkbox">
+                    <label for="option3">Disco</label>
+                    <div id="inputs3" class="hidden">
+                        <div class="hidden2">
+                            <div class="hidden3">
+                                <p>Limite para alerta: </p>
+                                <input required="" type="number" name="text" autocomplete="off" class="input"id="limitAlert3"
+                                    placeholder="xx%">
+                            </div>
+                            <div class="hidden3">
+                                <p>Limite para crítico: </p>
+                                <input required="" type="number" name="text" autocomplete="off" class="input"  id="limitCritico3"
+                                    placeholder="xx%">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="divisoria">
+                    <input type="checkbox" id="option4" onchange="toggleInputs('option4')" class="checkbox">
+                    <label for="option3">Rede</label>
+                    <div id="inputs4" class="hidden">
+                        <div class="hidden2">
+                            <div class="hidden3">
+                                <p>Limite para alerta: </p>
+                                <input required="" type="number" name="text" autocomplete="off" class="input" id="limitAlert4"
+                                    placeholder="xx%">
+                            </div>
+                            <div class="hidden3">
+                                <p>Limite para crítico: </p>
+                                <input required="" type="number" name="text" autocomplete="off" class="input" id="limitCritico4"
+                                    placeholder="xx%">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <button class="loginBtn1" onclick="exibirModal()"><span>Cadastrar</span></button>
+                <div id="myModal" class="modalzinha">
+                    <div class="modalzinha-content">
+                        <p>Dispositivo Cadastrado Com Sucesso!</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function toggleInputs(option) {
+            var inputDiv = document.getElementById('inputs' + option.substr(option.length - 1));
+            var checkbox = document.getElementById(option);
+            if (checkbox.checked) {
+                inputDiv.style.display = 'block';
+            } else {
+                inputDiv.style.display = 'none';
+            }
+        }
+    </script>
+
+<script>
+    function exibirModal() {
+        var modal = document.getElementById("myModal");
+        modal.style.display = "block"; // Exibe a modal
+
+        // Redireciona o usuário após 2 segundos
+        setTimeout(function () {
+            window.location.href = "/site/public/dashboard/dashboard.html";
+        }, 2000);
+    }
+</script>
+</body>
+
+</html>
+
+
+<script>
+
+</script>
+
+
+<script src="/site/public/js/changeTheme.js"></script>
+<script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+<script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+
+
+<script>
+    function cadastrar_dispositivo(){
+        
+        /*Var opção*/
+        var cpuVar = option1.value;
+        var ramVar = option2.value;
+        var discoVar = option3.value;
+        var redeVar = option4.value;
+
+        /*Var alertas*/
+        var alertaCPUVar = Number(limitAlert1.value);
+        var criticoCPUVar = Number(limitCritico1.value); 
+        var alertaRAMVar = Number(limitAlert2.value);
+        var criticoRAMVar = Number(limitCritico2.value); 
+        var alertaDiscoVar = Number(limitAlert3.value);
+        var criticoDiscoVar = Number(limitCritico3.value); 
+        var alertaRedeVar = Number(limitAlert4.value);
+        var criticoRedeVar = Number(limitCritico4.value); 
+
+
+    }    
+</script>

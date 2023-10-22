@@ -99,10 +99,10 @@ notificationButton.addEventListener("click", toggleNotificationModal);
 var clearButton = document.getElementById("clear-button");
 clearButton.addEventListener("click", clearNotifications);
 
-addNotification("Nova mensagem recebida.", "aviso.png");
-addNotification("Bora estudar", "aviso.png");
-addNotification("Lembrete: Pagar a conta de luz.", "aviso.png");
-addNotification("teste", "aviso.png");
+addNotification("Nova Maquina detectada.", "aviso.png");
+addNotification("CPU atingiu 70%", "aviso.png");
+addNotification("Falha de rede, reinicie o dipositivo", "aviso.png");
+addNotification("Memoria atingiu 80%", "aviso.png");
 
 
 /*Barra de porcentagem*/

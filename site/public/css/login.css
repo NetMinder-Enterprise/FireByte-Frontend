@@ -1,7 +1,6 @@
-body {
+/* body {
     min-height: 100vh;
-
-}
+} */
 
 .container {
     width: 90%;
@@ -11,6 +10,7 @@ body {
 
 .content {
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     align-self: center;

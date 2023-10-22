@@ -11,6 +11,14 @@
 
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
 
+
+    <!-- JavaScript para notificações Toastr -->
+    <!-- <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
+    <script src="../js/notificacoesToastr.js"></script> -->
+
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
 </head>
 
 <body>
@@ -44,23 +52,23 @@
                                 <button id="replaceButton" class="small-button">Trocar</button>
                             </div>
                         </div>
-                    </div> 
+                    </div>
                     <div class="divisao-botoes">
-                    <li>
-                        <a href="">
-                            <i class='bx bxs-home'></i>
-                            <span class="links_name">Home</span>
-                        </a>
-                        <span class="tooltip">Home</span>
-                    </li>
-                    <li>
-                        <a href="../index.html">
-                            <i class='bx bx-log-out'></i>
-                            <span class="links_name">Sair</span>
-                        </a>
-                        <span class="tooltip">Sair</span>
-                    </li>
-                </div>
+                        <li>
+                            <a href="" class="a">
+                                <i class='bx bxs-home'></i>
+                                <span class="links_name">Home</span>
+                            </a>
+                            <span class="tooltip">Home</span>
+                        </li>
+                        <li>
+                            <a href="../index.html" class="a">
+                                <i class='bx bx-log-out'></i>
+                                <span class="links_name">Sair</span>
+                            </a>
+                            <span class="tooltip">Sair</span>
+                        </li>
+                    </div>
                     <div class="switch">
                         <label class="checkboxWrap">
                             <input type="checkbox" id="themeSwitcher" class="checkboxInput">
@@ -93,12 +101,17 @@
             </div>
             <div class="content-bottons">
                 <div class="pesquisa">
-                    <input checked="" class="checkbox" type="checkbox"> 
+                    <input checked="" class="checkbox" type="checkbox">
                     <div class="mainbox">
                         <div class="iconContainer">
-                            <svg viewBox="0 0 512 512" height="1em" xmlns="http://www.w3.org/2000/svg" class="search_icon"><path d="M416 208c0 45.9-14.9 88.3-40 122.7L502.6 457.4c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L330.7 376c-34.4 25.2-76.8 40-122.7 40C93.1 416 0 322.9 0 208S93.1 0 208 0S416 93.1 416 208zM208 352a144 144 0 1 0 0-288 144 144 0 1 0 0 288z"></path></svg>
+                            <svg viewBox="0 0 512 512" height="1em" xmlns="http://www.w3.org/2000/svg"
+                                class="search_icon">
+                                <path
+                                    d="M416 208c0 45.9-14.9 88.3-40 122.7L502.6 457.4c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L330.7 376c-34.4 25.2-76.8 40-122.7 40C93.1 416 0 322.9 0 208S93.1 0 208 0S416 93.1 416 208zM208 352a144 144 0 1 0 0-288 144 144 0 1 0 0 288z">
+                                </path>
+                            </svg>
                         </div>
-                     <input class="search_input" placeholder="search" type="text">
+                        <input class="search_input" placeholder="search" type="text">
                     </div>
                 </div>
 
@@ -137,155 +150,421 @@
         </div>
     </div>
     </div>
-
+    
     <div class="container">
-        <div class="content-card">
-            <div class="card">
-                <h4><span id="name_card1"> Firewall</span></h4>
-                <div class="information">
-                    <div class="data">
-                        <p>
-                            <span id="name_dispositivo">CPU</span>
-                        </p>
-                        <div class="range">
-                            <div class="fill" id="fill1"></div>
-                        </div>
-                        <div class="percentage" id="percentage1">0%</div>
+            <div class="divisisor">
+                <div class="meter">
+                    <div class="time-meter">
+                        <h3>Bom</h3>
+                        <h3>Atenção</h3>
+                        <h3>Ruim</h3>
                     </div>
-                    <div class="data">
-                        <p>
-                            <span id="name_dispositivo">RAM</span>
-                        </p>
-                        <div class="range">
-                            <div class="fill" id="fill2"></div>
-                        </div>
-                        <div class="percentage" id="percentage2">0%</div>
+                    <div class="meter-color">
+                        <div class="meter-cor1"></div>
+                        <div class="meter-cor2"></div>
+                        <div class="meter-cor3"></div>
                     </div>
-                    <div class="data">
-                        <p>
-                            <span id="name_dispositivo">Disco</span>
-                        </p>
-                        <div class="range">
-                            <div class="fill" id="fill3"></div>
-                        </div>
-                        <div class="percentage" id="percentage3">0%</div>
 
+                </div>
+                <div class="order">
+                    <label for="ordernar">Ordenado por: </label>
+                    <select id="opcao" name="estado">
+                        <option value="opcao1">Alerta</option>
+                        <option value="opcao2">Atenção</option>
+                        <option value="opcao3">Dispositivo</option>
+                        <option value="opcao3">Alfabetica</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="content-box">
+
+            <!--Firewall-->
+            <div class="box-disp-firewall">
+                <div class="box-disp2">
+                    <div class="box-dispositivo">
+                        <div class="descrition-dispo">
+                            <h4 class="h4">Firewall sala 11a</h4>
+                            <p class="descrition">Firewall responsavel pela segurança de rede do predio </p>
+                        </div>
+                        <div class="status-dispo">
+                            <button class="tooltip1">
+                                <!-- <span class="tooltiptext1">delete</span> -->
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                    stroke-width="1.5" stroke="currentColor" width="24" height="24">
+                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                        d="M14.74 9l-.346 9m-4.788 0L9.26 9m9.968-3.21c.342.052.682.107 1.022.166m-1.022-.165L18.16 19.673a2.25 2.25 0 01-2.244 2.077H8.084a2.25 2.25 0 01-2.244-2.077L4.772 5.79m14.456 0a48.108 48.108 0 00-3.478-.397m-12 .562c.34-.059.68-.114 1.022-.165m0 0a48.11 48.11 0 013.478-.397m7.5 0v-.916c0-1.18-.91-2.164-2.09-2.201a51.964 51.964 0 00-3.32 0c-1.18.037-2.09 1.022-2.09 2.201v.916m7.5 0a48.667 48.667 0 00-7.5 0">
+                                    </path>
+                                </svg>
+                            </button>
+                            <div class="alrtImg">
+                                <p>Status:</p>
+                                <img src="./aviso.png" class="imgOKBox">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="box-dispositivo">
+                        <div class="descrition-dispo">
+                            <h4 class="h4">Firewall sala 11a</h4>
+                            <p class="descrition">Firewall responsavel pela segurança de rede do predio </p>
+                        </div>
+                        <div class="status-dispo">
+                            <button class="tooltip1">
+                                <!-- <span class="tooltiptext1">delete</span> -->
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                    stroke-width="1.5" stroke="currentColor" width="24" height="24">
+                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                        d="M14.74 9l-.346 9m-4.788 0L9.26 9m9.968-3.21c.342.052.682.107 1.022.166m-1.022-.165L18.16 19.673a2.25 2.25 0 01-2.244 2.077H8.084a2.25 2.25 0 01-2.244-2.077L4.772 5.79m14.456 0a48.108 48.108 0 00-3.478-.397m-12 .562c.34-.059.68-.114 1.022-.165m0 0a48.11 48.11 0 013.478-.397m7.5 0v-.916c0-1.18-.91-2.164-2.09-2.201a51.964 51.964 0 00-3.32 0c-1.18.037-2.09 1.022-2.09 2.201v.916m7.5 0a48.667 48.667 0 00-7.5 0">
+                                    </path>
+                                </svg>
+                            </button>
+                            <div class="alrtImg">
+                                <p>Status:</p>
+                                <img src="./verificado 1.png" class="imgOKBox">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="box-dispositivo">
+                        <div class="descrition-dispo">
+                            <h4 class="h4">Firewall sala 11a</h4>
+                            <p class="descrition">Firewall responsavel pela segurança de rede do predio </p>
+                        </div>
+                        <div class="status-dispo">
+                            <button class="tooltip1">
+                                <!-- <span class="tooltiptext1">delete</span> -->
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                    stroke-width="1.5" stroke="currentColor" width="24" height="24">
+                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                        d="M14.74 9l-.346 9m-4.788 0L9.26 9m9.968-3.21c.342.052.682.107 1.022.166m-1.022-.165L18.16 19.673a2.25 2.25 0 01-2.244 2.077H8.084a2.25 2.25 0 01-2.244-2.077L4.772 5.79m14.456 0a48.108 48.108 0 00-3.478-.397m-12 .562c.34-.059.68-.114 1.022-.165m0 0a48.11 48.11 0 013.478-.397m7.5 0v-.916c0-1.18-.91-2.164-2.09-2.201a51.964 51.964 0 00-3.32 0c-1.18.037-2.09 1.022-2.09 2.201v.916m7.5 0a48.667 48.667 0 00-7.5 0">
+                                    </path>
+                                </svg>
+                            </button>
+                            <div class="alrtImg">
+                                <p>Status:</p>
+                                <img src="./verificado 1.png" class="imgOKBox">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="box-dispositivo">
+                        <div class="descrition-dispo">
+                            <h4 class="h4">Firewall sala 11a</h4>
+                            <p class="descrition">Firewall responsavel pela segurança de rede do predio </p>
+                        </div>
+                        <div class="status-dispo">
+                            <button class="tooltip1">
+                                <!-- <span class="tooltiptext1">delete</span> -->
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                    stroke-width="1.5" stroke="currentColor" width="24" height="24">
+                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                        d="M14.74 9l-.346 9m-4.788 0L9.26 9m9.968-3.21c.342.052.682.107 1.022.166m-1.022-.165L18.16 19.673a2.25 2.25 0 01-2.244 2.077H8.084a2.25 2.25 0 01-2.244-2.077L4.772 5.79m14.456 0a48.108 48.108 0 00-3.478-.397m-12 .562c.34-.059.68-.114 1.022-.165m0 0a48.11 48.11 0 013.478-.397m7.5 0v-.916c0-1.18-.91-2.164-2.09-2.201a51.964 51.964 0 00-3.32 0c-1.18.037-2.09 1.022-2.09 2.201v.916m7.5 0a48.667 48.667 0 00-7.5 0">
+                                    </path>
+                                </svg>
+                            </button>
+                            <div class="alrtImg">
+                                <p>Status:</p>
+                                <img src="./verificado 1.png" class="imgOKBox">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="box-dispositivo">
+                        <div class="descrition-dispo">
+                            <h4 class="h4">Modem sala 11a</h4>
+                            <p class="descrition">Firewall responsavel pela segurança de rede do predio </p>
+                        </div>
+                        <div class="status-dispo">
+                            <button class="tooltip1">
+                                <!-- <span class="tooltiptext1">delete</span> -->
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                    stroke-width="1.5" stroke="currentColor" width="24" height="24">
+                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                        d="M14.74 9l-.346 9m-4.788 0L9.26 9m9.968-3.21c.342.052.682.107 1.022.166m-1.022-.165L18.16 19.673a2.25 2.25 0 01-2.244 2.077H8.084a2.25 2.25 0 01-2.244-2.077L4.772 5.79m14.456 0a48.108 48.108 0 00-3.478-.397m-12 .562c.34-.059.68-.114 1.022-.165m0 0a48.11 48.11 0 013.478-.397m7.5 0v-.916c0-1.18-.91-2.164-2.09-2.201a51.964 51.964 0 00-3.32 0c-1.18.037-2.09 1.022-2.09 2.201v.916m7.5 0a48.667 48.667 0 00-7.5 0">
+                                    </path>
+                                </svg>
+                            </button>
+                            <div class="alrtImg">
+                                <p>Status:</p>
+                                <img src="./verificado 1.png" class="imgOKBox">
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
-            <div class="card">
-                <h4><span id="name_card2">Modem</span></h4>
-                <div class="information">
-                    <div class="data">
-                        <p>
-                            <span id="name_dispositivo">CPU</span>
-                        </p>
-                        <div class="range">
-                            <div class="fill" id="fill4"></div>
-                        </div>
-                        <div class="percentage" id="percentage4">0%</div>
-                    </div>
-                    <div class="data">
-                        <p>
-                            <span id="name_dispositivo">RAM</span>
-                        </p>
-                        <div class="range">
-                            <div class="fill" id="fill5"></div>
-                        </div>
-                        <div class="percentage" id="percentage5">0%</div>
-                    </div>
-                    <div class="data">
-                        <p>
-                            <span id="name_dispositivo">Disco</span>
-                        </p>
-                        <div class="range">
-                            <div class="fill" id="fill6"></div>
-                        </div>
-                        <div class="percentage" id="percentage6">0%</div>
 
+            <!--Modem-->
+            <div class="box-disp-modem">
+                <div class="box-disp2">
+                    <div class="box-dispositivo">
+                        <div class="descrition-dispo">
+                            <h4 class="h4">Modem refeitorio 1 </h4>
+                            <p class="descrition">Modem responsavel por distubuir wi-fi para o refeitorio principal</p>
+                        </div>
+                        <div class="status-dispo">
+                            <button class="tooltip1">
+                                <!-- <span class="tooltiptext1">delete</span> -->
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                    stroke-width="1.5" stroke="currentColor" width="24" height="24">
+                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                        d="M14.74 9l-.346 9m-4.788 0L9.26 9m9.968-3.21c.342.052.682.107 1.022.166m-1.022-.165L18.16 19.673a2.25 2.25 0 01-2.244 2.077H8.084a2.25 2.25 0 01-2.244-2.077L4.772 5.79m14.456 0a48.108 48.108 0 00-3.478-.397m-12 .562c.34-.059.68-.114 1.022-.165m0 0a48.11 48.11 0 013.478-.397m7.5 0v-.916c0-1.18-.91-2.164-2.09-2.201a51.964 51.964 0 00-3.32 0c-1.18.037-2.09 1.022-2.09 2.201v.916m7.5 0a48.667 48.667 0 00-7.5 0">
+                                    </path>
+                                </svg>
+                            </button>
+                            <div class="alrtImg">
+                                <p>Status:</p>
+                                <img src="./verificado 1.png" class="imgOKBox">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="box-dispositivo">
+                        <div class="descrition-dispo">
+                            <h4 class="h4">Modem refeitorio s2</h4>
+                            <p class="descrition">Modem responsavel por distubuir wi-fi para o refeitório no subsolo 2</p>
+                        </div>
+                        <div class="status-dispo">
+                            <button class="tooltip1">
+                                <!-- <span class="tooltiptext1">delete</span> -->
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                    stroke-width="1.5" stroke="currentColor" width="24" height="24">
+                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                        d="M14.74 9l-.346 9m-4.788 0L9.26 9m9.968-3.21c.342.052.682.107 1.022.166m-1.022-.165L18.16 19.673a2.25 2.25 0 01-2.244 2.077H8.084a2.25 2.25 0 01-2.244-2.077L4.772 5.79m14.456 0a48.108 48.108 0 00-3.478-.397m-12 .562c.34-.059.68-.114 1.022-.165m0 0a48.11 48.11 0 013.478-.397m7.5 0v-.916c0-1.18-.91-2.164-2.09-2.201a51.964 51.964 0 00-3.32 0c-1.18.037-2.09 1.022-2.09 2.201v.916m7.5 0a48.667 48.667 0 00-7.5 0">
+                                    </path>
+                                </svg>
+                            </button>
+                            <div class="alrtImg">
+                                <p>Status:</p>
+                                <img src="./verificado 1.png" class="imgOKBox">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="box-dispositivo">
+                        <div class="descrition-dispo">
+                            <h4 class="h4">Modem Hall</h4>
+                            <p class="descrition">Modem responsavel por distubuir wi-fi para o hall de entrada do predio </p>
+                        </div>
+                        <div class="status-dispo">
+                            <button class="tooltip1">
+                                <!-- <span class="tooltiptext1">delete</span> -->
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                    stroke-width="1.5" stroke="currentColor" width="24" height="24">
+                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                        d="M14.74 9l-.346 9m-4.788 0L9.26 9m9.968-3.21c.342.052.682.107 1.022.166m-1.022-.165L18.16 19.673a2.25 2.25 0 01-2.244 2.077H8.084a2.25 2.25 0 01-2.244-2.077L4.772 5.79m14.456 0a48.108 48.108 0 00-3.478-.397m-12 .562c.34-.059.68-.114 1.022-.165m0 0a48.11 48.11 0 013.478-.397m7.5 0v-.916c0-1.18-.91-2.164-2.09-2.201a51.964 51.964 0 00-3.32 0c-1.18.037-2.09 1.022-2.09 2.201v.916m7.5 0a48.667 48.667 0 00-7.5 0">
+                                    </path>
+                                </svg>
+                            </button>
+                            <div class="alrtImg">
+                                <p>Status:</p>
+                                <img src="./verificado 1.png" class="imgOKBox">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="box-dispositivo">
+                        <div class="descrition-dispo">
+                            <h4 class="h4">Modem sala 1a</h4>
+                            <p class="descrition">Modem responsavel por distubuir wi-fi para o primeiro andar </p>
+                        </div>
+                        <div class="status-dispo">
+                            <button class="tooltip1">
+                                <!-- <span class="tooltiptext1">delete</span> -->
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                    stroke-width="1.5" stroke="currentColor" width="24" height="24">
+                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                        d="M14.74 9l-.346 9m-4.788 0L9.26 9m9.968-3.21c.342.052.682.107 1.022.166m-1.022-.165L18.16 19.673a2.25 2.25 0 01-2.244 2.077H8.084a2.25 2.25 0 01-2.244-2.077L4.772 5.79m14.456 0a48.108 48.108 0 00-3.478-.397m-12 .562c.34-.059.68-.114 1.022-.165m0 0a48.11 48.11 0 013.478-.397m7.5 0v-.916c0-1.18-.91-2.164-2.09-2.201a51.964 51.964 0 00-3.32 0c-1.18.037-2.09 1.022-2.09 2.201v.916m7.5 0a48.667 48.667 0 00-7.5 0">
+                                    </path>
+                                </svg>
+                            </button>
+                            <div class="alrtImg">
+                                <p>Status:</p>
+                                <img src="./verificado 1.png" class="imgOKBox">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="box-dispositivo">
+                        <div class="descrition-dispo">
+                            <h4 class="h4">Modem andar 2a</h4>
+                            <p class="descrition">Modem responsavel por distubuir wi-fi para o segundo andar </p>
+                        </div>
+                        <div class="status-dispo">
+                            <button class="tooltip1">
+                                <!-- <span class="tooltiptext1">delete</span> -->
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                    stroke-width="1.5" stroke="currentColor" width="24" height="24">
+                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                        d="M14.74 9l-.346 9m-4.788 0L9.26 9m9.968-3.21c.342.052.682.107 1.022.166m-1.022-.165L18.16 19.673a2.25 2.25 0 01-2.244 2.077H8.084a2.25 2.25 0 01-2.244-2.077L4.772 5.79m14.456 0a48.108 48.108 0 00-3.478-.397m-12 .562c.34-.059.68-.114 1.022-.165m0 0a48.11 48.11 0 013.478-.397m7.5 0v-.916c0-1.18-.91-2.164-2.09-2.201a51.964 51.964 0 00-3.32 0c-1.18.037-2.09 1.022-2.09 2.201v.916m7.5 0a48.667 48.667 0 00-7.5 0">
+                                    </path>
+                                </svg>
+                            </button>
+                            <div class="alrtImg">
+                                <p>Status:</p>
+                                <img src="./verificado 1.png" class="imgOKBox">
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
-            <div class="card">
-                <h4><span id="name_card3">Switch</span></h4>
-                <div class="information">
-                    <div class="data">
-                        <p>
-                            <span id="name_dispositivo">CPU</span>
-                        </p>
-                        <div class="range">
-                            <div class="fill" id="fill7"></div>
-                        </div>
-                        <div class="percentage" id="percentage7">0%</div>
-                    </div>
-                    <div class="data">
-                        <p>
-                            <span id="name_dispositivo">RAM</span>
-                        </p>
-                        <div class="range">
-                            <div class="fill" id="fill8"></div>
-                        </div>
-                        <div class="percentage" id="percentage8">0%</div>
-                    </div>
-                    <div class="data">
-                        <p>
-                            <span id="name_dispositivo">Rede</span>
-                        </p>
-                        <div class="range">
-                            <div class="fill" id="fill9"></div>
-                        </div>
-                        <div class="percentage" id="percentage9">0%</div>
 
+                <!--Switch-->
+                <div class="box-disp-switch">
+                    <div class="box-disp2">
+                        <div class="box-dispositivo">
+                            <div class="descrition-dispo">
+                                <h4 class="h4">switch sala 1a</h4>
+                                <p class="descrition">Switch responsavel pela Conectividade do andar 1º ao 3º andar </p>
+                            </div>
+                            <div class="status-dispo">
+                                <button class="tooltip1">
+                                    <!-- <span class="tooltiptext1">delete</span> -->
+                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                        stroke-width="1.5" stroke="currentColor" width="24" height="24">
+                                        <path stroke-linecap="round" stroke-linejoin="round"
+                                            d="M14.74 9l-.346 9m-4.788 0L9.26 9m9.968-3.21c.342.052.682.107 1.022.166m-1.022-.165L18.16 19.673a2.25 2.25 0 01-2.244 2.077H8.084a2.25 2.25 0 01-2.244-2.077L4.772 5.79m14.456 0a48.108 48.108 0 00-3.478-.397m-12 .562c.34-.059.68-.114 1.022-.165m0 0a48.11 48.11 0 013.478-.397m7.5 0v-.916c0-1.18-.91-2.164-2.09-2.201a51.964 51.964 0 00-3.32 0c-1.18.037-2.09 1.022-2.09 2.201v.916m7.5 0a48.667 48.667 0 00-7.5 0">
+                                        </path>
+                                    </svg>
+                                </button>
+                                <div class="alrtImg">
+                                    <p>Status:</p>
+                                    <img src="./verificado 1.png" class="imgOKBox">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="box-dispositivo">
+                            <div class="descrition-dispo">
+                                <h4 class="h4">Firewall sala 15a</h4>
+                                <p class="descrition">Switch responsavel pela Conectividade do andar 14º ao 16º andar</p>
+                            </div>
+                            <div class="status-dispo">
+                                <button class="tooltip1">
+                                    <!-- <span class="tooltiptext1">delete</span> -->
+                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                        stroke-width="1.5" stroke="currentColor" width="24" height="24">
+                                        <path stroke-linecap="round" stroke-linejoin="round"
+                                            d="M14.74 9l-.346 9m-4.788 0L9.26 9m9.968-3.21c.342.052.682.107 1.022.166m-1.022-.165L18.16 19.673a2.25 2.25 0 01-2.244 2.077H8.084a2.25 2.25 0 01-2.244-2.077L4.772 5.79m14.456 0a48.108 48.108 0 00-3.478-.397m-12 .562c.34-.059.68-.114 1.022-.165m0 0a48.11 48.11 0 013.478-.397m7.5 0v-.916c0-1.18-.91-2.164-2.09-2.201a51.964 51.964 0 00-3.32 0c-1.18.037-2.09 1.022-2.09 2.201v.916m7.5 0a48.667 48.667 0 00-7.5 0">
+                                        </path>
+                                    </svg>
+                                </button>
+                                <div class="alrtImg">
+                                    <p>Status:</p>
+                                    <img src="./verificado 1.png" class="imgOKBox">
+                                </div>
+                            </div>
+                        </div>
+    
+                        <div class="box-dispositivo">
+                            <div class="descrition-dispo">
+                                <h4 class="h4">switch sala 5a</h4>
+                                <p class="descrition">Switch responsavel pela Conectividade do andar 4º ao 6º andar </p>
+                            </div>
+                            <div class="status-dispo">
+                                <button class="tooltip1">
+                                    <!-- <span class="tooltiptext1">delete</span> -->
+                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                        stroke-width="1.5" stroke="currentColor" width="24" height="24">
+                                        <path stroke-linecap="round" stroke-linejoin="round"
+                                            d="M14.74 9l-.346 9m-4.788 0L9.26 9m9.968-3.21c.342.052.682.107 1.022.166m-1.022-.165L18.16 19.673a2.25 2.25 0 01-2.244 2.077H8.084a2.25 2.25 0 01-2.244-2.077L4.772 5.79m14.456 0a48.108 48.108 0 00-3.478-.397m-12 .562c.34-.059.68-.114 1.022-.165m0 0a48.11 48.11 0 013.478-.397m7.5 0v-.916c0-1.18-.91-2.164-2.09-2.201a51.964 51.964 0 00-3.32 0c-1.18.037-2.09 1.022-2.09 2.201v.916m7.5 0a48.667 48.667 0 00-7.5 0">
+                                        </path>
+                                    </svg>
+                                </button>
+                                <div class="alrtImg">
+                                    <p>Status:</p>
+                                    <img src="./verificado 1.png" class="imgOKBox">
+                                </div>
+                            </div>
+                        </div>
+    
+                        <div class="box-dispositivo">
+                            <div class="descrition-dispo">
+                                <h4 class="h4">switch sala 7a</h4>
+                                <p class="descrition">Switch responsavel pela Conectividade do andar 7º ao 9º andar </p>
+                            </div>
+                            <div class="status-dispo">
+                                <button class="tooltip1">
+                                    <!-- <span class="tooltiptext1">delete</span> -->
+                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                        stroke-width="1.5" stroke="currentColor" width="24" height="24">
+                                        <path stroke-linecap="round" stroke-linejoin="round"
+                                            d="M14.74 9l-.346 9m-4.788 0L9.26 9m9.968-3.21c.342.052.682.107 1.022.166m-1.022-.165L18.16 19.673a2.25 2.25 0 01-2.244 2.077H8.084a2.25 2.25 0 01-2.244-2.077L4.772 5.79m14.456 0a48.108 48.108 0 00-3.478-.397m-12 .562c.34-.059.68-.114 1.022-.165m0 0a48.11 48.11 0 013.478-.397m7.5 0v-.916c0-1.18-.91-2.164-2.09-2.201a51.964 51.964 0 00-3.32 0c-1.18.037-2.09 1.022-2.09 2.201v.916m7.5 0a48.667 48.667 0 00-7.5 0">
+                                        </path>
+                                    </svg>
+                                </button>
+                                <div class="alrtImg">
+                                    <p>Status:</p>
+                                    <img src="./verificado 1.png" class="imgOKBox">
+                                </div>
+                            </div>
+                        </div>
+    
+                        <div class="box-dispositivo">
+                            <div class="descrition-dispo">
+                                <h4 class="h4">switch sala 10a</h4>
+                                <p class="descrition">Switch responsavel pela Conectividade do andar 10º ao 12º andar</p>
+                            </div>
+                            <div class="status-dispo">
+                                <button class="tooltip1">
+                                    <!-- <span class="tooltiptext1">delete</span> -->
+                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                        stroke-width="1.5" stroke="currentColor" width="24" height="24">
+                                        <path stroke-linecap="round" stroke-linejoin="round"
+                                            d="M14.74 9l-.346 9m-4.788 0L9.26 9m9.968-3.21c.342.052.682.107 1.022.166m-1.022-.165L18.16 19.673a2.25 2.25 0 01-2.244 2.077H8.084a2.25 2.25 0 01-2.244-2.077L4.772 5.79m14.456 0a48.108 48.108 0 00-3.478-.397m-12 .562c.34-.059.68-.114 1.022-.165m0 0a48.11 48.11 0 013.478-.397m7.5 0v-.916c0-1.18-.91-2.164-2.09-2.201a51.964 51.964 0 00-3.32 0c-1.18.037-2.09 1.022-2.09 2.201v.916m7.5 0a48.667 48.667 0 00-7.5 0">
+                                        </path>
+                                    </svg>
+                                </button>
+                                <div class="alrtImg">
+                                    <p>Status:</p>
+                                    <img src="./verificado 1.png" class="imgOKBox">
+                                </div>
+                            </div>
+                        </div>   
                     </div>
-                </div>
             </div>
         </div>
     </div>
 
-    <div class="container">
-        <div class="content-box">
-            <div class="meter">
-                <div class="time-meter">
-                    <h3>Bom</h3>
-                    <h3>Atenção</h3>
-                    <h3>Ruim</h3>
-                </div>
-                <div class="meter-color">
-                    <div class="meter-cor1"></div>
-                    <div class="meter-cor2"></div>
-                    <div class="meter-cor3"></div>
-                </div>
+    <!-- <script>
+        function selectOption(option) {
+            const boxDisp = document.querySelector('.box-disp-firewall');
+            const boxDisp1 = document.querySelector('.box-disp-modem');
+            const boxDisp2 = document.querySelector('.box-disp-switch');
 
-            </div>
-            <div class="order">
-                <label for="ordernar">Ordenado por: </label>
-                <select id="opcao" name="estado">
-                    <option value="opcao1">Alerta</option>
-                    <option value="opcao2">Atenção</option>
-                    <option value="opcao3">Dispositivo</option>
-                    <option value="opcao3">Alfabetica</option>
-                </select>
-            </div>
-        </div>
-    </div>
+            if (option === 'option1') {
+                boxDisp.style.display = 'block';
+            }else{
+                boxDisp.style.display = 'none';
+            }
+            
+
+            if (option === 'option2') {
+                boxDisp1.style.display = 'block';
+            }
+            else{
+                boxDisp1.style.display = 'none';
+            }
+
+            if (option === 'option3') {
+                boxDisp2.style.display = 'block';
+            }else{
+                boxDisp2.style.display = 'none';
+            }
+
+            
+        }
+    </script> -->
 
 
     <script src="script.js"></script>
 
 
 
+
     <!-- Link do video para vê notificação
     https://www.youtube.com/watch?v=jJWYZqlhv3A-->
-
-
-
     <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
     <script src="../js/changeTheme.js"></script>
 
 </body>
 
-</body>
-
 </html>
-
