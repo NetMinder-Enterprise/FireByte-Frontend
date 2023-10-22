@@ -25,10 +25,9 @@
                     <i class='bx bx-menu' id="btn"></i>
                 </div>
                 <ul class="nav_list">
-
                     <div class="profile">
                         <div class="image-container">
-                            <img id="userImage" src="./do-utilizador 1.png" alt="Imagem do perfil">
+                            <img id="userImage" src="../assets/do-utilizador 1.png" alt="Imagem do perfil">
                         </div>
                         <button id="uploadButton" class="small">
                             <i class='bx bxs-pencil'></i>
@@ -38,7 +37,7 @@
                     <div id="imageModal" class="modal-user" style="display: none;">
                         <div class="modal-contente">
                             <span class="close" id="closeModal">&times;</span>
-                            <img id="modalImage" src="./do-utilizador 1.png" alt="Imagem do perfil">
+                            <img id="modalImage" src="../assets/do-utilizador 1.png" alt="Imagem do perfil">
                             <h5>Para melhor visualização coloque uma imagem redonda</h5>
                             <div class="divisor-bottons">
                                 <button id="removeButton" class="small-button">Remover</button>
@@ -49,14 +48,14 @@
                     </div>
                     <div class="divisao-botoes">
                         <li>
-                            <a href="">
+                            <a href="" class="a">
                                 <i class='bx bxs-home'></i>
                                 <span class="links_name">Home</span>
                             </a>
                             <span class="tooltip">Home</span>
                         </li>
                         <li>
-                            <a href="../index.html">
+                            <a href="../index.html" class="a">
                                 <i class='bx bx-log-out'></i>
                                 <span class="links_name">Sair</span>
                             </a>
@@ -83,67 +82,60 @@
         }
     </script>
 
-    <div class="container" id="">
+    <div class="container">
         <div class="content">
-            <div class="content-title">
-                <div class="title">
-                    <h1><span id="name_user">Firewall 3</span></h1>
-                    <div class="subTitle">
-                        <h3>Acompanhe seu dispositivo de rede</h3>
-                    </div>
-                </div>
-            </div>
             <div class="content-bottons">
-                <div class="order-disp">
-                    <select id="opcao" name="estado" class="select">
-                        <option value="opcao1">Firewall 2</option>
-                        <option value="opcao2">Firewall 3</option>
-                        <option value="opcao3">Firewall 4</option>
-                        <option value="opcao4">Firewall 1</option>
-                    </select>
+                <div class="title">
+                    <h1 id="nameDispositivo">Dispositivo </h1>
                 </div>
-
-
-                <div class="notification">
-                    <button id="notification-button" class="button">
-                        <span id="notification-badge" class="notification-badge">0</span>
-                        <svg viewBox="0 0 448 512" class="bell">
-                            <path
-                                d="M224 0c-17.7 0-32 14.3-32 32V49.9C119.5 61.4 64 124.2 64 200v33.4c0 45.4-15.5 89.5-43.8 124.9L5.3 377c-5.8 7.2-6.9 17.1-2.9 25.4S14.8 416 24 416H424c9.2 0 17.6-5.3 21.6-13.6s2.9-18.2-2.9-25.4l-14.9-18.6C399.5 322.9 384 278.8 384 233.4V200c0-75.8-55.5-138.6-128-150.1V32c0-17.7-14.3-32-32-32zm0 96h8c57.4 0 104 46.6 104 104v33.4c0 47.9 13.9 94.6 39.7 134.6H72.3C98.1 328 112 281.3 112 233.4V200c0-57.4 46.6-104 104-104h8zm64 352H224 160c0 17 6.7 33.3 18.7 45.3s28.3 18.7 45.3 18.7s33.3-6.7 45.3-18.7s18.7-28.3 18.7-45.3z">
-                            </path>
-                        </svg>
-                    </button>
-                    <div id="notification-modal" class="modal">
-                        <div class="modal-content">
-                            <div class="divisao">
-                                <button class="tooltip" id="clear-button">
-                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20" height="25"
-                                        width="25">
-                                        <path fill="#6361D9"
-                                            d="M8.78842 5.03866C8.86656 4.96052 8.97254 4.91663 9.08305 4.91663H11.4164C11.5269 4.91663 11.6329 4.96052 11.711 5.03866C11.7892 5.11681 11.833 5.22279 11.833 5.33329V5.74939H8.66638V5.33329C8.66638 5.22279 8.71028 5.11681 8.78842 5.03866ZM7.16638 5.74939V5.33329C7.16638 4.82496 7.36832 4.33745 7.72776 3.978C8.08721 3.61856 8.57472 3.41663 9.08305 3.41663H11.4164C11.9247 3.41663 12.4122 3.61856 12.7717 3.978C13.1311 4.33745 13.333 4.82496 13.333 5.33329V5.74939H15.5C15.9142 5.74939 16.25 6.08518 16.25 6.49939C16.25 6.9136 15.9142 7.24939 15.5 7.24939H15.0105L14.2492 14.7095C14.2382 15.2023 14.0377 15.6726 13.6883 16.0219C13.3289 16.3814 12.8414 16.5833 12.333 16.5833H8.16638C7.65805 16.5833 7.17054 16.3814 6.81109 16.0219C6.46176 15.6726 6.2612 15.2023 6.25019 14.7095L5.48896 7.24939H5C4.58579 7.24939 4.25 6.9136 4.25 6.49939C4.25 6.08518 4.58579 5.74939 5 5.74939H6.16667H7.16638ZM7.91638 7.24996H12.583H13.5026L12.7536 14.5905C12.751 14.6158 12.7497 14.6412 12.7497 14.6666C12.7497 14.7771 12.7058 14.8831 12.6277 14.9613C12.5495 15.0394 12.4436 15.0833 12.333 15.0833H8.16638C8.05588 15.0833 7.94989 15.0394 7.87175 14.9613C7.79361 14.8831 7.74972 14.7771 7.74972 14.6666C7.74972 14.6412 7.74842 14.6158 7.74584 14.5905L6.99681 7.24996H7.91638Z"
-                                            clip-rule="evenodd" fill-rule="evenodd"></path>
-                                    </svg>
-                                    <span class="tooltiptext">Limpar</span>
-                                </button>
-                                <div class="title-notifiction">
-                                    <h2>Suas Notificações</h2>
-                                </div>
+                <div class="buttons">
+                    <div class="pesquisa">
+                        <div class="mainbox">
+                            <div class="iconContainer">
+                                <svg viewBox="0 0 512 512" height="1em" xmlns="http://www.w3.org/2000/svg" class="search_icon">
+                                    <path d="M416 208c0 45.9-14.9 88.3-40 122.7L502.6 457.4c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L330.7 376c-34.4 25.2-76.8 40-122.7 40C93.1 416 0 322.9 0 208S93.1 0 208 0S416 93.1 416 208zM208 352a144 144 0 1 0 0-288 144 144 0 1 0 0 288z"></path>
+                                </svg>
                             </div>
-                            <ul id="notification-list">
-                            </ul>
+                            <input class="search_input" placeholder="Pesquisar" type="text">
+                        </div>
+                    </div>
+                    <div class="notification">
+                        <button id="notification-button" class="button">
+                            <span id="notification-badge" class="notification-badge">0</span>
+                            <svg viewBox="0 0 448 512" class="bell">
+                                <path d="M224 0c-17.7 0-32 14.3-32 32V49.9C119.5 61.4 64 124.2 64 200v33.4c0 45.4-15.5 89.5-43.8 124.9L5.3 377c-5.8 7.2-6.9 17.1-2.9 25.4S14.8 416 24 416H424c9.2 0 17.6-5.3 21.6-13.6s2.9-18.2-2.9-25.4l-14.9-18.6C399.5 322.9 384 278.8 384 233.4V200c0-75.8-55.5-138.6-128-150.1V32c0-17.7-14.3-32-32-32zm0 96h8c57.4 0 104 46.6 104 104v33.4c0 47.9 13.9 94.6 39.7 134.6H72.3C98.1 328 112 281.3 112 233.4V200c0-57.4 46.6-104 104-104h8zm64 352H224 160c0 17 6.7 33.3 18.7 45.3s28.3 18.7 45.3 18.7s33.3-6.7 45.3-18.7s18.7-28.3 18.7-45.3z"></path>
+                            </svg>
+                        </button>
+                        <div id="notification-modal" class="modal">
+                            <div class="modal-content">
+                                <div class="divisao">
+                                    <button class="lixeiraButton tooltip" id="clear-button">
+                                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20" height="25"
+                                            width="25">
+                                            <path fill="#9c2c2c"
+                                                d="M8.78842 5.03866C8.86656 4.96052 8.97254 4.91663 9.08305 4.91663H11.4164C11.5269 4.91663 11.6329 4.96052 11.711 5.03866C11.7892 5.11681 11.833 5.22279 11.833 5.33329V5.74939H8.66638V5.33329C8.66638 5.22279 8.71028 5.11681 8.78842 5.03866ZM7.16638 5.74939V5.33329C7.16638 4.82496 7.36832 4.33745 7.72776 3.978C8.08721 3.61856 8.57472 3.41663 9.08305 3.41663H11.4164C11.9247 3.41663 12.4122 3.61856 12.7717 3.978C13.1311 4.33745 13.333 4.82496 13.333 5.33329V5.74939H15.5C15.9142 5.74939 16.25 6.08518 16.25 6.49939C16.25 6.9136 15.9142 7.24939 15.5 7.24939H15.0105L14.2492 14.7095C14.2382 15.2023 14.0377 15.6726 13.6883 16.0219C13.3289 16.3814 12.8414 16.5833 12.333 16.5833H8.16638C7.65805 16.5833 7.17054 16.3814 6.81109 16.0219C6.46176 15.6726 6.2612 15.2023 6.25019 14.7095L5.48896 7.24939H5C4.58579 7.24939 4.25 6.9136 4.25 6.49939C4.25 6.08518 4.58579 5.74939 5 5.74939H6.16667H7.16638ZM7.91638 7.24996H12.583H13.5026L12.7536 14.5905C12.751 14.6158 12.7497 14.6412 12.7497 14.6666C12.7497 14.7771 12.7058 14.8831 12.6277 14.9613C12.5495 15.0394 12.4436 15.0833 12.333 15.0833H8.16638C8.05588 15.0833 7.94989 15.0394 7.87175 14.9613C7.79361 14.8831 7.74972 14.7771 7.74972 14.6666C7.74972 14.6412 7.74842 14.6158 7.74584 14.5905L6.99681 7.24996H7.91638Z"
+                                                clip-rule="evenodd" fill-rule="evenodd"></path>
+                                        </svg>
+                                        <span class="tooltiptext">Limpar</span>
+                                    </button>
+                                    <div class="title-notification">
+                                        <h2>Suas Notificações</h2>
+                                    </div>
+                                </div>
+                                <ul id="notification-list">
+                                </ul>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    </div>
 
     <div class="conteiner">
         <div class="cards-principal">
             <div class="card-segury">
                 <span class="h4" id="monitoramento1">CPU</span>
-
                 <div class="information">
                     <div class="data-card">
                         <div class="percentagem" id="percentage1">0%</div>
@@ -159,8 +151,6 @@
 
             <div class="card-segury">
                 <span class="h4" id="monitoramento2">RAM</span>
-
-
                 <div class="information">
                     <div class="data-card">
                         <div class="percentagem" id="percentage2">0%</div>
@@ -177,7 +167,6 @@
 
             <div class="card-segury">
                 <span class="h4" id="monitoramento2">Disco</span>
-
                 <div class="information">
                     <div class="data-card">
                         <div class="percentagem" id="percentage3">0%</div>
@@ -194,7 +183,6 @@
 
             <div class="card-segury">
                 <span class="h4" id="monitoramento2">Rede</span>
-
                 <div class="information">
                     <div class="data-card">
                         <div class="percentagem" id="percentage4">0%</div>
@@ -218,36 +206,28 @@
 
     <div class="container">
         <div class="container-grafico">
-
-            <div class="grafico-divisao">
-                <div class="chart">
-                    <p>% de utilização</p>
-                    <canvas id="myChart" style="position: relative; height:40vh; width:40vw"></canvas>
-                    <p>tempo em minutos</p>
-                </div>
-
-                <div class="chart">
-                    <p>Uso da memoria</p>
-                    <canvas id="myChart2" style="position: relative; height:40vh; width:40vw"></canvas>
-                    <p>tempo em minutos</p>
-                </div>
+            <div class="chart">
+                <p>% de utilização</p>
+                <canvas id="myChart" style="position: relative; height:20vh; width:35vw;"></canvas>
+                <p>tempo em minutos</p>
             </div>
 
-            <div class="grafico-divisao">
-                <div class="chart">
-                    <p>Uso da memoria</p>
-                    <canvas id="myChart3" style="position: relative; height:40vh; width:40vw"></canvas>
-                    <p>tempo em minutos</p>
-                </div>
-
-                <div class="chart">
-                    <p>Taxa de transferência</p>
-                    <canvas id="myChart4" style="position: relative; height:40vh; width:40vw;"></canvas>
-                    <p>tempo em minutos</p>
-                </div>
+            <div class="chart">
+                <p>Uso da memoria</p>
+                <canvas id="myChart2" style="position: relative; height:20vh; width:35vw;"></canvas>
+                <p>tempo em minutos</p>
+            </div>
+            <div class="chart">
+                <p>Uso da memoria</p>
+                <canvas id="myChart3" style="position: relative; height:20vh; width:35vw;"></canvas>
+                <p>tempo em minutos</p>
             </div>
 
-
+            <div class="chart">
+                <p>Taxa de transferência</p>
+                <canvas id="myChart4" style="position: relative; height:20vh; width:35vw;"></canvas>
+                <p>tempo em minutos</p>
+            </div>
         </div>
     </div>
 
@@ -255,18 +235,19 @@
 
     <script src="script.js"></script>
 
-
-
     <!-- Link do video para vê notificação
     https://www.youtube.com/watch?v=jJWYZqlhv3A-->
-
-
-
     <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
     <script src="../js/changeTheme.js"></script>
-
 </body>
+
+<script>
+    //Get idDispositivo from url and put into nameDispositivo html
+    var url = new URL(window.location.href);
+    var idDispositivo = url.searchParams.get("idDispositivo");
+    document.getElementById("nameDispositivo").innerHTML += idDispositivo;
+</script>
 
 <script>
     const labels = [
@@ -278,26 +259,36 @@
         '6:00',
     ];
 
+    var backgroundColor;
+    var borderColor;
+    var textColor;
+    if (localStorage.getItem('theme') == "dark"){
+        backgroundColor = 'rgba(255, 255, 255, 0.1)';
+        borderColor = 'rgba(255, 255, 255, 1)';
+        textColor = 'rgba(255, 255, 255, 1)';
+    }else{
+        backgroundColor = 'rgba(0, 0, 0, 0.1)';
+        borderColor = 'rgba(0, 0, 0, 1)';
+        textColor = 'rgba(0, 0, 0, 1)';
+    }
+
     const data = {
         labels: labels,
         datasets: [{
             label: 'CPU',
-            backgroundColor: 'rgba(0, 153, 255, 1)',
-            borderColor: 'rgba(0, 153, 255, 1)',
+            backgroundColor: backgroundColor,
+            borderColor: borderColor,
             data: [0, 50, 40, 20, 60, 25],
-        },
-
-        ]
-
+        }]
     };
 
     const data2 = {
         labels: labels,
         datasets: [{
             label: 'RAM',
-            backgroundColor: 'rgba(0, 153, 255, 1)',
-            borderColor: 'rgba(0, 153, 255, 1)',
-            data: [0, 50, 40, 20, 60, 25],
+            backgroundColor: backgroundColor,
+            borderColor: borderColor,
+            data: [92, 43, 65, 23, 76, 45],
         },
         ]
 
@@ -306,9 +297,9 @@
         labels: labels,
         datasets: [{
             label: 'DISCO',
-            backgroundColor: 'rgba(0, 153, 255, 1)',
-            borderColor: 'rgba(0, 153, 255, 1)',
-            data: [0, 50, 40, 20, 60, 25],
+            backgroundColor: backgroundColor,
+            borderColor: borderColor,
+            data: [43, 23, 54, 65 , 23, 76],
         },
         ]
 
@@ -317,9 +308,9 @@
         labels: labels,
         datasets: [{
             label: 'REDE',
-            backgroundColor: 'rgba(0, 153, 255, 1)',
-            borderColor: 'rgba(0, 153, 255, 1)',
-            data: [0, 50, 40, 20, 60, 20],
+            backgroundColor: backgroundColor,
+            borderColor: borderColor,
+            data: [12, 43, 54, 65 , 23, 76],
         },
         ]
 
@@ -333,7 +324,7 @@
                 legend: {
                     labels: {
                         fontSize: 15, // Ajusta o tamanho da fonte para a legenda
-                        color: 'rgba(0, 0, 0, 1)' // Ajusta a cor do texto da legenda
+                        color: textColor // Ajusta a cor do texto da legenda
                     }
                 }
             },
@@ -341,13 +332,13 @@
                 y: {
                     ticks: {
                         fontSize: 15, // Ajusta o tamanho da fonte para os ticks do eixo y
-                        color: 'rgba(0, 0, 0, 1)' // Ajusta a cor do texto dos ticks do eixo y
+                        color: textColor // Ajusta a cor do texto dos ticks do eixo y
                     }
                 },
                 x: {
                     ticks: {
                         fontSize: 15, // Ajusta o tamanho da fonte para os ticks do eixo x
-                        color: 'rrgba(0, 0, 0, 1)' // Ajusta a cor do texto dos ticks do eixo x
+                        color: textColor // Ajusta a cor do texto dos ticks do eixo x
                     }
                 }
             }
@@ -362,7 +353,7 @@
                 legend: {
                     labels: {
                         fontSize: 15, // Ajusta o tamanho da fonte para a legenda
-                        color: 'rgba(0, 0, 0, 1)' // Ajusta a cor do texto da legenda
+                        color: textColor // Ajusta a cor do texto da legenda
                     }
                 }
             },
@@ -370,13 +361,13 @@
                 y: {
                     ticks: {
                         fontSize: 15, // Ajusta o tamanho da fonte para os ticks do eixo y
-                        color: 'rgba(0, 0, 0, 1)' // Ajusta a cor do texto dos ticks do eixo y
+                        color: textColor // Ajusta a cor do texto dos ticks do eixo y
                     }
                 },
                 x: {
                     ticks: {
                         fontSize: 15, // Ajusta o tamanho da fonte para os ticks do eixo x
-                        color: 'rrgba(0, 0, 0, 1)' // Ajusta a cor do texto dos ticks do eixo x
+                        color: textColor // Ajusta a cor do texto dos ticks do eixo x
                     }
                 }
             }
@@ -391,7 +382,7 @@
                 legend: {
                     labels: {
                         fontSize: 15, // Ajusta o tamanho da fonte para a legenda
-                        color: 'rgba(0, 0, 0, 1)' // Ajusta a cor do texto da legenda
+                        color: textColor // Ajusta a cor do texto da legenda
                     }
                 }
             },
@@ -399,13 +390,13 @@
                 y: {
                     ticks: {
                         fontSize: 15, // Ajusta o tamanho da fonte para os ticks do eixo y
-                        color: 'rgba(0, 0, 0, 1)' // Ajusta a cor do texto dos ticks do eixo y
+                        color: textColor // Ajusta a cor do texto dos ticks do eixo y
                     }
                 },
                 x: {
                     ticks: {
                         fontSize: 15, // Ajusta o tamanho da fonte para os ticks do eixo x
-                        color: 'rrgba(0, 0, 0, 1)' // Ajusta a cor do texto dos ticks do eixo x
+                        color: textColor // Ajusta a cor do texto dos ticks do eixo x
                     }
                 }
             }
@@ -420,7 +411,7 @@
                 legend: {
                     labels: {
                         fontSize: 15, // Ajusta o tamanho da fonte para a legenda
-                        color: 'rgba(0, 0, 0, 1)' // Ajusta a cor do texto da legenda
+                        color: textColor // Ajusta a cor do texto da legenda
                     }
                 }
             },
@@ -428,22 +419,19 @@
                 y: {
                     ticks: {
                         fontSize: 15, // Ajusta o tamanho da fonte para os ticks do eixo y
-                        color: 'rgba(0, 0, 0, 1)' // Ajusta a cor do texto dos ticks do eixo y
+                        color: textColor // Ajusta a cor do texto dos ticks do eixo y
                     }
                 },
                 x: {
                     ticks: {
                         fontSize: 15, // Ajusta o tamanho da fonte para os ticks do eixo x
-                        color: 'rrgba(0, 0, 0, 1)' // Ajusta a cor do texto dos ticks do eixo x
+                        color: textColor // Ajusta a cor do texto dos ticks do eixo x
                     }
                 }
             }
         }
     };
 
-
-</script>
-<script>
     const myChart = new Chart(
         document.getElementById('myChart'),
         config
@@ -464,6 +452,5 @@
         config4
     );
 </script>
-
 
 </html>

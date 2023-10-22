@@ -62,18 +62,21 @@ function updateNotificationBadge() {
   }
 }
 
-function addNotification(notification, imageUrl) {
+function addNotification(notification, notificationColor) {
   var notificationList = document.getElementById("notification-list");
   var listItem = document.createElement("li");
 
-  var image = document.createElement("img");
-  image.src = imageUrl;
+  var color = document.createElement("div");
+  color.style.backgroundColor = notificationColor;
+  color.style.borderRadius = "50%";
+  color.style.width = "15px";
+  color.style.height = "15px";
 
   var message = document.createElement("p");
   message.textContent = notification;
 
-  listItem.appendChild(image);
   listItem.appendChild(message);
+  listItem.appendChild(color);
 
   notificationList.appendChild(listItem);
 
@@ -99,41 +102,10 @@ notificationButton.addEventListener("click", toggleNotificationModal);
 var clearButton = document.getElementById("clear-button");
 clearButton.addEventListener("click", clearNotifications);
 
-addNotification("Nova Maquina detectada.", "aviso.png");
-addNotification("CPU atingiu 70%", "aviso.png");
-addNotification("Falha de rede, reinicie o dipositivo", "aviso.png");
-addNotification("Memoria atingiu 80%", "aviso.png");
-
-
-/*Barra de porcentagem*/
-function updateProgressBar(percentage, fillId, percentageId) {
-  const fill = document.getElementById(fillId);
-  const percentageDiv = document.getElementById(percentageId);
-
-  percentageDiv.textContent = percentage + '%';
-
-  if (percentage <= 50) {
-    fill.style.width = percentage + '%';
-    fill.className = 'fill blue';
-  } else if (percentage <= 75) {
-    fill.style.width = percentage + '%';
-    fill.className = 'fill yellow';
-  } else {
-    fill.style.width = percentage + '%';
-    fill.className = 'fill red';
-  }
-}
-
-// Exemplo de uso: atualiza os três medidores de porcentagem
-updateProgressBar(90, 'fill1', 'percentage1');
-updateProgressBar(75, 'fill2', 'percentage2');
-updateProgressBar(30, 'fill3', 'percentage3');
-updateProgressBar(10, 'fill4', 'percentage4');
-updateProgressBar(80, 'fill5', 'percentage5');
-updateProgressBar(50, 'fill6', 'percentage6');
-updateProgressBar(40, 'fill7', 'percentage7');
-updateProgressBar(95, 'fill8', 'percentage8');
-updateProgressBar(72, 'fill9', 'percentage9');
+addNotification("Nova Maquina detectada.", "blue");
+addNotification("CPU atingiu 70%", "yellow");
+addNotification("Falha de rede, reinicie o dipositivo", "red");
+addNotification("Memoria atingiu 80%", "red");
 
 
 

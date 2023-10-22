@@ -13,27 +13,32 @@ checkbox.addEventListener('change', function() {
     if (this.checked) {
         document.documentElement.setAttribute('data-theme', "light")
         localStorage.setItem('theme', "light");
-        changeLogo();
     } else {
         document.documentElement.setAttribute('data-theme', "dark")
         localStorage.setItem('theme', "dark");
-        changeLogo();
     }
+    changeLogo();
 });
 
 function changeLogo(){
-    logo = document.getElementById("logo");
-    if (window.matchMedia("(max-width: 500px)").matches) {
-        if (storedTheme == "dark"){
-            logo.src = "./assets/netMinderLogoSmallDark.png";
-        }else{
-            logo.src = "./assets/netMinderLogoSmallLight.png";
-        }
-    } else {
-        if (storedTheme == "dark"){
-            logo.src = "./assets/netMinderLogoDark.png";
-        }else{
-            logo.src = "./assets/netMinderLogoLight.png";
+    if(window.href == "http://localhost:3333/index.html" || window.href == "http://localhost:3333"){
+        logo = document.getElementById("logo");
+        if (window.matchMedia("(max-width: 500px)").matches) {
+            if (localStorage.getItem('theme') == "dark"){
+                document.getElementById("userImage").style.filter = "invert(1)";
+                logo.src = "./assets/netMinderLogoSmallDark.png";
+            }else{
+                document.getElementById("userImage").style.filter = "invert(0)";
+                logo.src = "./assets/netMinderLogoSmallLight.png";
+            }
+        } else {
+            if (localStorage.getItem('theme') == "dark"){
+                document.getElementById("userImage").style.filter = "invert(1)";
+                logo.src = "./assets/netMinderLogoDark.png";
+            }else{
+                document.getElementById("userImage").style.filter = "invert(0)";
+                logo.src = "./assets/netMinderLogoLight.png";
+            }
         }
     }
 }
