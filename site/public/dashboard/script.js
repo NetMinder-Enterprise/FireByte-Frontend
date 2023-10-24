@@ -21,7 +21,7 @@ closeModal.addEventListener('click', function () {
 
 // Remover a imagem ao clicar no botão "Remover"
 removeButton.addEventListener('click', function () {
-  userImage.src = './do-utilizador 1.png';
+  userImage.src = '../assets/do-utilizador 1.png';
   imageModal.style.display = 'none';
 });
 
@@ -62,93 +62,32 @@ function updateNotificationBadge() {
   }
 }
 
-
-
-// function addNotification(notification, notificationColor) {
-//   var notificationList = document.getElementById("notification-list");
-//   var listItem = document.createElement("li");
-
-//   var color = document.createElement("div");
-//   color.style.backgroundColor = notificationColor;
-//   color.style.borderRadius = "50%";
-//   color.style.width = "15px";
-//   color.style.height = "15px";
-
-//   var message = document.createElement("p");
-//   message.textContent = notification;
-
-//   listItem.appendChild(message);
-//   listItem.appendChild(color);
-
-//   notificationList.appendChild(listItem);
-
-//   notificationCount++;
-//   updateNotificationBadge();
-// }
-
-// function clearNotifications() {
-//   var notificationList = document.getElementById("notification-list");
-//   notificationList.innerHTML = "";
-//   notificationCount = 0;
-//   updateNotificationBadge();
-// }
-
-// function toggleNotificationModal() {
-//   var modal = document.getElementById("notification-modal");
-//   modal.classList.toggle("show");
-// }
-
-// function clearNotifications() {
-//   var notificationList = document.getElementById("notification-list");
-//   notificationList.innerHTML = "";
-// }
-
-// function openNewFile(fileUrl) {
-//   window.open(fileUrl, "_blank");
-// }
-
-// function addNotification(message, color, fileUrl) {
-//   var notificationList = document.getElementById("notification-list");
-//   var notificationItem = document.createElement("li");
-//   notificationItem.textContent = message;
-//   notificationItem.style.color = color;
-//   if (fileUrl) {
-//     notificationItem.addEventListener("click", function () {
-//       openNewFile(fileUrl);
-//     });
-//   }
-//   notificationList.appendChild(notificationItem);
-// }
-
-// var notificationButton = document.getElementById("notification-button");
-// notificationButton.addEventListener("click", toggleNotificationModal);
-
-// var clearButton = document.getElementById("clear-button");
-// clearButton.addEventListener("click", clearNotifications);
-
-// addNotification("Nova Maquina detectada.", "blue", "./cadastro/form2.html");
-// addNotification("CPU atingiu 70%", "yellow", "./cadastro/form2.html");
-// addNotification("Falha de rede, reinicie o dipositivo", "red", "./cadastro/form2.html");
-// addNotification("Memoria atingiu 80%", "red", "./cadastro/form2.html");
-
-
 var notificationCount = 0; // Inicialize a variável notificationCount
 
-function addNotification(notification, notificationColor) {
+function addNotification(notification, notificationColor, fileUrl) {
   var notificationList = document.getElementById("notification-list");
   var listItem = document.createElement("li");
+  listItem.style.display = "flex";
+  listItem.style.alignItems = "center";
 
   var color = document.createElement("div");
   color.style.backgroundColor = notificationColor;
   color.style.borderRadius = "50%";
   color.style.width = "15px";
   color.style.height = "15px";
+  color.style.marginRight = "10px";
 
   var message = document.createElement("p");
   message.textContent = notification;
 
-  listItem.appendChild(message);
   listItem.appendChild(color);
+  listItem.appendChild(message);
+
+  if (fileUrl) {
+    listItem.addEventListener("click", function () {
+      openNewFile(fileUrl);
+    });
+  }
 
   notificationList.appendChild(listItem);
 
@@ -156,53 +95,39 @@ function addNotification(notification, notificationColor) {
   updateNotificationBadge();
 }
 
-  function clearNotifications() {
-    var notificationList = document.getElementById("notification-list");
-    notificationList.innerHTML = "";
-    notificationCount = 0; // Atualize a variável notificationCount para 0
-    updateNotificationBadge(); // Chame a função para atualizar o contador
-  }
+// Restante do seu código...
 
-  function updateNotificationBadge() {
-    var badge = document.getElementById("notification-badge");
-    badge.textContent = notificationCount;
-  }
+function clearNotifications() {
+  var notificationList = document.getElementById("notification-list");
+  notificationList.innerHTML = "";
+  notificationCount = 0; // Atualize a variável notificationCount para 0
+  updateNotificationBadge(); // Chame a função para atualizar o contador
+}
 
-  function toggleNotificationModal() {
-    var modal = document.getElementById("notification-modal");
-    modal.classList.toggle("show");
-  }
+function updateNotificationBadge() {
+  var badge = document.getElementById("notification-badge");
+  badge.textContent = notificationCount;
+}
 
-  function openNewFile(fileUrl) {
-    window.open(fileUrl, "_blank");
-  }
+function toggleNotificationModal() {
+  var modal = document.getElementById("notification-modal");
+  modal.classList.toggle("show");
+}
 
-  function addNotification(message, color, fileUrl) {
-    var notificationList = document.getElementById("notification-list");
-    var notificationItem = document.createElement("li");
-    notificationItem.textContent = message;
-    notificationItem.style.color = color;
-    if (fileUrl) {
-      notificationItem.addEventListener("click", function () {
-        openNewFile(fileUrl);
-      });
-    }
-    notificationList.appendChild(notificationItem);
+function openNewFile(fileUrl) {
+  window.open(fileUrl, "_blank");
+}
 
-    notificationCount++;
-    updateNotificationBadge(); // Atualize o contador de notificações
-  }
+var notificationButton = document.getElementById("notification-button");
+notificationButton.addEventListener("click", toggleNotificationModal);
 
-  var notificationButton = document.getElementById("notification-button");
-  notificationButton.addEventListener("click", toggleNotificationModal);
+var clearButton = document.getElementById("clear-button");
+clearButton.addEventListener("click", clearNotifications);
 
-  var clearButton = document.getElementById("clear-button");
-  clearButton.addEventListener("click", clearNotifications);
-
-  addNotification("Nova Maquina detectada.", "blue", "./cadastro/form2.html");
-  addNotification("CPU atingiu 70%", "yellow", "./dispositivos.html");
-  addNotification("Falha de rede, reinicie o dispositivo", "red", "./dispositivos.html");
-  addNotification("Memoria atingiu 80%", "red", "./dispositivos.html");
+addNotification("Nova Maquina detectada.", "blue", "./cadastro/form2.html");
+addNotification("CPU atingiu 70%", "yellow", "./dispositivos.html");
+addNotification("Falha de rede, reinicie o dispositivo", "red", "./dispositivos.html");
+addNotification("Memoria atingiu 80%", "yellow", "./dispositivos.html");
 
 
 

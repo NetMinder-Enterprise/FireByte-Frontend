@@ -224,7 +224,6 @@
 /* Personalize a barra de rolagem, o polegar e o fundo dentro da modal */
 .modal::-webkit-scrollbar {
     width: 12px;
-    /* Largura da barra de rolagem */
 }
 
 .modal::-webkit-scrollbar-thumb {
@@ -264,7 +263,7 @@
     margin: 0;
     cursor: pointer;
 }
-
+  
 #notification-list li {
     width: 270px;
     height: 45px;
@@ -273,9 +272,7 @@
     border-radius: 5px;
     color: black;
     display: flex;
-    align-items: center;
     padding: 10px;
-    justify-content: space-between;
     border: 1px solid white;
     color: #fff;
 }
@@ -316,7 +313,7 @@
     border-radius: 6px;
     padding: 5px 0;
     position: absolute;
-    top: 25%;
+    top: 60%;
     left: 110%;
 }
 
@@ -620,7 +617,6 @@ option {
     justify-content: center;
     align-items: center;
     z-index: 1;
-
 }
 
 .modal-contente {
@@ -634,7 +630,6 @@ option {
     text-align: center;
     border-radius: 10px;
     color: black;
-
 }
 
 .modal-contente h5 {

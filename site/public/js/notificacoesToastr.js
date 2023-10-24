@@ -7,10 +7,10 @@
             var notificationBuilder = [
             //Interesante pensar em algo que não dependa de uma URL!!!
             //Tambem vamos ter de correr essa lista pra resgatar dados do banco...
-                { nome: componente, uso: usoCPU, dispositivo: "1", url: "./dispositovos.html" },
-                { nome: componente, uso: usoRAM, dispositivo: "2", url: "./dispositovos.html" },
-                { nome: componente, uso: usoDISCO, dispositivo: "3", url: "./dispositovos.html" },
-                { nome: componente, uso: usoREDE, dispositivo: "4", url: "./dispositovos.html" }
+                { nome: componente, uso: usoCPU, dispositivo: "1", url: "../dashboard/dispositivos.html" },
+                { nome: componente, uso: usoRAM, dispositivo: "2", url: "../dashboard/dispositivos.html" },
+                { nome: componente, uso: usoDISCO, dispositivo: "3", url: "../dashboard/dispositivos.html" },
+                { nome: componente, uso: usoREDE, dispositivo: "4", url: "../dashboard/dispositivos.html" }
             ];
     
             for (var i = 0; i < notificationBuilder.length; i++) {
