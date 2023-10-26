@@ -130,6 +130,37 @@ addNotification("Falha de rede, reinicie o dispositivo", "red", "./dispositivos.
 addNotification("Memoria atingiu 80%", "yellow", "./dispositivos.html");
 
 
+/*Barra de porcentagem*/
+function updateProgressBar(percentage, fillId, percentageId) {
+  const fill = document.getElementById(fillId);
+  const percentageDiv = document.getElementById(percentageId);
+
+  percentageDiv.textContent = percentage + '%';
+
+  if (percentage <= 50) {
+    fill.style.width = percentage + '%';
+    fill.className = 'fill blue';
+  } else if (percentage <= 75) {
+    fill.style.width = percentage + '%';
+    fill.className = 'fill yellow';
+  } else {
+    fill.style.width = percentage + '%';
+    fill.className = 'fill red';
+  }
+}
+
+// Exemplo de uso: atualiza os três medidores de porcentagem
+updateProgressBar(90, 'fill1', 'percentage1');
+updateProgressBar(75, 'fill2', 'percentage2');
+updateProgressBar(30, 'fill3', 'percentage3');
+updateProgressBar(10, 'fill4', 'percentage4');
+updateProgressBar(80, 'fill5', 'percentage5');
+updateProgressBar(50, 'fill6', 'percentage6');
+updateProgressBar(40, 'fill7', 'percentage7');
+updateProgressBar(95, 'fill8', 'percentage8');
+updateProgressBar(72, 'fill9', 'percentage9');
+
+
 
 
 
