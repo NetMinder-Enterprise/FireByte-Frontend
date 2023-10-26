@@ -48,8 +48,20 @@ function changeUserIcon(){
             document.getElementById("userImage").style.filter = "invert(0)";
         }
     }
+    if(document.getElementsByClassName("restartBtnImg")){
+        for(i = 0; i < document.getElementsByClassName("restartBtnImg").length; i++){
+            if (localStorage.getItem('theme') == "dark"){
+                document.getElementsByClassName("restartBtnImg")[i].style.filter = "brightness(0) invert(1)";
+            }else{
+                document.getElementsByClassName("restartBtnImg")[i].style.filter = "brightness(0) invert(0)";
+            }
+        }
+    }
+
 }
 
-changeLogo();
-changeUserIcon();
+document.addEventListener("DOMContentLoaded", function () {
+    changeLogo();
+    changeUserIcon();
+});
 window.addEventListener("resize", changeLogo);
