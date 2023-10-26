@@ -18,30 +18,38 @@ checkbox.addEventListener('change', function() {
         localStorage.setItem('theme', "dark");
     }
     changeLogo();
+    changeUserIcon();
 });
 
 function changeLogo(){
-    if(window.href == "http://localhost:3333/index.html" || window.href == "http://localhost:3333"){
+    if(document.getElementById("logo")){
         logo = document.getElementById("logo");
         if (window.matchMedia("(max-width: 500px)").matches) {
             if (localStorage.getItem('theme') == "dark"){
-                document.getElementById("userImage").style.filter = "invert(1)";
                 logo.src = "./assets/netMinderLogoSmallDark.png";
             }else{
-                document.getElementById("userImage").style.filter = "invert(0)";
                 logo.src = "./assets/netMinderLogoSmallLight.png";
             }
         } else {
             if (localStorage.getItem('theme') == "dark"){
-                document.getElementById("userImage").style.filter = "invert(1)";
                 logo.src = "./assets/netMinderLogoDark.png";
             }else{
-                document.getElementById("userImage").style.filter = "invert(0)";
                 logo.src = "./assets/netMinderLogoLight.png";
             }
         }
     }
 }
 
+function changeUserIcon(){
+    if(document.getElementById("userImage")){
+        if (localStorage.getItem('theme') == "dark"){
+            document.getElementById("userImage").style.filter = "invert(1)";
+        }else{
+            document.getElementById("userImage").style.filter = "invert(0)";
+        }
+    }
+}
+
 changeLogo();
+changeUserIcon();
 window.addEventListener("resize", changeLogo);

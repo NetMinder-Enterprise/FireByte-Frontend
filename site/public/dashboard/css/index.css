@@ -556,8 +556,11 @@ option {
 }
 
 .status-dispo {
+    width: 90%;
     display: flex;
     flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
 }
 
 .alrtImg{
@@ -566,6 +569,31 @@ option {
     justify-content: center;
     align-items: center;
     gap: 0.5em;
+}
+
+.restartBtn{
+    height: 40px;
+    width: 50px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5em;
+    background-color: transparent;
+    border: 2px solid var(--text-color);
+    padding: 5px;
+    border-radius: 5px;
+}
+
+.restartBtn:hover{
+    background-color: var(--dimmed-background-color);
+    cursor: pointer;
+}
+
+.restartBtnImg{
+    width: auto;
+    height: 100%;
+    filter: brightness(0);
 }
 
 /*Imagem status*/

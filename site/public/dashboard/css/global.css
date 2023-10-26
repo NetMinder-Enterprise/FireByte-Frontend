@@ -91,6 +91,7 @@ body {
   background: url('../../assets/sunIcon.png') center center no-repeat;
   background-size: 80%;
   left: 30px;
+  filter: invert(0.75);
 }
 
 /* Header */
