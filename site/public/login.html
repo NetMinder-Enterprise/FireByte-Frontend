@@ -44,51 +44,25 @@
 
 
 <script>
-    function Login() {
-        login = document.getElementById("email").value;
-        senha = document.getElementById("senha").value;
-        fetch("/usuarios/autenticar", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify({
-                emailServer: login,
-                senhaServer: senha
-            })
-        }).then(function (resposta) {
-            if (resposta.ok) {
-                console.log(resposta);
-
-                aviso.style.color = "#47dd3c";
+    function Login(login, senha){
+        loading.style.display = "block";
+        aviso.innerHTML = "";
+        if(login == "admin" && senha == "123"){
+            aviso.style.color = "#47dd3c";
+            setTimeout(function () {
                 loading.style.display = "none";
                 aviso.innerHTML = "Login realizado com sucesso!";
-                
-                resposta.json().then(json => {
-                    console.log(json);
-                    console.log(JSON.stringify(json));
-                    
-                    sessionStorage.ID_USUARIO = json.id;
-                    sessionStorage.EMAIL_USUARIO = json.email;
-                    sessionStorage.SENHA_USUARIO = json.senha;
-                    
-                    setTimeout(function () {
-                        window.location = "./dashboard/dashboard.html";
-                    }, 1000);
-                });
-            } else {
-                console.log("Houve um erro ao tentar realizar o login!");
-                resposta.text().then(texto => {
-                    aviso.style.color = "#eb4747"
-                    loading.style.display = "none";
-                    aviso.innerHTML = "Usuário ou senha inválidos!";
-                });
-            }
-        }).catch(function (erro) {
-            console.log(erro);
-        })
-
-        return false;
+            }, 1500);
+            setTimeout(function () {
+                window.location = "/site/public/dashboard/dashboard.html";
+            }, 2500);
+        }else{
+            aviso.style.color = "#eb4747"
+            setTimeout(function () {
+                loading.style.display = "none";
+                aviso.innerHTML = "Usuário ou senha inválidos!";
+            }, 1500);
+        }
     }
 </script>
 
