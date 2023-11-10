@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NetMinder - Login</title>
+
+    <link rel="shortcut icon" href="/site/public/assets/favicon.png" type="image/x-icon">
+    <link rel="stylesheet" href="/site/public/dashboard/cadastro/css/index.css">
+    <link rel="stylesheet" href="/site/public/css/login.css">
+    <link rel="stylesheet" href="/site/public/css/global.css">
+
+</head>
+
+<body>
+    <div class="container">
+        <div class="go-out">
+            <a href="/site/public/index.html"><ion-icon name="chevron-back-outline"></ion-icon></a>
+            <div class="switch">
+                <label class="checkboxWrap">
+                    <input type="checkbox" id="themeSwitcher" class="checkboxInput">
+                    <span class="checkboxMark"></span>
+                </label>
+            </div>
+        </div>
+        <div class="content">
+            <h1>Cadastre seu Funcionario</h1>
+            <h4></h4>
+            <div class="form1">
+                <div class="input-group1">
+                    <p>Nome:</p>
+                    <input required="" type="text" name="text" autocomplete="off" class="input" id="rename"
+                        placeholder="name">
+                </div>
+                <div class="input-group">
+                    <p>Email:</p>
+                    <input required="" type="email" name="text" autocomplete="off" class="input" id="rename"
+                        placeholder="user@netminder.com">
+                </div>
+                <div class="input-group">
+                    <div class="order">
+                        <p>Função:</p>
+                        <select id="opcao" name="estado">
+                            <option value="opcao1">Adimin</option>
+                            <option value="opcao2">Convencional</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="input-group">
+                    <p>Senha:</p>
+                    <input required="" type="password" name="text" autocomplete="off" class="input" id="rename"
+                        placeholder="*********">
+                </div>
+             
+                <button class="loginBtn" onclick="redirectToNewPage()"><span>Cadastrar</span></button>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+
+<script>
+    function redirectToNewPage() {
+            window.location.href = "form3.html";
+        }
+    </script>
+<script src="/site/public/js/changeTheme.js"></script>
+<script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+<script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+
+<script>
+    function cadastrar_dispositivo(){
+        
+        var nameVar = rename.value;
+        var descritionVar = descricao.value;
+    }
+</script>
