@@ -39,7 +39,7 @@
                             "hideMethod": "fadeOut"
                         };
     
-                        toastr.info("Uso da " + notification.nome + " do dispositivo " + notification.dispositivo + " está em: " + notification.uso + "%.<br><a href='" + notification.url + "'>Clique para abrir a dashboard</a>");
+                        toastr.info("Uso da " + notification.nome + " do dispositivo " + notification.dispositivo + " está em: " + notification.uso + "%.<br><a href='" + notification.url + "'>Visualizar dispositivo</a>");
                     }, i * 2000, notification);
                 }
             }

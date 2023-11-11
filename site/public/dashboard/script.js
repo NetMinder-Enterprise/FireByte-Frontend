@@ -162,6 +162,37 @@ updateProgressBar(72, 'fill9', 'percentage9');
 
 
 
+function abrirModal() {
+  Swal.fire({
+    title: "Tem certeza que deseja excluir?",
+    text: "Você não será capaz de reverter isso!",
+    icon: "warning",
+    showCancelButton: true,
+    confirmButtonColor: "#3085d6",
+    cancelButtonColor: "#d33",
+    confirmButtonText: "sim, excluir!"
+  }).then((result) => {
+    if (result.isConfirmed) {
+      Swal.fire({
+        title: "Excluido!",
+        text: "Dispositivo excluido com sucesso!",
+        icon: "success"
+      });
+    }
+  });
+}
+
+function abrirConfirmacao() {
+  Swal.fire({
+    position: "top-end",
+    icon: "success",
+    title: "Dispositivo cadastrado com sucesso!",
+    showConfirmButton: false,
+    timer: 1500
+  }).then(() => {
+    window.location.href = '/site/public/dashboard/dashboard.html';
+  });
+}
 
 
 
