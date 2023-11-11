@@ -4,12 +4,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NetMinder - Login</title>
+    <title>NetMinder - Cadastro</title>
 
-    <link rel="shortcut icon" href="/site/public/assets/favicon.png" type="image/x-icon">
-    <link rel="stylesheet" href="/site/public/dashboard/cadastro/css/index.css">
-    <link rel="stylesheet" href="/site/public/css/login.css">
-    <link rel="stylesheet" href="/site/public/css/global.css">
+    <link rel="shortcut icon" href="assets/favicon.png" type="image/x-icon">
+    <link rel="stylesheet" href="./cadastro/css/index.css">
+    <link rel="stylesheet" href="../css/style.css">
     <link rel="stylesheet" href="./css/global.css">
     <link rel="stylesheet" href="./css/index.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css">
@@ -92,6 +91,10 @@
         }
     </script>
 
+<script src="/js/changeTheme.js"></script>
+<script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+<script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+
     <div class="container">
         <div class="content">
             <div class="h1func">
@@ -101,7 +104,7 @@
             <div class="form2">
                 <div class="input-group1">
                     <p>Nome:</p>
-                    <input required="" type="text" name="text" autocomplete="off" class="input" id="name"
+                    <input required="" type="text" name="text" autocomplete="off" class="input" id="nome"
                         placeholder="nome completo">
                 </div>
                 <div class="input-group">
@@ -113,8 +116,8 @@
                     <div class="order">
                         <p>Função:</p>
                         <select id="opcao" name="estado" class="select">
-                            <option value="opcao1" class="option">Adimin</option>
-                            <option value="opcao2">Convencional</option>
+                            <option value="admin" class="option">Adimin</option>
+                            <option value="convencional">Convencional</option>
                         </select>
                     </div>
                 </div>
@@ -124,129 +127,108 @@
                         placeholder="*********">
                 </div>
 
-                <button class="loginBtn" onclick="abrirConfirmacaoFunc()"><span>Cadastrar</span></button>
+                <button class="loginBtn" onclick="cadastrar_funcionario()"><span>Cadastrar</span></button>
+                <div id="div_erro"></div>
             </div>
         </div>
     </div>
+    <!-- onclick="abrirConfirmacaoFunc() -->
 </body>
 
 
 <script src="./script.js"></script>
-
-
-
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
 </html>
-<script>
 
-function abrirConfirmacaoFunc(){
-  Swal.fire({
-    position: "top-end",
-    icon: "success",
-    title: "Usuário cadastrado com sucesso!",
-    showConfirmButton: false,
-    timer: 1500
-  });
+  <script>
+// Função para verificar o email
+function verificar_email(email, callback) {
+  fetch("/usuarios/verificar_email", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify({
+      emailServer: email
+    })
+  })
+    .then(function (response) {
+      if (response.ok) {
+        return response.json();
+      } else {
+        throw new Error("Erro na verificação do e-mail");
+      }
+    })
+    .then(function (data) {
+      callback(null, data.emailCadastrado);
+    })
+    .catch(function (error) {
+      callback(error);
+    });
 }
 
-    function redirectToNewPage() {
-        window.location.href = "form3.html";
-    }
-</script>
-<script src="/site/public/js/changeTheme.js"></script>
-<script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
-<script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+// Função para cadastrar o funcionario
+function cadastrar_funcionario() {
+  var nomeVar = nome.value;
+  var emailVar = email.value;
+  var opcaoSelecionada = document.getElementById("opcao").value;
+  var senhaVar = senha.value;
+  const spanErro = document.getElementById("span_erro");
+  const div_erro = document.getElementById("div_erro"); // Adicionando esta linha
 
-<script>
-    
-  // Função para verificar o email
-  function verificar_email(email, callback) {
-    fetch("/usuarios/verificar_email", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify({
-        emailServer: email
-      })
-    })
-      .then(function (response) {
-        if (response.ok) {
-          return response.json();
-        } else {
-          throw new Error("Erro na verificação do e-mail");
-        }
-      })
-      .then(function (data) {
-        callback(null, data.emailCadastrado);
-      })
-      .catch(function (error) {
-        div_erro.innerHTML = `Email já cadastrado`;
-        callback(error);
-      });
-  }
+  nome.value = ``;
+  email.value = ``;
+  senha.value = ``;
 
-  // Função para cadastrar o funcionario
-  function cadastrar_funcionario() {
-    var nomeVar = input_nome.value;
-    var emailVar = input_email.value;
-    var opcaoSelecionada = document.getElementById("opcao").value;
-    const spanErro = document.getElementById("span_erro")
+  if (nomeVar === "" || emailVar === "" || senhaVar === "" || opcaoSelecionada == "") {
+    div_erro.innerHTML = `Campos inválidos`;
+  } else if (!emailVar.includes("@gmail.com") && !emailVar.includes("@hotmail.com") && !emailVar.includes("@outlook.com")) {
+    div_erro.innerHTML = `Email inválido`;
+  } else if (senhaVar.length <= 6) {
+    div_erro.innerHTML = `A senha deve conter mais de 6 caracteres`;
+  } else {
+    verificar_email(emailVar, function (error, emailCadastrado) {
+      if (error) {
+        console.error(error);
+        return;
+      }
 
-    input_nome.value = ``;
-    input_email.value = ``;
-    input_senha.value = ``;
+      if (emailCadastrado) {
+        spanErro.style.display = "block";
+        spanErro.innerHTML = "O email já está cadastrado.";
+      } else {
+        fetch("/usuarios/cadastrar_funcionario", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json"
+          },
+          body: JSON.stringify({
+            nomeServer: nomeVar,
+            emailServer: emailVar,
+            senhaServer: senhaVar,
+            opcaoServer: opcaoSelecionada,
+          }),
+        })
+          .then(function (resposta) {
+            if (resposta.ok) {
+              setTimeout(function () {
+                console.log("Cadastrado")
+              }, 500);
 
-    if (nomeVar === "" || emailVar === "" || senhaVar === "" || confirmarsenhaVar == "") {
-      div_erro.innerHTML = `Campos inválidos`;
-    } else if (!emailVar.includes("@gmail.com") && !emailVar.includes("@hotmail.com") && !emailVar.includes("@outlook.com")) {
-      div_erro.innerHTML = `Email inválido`;
-    } else if (senhaVar.length <= 6) {
-      div_erro.innerHTML = `A senha deve conter mais de 6 caracteres`;
-    } else if (confirmarsenhaVar != senhaVar) {
-      div_erro.innerHTML = `Senhas inválidas`;
-    } else {
-      verificar_email(emailVar, function (error, emailCadastrado) {
-        if (error) {
-          console.error(error);
-          return;
-        }
-
-        if (emailCadastrado) {
-          spanErro.style.display = "block";
-          spanErro.innerHTML = "O email já está cadastrado.";
-        } else {
-          fetch("/usuarios/cadastrar_funcionario", {
-            method: "POST",
-            headers: {
-              "Content-Type": "application/json"
-            },
-            body: JSON.stringify({
-              nomeServer: nomeVar,
-              emailServer: emailVar,
-              senhaServer: senhaVar,
-              fkEmpresaServer: fkEmpresa
-            })
+              limparSessao();
+            } else {
+              throw new Error("Houve um erro ao tentar realizar o cadastro!");
+            }
           })
-            .then(function (resposta) {
-              if (resposta.ok) {
-                setTimeout(function () {
-                  console.log("Cadastrado")
-                }, 500);
+          .catch(function (resposta) {
+            console.log("#ERRO: " + resposta);
+          });
 
-                limparSessao();
-              } else {
-                throw new Error("Houve um erro ao tentar realizar o cadastro!");
-              }
-            })
-            .catch(function (resposta) {
-              console.log("#ERRO: " + resposta);
-            });
-
-          return false;
-        }
-      });
-    }
+        return false;
+      }
+    });
   }
+}
 
 </script>

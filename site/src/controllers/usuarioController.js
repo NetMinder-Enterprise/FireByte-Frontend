@@ -9,7 +9,7 @@ function entrar(req, res) {
     } else if (senha == undefined) {
         res.status(400).send("Sua senha está indefinida!");
     } else {
-        
+
         usuarioModel.entrar(email, senha)
             .then(
                 function (resultado) {
@@ -31,61 +31,76 @@ function entrar(req, res) {
     }
 }
 
-// function pegarInformacoes(req, res) {
-//     var idUsuario = req.params.idUsuario;
 
-//     usuarioModel.pegarInformacoes(idUsuario)
-//         .then(function (resultado) {
-//             if (resultado.length > 0) {
-//                 res.status(200).json(resultado);
-//             } else {
-//                 res.status(204).send("Nenhum resultado encontrado!")
-//             }
-//         }).catch(
-//             function (erro) {
-//                 console.log(erro);
-//                 console.log("Houve um erro ao realizar a consulta! Erro: ", erro.sqlMessage);
-//                 res.status(500).json(erro.sqlMessage);
-//             }
-//         );
-// }
+function cadastrar_funcionario(req, res) {
+    // Crie uma variável que vá recuperar os valores do arquivo cadastro.html
+    var nome = req.body.nomeServer;
+    var email = req.body.emailServer;
+    var senha = req.body.senhaServer;
+    var opcao = req.body.opcaoServer;
 
-// function editar(req, res){
-//     var idUsuario = req.params.idUsuario;
-//     var username = req.body.usernameServer;
-//     var email = req.body.emailServer;
-//     var pais = req.body.paisServer;
-//     var senha = req.body.senhaServer;
+    // Faça as validações dos valores
+    if (nome == undefined) {
+        res.status(400).send("Seu nome está undefined!");
+    } else if (email == undefined) {
+        res.status(400).send("Seu email está undefined!");
+    } else if (senha == undefined) {
+        res.status(400).send("Sua senha está undefined!");
+    } else if (opcao == undefined) {
+        res.status(400).send("Sua opção está undefined!");
+    } else {
 
-//     if (username == undefined) {
-//         res.status(400).send("Seu nome está undefined!");
-//     } else if (email == undefined) {
-//         res.status(400).send("Seu email está undefined!");
-//     } else if (senha == undefined) {
-//         res.status(400).send("Sua senha está undefined!");
-//     } else if (pais == undefined) {
-//         res.status(400).send("Seu pais está undefined!");
-//     } else {
-//         usuarioModel.editar(idUsuario, username, email, pais, senha)
-//             .then(
-//                 function (resultado) {
-//                     res.json(resultado);
-//                 }
-//             ).catch(
-//                 function (erro) {
-//                     console.log(erro);
-//                     console.log(
-//                         "\nHouve um erro ao realizar a Edição! Erro: ",
-//                         erro.sqlMessage
-//                     );
-//                     res.status(500).json(erro.sqlMessage);
-//                 }
-//             );
-//     }
-// }
+        // Passe os valores como parâmetro e vá para o arquivo usuarioModel.js
+        // Passe os valores como parâmetro e vá para o arquivo usuarioModel.js
+        usuarioModel.cadastrar_funcionario(nome, email, senha, opcao)
+            .then(
+                function (resultado) {
+                    res.json(resultado);
+                }
+            ).catch(
+                function (erro) {
+                    console.log(erro);
+                    console.log(
+                        "\nHouve um erro ao realizar o cadastro! Erro: ",
+                        erro.sqlMessage
+                    );
+                    res.status(500).json(erro.sqlMessage);
+                }
+            );
+
+    }
+}
+
+
+function verificar_email(req, res) {
+    var email = req.body.emailServer;
+
+    if (email == undefined) {
+        res.status(400).send("O email está indefinido!");
+    } else {
+        usuarioModel.verificar_email(email)
+            .then(function (resultado) {
+                if (resultado.length > 0) {
+                    res.json({ emailCadastrado: true });
+                } else {
+                    res.json({ emailCadastrado: false });
+                }
+            })
+            .catch(function (erro) {
+                console.log(erro);
+                console.log(
+                    "\nHouve um erro ao verificar o email! Erro: ",
+                    erro.sqlMessage
+                );
+                res.status(500).json(erro.sqlMessage);
+            });
+    }
+}
+
+
 
 module.exports = {
-    // pegarInformacoes,
-    // editar,
-    entrar
+    cadastrar_funcionario,
+    entrar,
+    verificar_email
 }

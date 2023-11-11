@@ -7,12 +7,13 @@ router.post("/autenticar", function (req, res) {
     usuarioController.entrar(req, res);
 });
 
-// router.post("/editar/:idUsuario", function (req, res) {
-//     usuarioController.editar(req, res);
-// });
+router.post("/cadastrar_funcionario", function (req, res) {
+    usuarioController.cadastrar_funcionario(req, res);
+});
 
-// router.post("/:idUsuario", function (req, res) {
-//     usuarioController.pegarInformacoes(req, res);
-// });
+router.post("/verificar_email", function (req, res) {
+    usuarioController.verificar_email(req, res);
+});
+
 
 module.exports = router;

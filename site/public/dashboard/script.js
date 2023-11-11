@@ -183,17 +183,50 @@ function abrirModal() {
 }
 
 function abrirConfirmacao() {
-  Swal.fire({
+  const Toast = Swal.mixin({
+    toast: true,
     position: "top-end",
-    icon: "success",
-    title: "Dispositivo cadastrado com sucesso!",
     showConfirmButton: false,
-    timer: 1500
+    timer: 2000,
+    timerProgressBar: true,
+    didOpen: (toast) => {
+      toast.onmouseenter = Swal.stopTimer;
+      toast.onmouseleave = Swal.resumeTimer;
+    }
+  });
+  Toast.fire({
+    icon: "success",
+    title: "Dispositivo cadastrado com sucesso!"
   }).then(() => {
-    window.location.href = '/site/public/dashboard/dashboard.html';
+    window.location.href = '/dashboard/dashboard.html';
   });
 }
 
+
+function abrirConfirmacaoFunc(){
+  const Toast = Swal.mixin({
+    toast: true,
+    position: "top-end",
+    showConfirmButton: false,
+    timer: 3000,
+    timerProgressBar: true,
+    didOpen: (toast) => {
+        toast.onmouseenter = Swal.stopTimer;
+        toast.onmouseleave = Swal.resumeTimer;
+    }
+});
+
+Toast.fire({
+    icon: "success",
+    title: "Usuario cadastrado com sucesso!"
+});
+
+// Reinicia a página após 3 segundos
+setTimeout(() => {
+    location.reload();
+}, 3000);
+
+}
 
 
 
