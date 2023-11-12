@@ -129,16 +129,12 @@
 
                 <button class="loginBtn" onclick="cadastrar_funcionario()"><span>Cadastrar</span></button>
                 <div id="div_erro"></div>
+                <div id="span_erro"></div>
             </div>
         </div>
     </div>
     <!-- onclick="abrirConfirmacaoFunc() -->
 </body>
-
-
-<script src="./script.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-
 </html>
 
   <script>
@@ -175,7 +171,8 @@ function cadastrar_funcionario() {
   var opcaoSelecionada = document.getElementById("opcao").value;
   var senhaVar = senha.value;
   const spanErro = document.getElementById("span_erro");
-  const div_erro = document.getElementById("div_erro"); // Adicionando esta linha
+  const div_erro = document.getElementById("div_erro"); 
+  var fkEmpresa = sessionStorage.ID_EMPRESA;
 
   nome.value = ``;
   email.value = ``;
@@ -208,15 +205,12 @@ function cadastrar_funcionario() {
             emailServer: emailVar,
             senhaServer: senhaVar,
             opcaoServer: opcaoSelecionada,
+            fkEmpresaServer: fkEmpresa
           }),
         })
           .then(function (resposta) {
             if (resposta.ok) {
-              setTimeout(function () {
-                console.log("Cadastrado")
-              }, 500);
-
-              limparSessao();
+              abrirConfirmacaoFunc();
             } else {
               throw new Error("Houve um erro ao tentar realizar o cadastro!");
             }
@@ -230,5 +224,7 @@ function cadastrar_funcionario() {
     });
   }
 }
-
 </script>
+
+<script src="./script.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>

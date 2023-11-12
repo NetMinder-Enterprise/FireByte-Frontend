@@ -9,16 +9,23 @@ function entrar(email, senha) {
 }
 
 
-function cadastrar_funcionario(nome, email, senha, tipo) {
+function cadastrar_funcionario(nome, email, senha, tipo, fkEmpresa) {
     console.log("ACESSEI O USUARIO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function cadastrar_funcionario():", nome, email, senha, tipo);
 
     var instrucao = `
-    INSERT INTO mydb.Usuario (fkNIvelAcesso, nome, email, senha)
-    VALUES (SELECT idNivelAcesso FROM NivelAcesso WHERE tipo = '${tipo}'), '${nome}', '${email}', '${senha}'
-    `;
+    INSERT INTO mydb.Usuario (fkNIvelAcesso, fkEmpresa, nome, email, senha)
+    VALUES (
+        (SELECT idNivelAcesso FROM NivelAcesso WHERE tipo = '${tipo}'),
+        '${fkEmpresa}',
+        '${nome}',
+        '${email}',
+        '${senha}'
+    )`;
+
     console.log("Executando a instrução SQL: \n" + instrucao);
     return database.executar(instrucao);
 }
+
 
 
 function verificar_email(email) {

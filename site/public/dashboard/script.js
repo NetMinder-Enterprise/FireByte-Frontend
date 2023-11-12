@@ -203,6 +203,31 @@ function abrirConfirmacao() {
 }
 
 
+function loginSucesso(){
+  const Toast = Swal.mixin({
+    toast: true,
+    position: "top-end",
+    showConfirmButton: false,
+    timer: 3000,
+    timerProgressBar: true,
+    didOpen: (toast) => {
+        toast.onmouseenter = Swal.stopTimer;
+        toast.onmouseleave = Swal.resumeTimer;
+    }
+});
+
+Toast.fire({
+    icon: "success",
+    title: "Login realizado com sucesso!"
+});
+
+setTimeout(() => {
+  window.location = "./dashboard/dashboard.html";
+}, 3000);
+
+}
+
+
 function abrirConfirmacaoFunc(){
   const Toast = Swal.mixin({
     toast: true,
@@ -221,11 +246,9 @@ Toast.fire({
     title: "Usuario cadastrado com sucesso!"
 });
 
-// Reinicia a página após 3 segundos
 setTimeout(() => {
     location.reload();
 }, 3000);
-
 }
 
 
