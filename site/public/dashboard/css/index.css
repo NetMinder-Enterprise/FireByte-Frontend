@@ -6,7 +6,7 @@
 }
 
 .content-title {
-    width: 40%;
+    width: 90%;
 }
 
 .content-bottons {
@@ -138,12 +138,23 @@
     fill: var(--text-color);
 }
 
+.bell2 {
+    width: 25px;
+}
+
+.bell2 path {
+    fill: var(--text-color);
+}
+
 .button:hover {
     background-color: var(--primary-color);
 }
 
 .button:hover .bell {
     animation: bellRing 0.9s both;
+}
+.button:hover .bell2 {
+    animation: bellRing 0.2s both;
 }
 
 /* bell ringing animation keyframes*/
@@ -454,13 +465,13 @@
 }
 
 .meter {
-    width: 70%;
+    width: 30%;
 }
 
 .time-meter {
     display: flex;
     flex-direction: row;
-    gap: 220px;
+    gap: 55px;
     margin-left: 14%;
 }
 
