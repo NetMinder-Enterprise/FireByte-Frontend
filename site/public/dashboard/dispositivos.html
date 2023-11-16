@@ -16,7 +16,7 @@
 
 </head>
 
-<body>
+<body onload="obterRegistrosCapturados()">
     <div class="Header">
         <div class="body">
             <div class="sidebar">
@@ -268,15 +268,7 @@
 
 <script>
 
-    const labels = [
-        '1:00',
-        '2:00',
-        '3:00',
-        '4:00',
-        '5:00',
-        '6:00',
-    ];
-
+    //Este bloco recebe do localStorage o thema definido pelo usuário e aplica a está página.
     var backgroundColor;
     var borderColor;
     var textColor;
@@ -290,51 +282,120 @@
         textColor = 'rgba(0, 0, 0, 1)';
     }
 
-    const data = {
-        labels: labels,
-        datasets: [{
-            label: 'CPU',
-            backgroundColor: backgroundColor,
-            borderColor: borderColor,
-            data: [0, 50, 40, 20, 60, 90],
-        }]
-    };
+    let proximaAtualizacao;
 
-    const data2 = {
+    function obterRegistrosCapturados() {
+    if (proximaAtualizacao != undefined) {
+        clearTimeout(proximaAtualizacao);
+    }
+
+    //Ultimas medidas da CPU
+    fetch(`/dashboard/ultimasCpu`, { cache: 'no-store' }).then(function (response) {
+            if (response.ok) {
+                response.json().then(function (respostaCpu) {
+                console.log(respostaCpu)
+                console.log(`Dados recebidos: ${JSON.stringify(respostaCpu)}`);
+                respostaCpu.reverse();
+                plotarGraficoCPU(respostaCpu);
+                });
+            } else {
+                console.error('Nenhum dado encontrado ou erro na API');
+            }
+        }).catch(function (error) {
+            console.error(`Erro na obtenção dos dados p/ gráfico de CPU: ${error.message}`);
+        });
+
+    //Ultimas medidas da RAM
+    fetch(`/dashboard/ultimas`, { cache: 'no-store' }).then(function (response) {
+            if (response.ok) {
+                response.json().then(function (resposta) {
+                console.log(resposta)
+                console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
+                resposta.reverse();
+                plotarGraficoRAM(resposta);
+                });
+            } else {
+                console.error('Nenhum dado encontrado ou erro na API');
+            }
+        }).catch(function (error) {
+            console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
+        });
+
+    //Ultimas medidas da DISCO
+    fetch(`/dashboard/ultimasDisco`, { cache: 'no-store' }).then(function (response) {
+            if (response.ok) {
+                response.json().then(function (respostaDisco) {
+                console.log(respostaDisco)
+                console.log(`Dados recebidos: ${JSON.stringify(respostaDisco)}`);
+                respostaDisco.reverse();
+                plotarGraficoDISCO(respostaDisco);
+                });
+            } else {
+                console.error('Nenhum dado encontrado ou erro na API');
+            }
+        }).catch(function (error) {
+            console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
+        });
+
+    //Ultimas medidas da REDE
+    fetch(`/dashboard/ultimasRede`, { cache: 'no-store' }).then(function (response) {
+            if (response.ok) {
+                response.json().then(function (respostaRede) {
+                console.log(respostaRede)
+                console.log(`Dados recebidos: ${JSON.stringify(respostaRede)}`);
+                respostaRede.reverse();
+                plotarGraficoREDE(respostaRede);
+                });
+            } else {
+                console.error('Nenhum dado encontrado ou erro na API');
+            }
+        }).catch(function (error) {
+            console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
+        });
+    }
+    
+    /*RAM*/
+    function plotarGraficoRAM(resposta){
+        console.log('Iniciando plotagem dos gráficos...');
+
+        //Criando estrutura que receberá as labels dinâmicamente
+        const labels = [];
+
+        //Criando estrutura do gráfico RAM
+        const data = {
         labels: labels,
         datasets: [{
             label: 'RAM',
             backgroundColor: backgroundColor,
             borderColor: borderColor,
-            data: [92, 43, 65, 23, 76, 75],
-        },
-        ]
+            //A listagem de data precisa estar vazia para receber os dados da plotagem
+            data: [],
+            }]
+        };
+        console.log('----------------------------------------------');
+        console.log('Estes dados foram recebidos pela função "obterRegistrosCapturados" e passados para "plotarGraficoRAM":');
+        console.log(resposta);
 
-    };
-    const data3 = {
-        labels: labels,
-        datasets: [{
-            label: 'DISCO',
-            backgroundColor: backgroundColor,
-            borderColor: borderColor,
-            data: [43, 23, 54, 65, 23, 30],
-        },
-        ]
+        // Inserindo valores recebidos em estrutura para plotar o gráfico
+        //provavelmente para cada gráfico específico será necessário mudar a query na model para capturar o tipoComponente
+        for (i = 0; i < resposta.length; i++) {
+        var registro = resposta[i];
+        labels.push(registro.momento_grafico);
+        data.datasets[0].data.push(registro.captura);
+        const captura = registro.captura;
+        }
 
-    };
-    const data4 = {
-        labels: labels,
-        datasets: [{
-            label: 'REDE',
-            backgroundColor: backgroundColor,
-            borderColor: borderColor,
-            data: [12, 43, 54, 65, 23, 10],
-        },
-        ]
+        console.log('----------------------------------------------')
+        console.log('O gráfico será plotado com os respectivos valores:')
+        console.log('Labels:')
+        console.log(labels)
+        console.log('Dados:')
+        console.log(data.datasets)
+        console.log('----------------------------------------------')
 
-    };
 
-    const config = {
+        /* Configurando o gráfico da RAM */
+        const config = {
         type: 'line',
         data: data,
         options: {
@@ -363,112 +424,430 @@
         }
     };
 
-    const config2 = {
-        type: 'line',
-        data: data2,
-        options: {
-            plugins: {
-                legend: {
-                    labels: {
-                        fontSize: 15, // Ajusta o tamanho da fonte para a legenda
-                        color: textColor // Ajusta a cor do texto da legenda
-                    }
-                }
-            },
-            scales: {
-                y: {
-                    ticks: {
-                        fontSize: 15, // Ajusta o tamanho da fonte para os ticks do eixo y
-                        color: textColor // Ajusta a cor do texto dos ticks do eixo y
-                    }
-                },
-                x: {
-                    ticks: {
-                        fontSize: 15, // Ajusta o tamanho da fonte para os ticks do eixo x
-                        color: textColor // Ajusta a cor do texto dos ticks do eixo x
-                    }
-                }
-            }
-        }
-    };
-
-    const config3 = {
-        type: 'line',
-        data: data3,
-        options: {
-            plugins: {
-                legend: {
-                    labels: {
-                        fontSize: 15, // Ajusta o tamanho da fonte para a legenda
-                        color: textColor // Ajusta a cor do texto da legenda
-                    }
-                }
-            },
-            scales: {
-                y: {
-                    ticks: {
-                        fontSize: 15, // Ajusta o tamanho da fonte para os ticks do eixo y
-                        color: textColor // Ajusta a cor do texto dos ticks do eixo y
-                    }
-                },
-                x: {
-                    ticks: {
-                        fontSize: 15, // Ajusta o tamanho da fonte para os ticks do eixo x
-                        color: textColor // Ajusta a cor do texto dos ticks do eixo x
-                    }
-                }
-            }
-        }
-    };
-
-    const config4 = {
-        type: 'line',
-        data: data4,
-        options: {
-            plugins: {
-                legend: {
-                    labels: {
-                        fontSize: 15, // Ajusta o tamanho da fonte para a legenda
-                        color: textColor // Ajusta a cor do texto da legenda
-                    }
-                }
-            },
-            scales: {
-                y: {
-                    ticks: {
-                        fontSize: 15, // Ajusta o tamanho da fonte para os ticks do eixo y
-                        color: textColor // Ajusta a cor do texto dos ticks do eixo y
-                    }
-                },
-                x: {
-                    ticks: {
-                        fontSize: 15, // Ajusta o tamanho da fonte para os ticks do eixo x
-                        color: textColor // Ajusta a cor do texto dos ticks do eixo x
-                    }
-                }
-            }
-        }
-    };
-
+    //Adicionando o gráfico da RAM em DIV
     const myChart = new Chart(
         document.getElementById('myChart'),
         config
     );
+        setTimeout(() => atualizarGrafico(data, myChart), 2000);
+    }
 
-    const myChart2 = new Chart(
+    /*REDE*/
+    function plotarGraficoREDE(respostaRede){
+        console.log('Iniciando plotagem do gráfico de REDE...');
+        /*Criando estrutura para o gráfico de REDE*/
+        const labelsRede = [];
+
+        const dataRede = {
+        labels: labelsRede,
+        datasets: [{
+            label: 'REDE',
+            backgroundColor: backgroundColor,
+            borderColor: borderColor,
+            //A listagem de data precisa estar vazia para receber os dados da plotagem
+            data: [],
+            }]
+        };
+
+        console.log('----------------------------------------------');
+        console.log('Estes dados foram recebidos pela função "obterRegistrosCapturados" e passados para "plotarGraficoRAM":');
+        console.log(respostaRede);
+
+        
+        // Inserindo valores recebidos em estrutura para plotar o gráfico
+        //provavelmente para cada gráfico específico será necessário mudar a query na model para capturar o tipoComponente
+        for (i = 0; i < respostaRede.length; i++) {
+        var registroRede = respostaRede[i];
+        labelsRede.push(registroRede.momento_grafico);
+        dataRede.datasets[0].data.push(registroRede.captura);
+        const capturaRede = registroRede.captura;
+        }
+
+        console.log('----------------------------------------------')
+        console.log('O gráfico será plotado com os respectivos valores:')
+        console.log('Labels:')
+        console.log(labelsRede)
+        console.log('Dados:')
+        console.log(dataRede.datasets)
+        console.log('----------------------------------------------')
+
+        /* Configurando o gráfico da REDE */
+        const configRede = {
+            type: 'line',
+            data: dataRede,
+            options: {
+                plugins: {
+                    legend: {
+                        labelsRede: {
+                            fontSize: 15, // Ajusta o tamanho da fonte para a legenda
+                            color: textColor // Ajusta a cor do texto da legenda
+                        }
+                    }
+                },
+                scales: {
+                    y: {
+                        ticks: {
+                            fontSize: 15, // Ajusta o tamanho da fonte para os ticks do eixo y
+                            color: textColor // Ajusta a cor do texto dos ticks do eixo y
+                        }
+                    },
+                    x: {
+                        ticks: {
+                            fontSize: 15, // Ajusta o tamanho da fonte para os ticks do eixo x
+                            color: textColor // Ajusta a cor do texto dos ticks do eixo x
+                        }
+                    }
+                }
+            }
+        };
+
+        //Adicionando o gráfico da REDE em DIV
+        const myChartRede = new Chart(
+            document.getElementById('myChart4'),
+            configRede
+        );
+            setTimeout(() => atualizarGraficoRede(dataRede, myChartRede), 2000);
+    }
+
+    /*CPU*/
+    function plotarGraficoCPU(respostaCpu){
+        console.log('Iniciando plotagem do gráfico de CPU...');
+        /*Criando estrutura para o gráfico de CPU*/
+        const labelsCpu = [];
+
+        const dataCpu = {
+        labels: labelsCpu,
+        datasets: [{
+            label: 'CPU',
+            backgroundColor: backgroundColor,
+            borderColor: borderColor,
+            //A listagem de data precisa estar vazia para receber os dados da plotagem
+            data: [],
+            }]
+        };
+
+        console.log('----------------------------------------------');
+        console.log('Estes dados foram recebidos pela função "obterRegistrosCapturados" e passados para "plotarGraficoCPU":');
+        console.log(respostaCpu);
+
+        // Inserindo valores recebidos em estrutura para plotar o gráfico
+        //provavelmente para cada gráfico específico será necessário mudar a query na model para capturar o tipoComponente
+        for (i = 0; i < respostaCpu.length; i++) {
+        var registroCpu = respostaCpu[i];
+        labelsCpu.push(registroCpu.momento_grafico);
+        dataCpu.datasets[0].data.push(registroCpu.captura);
+        const capturaCpu = registroCpu.captura;
+        }
+
+        console.log('----------------------------------------------')
+        console.log('O gráfico será plotado com os respectivos valores:')
+        console.log('Labels:')
+        console.log(labelsCpu)
+        console.log('Dados:')
+        console.log(dataCpu.datasets)
+        console.log('----------------------------------------------')
+
+    /* Configurando o gráfico da CPU */
+    const configCpu = {
+        type: 'line',
+        data: dataCpu,
+        options: {
+            plugins: {
+                legend: {
+                    labelsCpu: {
+                        fontSize: 15, // Ajusta o tamanho da fonte para a legenda
+                        color: textColor // Ajusta a cor do texto da legenda
+                    }
+                }
+            },
+            scales: {
+                y: {
+                    ticks: {
+                        fontSize: 15, // Ajusta o tamanho da fonte para os ticks do eixo y
+                        color: textColor // Ajusta a cor do texto dos ticks do eixo y
+                    }
+                },
+                x: {
+                    ticks: {
+                        fontSize: 15, // Ajusta o tamanho da fonte para os ticks do eixo x
+                        color: textColor // Ajusta a cor do texto dos ticks do eixo x
+                    }
+                }
+            }
+        }
+    };
+
+    //Adicionando o gráfico da CPU em DIV
+    const myChartCpu = new Chart(
         document.getElementById('myChart2'),
-        config2
+        configCpu
     );
+        setTimeout(() => atualizarGraficoCpu(dataCpu, myChartCpu), 2000);
+    }
 
-    const myChart3 = new Chart(
+        /*DISCO*/
+        function plotarGraficoDISCO(respostaDisco){
+        console.log('Iniciando plotagem do gráfico de DISCO...');
+        /*Criando estrutura para o gráfico de DISCO*/
+        const labelsDisco = [];
+
+        const dataDisco = {
+        labels: labelsDisco,
+        datasets: [{
+            label: 'DISCO',
+            backgroundColor: backgroundColor,
+            borderColor: borderColor,
+            //A listagem de data precisa estar vazia para receber os dados da plotagem
+            data: [],
+            }]
+        };
+
+        console.log('----------------------------------------------');
+        console.log('Estes dados foram recebidos pela função "obterRegistrosCapturados" e passados para "plotarGraficoDISCO":');
+        console.log(respostaDisco);
+
+        // Inserindo valores recebidos em estrutura para plotar o gráfico
+        //provavelmente para cada gráfico específico será necessário mudar a query na model para capturar o tipoComponente
+        for (i = 0; i < respostaDisco.length; i++) {
+        var registroDisco = respostaDisco[i];
+        labelsDisco.push(registroDisco.momento_grafico);
+        dataDisco.datasets[0].data.push(registroDisco.captura);
+        const capturaDisco = registroDisco.captura;
+        }
+
+        console.log('----------------------------------------------')
+        console.log('O gráfico será plotado com os respectivos valores:')
+        console.log('Labels:')
+        console.log(labelsDisco)
+        console.log('Dados:')
+        console.log(dataDisco.datasets)
+        console.log('----------------------------------------------')
+
+    /* Configurando o gráfico da DISCO */
+    const configDisco = {
+        type: 'line',
+        data: dataDisco,
+        options: {
+            plugins: {
+                legend: {
+                    labelsDisco: {
+                        fontSize: 15, // Ajusta o tamanho da fonte para a legenda
+                        color: textColor // Ajusta a cor do texto da legenda
+                    }
+                }
+            },
+            scales: {
+                y: {
+                    ticks: {
+                        fontSize: 15, // Ajusta o tamanho da fonte para os ticks do eixo y
+                        color: textColor // Ajusta a cor do texto dos ticks do eixo y
+                    }
+                },
+                x: {
+                    ticks: {
+                        fontSize: 15, // Ajusta o tamanho da fonte para os ticks do eixo x
+                        color: textColor // Ajusta a cor do texto dos ticks do eixo x
+                    }
+                }
+            }
+        }
+    };
+
+    //Adicionando o gráfico da DISCO em DIV
+    const myChartDisco = new Chart(
         document.getElementById('myChart3'),
-        config3
+        configDisco
     );
+        setTimeout(() => atualizarGraficoDisco(dataDisco, myChartDisco), 2000);
+    }
 
-    const myChart4 = new Chart(
-        document.getElementById('myChart4'),
-        config4
-    );
+    //Atualizações de gráficos
+    function atualizarGrafico(data, myChart) {
+    fetch(`/dashboard/tempo-real`, { cache: 'no-store' }).then(function (response) {
+      if (response.ok) {
+        response.json().then(function (novoRegistro) {
+          console.log(`Dados recebidos: ${JSON.stringify(novoRegistro)}`);
+          console.log(`Dados atuais do gráfico:`);
+          console.log(data);
+
+          const captura = novoRegistro[0].captura;
+
+          if (novoRegistro[0].momento_grafico === data.labels[data.labels.length - 1]) {
+            console.log("---------------------------------------------------------------")
+            console.log("Como não há dados novos para captura, o gráfico não atualizará.")
+            console.log("Horário do novo dado capturado:")
+            console.log(novoRegistro[0].momento_grafico)
+            console.log("Horário do último dado de capturado:")
+            console.log(data.labels[data.labels.length - 1])
+            console.log("---------------------------------------------------------------")
+          } else {
+            // Tirar e colocar valores no gráfico
+            data.labels.shift(); // Apagar o primeiro
+            data.labels.push(novoRegistro[0].momento_grafico); // Incluir um novo momento
+
+            data.datasets[0].data.shift();  // Apagar o primeiro valor capturado
+            data.datasets[0].data.push(captura); // Incluir o novo valor capturado
+
+            myChart.update();
+          }
+
+          // Altere aqui o valor em ms se quiser que o gráfico atualize mais rápido ou mais devagar
+          proximaAtualizacao = setTimeout(() => atualizarGrafico(data, myChart), 2000);
+        });
+      } else {
+        console.error('Nenhum dado encontrado ou erro na API');
+        // Altere aqui o valor em ms se quiser que o gráfico atualize mais rápido ou mais devagar
+        proximaAtualizacao = setTimeout(() => atualizarGrafico(data, myChart), 2000);
+      }
+    }).catch(function (error) {
+      console.error(`Erro na obtenção dos dados para o gráfico: ${error.message}`);
+    });
+
+  }
+
+  function atualizarGraficoRede(dataRede, myChartRede) {
+    fetch(`/dashboard/tempo-real-rede`, { cache: 'no-store' }).then(function (response) {
+      if (response.ok) {
+        response.json().then(function (novoRegistro) {
+          console.log(`Dados recebidos: ${JSON.stringify(novoRegistro)}`);
+          console.log(`Dados atuais do gráfico:`);
+          console.log(dataRede);
+
+          const captura = novoRegistro[0].captura;
+
+          if (novoRegistro[0].momento_grafico === dataRede.labels[dataRede.labels.length - 1]) {
+            console.log("---------------------------------------------------------------")
+            console.log("Como não há dados novos para captura, o gráfico não atualizará.")
+            console.log("Horário do novo dado capturado:")
+            console.log(novoRegistro[0].momento_grafico)
+            console.log("Horário do último dado capturado:")
+            console.log(dataRede.labels[dataRede.labels.length - 1])
+            console.log("---------------------------------------------------------------")
+          } else {
+            // Tirar e colocar valores no gráfico
+            dataRede.labels.shift(); // Apagar o primeiro
+            dataRede.labels.push(novoRegistro[0].momento_grafico); // Incluir um novo momento
+
+            dataRede.datasets[0].data.shift();  // Apagar o primeiro valor capturado
+            dataRede.datasets[0].data.push(captura); // Incluir o novo valor capturado
+
+            myChartRede.update();
+          }
+          // Altere aqui o valor em ms se quiser que o gráfico atualize mais rápido ou mais devagar
+          proximaAtualizacao = setTimeout(() => atualizarGraficoRede(dataRede, myChartRede), 2000);
+        });
+      } else {
+        console.error('Nenhum dado encontrado ou erro na API');
+        // Altere aqui o valor em ms se quiser que o gráfico atualize mais rápido ou mais devagar
+        proximaAtualizacao = setTimeout(() => atualizarGraficoRede(dataRede, myChartRede), 2000);
+      }
+    }).catch(function (error) {
+      console.error(`Erro na obtenção dos dados para o gráfico: ${error.message}`);
+    });
+  }
+
+  function atualizarGraficoCpu(dataCpu, myChartCpu) {
+    fetch(`/dashboard/tempo-real-cpu`, { cache: 'no-store' }).then(function (response) {
+      if (response.ok) {
+        response.json().then(function (novoRegistro) {
+          console.log(`Dados recebidos: ${JSON.stringify(novoRegistro)}`);
+          console.log(`Dados atuais do gráfico:`);
+          console.log(dataCpu);
+
+          const captura = novoRegistro[0].captura;
+
+          if (novoRegistro[0].momento_grafico === dataCpu.labels[dataCpu.labels.length - 1]) {
+            console.log("---------------------------------------------------------------")
+            console.log("Como não há dados novos para captura, o gráfico não atualizará.")
+            console.log("Horário do novo dado capturado:")
+            console.log(novoRegistro[0].momento_grafico)
+            console.log("Horário do último dado capturado:")
+            console.log(dataCpu.labels[dataCpu.labels.length - 1])
+            console.log("---------------------------------------------------------------")
+          } else {
+            // Tirar e colocar valores no gráfico
+            dataCpu.labels.shift(); // Apagar o primeiro
+            dataCpu.labels.push(novoRegistro[0].momento_grafico); // Incluir um novo momento
+
+            dataCpu.datasets[0].data.shift();  // Apagar o primeiro valor capturado
+            dataCpu.datasets[0].data.push(captura); // Incluir o novo valor capturado
+
+            myChartCpu.update();
+          }
+          // Altere aqui o valor em ms se quiser que o gráfico atualize mais rápido ou mais devagar
+          proximaAtualizacao = setTimeout(() => atualizarGraficoCpu(dataCpu, myChartCpu), 2000);
+        });
+      } else {
+        console.error('Nenhum dado encontrado ou erro na API');
+        // Altere aqui o valor em ms se quiser que o gráfico atualize mais rápido ou mais devagar
+        proximaAtualizacao = setTimeout(() => atualizarGraficoCpu(dataCpu, myChartCpu), 2000);
+      }
+    }).catch(function (error) {
+      console.error(`Erro na obtenção dos dados para o gráfico: ${error.message}`);
+    });
+  }
+
+  function atualizarGraficoDisco(dataDisco, myChartDisco) {
+    fetch(`/dashboard/tempo-real-disco`, { cache: 'no-store' }).then(function (response) {
+      if (response.ok) {
+        response.json().then(function (novoRegistro) {
+          console.log(`Dados recebidos: ${JSON.stringify(novoRegistro)}`);
+          console.log(`Dados atuais do gráfico:`);
+          console.log(dataDisco);
+
+          const captura = novoRegistro[0].captura;
+
+          if (novoRegistro[0].momento_grafico === dataDisco.labels[dataDisco.labels.length - 1]) {
+            console.log("---------------------------------------------------------------")
+            console.log("Como não há dados novos para captura, o gráfico não atualizará.")
+            console.log("Horário do novo dado capturado:")  
+            console.log(novoRegistro[0].momento_grafico)
+            console.log("Horário do último dado capturado:")
+            console.log(dataDisco.labels[dataDisco.labels.length - 1])
+            console.log("---------------------------------------------------------------")
+          } else {
+            // Tirar e colocar valores no gráfico
+            dataDisco.labels.shift(); // Apagar o primeiro
+            dataDisco.labels.push(novoRegistro[0].momento_grafico); // Incluir um novo momento
+
+            dataDisco.datasets[0].data.shift();  // Apagar o primeiro valor capturado
+            dataDisco.datasets[0].data.push(captura); // Incluir o novo valor capturado
+
+            myChartDisco.update();
+          }
+          // Altere aqui o valor em ms se quiser que o gráfico atualize mais rápido ou mais devagar
+          proximaAtualizacao = setTimeout(() => atualizarGraficoDisco(dataDisco, myChartDisco), 2000);
+        });
+      } else {
+        console.error('Nenhum dado encontrado ou erro na API');
+        // Altere aqui o valor em ms se quiser que o gráfico atualize mais rápido ou mais devagar
+        proximaAtualizacao = setTimeout(() => atualizarGraficoDisco(dataDisco, myChartDisco), 2000);
+      }
+    }).catch(function (error) {
+      console.error(`Erro na obtenção dos dados para o gráfico: ${error.message}`);
+    });
+  }
+
+
+    // ** Estrutura para parametrizar indicadores de alertas **
+    // --------------------------------------------------------
+    // if (captura >= 4 && captura <= 6) {
+    // dados.datasets[0].borderColor = '#52f90d';
+    // dados.datasets[0].label = 'Medida ideal'
+    // } else if (
+    // (captura >= 2.1 && captura <= 3.9) ||
+    // (captura >= 6.1 && captura <= 7.9)
+    // ) {
+    // dados.datasets[0].borderColor = '#c7a941';
+    // dados.datasets[0].label = 'Medida em alerta'
+    // } else if (captura > 8) {
+    // dados.datasets[0].borderColor = '#c60a14';
+    // dados.datasets[0].label = 'Medida excedida'
+    // }else {
+    // dados.datasets[0].borderColor = '#c60a14';
+    // dados.datasets[0].label = 'Medida abaixo'
+    // }
+    
 </script>
-
 </html>
+
