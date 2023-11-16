@@ -124,7 +124,7 @@ notificationButton.addEventListener("click", toggleNotificationModal);
 var clearButton = document.getElementById("clear-button");
 clearButton.addEventListener("click", clearNotifications);
 
-addNotification("Nova Maquina detectada.", "blue", "./cadastro/form2.html");
+addNotification("Nova Maquina detectada.", "blue", "/dashboard/cadastro/form2.html");
 addNotification("CPU atingiu 70%", "yellow", "./dispositivos.html");
 addNotification("Falha de rede, reinicie o dispositivo", "red", "./dispositivos.html");
 addNotification("Memoria atingiu 80%", "yellow", "./dispositivos.html");
