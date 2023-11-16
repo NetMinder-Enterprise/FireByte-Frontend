@@ -6,8 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>NetMinder - Login</title>
 
+    <link rel="shortcut icon" href="./assets/favicon.png" type="image/x-icon">
     <link rel="stylesheet" href="./css/global.css">
-    <link rel="stylesheet" href="./css/login.css">
+    <link rel="stylesheet" href="./css/style.css">
 </head>
 
 <body>
@@ -33,13 +34,15 @@
                     <input required="" type="password" name="text" autocomplete="off" class="input" id="senha">
                     <label class="user-label">Senha</label>
                 </div>
-                <button class="loginBtn" onclick="Login(email.value, senha.value)"><span>Entrar</span></button>
-                <img src="https://www.sultan.com.br/App/Images/icones/load.gif" height="50px" id="loading" style="display: none;">
+                <button class="loginBtn" onclick="entrar()"><span>Entrar</span></button>
+                <img src="https://www.sultan.com.br/App/Images/icones/load.gif" height="50px" id="loading"
+                    style="display: none;">
                 <div id="aviso"></div>
             </div>
         </div>
     </div>
 </body>
+
 </html>
 
 
@@ -54,8 +57,7 @@
                 aviso.innerHTML = "Login realizado com sucesso!";
             }, 1500);
             setTimeout(function () {
-                
-                window.location = "/dashboard/dashboard.html";
+                window.location = "/site/public/dashboard/dashboard.html";
             }, 2500);
         }else{
             aviso.style.color = "#eb4747"
@@ -71,3 +73,64 @@
 <script src="js/changeTheme.js"></script>
 <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
 <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+<script src="./dashboard/script.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+<script>
+    function entrar() {
+
+        var emailVar = email.value;
+        var senhaVar = senha.value;
+
+        if (emailVar == "" || senhaVar == "") {
+            console.log('senha ou email invalido')
+            return false;
+        }
+
+        console.log("FORM LOGIN: ", emailVar);
+        console.log("FORM SENHA: ", senhaVar);
+
+        fetch("/usuarios/autenticar", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                emailServer: emailVar,
+                senhaServer: senhaVar
+            })
+        }).then(function (resposta) {
+            console.log("ESTOU NO THEN DO entrar()!")
+            if (resposta.ok) {
+                console.log(resposta);
+
+                resposta.json().then(json => {
+                    console.log(json);
+                    console.log(JSON.stringify(json));
+
+                    sessionStorage.EMAIL_USUARIO = json.email;
+                    sessionStorage.NOME_USUARIO = json.nome;
+                    sessionStorage.ID_USUARIO = json.idUsuario;
+                    sessionStorage.ID_EMPRESA = json.fkEmpresa;
+
+                    loginSucesso();
+
+                });
+
+            } else {
+
+                console.log("Houve um erro ao tentar realizar o login!");
+
+                resposta.text().then(texto => {
+                    console.error(texto);
+                    finalizarAguardar(texto);
+                });
+            }
+
+        }).catch(function (erro) {
+            console.log(erro);
+        })
+
+        return false;
+    }
+</script>
