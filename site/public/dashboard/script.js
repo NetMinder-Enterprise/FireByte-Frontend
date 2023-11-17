@@ -114,12 +114,13 @@ function toggleNotificationModal() {
   modal.classList.toggle("show");
 }
 
-function openNewFile(fileUrl) {
+function openNotificationFile(fileUrl) {
   window.open(fileUrl, "_blank");
 }
 
 var notificationButton = document.getElementById("notification-button");
 notificationButton.addEventListener("click", toggleNotificationModal);
+
 
 var clearButton = document.getElementById("clear-button");
 clearButton.addEventListener("click", clearNotifications);
@@ -129,6 +130,18 @@ addNotification("CPU atingiu 70%", "yellow", "./dispositivos.html");
 addNotification("Falha de rede, reinicie o dispositivo", "red", "./dispositivos.html");
 addNotification("Memoria atingiu 80%", "yellow", "./dispositivos.html");
 
+/*Botão ordenar*/
+function toggleOrderModal() {
+  var modal = document.getElementById("order-modal");
+  modal.classList.toggle("show");
+}
+
+function openOrderFile(fileUrl) {
+  window.open(fileUrl, "_blank");
+}
+
+var orderButton = document.getElementById("order-button");
+orderButton.addEventListener("click", toggleOrderModal);
 
 /*Barra de porcentagem*/
 function updateProgressBar(percentage, fillId, percentageId) {

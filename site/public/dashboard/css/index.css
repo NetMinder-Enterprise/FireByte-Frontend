@@ -22,6 +22,8 @@
     display: flex;
     flex-direction: row;
     gap: 10px;
+    width: 90%;
+    justify-content: end;
 }
 
 /*botão de pesquisa*/
@@ -464,63 +466,59 @@
     flex-direction: row;
 }
 
-.meter {
-    width: 30%;
+/*legenda de cor */
+.legenda{
+    width: 20%;
+    height: 60px;
+    border: 2px solid var(--text-color);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .time-meter {
     display: flex;
     flex-direction: row;
-    gap: 55px;
-    margin-left: 14%;
+    gap: 18px;
+    margin-left: 11%;
+    /* padding: 10px 34px; */
 }
 
 .meter-color {
     display: flex;
     flex-direction: row;
-
+    margin-left: 2%;
+    /* padding: 0 30px; */
+    /* margin-top: -4%; */
 }
 
 .meter-cor1 {
-    width: 270px;
+    width: 65px;
     height: 8px;
     background-color: green;
     border-radius: 50px;
+    
 }
 
 .meter-cor2 {
-    width: 300px;
+    width: 70px;
     height: 8px;
     background-color: yellow;
     border-radius: 50px;
-    margin-left: -1%;
+    margin-left: -2%;
 }
 
 .meter-cor3 {
-    width: 280px;
+    width: 60px;
     height: 8px;
     background-color: red;
     border-radius: 50px;
-    margin-left: -1%;
+    margin-left: -2%;
 }
 
-/*Botão de ordenar*/
-.order {
-    width: 100%;
-}
-
-select {
-    width: 200px;
-    height: 35px;
-    border: 2px solid var(--text-color);
-    border-radius: 30px;
-    background-color: rgba(217, 217, 217, 0.1);
-    color: var(--text-color);
-    margin-top: 2%;
-}
-
-option {
-    background-color: var(--background-color);
+.h3{
+    font-size: 1rem;
 }
 
 .box-disp2{
