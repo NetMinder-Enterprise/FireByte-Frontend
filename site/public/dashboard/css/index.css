@@ -18,6 +18,16 @@
     gap: 1em;
 }
 
+.title-dispositivo{
+    width: 90%;
+}
+
+.buttons-separation{
+    display: flex;
+    flex-direction: row;
+    width: 20%;
+}
+
 .buttons{
     display: flex;
     flex-direction: row;

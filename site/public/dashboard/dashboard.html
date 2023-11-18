@@ -41,7 +41,10 @@
                         <button id="uploadButton" class="small">
                             <i class='bx bxs-pencil'></i>
                         </button>
-                        <p><span id="name_user">Nicolly</span></p>
+                        <li>
+                            <span class="links_name" id="name_user">Ncolly juliani </span>
+                          </a>
+                        </li>
                     </div>
 
                     <div id="imageModal" class="modal-user" style="display: none;">
@@ -258,8 +261,12 @@
     </script>
 
     <script src="script.js"></script>
-   
+
     <script>
+
+        var funcionario = sessionStorage.NOME_USUARIO;
+        name_user.innerHTML = funcionario;
+
         menuNivelUsuario();
         function menuNivelUsuario() {
             var tipo = sessionStorage.TIPO_USUARIO;

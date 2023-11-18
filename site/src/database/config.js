@@ -22,7 +22,7 @@ var mySqlConfig = {
     host: "localhost",
     database: "firebyteDB",
     user: "root",
-    password: "root"
+    password: "NicollyJuliane123"
 };
 
 function executar(instrucao) {
