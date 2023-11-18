@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>NetMinder - Login</title>
-  
+
     <link rel="shortcut icon" href="../../assets/favicon.png" type="image/x-icon">
     <link rel="stylesheet" href="../../css/style.css">
     <link rel="stylesheet" href="./css/index.css">
@@ -37,29 +37,57 @@
                     <textarea type="text" autocomplete="off" class="input" cols="20" rows="5" id="descricao"
                         placeholder="Descrição"></textarea>
                 </div>
-                <button class="loginBtn" onclick="redirectParaNovaPagina()"><span>Continuar</span></button>
+                <button class="loginBtn" onclick="configuracao_dispo()"><span>Continuar</span></button>
+                <div id="div_erro"></div>
             </div>
         </div>
     </div>
 </body>
-</html>
 
-<!--Lembrar de mudar -->
-<script>
-    function redirectParaNovaPagina() {
-            window.location.href = "/site/public/dashboard/cadastro/form3.html";
-        }
-    </script>
+</html>
 <script src="../../js/changeTheme.js"></script>
+<script src="../script.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
 <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
 
 <script>
-    function cadastrar_dispositivo(){
-        
-        var nameVar = rename.value;
-        var descritionVar = descricao.value;
+    function configuracao_dispo() {
+    var nomeVar = rename.value;
+    var descricaoVar = descricao.value;
+    var fkEmpresa = sessionStorage.ID_EMPRESA;
+    const div_erro = document.getElementById("div_erro");
 
-        
+    rename.value = ``;
+    descricao.value = ``;
+
+    if (nomeVar === "" || descricaoVar === "") {
+        div_erro.innerHTML = `Campos inválidos`;
+    } else {
+        fetch("/usuarios/configuracao_dispo", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                nomeServer: nomeVar,
+                descricaoServer: descricaoVar,
+                fkEmpresaServer: fkEmpresa
+            }),
+        })
+        .then(function (resposta) {
+            if (resposta.ok) {
+                abrirConfirmacaoDispo();  
+            } else {
+                throw new Error("Houve um erro ao tentar realizar o cadastro!");
+            }
+        })
+        .catch(function (resposta) {
+            console.log("#ERRO: " + resposta);
+        });
+
+        return false;
     }
+}
+
 </script>

@@ -15,5 +15,11 @@ router.post("/verificar_email", function (req, res) {
     usuarioController.verificar_email(req, res);
 });
 
+router.post("/configuracao_dispo", function (req, res) {
+    usuarioController.configuracao_dispo(req, res);
+});
+
+
+
 
 module.exports = router;

@@ -52,96 +52,87 @@ replaceButton.addEventListener('click', function () {
 var notificationCount = 0;
 
 function updateNotificationBadge() {
-  var notificationBadge = document.getElementById("notification-badge");
-  notificationBadge.textContent = notificationCount;
+    var notificationBadge = document.getElementById("notification-badge");
+    notificationBadge.textContent = notificationCount;
 
-  if (notificationCount === 0) {
-    notificationBadge.style.display = "none";
-  } else {
-    notificationBadge.style.display = "block";
-  }
+    if (notificationCount === 0) {
+        notificationBadge.style.display = "none";
+    } else {
+        notificationBadge.style.display = "block";
+    }
 }
-
-var notificationCount = 0; // Inicialize a variável notificationCount
 
 function addNotification(notification, notificationColor, fileUrl) {
-  var notificationList = document.getElementById("notification-list");
-  var listItem = document.createElement("li");
-  listItem.style.display = "flex";
-  listItem.style.alignItems = "center";
+    var notificationList = document.getElementById("notification-list");
+    var listItem = document.createElement("li");
+    listItem.style.display = "flex";
+    listItem.style.alignItems = "center";
 
-  var color = document.createElement("div");
-  color.style.backgroundColor = notificationColor;
-  color.style.borderRadius = "50%";
-  color.style.width = "15px";
-  color.style.height = "15px";
-  color.style.marginRight = "10px";
+    var color = document.createElement("div");
+    color.style.backgroundColor = notificationColor;
+    color.style.borderRadius = "50%";
+    color.style.width = "15px";
+    color.style.height = "15px";
+    color.style.marginRight = "10px";
 
-  var message = document.createElement("p");
-  message.textContent = notification;
+    var message = document.createElement("p");
+    message.textContent = notification;
 
-  listItem.appendChild(color);
-  listItem.appendChild(message);
+    listItem.appendChild(color);
+    listItem.appendChild(message);
 
-  if (fileUrl) {
-    listItem.addEventListener("click", function () {
-      openNewFile(fileUrl);
-    });
-  }
+    if (fileUrl) {
+        listItem.addEventListener("click", function () {
+            openNotificationFile(fileUrl);
+        });
+    }
 
-  notificationList.appendChild(listItem);
+    notificationList.appendChild(listItem);
 
-  notificationCount++;
-  updateNotificationBadge();
+    notificationCount++;
+    updateNotificationBadge();
 }
 
-// Restante do seu código...
-
 function clearNotifications() {
-  var notificationList = document.getElementById("notification-list");
-  notificationList.innerHTML = "";
-  notificationCount = 0; // Atualize a variável notificationCount para 0
-  updateNotificationBadge(); // Chame a função para atualizar o contador
+    var notificationList = document.getElementById("notification-list");
+    notificationList.innerHTML = "";
+    notificationCount = 0;
+    updateNotificationBadge();
 }
 
 function updateNotificationBadge() {
-  var badge = document.getElementById("notification-badge");
-  badge.textContent = notificationCount;
+    var badge = document.getElementById("notification-badge");
+    badge.textContent = notificationCount;
 }
 
 function toggleNotificationModal() {
-  var modal = document.getElementById("notification-modal");
-  modal.classList.toggle("show");
+    var modal = document.getElementById("notification-modal");
+    modal.classList.toggle("show");
 }
 
 function openNotificationFile(fileUrl) {
-  window.open(fileUrl, "_blank");
+    window.open(fileUrl, "_blank");
+}
+
+function toggleOrderModal() {
+    var modal = document.getElementById("order-modal");
+    modal.classList.toggle("show");
 }
 
 var notificationButton = document.getElementById("notification-button");
 notificationButton.addEventListener("click", toggleNotificationModal);
 
-
 var clearButton = document.getElementById("clear-button");
 clearButton.addEventListener("click", clearNotifications);
 
-addNotification("Nova Maquina detectada.", "blue", "/dashboard/cadastro/form2.html");
-addNotification("CPU atingiu 70%", "yellow", "./dispositivos.html");
-addNotification("Falha de rede, reinicie o dispositivo", "red", "./dispositivos.html");
-addNotification("Memoria atingiu 80%", "yellow", "./dispositivos.html");
-
-/*Botão ordenar*/
-function toggleOrderModal() {
-  var modal = document.getElementById("order-modal");
-  modal.classList.toggle("show");
-}
-
-function openOrderFile(fileUrl) {
-  window.open(fileUrl, "_blank");
-}
-
 var orderButton = document.getElementById("order-button");
 orderButton.addEventListener("click", toggleOrderModal);
+
+// Adicione suas notificações
+addNotification("Nova Máquina detectada.", "blue", "/dashboard/cadastro/form2.html");
+addNotification("CPU atingiu 70%", "yellow", "./dispositivos.html");
+addNotification("Falha de rede, reinicie o dispositivo", "red", "./dispositivos.html");
+addNotification("Memória atingiu 80%", "yellow", "./dispositivos.html");
 
 /*Barra de porcentagem*/
 function updateProgressBar(percentage, fillId, percentageId) {
@@ -262,6 +253,31 @@ Toast.fire({
 setTimeout(() => {
     location.reload();
 }, 3000);
+}
+
+
+function abrirConfirmacaoDispo(){
+  const Toast = Swal.mixin({
+    toast: true,
+    position: "top-end",
+    showConfirmButton: false,
+    timer: 3000,
+    timerProgressBar: true,
+    didOpen: (toast) => {
+        toast.onmouseenter = Swal.stopTimer;
+        toast.onmouseleave = Swal.resumeTimer;
+    }
+});
+
+Toast.fire({
+    icon: "success",
+    title: "Nome atualizado com sucesso!"
+});
+
+setTimeout(() => {
+  window.location = "/dashboard/cadastro/form3.html";
+}, 2000);
+
 }
 
 
