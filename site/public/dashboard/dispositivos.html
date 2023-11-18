@@ -13,7 +13,6 @@
 
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
-
 </head>
 
 <body onload="obterRegistrosCapturados()">
@@ -297,60 +296,60 @@
     let proximaAtualizacao;
 
     function obterRegistrosCapturados() {
-    if (proximaAtualizacao != undefined) {
-        clearTimeout(proximaAtualizacao);
-    }
+        if (proximaAtualizacao != undefined) {
+            clearTimeout(proximaAtualizacao);
+        }
 
-    //Ultimas medidas da CPU
-    fetch(`/dashboard/ultimasCpu`, { cache: 'no-store' }).then(function (response) {
-            if (response.ok) {
-                response.json().then(function (respostaCpu) {
-                console.log(respostaCpu)
-                console.log(`Dados recebidos: ${JSON.stringify(respostaCpu)}`);
-                respostaCpu.reverse();
-                plotarGraficoCPU(respostaCpu);
-                });
-            } else {
-                console.error('Nenhum dado encontrado ou erro na API');
-            }
-        }).catch(function (error) {
-            console.error(`Erro na obtenção dos dados p/ gráfico de CPU: ${error.message}`);
-        });
+        //Ultimas medidas da CPU
+        fetch(`/dashboard/ultimasCpu`, { cache: 'no-store' }).then(function (response) {
+                if (response.ok) {
+                    response.json().then(function (respostaCpu) {
+                    console.log(respostaCpu)
+                    console.log(`Dados recebidos: ${JSON.stringify(respostaCpu)}`);
+                    respostaCpu.reverse();
+                    plotarGraficoCPU(respostaCpu);
+                    });
+                } else {
+                    console.error('Nenhum dado encontrado ou erro na API');
+                }
+            }).catch(function (error) {
+                console.error(`Erro na obtenção dos dados p/ gráfico de CPU: ${error.message}`);
+            });
 
-    //Ultimas medidas da RAM
-    fetch(`/dashboard/ultimas`, { cache: 'no-store' }).then(function (response) {
-            if (response.ok) {
-                response.json().then(function (resposta) {
-                console.log(resposta)
-                console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
-                resposta.reverse();
-                plotarGraficoRAM(resposta);
-                });
-            } else {
-                console.error('Nenhum dado encontrado ou erro na API');
-            }
-        }).catch(function (error) {
-            console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
-        });
+        //Ultimas medidas da RAM
+        fetch(`/dashboard/ultimas`, { cache: 'no-store' }).then(function (response) {
+                if (response.ok) {
+                    response.json().then(function (resposta) {
+                    console.log(resposta)
+                    console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
+                    resposta.reverse();
+                    plotarGraficoRAM(resposta);
+                    });
+                } else {
+                    console.error('Nenhum dado encontrado ou erro na API');
+                }
+            }).catch(function (error) {
+                console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
+            });
 
-    //Ultimas medidas da DISCO
-    fetch(`/dashboard/ultimasDisco`, { cache: 'no-store' }).then(function (response) {
-            if (response.ok) {
-                response.json().then(function (respostaDisco) {
-                console.log(respostaDisco)
-                console.log(`Dados recebidos: ${JSON.stringify(respostaDisco)}`);
-                respostaDisco.reverse();
-                plotarGraficoDISCO(respostaDisco);
-                });
-            } else {
-                console.error('Nenhum dado encontrado ou erro na API');
-            }
-        }).catch(function (error) {
-            console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
-        });
+        //Ultimas medidas da DISCO
+        fetch(`/dashboard/ultimasDisco`, { cache: 'no-store' }).then(function (response) {
+                if (response.ok) {
+                    response.json().then(function (respostaDisco) {
+                    console.log(respostaDisco)
+                    console.log(`Dados recebidos: ${JSON.stringify(respostaDisco)}`);
+                    respostaDisco.reverse();
+                    plotarGraficoDISCO(respostaDisco);
+                    });
+                } else {
+                    console.error('Nenhum dado encontrado ou erro na API');
+                }
+            }).catch(function (error) {
+                console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
+            });
 
-    //Ultimas medidas da REDE
-    fetch(`/dashboard/ultimasRede`, { cache: 'no-store' }).then(function (response) {
+        //Ultimas medidas da REDE
+        fetch(`/dashboard/ultimasRede`, { cache: 'no-store' }).then(function (response) {
             if (response.ok) {
                 response.json().then(function (respostaRede) {
                 console.log(respostaRede)
@@ -361,8 +360,8 @@
             } else {
                 console.error('Nenhum dado encontrado ou erro na API');
             }
-        }).catch(function (error) {
-            console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
+            }).catch(function (error) {
+                console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
         });
     }
     
@@ -394,8 +393,10 @@
         var registro = resposta[i];
         labels.push(registro.momento_grafico);
         data.datasets[0].data.push(registro.captura);
-        const captura = registro.captura;
+        
         }
+
+        const captura = registro.captura;
 
         console.log('----------------------------------------------')
         console.log('O gráfico será plotado com os respectivos valores:')
@@ -441,6 +442,7 @@
         document.getElementById('myChart'),
         config
     );
+        setTimeout(() => updateProgressBar(captura, 'fill2', 'percentage2'), 1000);
         setTimeout(() => atualizarGrafico(data, myChart), 2000);
     }
 
@@ -472,8 +474,9 @@
         var registroRede = respostaRede[i];
         labelsRede.push(registroRede.momento_grafico);
         dataRede.datasets[0].data.push(registroRede.captura);
-        const capturaRede = registroRede.captura;
         }
+
+        const capturaRede = registroRede.captura;
 
         console.log('----------------------------------------------')
         console.log('O gráfico será plotado com os respectivos valores:')
@@ -518,6 +521,7 @@
             document.getElementById('myChart4'),
             configRede
         );
+            setTimeout(() => updateProgressBar(capturaRede, 'fill4', 'percentage4'), 1000);
             setTimeout(() => atualizarGraficoRede(dataRede, myChartRede), 2000);
     }
 
@@ -548,8 +552,9 @@
         var registroCpu = respostaCpu[i];
         labelsCpu.push(registroCpu.momento_grafico);
         dataCpu.datasets[0].data.push(registroCpu.captura);
-        const capturaCpu = registroCpu.captura;
         }
+
+        const capturaCpu = registroCpu.captura;
 
         console.log('----------------------------------------------')
         console.log('O gráfico será plotado com os respectivos valores:')
@@ -594,6 +599,7 @@
         document.getElementById('myChart2'),
         configCpu
     );
+        setTimeout(() => updateProgressBar(capturaCpu, 'fill1', 'percentage1'), 1000);
         setTimeout(() => atualizarGraficoCpu(dataCpu, myChartCpu), 2000);
     }
 
@@ -624,8 +630,9 @@
         var registroDisco = respostaDisco[i];
         labelsDisco.push(registroDisco.momento_grafico);
         dataDisco.datasets[0].data.push(registroDisco.captura);
-        const capturaDisco = registroDisco.captura;
         }
+
+        const capturaDisco = registroDisco.captura;
 
         console.log('----------------------------------------------')
         console.log('O gráfico será plotado com os respectivos valores:')
@@ -670,6 +677,7 @@
         document.getElementById('myChart3'),
         configDisco
     );
+        setTimeout(() => updateProgressBar(capturaDisco, 'fill3', 'percentage3'), 1000);
         setTimeout(() => atualizarGraficoDisco(dataDisco, myChartDisco), 2000);
     }
 
@@ -704,12 +712,16 @@
           }
 
           // Altere aqui o valor em ms se quiser que o gráfico atualize mais rápido ou mais devagar
-          proximaAtualizacao = setTimeout(() => atualizarGrafico(data, myChart), 2000);
+          proximaAtualizacao = setTimeout(() => updateProgressBar(captura, 'fill2', 'percentage2'), 1000);
+          proximaAtualizacao = setTimeout(() => atualizarGrafico(data, myChart), 1000);
+          
         });
       } else {
         console.error('Nenhum dado encontrado ou erro na API');
         // Altere aqui o valor em ms se quiser que o gráfico atualize mais rápido ou mais devagar
-        proximaAtualizacao = setTimeout(() => atualizarGrafico(data, myChart), 2000);
+        proximaAtualizacao = setTimeout(() => updateProgressBar(captura, 'fill2', 'percentage2'), 1000);
+        proximaAtualizacao = setTimeout(() => atualizarGrafico(data, myChart), 1000);
+        
       }
     }).catch(function (error) {
       console.error(`Erro na obtenção dos dados para o gráfico: ${error.message}`);
@@ -746,11 +758,13 @@
             myChartRede.update();
           }
           // Altere aqui o valor em ms se quiser que o gráfico atualize mais rápido ou mais devagar
+          proximaAtualizacao = setTimeout(() => updateProgressBar(captura, 'fill4', 'percentage4'), 2000);
           proximaAtualizacao = setTimeout(() => atualizarGraficoRede(dataRede, myChartRede), 2000);
         });
       } else {
         console.error('Nenhum dado encontrado ou erro na API');
         // Altere aqui o valor em ms se quiser que o gráfico atualize mais rápido ou mais devagar
+        proximaAtualizacao = setTimeout(() => updateProgressBar(captura, 'fill4', 'percentage4'), 2000);
         proximaAtualizacao = setTimeout(() => atualizarGraficoRede(dataRede, myChartRede), 2000);
       }
     }).catch(function (error) {
@@ -787,11 +801,13 @@
             myChartCpu.update();
           }
           // Altere aqui o valor em ms se quiser que o gráfico atualize mais rápido ou mais devagar
+          proximaAtualizacao = setTimeout(() => updateProgressBar(captura, 'fill1', 'percentage1'), 2000);
           proximaAtualizacao = setTimeout(() => atualizarGraficoCpu(dataCpu, myChartCpu), 2000);
         });
       } else {
         console.error('Nenhum dado encontrado ou erro na API');
         // Altere aqui o valor em ms se quiser que o gráfico atualize mais rápido ou mais devagar
+        proximaAtualizacao = setTimeout(() => updateProgressBar(captura, 'fill1', 'percentage1'), 2000);
         proximaAtualizacao = setTimeout(() => atualizarGraficoCpu(dataCpu, myChartCpu), 2000);
       }
     }).catch(function (error) {
@@ -828,11 +844,13 @@
             myChartDisco.update();
           }
           // Altere aqui o valor em ms se quiser que o gráfico atualize mais rápido ou mais devagar
+          proximaAtualizacao = setTimeout(() => updateProgressBar(captura, 'fill3', 'percentage3'), 2000);
           proximaAtualizacao = setTimeout(() => atualizarGraficoDisco(dataDisco, myChartDisco), 2000);
         });
       } else {
         console.error('Nenhum dado encontrado ou erro na API');
         // Altere aqui o valor em ms se quiser que o gráfico atualize mais rápido ou mais devagar
+        proximaAtualizacao = setTimeout(() => updateProgressBar(capturaDisco, 'fill3', 'percentage3'), 2000);
         proximaAtualizacao = setTimeout(() => atualizarGraficoDisco(dataDisco, myChartDisco), 2000);
       }
     }).catch(function (error) {
