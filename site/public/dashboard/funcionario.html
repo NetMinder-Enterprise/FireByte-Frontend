@@ -56,7 +56,7 @@
                             </a>
                             <span class="tooltip">Home</span>
                         </li>
-                        <li>
+                        <li style="display: block;" id="menu">
                             <a href="" class="a">
                                 <i class='bx bxs-user-plus'></i>
                                 <span class="links_name">Cadastrar</span>
@@ -225,6 +225,17 @@ function cadastrar_funcionario() {
   }
 }
 </script>
+<script>
+  menuNivelUsuario();
+  function menuNivelUsuario() {
+      var tipo = sessionStorage.TIPO_USUARIO;
+      var menu = document.getElementById("menu");
 
+      if (tipo == "convencional") {
+          menu.style.display = "none";
+      }
+
+  }
+</script>
 <script src="./script.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>

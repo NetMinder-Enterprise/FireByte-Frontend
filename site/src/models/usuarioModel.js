@@ -2,7 +2,8 @@ var database = require("../database/config")
 
 function entrar(email, senha) {
     var instrucao = `
-        SELECT * FROM usuario WHERE email = '${email}' AND senha = '${senha}';
+    SELECT tipo, email, nome, fkempresa, usuario.id FROM usuario inner join nivelAcesso on usuario.fkNivelAcesso = nivelAcesso.id
+    WHERE email = '${email}' and senha = '${senha}';
     `;
     console.log("Executando a instrução SQL: \n" + instrucao);
     return database.executar(instrucao);

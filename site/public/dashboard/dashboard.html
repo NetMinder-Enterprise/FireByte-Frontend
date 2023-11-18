@@ -24,6 +24,7 @@
 </head>
 
 <body>
+
     <div class="Header">
         <div class="body">
             <div class="sidebar">
@@ -63,7 +64,7 @@
                             </a>
                             <span class="tooltip">Home</span>
                         </li>
-                        <li>
+                        <li style="display: block;" id="menu">
                             <a href="./funcionario.html" class="a">
                                 <i class='bx bxs-user-plus'></i>
                                 <span class="links_name">Cadastrar</span>
@@ -257,6 +258,19 @@
     </script>
 
     <script src="script.js"></script>
+   
+    <script>
+        menuNivelUsuario();
+        function menuNivelUsuario() {
+            var tipo = sessionStorage.TIPO_USUARIO;
+            var menu = document.getElementById("menu");
+
+            if (tipo == "convencional") {
+                menu.style.display = "none";
+            }
+
+        }
+    </script>
 
     <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
