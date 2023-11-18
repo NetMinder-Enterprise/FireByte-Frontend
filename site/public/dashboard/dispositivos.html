@@ -14,7 +14,10 @@
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
 
-    <!-- Start of netminder Zendesk Widget script --><script id="ze-snippet" src="https://static.zdassets.com/ekr/snippet.js?key=56e60387-248f-40b0-9a79-52c62bf2dae9"> </script><!-- End of netminder Zendesk Widget script -->
+    <!-- Start of netminder Zendesk Widget script -->
+    <script id="ze-snippet"
+        src="https://static.zdassets.com/ekr/snippet.js?key=56e60387-248f-40b0-9a79-52c62bf2dae9"> </script>
+    <!-- End of netminder Zendesk Widget script -->
 </head>
 
 <body onload="obterRegistrosCapturados()">
@@ -237,9 +240,9 @@
         <button class="deteleBtn">Editar</button>
     </div>
 
-      <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
-<!-- 
+    <!-- 
     <div id="modal" class="modalExcluir">
         <div class="modal-content-excluir">
             <p>Você tem certeza que deseja excluir este dispositivo?</p>
@@ -250,7 +253,7 @@
         </div>
     </div> -->
 
-    
+
     <script src="script.js"></script>
     <script>
         menuNivelUsuario();
@@ -304,71 +307,71 @@
 
         //Ultimas medidas da CPU
         fetch(`/dashboard/ultimasCpu`, { cache: 'no-store' }).then(function (response) {
-                if (response.ok) {
-                    response.json().then(function (respostaCpu) {
+            if (response.ok) {
+                response.json().then(function (respostaCpu) {
                     console.log(respostaCpu)
                     console.log(`Dados recebidos: ${JSON.stringify(respostaCpu)}`);
                     respostaCpu.reverse();
                     plotarGraficoCPU(respostaCpu);
-                    });
-                } else {
-                    console.error('Nenhum dado encontrado ou erro na API');
-                }
-            }).catch(function (error) {
-                console.error(`Erro na obtenção dos dados p/ gráfico de CPU: ${error.message}`);
-            });
+                });
+            } else {
+                console.error('Nenhum dado encontrado ou erro na API');
+            }
+        }).catch(function (error) {
+            console.error(`Erro na obtenção dos dados p/ gráfico de CPU: ${error.message}`);
+        });
 
         //Ultimas medidas da RAM
         fetch(`/dashboard/ultimas`, { cache: 'no-store' }).then(function (response) {
-                if (response.ok) {
-                    response.json().then(function (resposta) {
+            if (response.ok) {
+                response.json().then(function (resposta) {
                     console.log(resposta)
                     console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
                     resposta.reverse();
                     plotarGraficoRAM(resposta);
-                    });
-                } else {
-                    console.error('Nenhum dado encontrado ou erro na API');
-                }
-            }).catch(function (error) {
-                console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
-            });
+                });
+            } else {
+                console.error('Nenhum dado encontrado ou erro na API');
+            }
+        }).catch(function (error) {
+            console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
+        });
 
         //Ultimas medidas da DISCO
         fetch(`/dashboard/ultimasDisco`, { cache: 'no-store' }).then(function (response) {
-                if (response.ok) {
-                    response.json().then(function (respostaDisco) {
+            if (response.ok) {
+                response.json().then(function (respostaDisco) {
                     console.log(respostaDisco)
                     console.log(`Dados recebidos: ${JSON.stringify(respostaDisco)}`);
                     respostaDisco.reverse();
                     plotarGraficoDISCO(respostaDisco);
-                    });
-                } else {
-                    console.error('Nenhum dado encontrado ou erro na API');
-                }
-            }).catch(function (error) {
-                console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
-            });
+                });
+            } else {
+                console.error('Nenhum dado encontrado ou erro na API');
+            }
+        }).catch(function (error) {
+            console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
+        });
 
         //Ultimas medidas da REDE
         fetch(`/dashboard/ultimasRede`, { cache: 'no-store' }).then(function (response) {
             if (response.ok) {
                 response.json().then(function (respostaRede) {
-                console.log(respostaRede)
-                console.log(`Dados recebidos: ${JSON.stringify(respostaRede)}`);
-                respostaRede.reverse();
-                plotarGraficoREDE(respostaRede);
+                    console.log(respostaRede)
+                    console.log(`Dados recebidos: ${JSON.stringify(respostaRede)}`);
+                    respostaRede.reverse();
+                    plotarGraficoREDE(respostaRede);
                 });
             } else {
                 console.error('Nenhum dado encontrado ou erro na API');
             }
-            }).catch(function (error) {
-                console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
+        }).catch(function (error) {
+            console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
         });
     }
-    
+
     /*RAM*/
-    function plotarGraficoRAM(resposta){
+    function plotarGraficoRAM(resposta) {
         console.log('Iniciando plotagem dos gráficos...');
 
         //Criando estrutura que receberá as labels dinâmicamente
@@ -376,13 +379,13 @@
 
         //Criando estrutura do gráfico RAM
         const data = {
-        labels: labels,
-        datasets: [{
-            label: 'RAM',
-            backgroundColor: backgroundColor,
-            borderColor: borderColor,
-            //A listagem de data precisa estar vazia para receber os dados da plotagem
-            data: [],
+            labels: labels,
+            datasets: [{
+                label: 'RAM',
+                backgroundColor: backgroundColor,
+                borderColor: borderColor,
+                //A listagem de data precisa estar vazia para receber os dados da plotagem
+                data: [],
             }]
         };
         console.log('----------------------------------------------');
@@ -392,10 +395,10 @@
         // Inserindo valores recebidos em estrutura para plotar o gráfico
         //provavelmente para cada gráfico específico será necessário mudar a query na model para capturar o tipoComponente
         for (i = 0; i < resposta.length; i++) {
-        var registro = resposta[i];
-        labels.push(registro.momento_grafico);
-        data.datasets[0].data.push(registro.captura);
-        
+            var registro = resposta[i];
+            labels.push(registro.momento_grafico);
+            data.datasets[0].data.push(registro.captura);
+
         }
 
         const captura = registro.captura;
@@ -411,57 +414,57 @@
 
         /* Configurando o gráfico da RAM */
         const config = {
-        type: 'line',
-        data: data,
-        options: {
-            plugins: {
-                legend: {
-                    labels: {
-                        fontSize: 15, // Ajusta o tamanho da fonte para a legenda
-                        color: textColor // Ajusta a cor do texto da legenda
-                    }
-                }
-            },
-            scales: {
-                y: {
-                    ticks: {
-                        fontSize: 15, // Ajusta o tamanho da fonte para os ticks do eixo y
-                        color: textColor // Ajusta a cor do texto dos ticks do eixo y
+            type: 'line',
+            data: data,
+            options: {
+                plugins: {
+                    legend: {
+                        labels: {
+                            fontSize: 15, // Ajusta o tamanho da fonte para a legenda
+                            color: textColor // Ajusta a cor do texto da legenda
+                        }
                     }
                 },
-                x: {
-                    ticks: {
-                        fontSize: 15, // Ajusta o tamanho da fonte para os ticks do eixo x
-                        color: textColor // Ajusta a cor do texto dos ticks do eixo x
+                scales: {
+                    y: {
+                        ticks: {
+                            fontSize: 15, // Ajusta o tamanho da fonte para os ticks do eixo y
+                            color: textColor // Ajusta a cor do texto dos ticks do eixo y
+                        }
+                    },
+                    x: {
+                        ticks: {
+                            fontSize: 15, // Ajusta o tamanho da fonte para os ticks do eixo x
+                            color: textColor // Ajusta a cor do texto dos ticks do eixo x
+                        }
                     }
                 }
             }
-        }
-    };
+        };
 
-    //Adicionando o gráfico da RAM em DIV
-    const myChart = new Chart(
-        document.getElementById('myChart'),
-        config
-    );
+        //Adicionando o gráfico da RAM em DIV
+        const myChart = new Chart(
+            document.getElementById('myChart'),
+            config
+        );
         setTimeout(() => updateProgressBar(captura, 'fill2', 'percentage2'), 1000);
         setTimeout(() => atualizarGrafico(data, myChart), 2000);
     }
 
     /*REDE*/
-    function plotarGraficoREDE(respostaRede){
+    function plotarGraficoREDE(respostaRede) {
         console.log('Iniciando plotagem do gráfico de REDE...');
         /*Criando estrutura para o gráfico de REDE*/
         const labelsRede = [];
 
         const dataRede = {
-        labels: labelsRede,
-        datasets: [{
-            label: 'REDE',
-            backgroundColor: backgroundColor,
-            borderColor: borderColor,
-            //A listagem de data precisa estar vazia para receber os dados da plotagem
-            data: [],
+            labels: labelsRede,
+            datasets: [{
+                label: 'REDE',
+                backgroundColor: backgroundColor,
+                borderColor: borderColor,
+                //A listagem de data precisa estar vazia para receber os dados da plotagem
+                data: [],
             }]
         };
 
@@ -469,13 +472,13 @@
         console.log('Estes dados foram recebidos pela função "obterRegistrosCapturados" e passados para "plotarGraficoRAM":');
         console.log(respostaRede);
 
-        
+
         // Inserindo valores recebidos em estrutura para plotar o gráfico
         //provavelmente para cada gráfico específico será necessário mudar a query na model para capturar o tipoComponente
         for (i = 0; i < respostaRede.length; i++) {
-        var registroRede = respostaRede[i];
-        labelsRede.push(registroRede.momento_grafico);
-        dataRede.datasets[0].data.push(registroRede.captura);
+            var registroRede = respostaRede[i];
+            labelsRede.push(registroRede.momento_grafico);
+            dataRede.datasets[0].data.push(registroRede.captura);
         }
 
         const capturaRede = registroRede.captura;
@@ -523,24 +526,24 @@
             document.getElementById('myChart4'),
             configRede
         );
-            setTimeout(() => updateProgressBar(capturaRede, 'fill4', 'percentage4'), 1000);
-            setTimeout(() => atualizarGraficoRede(dataRede, myChartRede), 2000);
+        setTimeout(() => updateProgressBar(capturaRede, 'fill4', 'percentage4'), 1000);
+        setTimeout(() => atualizarGraficoRede(dataRede, myChartRede), 2000);
     }
 
     /*CPU*/
-    function plotarGraficoCPU(respostaCpu){
+    function plotarGraficoCPU(respostaCpu) {
         console.log('Iniciando plotagem do gráfico de CPU...');
         /*Criando estrutura para o gráfico de CPU*/
         const labelsCpu = [];
 
         const dataCpu = {
-        labels: labelsCpu,
-        datasets: [{
-            label: 'CPU',
-            backgroundColor: backgroundColor,
-            borderColor: borderColor,
-            //A listagem de data precisa estar vazia para receber os dados da plotagem
-            data: [],
+            labels: labelsCpu,
+            datasets: [{
+                label: 'CPU',
+                backgroundColor: backgroundColor,
+                borderColor: borderColor,
+                //A listagem de data precisa estar vazia para receber os dados da plotagem
+                data: [],
             }]
         };
 
@@ -551,9 +554,9 @@
         // Inserindo valores recebidos em estrutura para plotar o gráfico
         //provavelmente para cada gráfico específico será necessário mudar a query na model para capturar o tipoComponente
         for (i = 0; i < respostaCpu.length; i++) {
-        var registroCpu = respostaCpu[i];
-        labelsCpu.push(registroCpu.momento_grafico);
-        dataCpu.datasets[0].data.push(registroCpu.captura);
+            var registroCpu = respostaCpu[i];
+            labelsCpu.push(registroCpu.momento_grafico);
+            dataCpu.datasets[0].data.push(registroCpu.captura);
         }
 
         const capturaCpu = registroCpu.captura;
@@ -566,59 +569,59 @@
         console.log(dataCpu.datasets)
         console.log('----------------------------------------------')
 
-    /* Configurando o gráfico da CPU */
-    const configCpu = {
-        type: 'line',
-        data: dataCpu,
-        options: {
-            plugins: {
-                legend: {
-                    labelsCpu: {
-                        fontSize: 15, // Ajusta o tamanho da fonte para a legenda
-                        color: textColor // Ajusta a cor do texto da legenda
-                    }
-                }
-            },
-            scales: {
-                y: {
-                    ticks: {
-                        fontSize: 15, // Ajusta o tamanho da fonte para os ticks do eixo y
-                        color: textColor // Ajusta a cor do texto dos ticks do eixo y
+        /* Configurando o gráfico da CPU */
+        const configCpu = {
+            type: 'line',
+            data: dataCpu,
+            options: {
+                plugins: {
+                    legend: {
+                        labelsCpu: {
+                            fontSize: 15, // Ajusta o tamanho da fonte para a legenda
+                            color: textColor // Ajusta a cor do texto da legenda
+                        }
                     }
                 },
-                x: {
-                    ticks: {
-                        fontSize: 15, // Ajusta o tamanho da fonte para os ticks do eixo x
-                        color: textColor // Ajusta a cor do texto dos ticks do eixo x
+                scales: {
+                    y: {
+                        ticks: {
+                            fontSize: 15, // Ajusta o tamanho da fonte para os ticks do eixo y
+                            color: textColor // Ajusta a cor do texto dos ticks do eixo y
+                        }
+                    },
+                    x: {
+                        ticks: {
+                            fontSize: 15, // Ajusta o tamanho da fonte para os ticks do eixo x
+                            color: textColor // Ajusta a cor do texto dos ticks do eixo x
+                        }
                     }
                 }
             }
-        }
-    };
+        };
 
-    //Adicionando o gráfico da CPU em DIV
-    const myChartCpu = new Chart(
-        document.getElementById('myChart2'),
-        configCpu
-    );
+        //Adicionando o gráfico da CPU em DIV
+        const myChartCpu = new Chart(
+            document.getElementById('myChart2'),
+            configCpu
+        );
         setTimeout(() => updateProgressBar(capturaCpu, 'fill1', 'percentage1'), 1000);
         setTimeout(() => atualizarGraficoCpu(dataCpu, myChartCpu), 2000);
     }
 
-        /*DISCO*/
-        function plotarGraficoDISCO(respostaDisco){
+    /*DISCO*/
+    function plotarGraficoDISCO(respostaDisco) {
         console.log('Iniciando plotagem do gráfico de DISCO...');
         /*Criando estrutura para o gráfico de DISCO*/
         const labelsDisco = [];
 
         const dataDisco = {
-        labels: labelsDisco,
-        datasets: [{
-            label: 'DISCO',
-            backgroundColor: backgroundColor,
-            borderColor: borderColor,
-            //A listagem de data precisa estar vazia para receber os dados da plotagem
-            data: [],
+            labels: labelsDisco,
+            datasets: [{
+                label: 'DISCO',
+                backgroundColor: backgroundColor,
+                borderColor: borderColor,
+                //A listagem de data precisa estar vazia para receber os dados da plotagem
+                data: [],
             }]
         };
 
@@ -629,9 +632,9 @@
         // Inserindo valores recebidos em estrutura para plotar o gráfico
         //provavelmente para cada gráfico específico será necessário mudar a query na model para capturar o tipoComponente
         for (i = 0; i < respostaDisco.length; i++) {
-        var registroDisco = respostaDisco[i];
-        labelsDisco.push(registroDisco.momento_grafico);
-        dataDisco.datasets[0].data.push(registroDisco.captura);
+            var registroDisco = respostaDisco[i];
+            labelsDisco.push(registroDisco.momento_grafico);
+            dataDisco.datasets[0].data.push(registroDisco.captura);
         }
 
         const capturaDisco = registroDisco.captura;
@@ -644,221 +647,221 @@
         console.log(dataDisco.datasets)
         console.log('----------------------------------------------')
 
-    /* Configurando o gráfico da DISCO */
-    const configDisco = {
-        type: 'line',
-        data: dataDisco,
-        options: {
-            plugins: {
-                legend: {
-                    labelsDisco: {
-                        fontSize: 15, // Ajusta o tamanho da fonte para a legenda
-                        color: textColor // Ajusta a cor do texto da legenda
-                    }
-                }
-            },
-            scales: {
-                y: {
-                    ticks: {
-                        fontSize: 15, // Ajusta o tamanho da fonte para os ticks do eixo y
-                        color: textColor // Ajusta a cor do texto dos ticks do eixo y
+        /* Configurando o gráfico da DISCO */
+        const configDisco = {
+            type: 'line',
+            data: dataDisco,
+            options: {
+                plugins: {
+                    legend: {
+                        labelsDisco: {
+                            fontSize: 15, // Ajusta o tamanho da fonte para a legenda
+                            color: textColor // Ajusta a cor do texto da legenda
+                        }
                     }
                 },
-                x: {
-                    ticks: {
-                        fontSize: 15, // Ajusta o tamanho da fonte para os ticks do eixo x
-                        color: textColor // Ajusta a cor do texto dos ticks do eixo x
+                scales: {
+                    y: {
+                        ticks: {
+                            fontSize: 15, // Ajusta o tamanho da fonte para os ticks do eixo y
+                            color: textColor // Ajusta a cor do texto dos ticks do eixo y
+                        }
+                    },
+                    x: {
+                        ticks: {
+                            fontSize: 15, // Ajusta o tamanho da fonte para os ticks do eixo x
+                            color: textColor // Ajusta a cor do texto dos ticks do eixo x
+                        }
                     }
                 }
             }
-        }
-    };
+        };
 
-    //Adicionando o gráfico da DISCO em DIV
-    const myChartDisco = new Chart(
-        document.getElementById('myChart3'),
-        configDisco
-    );
+        //Adicionando o gráfico da DISCO em DIV
+        const myChartDisco = new Chart(
+            document.getElementById('myChart3'),
+            configDisco
+        );
         setTimeout(() => updateProgressBar(capturaDisco, 'fill3', 'percentage3'), 1000);
         setTimeout(() => atualizarGraficoDisco(dataDisco, myChartDisco), 2000);
     }
 
     //Atualizações de gráficos
     function atualizarGrafico(data, myChart) {
-    fetch(`/dashboard/tempo-real`, { cache: 'no-store' }).then(function (response) {
-      if (response.ok) {
-        response.json().then(function (novoRegistro) {
-          console.log(`Dados recebidos: ${JSON.stringify(novoRegistro)}`);
-          console.log(`Dados atuais do gráfico:`);
-          console.log(data);
+        fetch(`/dashboard/tempo-real`, { cache: 'no-store' }).then(function (response) {
+            if (response.ok) {
+                response.json().then(function (novoRegistro) {
+                    console.log(`Dados recebidos: ${JSON.stringify(novoRegistro)}`);
+                    console.log(`Dados atuais do gráfico:`);
+                    console.log(data);
 
-          const captura = novoRegistro[0].captura;
+                    const captura = novoRegistro[0].captura;
 
-          if (novoRegistro[0].momento_grafico === data.labels[data.labels.length - 1]) {
-            console.log("---------------------------------------------------------------")
-            console.log("Como não há dados novos para captura, o gráfico não atualizará.")
-            console.log("Horário do novo dado capturado:")
-            console.log(novoRegistro[0].momento_grafico)
-            console.log("Horário do último dado de capturado:")
-            console.log(data.labels[data.labels.length - 1])
-            console.log("---------------------------------------------------------------")
-          } else {
-            // Tirar e colocar valores no gráfico
-            data.labels.shift(); // Apagar o primeiro
-            data.labels.push(novoRegistro[0].momento_grafico); // Incluir um novo momento
+                    if (novoRegistro[0].momento_grafico === data.labels[data.labels.length - 1]) {
+                        console.log("---------------------------------------------------------------")
+                        console.log("Como não há dados novos para captura, o gráfico não atualizará.")
+                        console.log("Horário do novo dado capturado:")
+                        console.log(novoRegistro[0].momento_grafico)
+                        console.log("Horário do último dado de capturado:")
+                        console.log(data.labels[data.labels.length - 1])
+                        console.log("---------------------------------------------------------------")
+                    } else {
+                        // Tirar e colocar valores no gráfico
+                        data.labels.shift(); // Apagar o primeiro
+                        data.labels.push(novoRegistro[0].momento_grafico); // Incluir um novo momento
 
-            data.datasets[0].data.shift();  // Apagar o primeiro valor capturado
-            data.datasets[0].data.push(captura); // Incluir o novo valor capturado
+                        data.datasets[0].data.shift();  // Apagar o primeiro valor capturado
+                        data.datasets[0].data.push(captura); // Incluir o novo valor capturado
 
-            myChart.update();
-          }
+                        myChart.update();
+                    }
 
-          // Altere aqui o valor em ms se quiser que o gráfico atualize mais rápido ou mais devagar
-          proximaAtualizacao = setTimeout(() => updateProgressBar(captura, 'fill2', 'percentage2'), 1000);
-          proximaAtualizacao = setTimeout(() => atualizarGrafico(data, myChart), 1000);
-          
+                    // Altere aqui o valor em ms se quiser que o gráfico atualize mais rápido ou mais devagar
+                    proximaAtualizacao = setTimeout(() => updateProgressBar(captura, 'fill2', 'percentage2'), 1000);
+                    proximaAtualizacao = setTimeout(() => atualizarGrafico(data, myChart), 1000);
+
+                });
+            } else {
+                console.error('Nenhum dado encontrado ou erro na API');
+                // Altere aqui o valor em ms se quiser que o gráfico atualize mais rápido ou mais devagar
+                proximaAtualizacao = setTimeout(() => updateProgressBar(captura, 'fill2', 'percentage2'), 1000);
+                proximaAtualizacao = setTimeout(() => atualizarGrafico(data, myChart), 1000);
+
+            }
+        }).catch(function (error) {
+            console.error(`Erro na obtenção dos dados para o gráfico: ${error.message}`);
         });
-      } else {
-        console.error('Nenhum dado encontrado ou erro na API');
-        // Altere aqui o valor em ms se quiser que o gráfico atualize mais rápido ou mais devagar
-        proximaAtualizacao = setTimeout(() => updateProgressBar(captura, 'fill2', 'percentage2'), 1000);
-        proximaAtualizacao = setTimeout(() => atualizarGrafico(data, myChart), 1000);
-        
-      }
-    }).catch(function (error) {
-      console.error(`Erro na obtenção dos dados para o gráfico: ${error.message}`);
-    });
 
-  }
+    }
 
-  function atualizarGraficoRede(dataRede, myChartRede) {
-    fetch(`/dashboard/tempo-real-rede`, { cache: 'no-store' }).then(function (response) {
-      if (response.ok) {
-        response.json().then(function (novoRegistro) {
-          console.log(`Dados recebidos: ${JSON.stringify(novoRegistro)}`);
-          console.log(`Dados atuais do gráfico:`);
-          console.log(dataRede);
+    function atualizarGraficoRede(dataRede, myChartRede) {
+        fetch(`/dashboard/tempo-real-rede`, { cache: 'no-store' }).then(function (response) {
+            if (response.ok) {
+                response.json().then(function (novoRegistro) {
+                    console.log(`Dados recebidos: ${JSON.stringify(novoRegistro)}`);
+                    console.log(`Dados atuais do gráfico:`);
+                    console.log(dataRede);
 
-          const captura = novoRegistro[0].captura;
+                    const captura = novoRegistro[0].captura;
 
-          if (novoRegistro[0].momento_grafico === dataRede.labels[dataRede.labels.length - 1]) {
-            console.log("---------------------------------------------------------------")
-            console.log("Como não há dados novos para captura, o gráfico não atualizará.")
-            console.log("Horário do novo dado capturado:")
-            console.log(novoRegistro[0].momento_grafico)
-            console.log("Horário do último dado capturado:")
-            console.log(dataRede.labels[dataRede.labels.length - 1])
-            console.log("---------------------------------------------------------------")
-          } else {
-            // Tirar e colocar valores no gráfico
-            dataRede.labels.shift(); // Apagar o primeiro
-            dataRede.labels.push(novoRegistro[0].momento_grafico); // Incluir um novo momento
+                    if (novoRegistro[0].momento_grafico === dataRede.labels[dataRede.labels.length - 1]) {
+                        console.log("---------------------------------------------------------------")
+                        console.log("Como não há dados novos para captura, o gráfico não atualizará.")
+                        console.log("Horário do novo dado capturado:")
+                        console.log(novoRegistro[0].momento_grafico)
+                        console.log("Horário do último dado capturado:")
+                        console.log(dataRede.labels[dataRede.labels.length - 1])
+                        console.log("---------------------------------------------------------------")
+                    } else {
+                        // Tirar e colocar valores no gráfico
+                        dataRede.labels.shift(); // Apagar o primeiro
+                        dataRede.labels.push(novoRegistro[0].momento_grafico); // Incluir um novo momento
 
-            dataRede.datasets[0].data.shift();  // Apagar o primeiro valor capturado
-            dataRede.datasets[0].data.push(captura); // Incluir o novo valor capturado
+                        dataRede.datasets[0].data.shift();  // Apagar o primeiro valor capturado
+                        dataRede.datasets[0].data.push(captura); // Incluir o novo valor capturado
 
-            myChartRede.update();
-          }
-          // Altere aqui o valor em ms se quiser que o gráfico atualize mais rápido ou mais devagar
-          proximaAtualizacao = setTimeout(() => updateProgressBar(captura, 'fill4', 'percentage4'), 2000);
-          proximaAtualizacao = setTimeout(() => atualizarGraficoRede(dataRede, myChartRede), 2000);
+                        myChartRede.update();
+                    }
+                    // Altere aqui o valor em ms se quiser que o gráfico atualize mais rápido ou mais devagar
+                    proximaAtualizacao = setTimeout(() => updateProgressBar(captura, 'fill4', 'percentage4'), 2000);
+                    proximaAtualizacao = setTimeout(() => atualizarGraficoRede(dataRede, myChartRede), 2000);
+                });
+            } else {
+                console.error('Nenhum dado encontrado ou erro na API');
+                // Altere aqui o valor em ms se quiser que o gráfico atualize mais rápido ou mais devagar
+                proximaAtualizacao = setTimeout(() => updateProgressBar(captura, 'fill4', 'percentage4'), 2000);
+                proximaAtualizacao = setTimeout(() => atualizarGraficoRede(dataRede, myChartRede), 2000);
+            }
+        }).catch(function (error) {
+            console.error(`Erro na obtenção dos dados para o gráfico: ${error.message}`);
         });
-      } else {
-        console.error('Nenhum dado encontrado ou erro na API');
-        // Altere aqui o valor em ms se quiser que o gráfico atualize mais rápido ou mais devagar
-        proximaAtualizacao = setTimeout(() => updateProgressBar(captura, 'fill4', 'percentage4'), 2000);
-        proximaAtualizacao = setTimeout(() => atualizarGraficoRede(dataRede, myChartRede), 2000);
-      }
-    }).catch(function (error) {
-      console.error(`Erro na obtenção dos dados para o gráfico: ${error.message}`);
-    });
-  }
+    }
 
-  function atualizarGraficoCpu(dataCpu, myChartCpu) {
-    fetch(`/dashboard/tempo-real-cpu`, { cache: 'no-store' }).then(function (response) {
-      if (response.ok) {
-        response.json().then(function (novoRegistro) {
-          console.log(`Dados recebidos: ${JSON.stringify(novoRegistro)}`);
-          console.log(`Dados atuais do gráfico:`);
-          console.log(dataCpu);
+    function atualizarGraficoCpu(dataCpu, myChartCpu) {
+        fetch(`/dashboard/tempo-real-cpu`, { cache: 'no-store' }).then(function (response) {
+            if (response.ok) {
+                response.json().then(function (novoRegistro) {
+                    console.log(`Dados recebidos: ${JSON.stringify(novoRegistro)}`);
+                    console.log(`Dados atuais do gráfico:`);
+                    console.log(dataCpu);
 
-          const captura = novoRegistro[0].captura;
+                    const captura = novoRegistro[0].captura;
 
-          if (novoRegistro[0].momento_grafico === dataCpu.labels[dataCpu.labels.length - 1]) {
-            console.log("---------------------------------------------------------------")
-            console.log("Como não há dados novos para captura, o gráfico não atualizará.")
-            console.log("Horário do novo dado capturado:")
-            console.log(novoRegistro[0].momento_grafico)
-            console.log("Horário do último dado capturado:")
-            console.log(dataCpu.labels[dataCpu.labels.length - 1])
-            console.log("---------------------------------------------------------------")
-          } else {
-            // Tirar e colocar valores no gráfico
-            dataCpu.labels.shift(); // Apagar o primeiro
-            dataCpu.labels.push(novoRegistro[0].momento_grafico); // Incluir um novo momento
+                    if (novoRegistro[0].momento_grafico === dataCpu.labels[dataCpu.labels.length - 1]) {
+                        console.log("---------------------------------------------------------------")
+                        console.log("Como não há dados novos para captura, o gráfico não atualizará.")
+                        console.log("Horário do novo dado capturado:")
+                        console.log(novoRegistro[0].momento_grafico)
+                        console.log("Horário do último dado capturado:")
+                        console.log(dataCpu.labels[dataCpu.labels.length - 1])
+                        console.log("---------------------------------------------------------------")
+                    } else {
+                        // Tirar e colocar valores no gráfico
+                        dataCpu.labels.shift(); // Apagar o primeiro
+                        dataCpu.labels.push(novoRegistro[0].momento_grafico); // Incluir um novo momento
 
-            dataCpu.datasets[0].data.shift();  // Apagar o primeiro valor capturado
-            dataCpu.datasets[0].data.push(captura); // Incluir o novo valor capturado
+                        dataCpu.datasets[0].data.shift();  // Apagar o primeiro valor capturado
+                        dataCpu.datasets[0].data.push(captura); // Incluir o novo valor capturado
 
-            myChartCpu.update();
-          }
-          // Altere aqui o valor em ms se quiser que o gráfico atualize mais rápido ou mais devagar
-          proximaAtualizacao = setTimeout(() => updateProgressBar(captura, 'fill1', 'percentage1'), 2000);
-          proximaAtualizacao = setTimeout(() => atualizarGraficoCpu(dataCpu, myChartCpu), 2000);
+                        myChartCpu.update();
+                    }
+                    // Altere aqui o valor em ms se quiser que o gráfico atualize mais rápido ou mais devagar
+                    proximaAtualizacao = setTimeout(() => updateProgressBar(captura, 'fill1', 'percentage1'), 2000);
+                    proximaAtualizacao = setTimeout(() => atualizarGraficoCpu(dataCpu, myChartCpu), 2000);
+                });
+            } else {
+                console.error('Nenhum dado encontrado ou erro na API');
+                // Altere aqui o valor em ms se quiser que o gráfico atualize mais rápido ou mais devagar
+                proximaAtualizacao = setTimeout(() => updateProgressBar(captura, 'fill1', 'percentage1'), 2000);
+                proximaAtualizacao = setTimeout(() => atualizarGraficoCpu(dataCpu, myChartCpu), 2000);
+            }
+        }).catch(function (error) {
+            console.error(`Erro na obtenção dos dados para o gráfico: ${error.message}`);
         });
-      } else {
-        console.error('Nenhum dado encontrado ou erro na API');
-        // Altere aqui o valor em ms se quiser que o gráfico atualize mais rápido ou mais devagar
-        proximaAtualizacao = setTimeout(() => updateProgressBar(captura, 'fill1', 'percentage1'), 2000);
-        proximaAtualizacao = setTimeout(() => atualizarGraficoCpu(dataCpu, myChartCpu), 2000);
-      }
-    }).catch(function (error) {
-      console.error(`Erro na obtenção dos dados para o gráfico: ${error.message}`);
-    });
-  }
+    }
 
-  function atualizarGraficoDisco(dataDisco, myChartDisco) {
-    fetch(`/dashboard/tempo-real-disco`, { cache: 'no-store' }).then(function (response) {
-      if (response.ok) {
-        response.json().then(function (novoRegistro) {
-          console.log(`Dados recebidos: ${JSON.stringify(novoRegistro)}`);
-          console.log(`Dados atuais do gráfico:`);
-          console.log(dataDisco);
+    function atualizarGraficoDisco(dataDisco, myChartDisco) {
+        fetch(`/dashboard/tempo-real-disco`, { cache: 'no-store' }).then(function (response) {
+            if (response.ok) {
+                response.json().then(function (novoRegistro) {
+                    console.log(`Dados recebidos: ${JSON.stringify(novoRegistro)}`);
+                    console.log(`Dados atuais do gráfico:`);
+                    console.log(dataDisco);
 
-          const captura = novoRegistro[0].captura;
+                    const captura = novoRegistro[0].captura;
 
-          if (novoRegistro[0].momento_grafico === dataDisco.labels[dataDisco.labels.length - 1]) {
-            console.log("---------------------------------------------------------------")
-            console.log("Como não há dados novos para captura, o gráfico não atualizará.")
-            console.log("Horário do novo dado capturado:")  
-            console.log(novoRegistro[0].momento_grafico)
-            console.log("Horário do último dado capturado:")
-            console.log(dataDisco.labels[dataDisco.labels.length - 1])
-            console.log("---------------------------------------------------------------")
-          } else {
-            // Tirar e colocar valores no gráfico
-            dataDisco.labels.shift(); // Apagar o primeiro
-            dataDisco.labels.push(novoRegistro[0].momento_grafico); // Incluir um novo momento
+                    if (novoRegistro[0].momento_grafico === dataDisco.labels[dataDisco.labels.length - 1]) {
+                        console.log("---------------------------------------------------------------")
+                        console.log("Como não há dados novos para captura, o gráfico não atualizará.")
+                        console.log("Horário do novo dado capturado:")
+                        console.log(novoRegistro[0].momento_grafico)
+                        console.log("Horário do último dado capturado:")
+                        console.log(dataDisco.labels[dataDisco.labels.length - 1])
+                        console.log("---------------------------------------------------------------")
+                    } else {
+                        // Tirar e colocar valores no gráfico
+                        dataDisco.labels.shift(); // Apagar o primeiro
+                        dataDisco.labels.push(novoRegistro[0].momento_grafico); // Incluir um novo momento
 
-            dataDisco.datasets[0].data.shift();  // Apagar o primeiro valor capturado
-            dataDisco.datasets[0].data.push(captura); // Incluir o novo valor capturado
+                        dataDisco.datasets[0].data.shift();  // Apagar o primeiro valor capturado
+                        dataDisco.datasets[0].data.push(captura); // Incluir o novo valor capturado
 
-            myChartDisco.update();
-          }
-          // Altere aqui o valor em ms se quiser que o gráfico atualize mais rápido ou mais devagar
-          proximaAtualizacao = setTimeout(() => updateProgressBar(captura, 'fill3', 'percentage3'), 2000);
-          proximaAtualizacao = setTimeout(() => atualizarGraficoDisco(dataDisco, myChartDisco), 2000);
+                        myChartDisco.update();
+                    }
+                    // Altere aqui o valor em ms se quiser que o gráfico atualize mais rápido ou mais devagar
+                    proximaAtualizacao = setTimeout(() => updateProgressBar(captura, 'fill3', 'percentage3'), 2000);
+                    proximaAtualizacao = setTimeout(() => atualizarGraficoDisco(dataDisco, myChartDisco), 2000);
+                });
+            } else {
+                console.error('Nenhum dado encontrado ou erro na API');
+                // Altere aqui o valor em ms se quiser que o gráfico atualize mais rápido ou mais devagar
+                proximaAtualizacao = setTimeout(() => updateProgressBar(capturaDisco, 'fill3', 'percentage3'), 2000);
+                proximaAtualizacao = setTimeout(() => atualizarGraficoDisco(dataDisco, myChartDisco), 2000);
+            }
+        }).catch(function (error) {
+            console.error(`Erro na obtenção dos dados para o gráfico: ${error.message}`);
         });
-      } else {
-        console.error('Nenhum dado encontrado ou erro na API');
-        // Altere aqui o valor em ms se quiser que o gráfico atualize mais rápido ou mais devagar
-        proximaAtualizacao = setTimeout(() => updateProgressBar(capturaDisco, 'fill3', 'percentage3'), 2000);
-        proximaAtualizacao = setTimeout(() => atualizarGraficoDisco(dataDisco, myChartDisco), 2000);
-      }
-    }).catch(function (error) {
-      console.error(`Erro na obtenção dos dados para o gráfico: ${error.message}`);
-    });
-  }
+    }
 
 
     // ** Estrutura para parametrizar indicadores de alertas **
@@ -879,7 +882,7 @@
     // dados.datasets[0].borderColor = '#c60a14';
     // dados.datasets[0].label = 'Medida abaixo'
     // }
-    
-</script>
-</html>
 
+</script>
+
+</html>

@@ -10,6 +10,11 @@
     <link rel="stylesheet" href="../../css/style.css">
     <link rel="stylesheet" href="./css/index.css">
     <link rel="stylesheet" href="../../css/global.css">
+
+    <!-- Start of netminder Zendesk Widget script -->
+    <script id="ze-snippet"
+        src="https://static.zdassets.com/ekr/snippet.js?key=56e60387-248f-40b0-9a79-52c62bf2dae9"> </script>
+    <!-- End of netminder Zendesk Widget script -->
 </head>
 
 <body>
@@ -53,41 +58,41 @@
 
 <script>
     function configuracao_dispo() {
-    var nomeVar = rename.value;
-    var descricaoVar = descricao.value;
-    var fkEmpresa = sessionStorage.ID_EMPRESA;
-    const div_erro = document.getElementById("div_erro");
+        var nomeVar = rename.value;
+        var descricaoVar = descricao.value;
+        var fkEmpresa = sessionStorage.ID_EMPRESA;
+        const div_erro = document.getElementById("div_erro");
 
-    rename.value = ``;
-    descricao.value = ``;
+        rename.value = ``;
+        descricao.value = ``;
 
-    if (nomeVar === "" || descricaoVar === "") {
-        div_erro.innerHTML = `Campos inválidos`;
-    } else {
-        fetch("/usuarios/configuracao_dispo", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify({
-                nomeServer: nomeVar,
-                descricaoServer: descricaoVar,
-                fkEmpresaServer: fkEmpresa
-            }),
-        })
-        .then(function (resposta) {
-            if (resposta.ok) {
-                abrirConfirmacaoDispo();  
-            } else {
-                throw new Error("Houve um erro ao tentar realizar o cadastro!");
-            }
-        })
-        .catch(function (resposta) {
-            console.log("#ERRO: " + resposta);
-        });
+        if (nomeVar === "" || descricaoVar === "") {
+            div_erro.innerHTML = `Campos inválidos`;
+        } else {
+            fetch("/usuarios/configuracao_dispo", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({
+                    nomeServer: nomeVar,
+                    descricaoServer: descricaoVar,
+                    fkEmpresaServer: fkEmpresa
+                }),
+            })
+                .then(function (resposta) {
+                    if (resposta.ok) {
+                        abrirConfirmacaoDispo();
+                    } else {
+                        throw new Error("Houve um erro ao tentar realizar o cadastro!");
+                    }
+                })
+                .catch(function (resposta) {
+                    console.log("#ERRO: " + resposta);
+                });
 
-        return false;
+            return false;
+        }
     }
-}
 
 </script>

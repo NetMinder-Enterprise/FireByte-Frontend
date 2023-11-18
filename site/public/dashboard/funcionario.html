@@ -2,239 +2,243 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NetMinder - Cadastro</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NetMinder - Cadastro</title>
 
-    <link rel="shortcut icon" href="../assets/favicon.png" type="image/x-icon">
-    <link rel="stylesheet" href="./cadastro/css/index.css">
-    <link rel="stylesheet" href="../css/style.css">
-    <link rel="stylesheet" href="./css/global.css">
-    <link rel="stylesheet" href="./css/index.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css">
-    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+  <link rel="shortcut icon" href="../assets/favicon.png" type="image/x-icon">
+  <link rel="stylesheet" href="./cadastro/css/index.css">
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="./css/global.css">
+  <link rel="stylesheet" href="./css/index.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css">
+  <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
 
-    <!-- Start of netminder Zendesk Widget script --><script id="ze-snippet" src="https://static.zdassets.com/ekr/snippet.js?key=56e60387-248f-40b0-9a79-52c62bf2dae9"> </script><!-- End of netminder Zendesk Widget script -->
+  <!-- Start of netminder Zendesk Widget script -->
+  <script id="ze-snippet"
+    src="https://static.zdassets.com/ekr/snippet.js?key=56e60387-248f-40b0-9a79-52c62bf2dae9"> </script>
+  <!-- End of netminder Zendesk Widget script -->
 </head>
 
 <body>
-    <!-- Menu -->
-    <div class="Header">
-        <div class="body">
-            <div class="sidebar">
-                <div class="logo_content">
-                    <div class="logo">
-                    </div>
-                    <i class='bx bx-menu' id="btn"></i>
-                </div>
-                <ul class="nav_list">
-                    <div class="profile">
-                        <div class="image-container">
-                            <img id="userImage" src="../assets/do-utilizador 1.png" alt="Imagem do perfil">
-                        </div>
-                        <button id="uploadButton" class="small">
-                            <i class='bx bxs-pencil'></i>
-                        </button>
-                    </div>
-
-                    <div id="imageModal" class="modal-user" style="display: none;">
-                        <div class="modal-contente">
-                            <span class="close" id="closeModal">&times;</span>
-                            <img id="modalImage" src="../assets/do-utilizador 1.png" alt="Imagem do perfil">
-                            <h5>Para melhor visualização coloque uma imagem redonda ou quadrada</h5>
-                            <div class="divisor-bottons">
-                                <button id="removeButton" class="small-button">Remover</button>
-                                <input type="file" id="fileInput" accept="image/*" style="display: none;">
-                                <button id="replaceButton" class="small-button">Trocar</button>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="divisao-botoes">
-                        <li>
-                            <a href="./dashboard.html" class="a">
-                                <i class='bx bxs-home'></i>
-                                <span class="links_name">Home</span>
-                            </a>
-                            <span class="tooltip">Home</span>
-                        </li>
-                        <li style="display: block;" id="menu">
-                            <a href="" class="a">
-                                <i class='bx bxs-user-plus'></i>
-                                <span class="links_name">Cadastrar</span>
-                            </a>
-                            <span class="tooltip">Cadastrar</span>
-                        </li>
-                        <li>
-                            <a href="../index.html" class="a">
-                                <i class='bx bx-log-out'></i>
-                                <span class="links_name">Sair</span>
-                            </a>
-                            <span class="tooltip">Sair</span>
-                        </li>
-                    </div>
-                    <div class="switch">
-                        <label class="checkboxWrap">
-                            <input type="checkbox" id="themeSwitcher" class="checkboxInput">
-                            <span class="checkboxMark"></span>
-                        </label>
-                    </div>
-                </ul>
-            </div>
+  <!-- Menu -->
+  <div class="Header">
+    <div class="body">
+      <div class="sidebar">
+        <div class="logo_content">
+          <div class="logo">
+          </div>
+          <i class='bx bx-menu' id="btn"></i>
         </div>
-    </div>
-
-    <script>
-        let btn = document.querySelector("#btn");
-        let sidebar = document.querySelector(".sidebar");
-
-        btn.onclick = function () {
-            sidebar.classList.toggle("active");
-        }
-    </script>
-
-<script src="../js/changeTheme.js"></script>
-<script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
-<script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
-
-    <div class="container">
-        <div class="content">
-            <div class="h1func">
-                <h1 >Cadastre seu Funcionário</h1>
-                <h4>Cadastre seus novos funcionários a usarem nosso sistema</h4>
+        <ul class="nav_list">
+          <div class="profile">
+            <div class="image-container">
+              <img id="userImage" src="../assets/do-utilizador 1.png" alt="Imagem do perfil">
             </div>
-            <div class="form2">
-                <div class="input-group1">
-                    <p>Nome:</p>
-                    <input required="" type="text" name="text" autocomplete="off" class="input" id="nome"
-                        placeholder="nome completo">
-                </div>
-                <div class="input-group">
-                    <p>Email:</p>
-                    <input required="" type="email" name="text" autocomplete="off" class="input" id="email"
-                        placeholder="user@netminder.com">
-                </div>
-                <div class="input-group">
-                    <div class="order">
-                        <p>Função:</p>
-                        <select id="opcao" name="estado" class="select">
-                            <option value="admin" class="option">Adimin</option>
-                            <option value="convencional">Convencional</option>
-                        </select>
-                    </div>
-                </div>
-                <div class="input-group">
-                    <p>Senha:</p>
-                    <input required="" type="password" name="text" autocomplete="off" class="input" id="senha"
-                        placeholder="*********">
-                </div>
+            <button id="uploadButton" class="small">
+              <i class='bx bxs-pencil'></i>
+            </button>
+          </div>
 
-                <button class="loginBtn" onclick="cadastrar_funcionario()"><span>Cadastrar</span></button>
-                <div id="div_erro"></div>
-                <div id="span_erro"></div>
+          <div id="imageModal" class="modal-user" style="display: none;">
+            <div class="modal-contente">
+              <span class="close" id="closeModal">&times;</span>
+              <img id="modalImage" src="../assets/do-utilizador 1.png" alt="Imagem do perfil">
+              <h5>Para melhor visualização coloque uma imagem redonda ou quadrada</h5>
+              <div class="divisor-bottons">
+                <button id="removeButton" class="small-button">Remover</button>
+                <input type="file" id="fileInput" accept="image/*" style="display: none;">
+                <button id="replaceButton" class="small-button">Trocar</button>
+              </div>
             </div>
-        </div>
+          </div>
+          <div class="divisao-botoes">
+            <li>
+              <a href="./dashboard.html" class="a">
+                <i class='bx bxs-home'></i>
+                <span class="links_name">Home</span>
+              </a>
+              <span class="tooltip">Home</span>
+            </li>
+            <li style="display: block;" id="menu">
+              <a href="" class="a">
+                <i class='bx bxs-user-plus'></i>
+                <span class="links_name">Cadastrar</span>
+              </a>
+              <span class="tooltip">Cadastrar</span>
+            </li>
+            <li>
+              <a href="../index.html" class="a">
+                <i class='bx bx-log-out'></i>
+                <span class="links_name">Sair</span>
+              </a>
+              <span class="tooltip">Sair</span>
+            </li>
+          </div>
+          <div class="switch">
+            <label class="checkboxWrap">
+              <input type="checkbox" id="themeSwitcher" class="checkboxInput">
+              <span class="checkboxMark"></span>
+            </label>
+          </div>
+        </ul>
+      </div>
     </div>
-    <!-- onclick="abrirConfirmacaoFunc() -->
-</body>
-</html>
+  </div>
 
   <script>
-// Função para verificar o email
-function verificar_email(email, callback) {
-  fetch("/usuarios/verificar_email", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json"
-    },
-    body: JSON.stringify({
-      emailServer: email
+    let btn = document.querySelector("#btn");
+    let sidebar = document.querySelector(".sidebar");
+
+    btn.onclick = function () {
+      sidebar.classList.toggle("active");
+    }
+  </script>
+
+  <script src="../js/changeTheme.js"></script>
+  <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+  <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+
+  <div class="container">
+    <div class="content">
+      <div class="h1func">
+        <h1>Cadastre seu Funcionário</h1>
+        <h4>Cadastre seus novos funcionários a usarem nosso sistema</h4>
+      </div>
+      <div class="form2">
+        <div class="input-group1">
+          <p>Nome:</p>
+          <input required="" type="text" name="text" autocomplete="off" class="input" id="nome"
+            placeholder="nome completo">
+        </div>
+        <div class="input-group">
+          <p>Email:</p>
+          <input required="" type="email" name="text" autocomplete="off" class="input" id="email"
+            placeholder="user@netminder.com">
+        </div>
+        <div class="input-group">
+          <div class="order">
+            <p>Função:</p>
+            <select id="opcao" name="estado" class="select">
+              <option value="admin" class="option">Adimin</option>
+              <option value="convencional">Convencional</option>
+            </select>
+          </div>
+        </div>
+        <div class="input-group">
+          <p>Senha:</p>
+          <input required="" type="password" name="text" autocomplete="off" class="input" id="senha"
+            placeholder="*********">
+        </div>
+
+        <button class="loginBtn" onclick="cadastrar_funcionario()"><span>Cadastrar</span></button>
+        <div id="div_erro"></div>
+        <div id="span_erro"></div>
+      </div>
+    </div>
+  </div>
+  <!-- onclick="abrirConfirmacaoFunc() -->
+</body>
+
+</html>
+
+<script>
+  // Função para verificar o email
+  function verificar_email(email, callback) {
+    fetch("/usuarios/verificar_email", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({
+        emailServer: email
+      })
     })
-  })
-    .then(function (response) {
-      if (response.ok) {
-        return response.json();
-      } else {
-        throw new Error("Erro na verificação do e-mail");
-      }
-    })
-    .then(function (data) {
-      callback(null, data.emailCadastrado);
-    })
-    .catch(function (error) {
-      callback(error);
-    });
-}
-
-// Função para cadastrar o funcionario
-function cadastrar_funcionario() {
-  var nomeVar = nome.value;
-  var emailVar = email.value;
-  var opcaoSelecionada = document.getElementById("opcao").value;
-  var senhaVar = senha.value;
-  const spanErro = document.getElementById("span_erro");
-  const div_erro = document.getElementById("div_erro"); 
-  var fkEmpresa = sessionStorage.ID_EMPRESA;
-
-  nome.value = ``;
-  email.value = ``;
-  senha.value = ``;
-
-  if (nomeVar === "" || emailVar === "" || senhaVar === "" || opcaoSelecionada == "") {
-    div_erro.innerHTML = `Campos inválidos`;
-  } else if (!emailVar.includes("@gmail.com") && !emailVar.includes("@hotmail.com") && !emailVar.includes("@outlook.com") && !emailVar.includes("@netminder.com") ) {
-    div_erro.innerHTML = `Email inválido`;
-  } else if (senhaVar.length <= 6) {
-    div_erro.innerHTML = `A senha deve conter mais de 6 caracteres`;
-  } else {
-    verificar_email(emailVar, function (error, emailCadastrado) {
-      if (error) {
-        console.error(error);
-        return;
-      }
-
-      if (emailCadastrado) {
-        spanErro.style.display = "block";
-        spanErro.innerHTML = "O email já está cadastrado.";
-      } else {
-        fetch("/usuarios/cadastrar_funcionario", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json"
-          },
-          body: JSON.stringify({
-            nomeServer: nomeVar,
-            emailServer: emailVar,
-            senhaServer: senhaVar,
-            opcaoServer: opcaoSelecionada,
-            fkEmpresaServer: fkEmpresa
-          }),
-        })
-          .then(function (resposta) {
-            if (resposta.ok) {
-              abrirConfirmacaoFunc();
-            } else {
-              throw new Error("Houve um erro ao tentar realizar o cadastro!");
-            }
-          })
-          .catch(function (resposta) {
-            console.log("#ERRO: " + resposta);
-          });
-
-        return false;
-      }
-    });
+      .then(function (response) {
+        if (response.ok) {
+          return response.json();
+        } else {
+          throw new Error("Erro na verificação do e-mail");
+        }
+      })
+      .then(function (data) {
+        callback(null, data.emailCadastrado);
+      })
+      .catch(function (error) {
+        callback(error);
+      });
   }
-}
+
+  // Função para cadastrar o funcionario
+  function cadastrar_funcionario() {
+    var nomeVar = nome.value;
+    var emailVar = email.value;
+    var opcaoSelecionada = document.getElementById("opcao").value;
+    var senhaVar = senha.value;
+    const spanErro = document.getElementById("span_erro");
+    const div_erro = document.getElementById("div_erro");
+    var fkEmpresa = sessionStorage.ID_EMPRESA;
+
+    nome.value = ``;
+    email.value = ``;
+    senha.value = ``;
+
+    if (nomeVar === "" || emailVar === "" || senhaVar === "" || opcaoSelecionada == "") {
+      div_erro.innerHTML = `Campos inválidos`;
+    } else if (!emailVar.includes("@gmail.com") && !emailVar.includes("@hotmail.com") && !emailVar.includes("@outlook.com") && !emailVar.includes("@netminder.com")) {
+      div_erro.innerHTML = `Email inválido`;
+    } else if (senhaVar.length <= 6) {
+      div_erro.innerHTML = `A senha deve conter mais de 6 caracteres`;
+    } else {
+      verificar_email(emailVar, function (error, emailCadastrado) {
+        if (error) {
+          console.error(error);
+          return;
+        }
+
+        if (emailCadastrado) {
+          spanErro.style.display = "block";
+          spanErro.innerHTML = "O email já está cadastrado.";
+        } else {
+          fetch("/usuarios/cadastrar_funcionario", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+              nomeServer: nomeVar,
+              emailServer: emailVar,
+              senhaServer: senhaVar,
+              opcaoServer: opcaoSelecionada,
+              fkEmpresaServer: fkEmpresa
+            }),
+          })
+            .then(function (resposta) {
+              if (resposta.ok) {
+                abrirConfirmacaoFunc();
+              } else {
+                throw new Error("Houve um erro ao tentar realizar o cadastro!");
+              }
+            })
+            .catch(function (resposta) {
+              console.log("#ERRO: " + resposta);
+            });
+
+          return false;
+        }
+      });
+    }
+  }
 </script>
 <script>
   menuNivelUsuario();
   function menuNivelUsuario() {
-      var tipo = sessionStorage.TIPO_USUARIO;
-      var menu = document.getElementById("menu");
+    var tipo = sessionStorage.TIPO_USUARIO;
+    var menu = document.getElementById("menu");
 
-      if (tipo == "convencional") {
-          menu.style.display = "none";
-      }
+    if (tipo == "convencional") {
+      menu.style.display = "none";
+    }
 
   }
 </script>
