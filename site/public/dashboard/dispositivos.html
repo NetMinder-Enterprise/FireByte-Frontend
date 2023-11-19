@@ -111,11 +111,10 @@
                             </button>
                         </div>
                         <div class="notification">
-                            <button id="notification-button" class="button" onclick="abrirModal()">
+                            <button id="notification-button" class="button" onclick="delete_dispositivo(idDispositivo)">
                                 <svg class="bell2" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                                     <path
                                         d="M5.755,20.283,4,8H20L18.245,20.283A2,2,0,0,1,16.265,22H7.735A2,2,0,0,1,5.755,20.283ZM21,4H16V3a1,1,0,0,0-1-1H9A1,1,0,0,0,8,3V4H3A1,1,0,0,0,3,6H21a1,1,0,0,0,0-2Z" />
-                                </svg>
                                 </svg>
                             </button>
                         </div>
@@ -200,48 +199,31 @@
     <div class="container">
         <div class="container-grafico">
             <div class="chart">
-                <p>% de utilização</p>
-                <canvas id="myChart" style="position: relative; height:20vh; width:35vw;"></canvas>
+                <p>CPU - % de utilização</p>
+                <canvas id="myChart" style="position: relative; height:25vh; width:35vw;"></canvas>
                 <p>tempo em minutos</p>
             </div>
 
             <div class="chart">
-                <p>Uso da memoria</p>
-                <canvas id="myChart2" style="position: relative; height:20vh; width:35vw;"></canvas>
+                <p>RAM - Uso da memoria</p>
+                <canvas id="myChart2" style="position: relative; height:25vh; width:35vw;"></canvas>
                 <p>tempo em minutos</p>
             </div>
             <div class="chart">
-                <p>Uso da memoria</p>
-                <canvas id="myChart3" style="position: relative; height:20vh; width:35vw;"></canvas>
+                <p>Disco - Uso da memoria</p>
+                <canvas id="myChart3" style="position: relative; height:25vh; width:35vw;"></canvas>
                 <p>tempo em minutos</p>
             </div>
 
             <div class="chart">
-                <p>Taxa de transferência</p>
-                <canvas id="myChart4" style="position: relative; height:20vh; width:35vw;"></canvas>
+                <p>Rede - Taxa de transferência</p>
+                <canvas id="myChart4" style="position: relative; height:25vh; width:35vw;"></canvas>
                 <p>tempo em minutos</p>
             </div>
         </div>
     </div>
 
-    <!-- <div class="container deleteBtnContainer">
-        <button class="deteleBtn" onclick="abrirModal()" Confirm>Excluir</button>
-        <button class="deteleBtn">Editar</button>
-    </div> -->
-
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-
-    <!-- 
-    <div id="modal" class="modalExcluir">
-        <div class="modal-content-excluir">
-            <p>Você tem certeza que deseja excluir este dispositivo?</p>
-            <div>
-                <button onclick="excluirDispositivo()" class="bootonExcluir">Excluir</button>
-                <button onclick="fecharModal()" class="bootonExcluir">Cancelar</button>
-            </div>
-        </div>
-    </div> -->
-
 
     <script src="script.js"></script>
     <script>
@@ -257,8 +239,6 @@
         }
     </script>
 
-    <!-- Link do video para vê notificação
-    https://www.youtube.com/watch?v=jJWYZqlhv3A-->
     <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
     <script src="../js/changeTheme.js"></script>
@@ -271,6 +251,32 @@
     document.getElementById("nameDispositivo").innerHTML += idDispositivo;
 </script>
 
+<script>
+
+    function delete_dispositivo(idDispositivo){
+          fetch(`/usuarios/delete_dispositivo/${idDispositivo}`, {
+            method: 'PUT',
+            headers: {
+              "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+            }),
+          })
+            .then(function (resposta) {
+              if (resposta.ok) {
+                 abrirModal();
+              } else {
+                throw new Error("Houve um erro ao tentar realizar o cadastro!");
+               window.alert("deu erro");
+              }
+            })
+            .catch(function (resposta) {
+              console.log("#ERRO: " + resposta);
+            });
+
+          return false;
+        }
+</script>
 <script>
     var funcionario = sessionStorage.NOME_USUARIO;
     name_user.innerHTML = funcionario;

@@ -48,9 +48,20 @@ function configuracao_dispo(nome, descricao, fkEmpresa) {
     return database.executar(instrucao);
 }
 
+function delete_dispositivo(id) {
+    console.log("ACESSEI O USUARIO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function cadastrar_funcionario():", id);
+
+    var deleteDispo = `
+    UPDATE firebytedb.dispositivo SET status = 0 where id = ${id}`;
+
+    console.log("Executando a instrução SQL: \n" + deleteDispo);
+    return database.executar(deleteDispo);
+}
+
 module.exports = {
     cadastrar_funcionario,
     verificar_email,
     entrar,
-    configuracao_dispo
+    configuracao_dispo,
+    delete_dispositivo
 };

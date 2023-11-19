@@ -19,7 +19,8 @@ router.post("/configuracao_dispo", function (req, res) {
     usuarioController.configuracao_dispo(req, res);
 });
 
-
-
+router.put("/delete_dispositivo/:id", function (req, res) {
+    usuarioController.delete_dispositivo(req, res);
+});
 
 module.exports = router;

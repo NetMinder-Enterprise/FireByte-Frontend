@@ -129,9 +129,31 @@ function configuracao_dispo(req, res) {
 
     }
 }
+
+function delete_dispositivo(req, res) {
+    var id = req.params.id;
+
+        usuarioModel.delete_dispositivo(id)
+            .then(
+                function (resultado) {
+                    res.json(resultado);
+                }
+            ).catch(
+                function (erro) {
+                    console.log(erro);
+                    console.log(
+                        "\nHouve um erro ao realizar o cadastro! Erro: ",
+                        erro.sqlMessage
+                    );
+                    res.status(500).json(erro.sqlMessage);
+                }
+            );
+    }
+
 module.exports = {
     cadastrar_funcionario,
     entrar,
     verificar_email,
-    configuracao_dispo
+    configuracao_dispo,
+    delete_dispositivo
 }
