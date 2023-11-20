@@ -14,7 +14,7 @@ function buscarUltimosRegistros(limite_linhas) {
         ON l.fkComponenteDispositivo = cd.id
         LEFT JOIN tipoComponente tc
         ON cd.fktipoComponente = tc.id
-        where cd.fkDispositivo = 3 
+        where cd.fkDispositivo = 2 
         AND tc.nome COLLATE utf8mb4_general_ci = 'RAM'
         order by l.id desc limit ${limite_linhas}`;
     } else {
@@ -37,7 +37,7 @@ function buscarRegistrosEmTempoReal() {
                         ON l.fkComponenteDispositivo = cd.id
                         LEFT JOIN tipoComponente tc
                         ON cd.fktipoComponente = tc.id
-                        where cd.fkDispositivo = 3
+                        where cd.fkDispositivo = 2
                         AND tc.nome COLLATE utf8mb4_general_ci = 'RAM'
                         order by l.id desc limit 1`;
     } else {
@@ -62,7 +62,7 @@ function buscarUltimosRegistrosRede(limite_linhas) {
         ON l.fkComponenteDispositivo = cd.id
         LEFT JOIN tipoComponente tc
         ON cd.fktipoComponente = tc.id
-        where cd.fkDispositivo = 3 
+        where cd.fkDispositivo = 2 
         AND tc.nome COLLATE utf8mb4_general_ci = 'REDE'
         order by l.id desc limit ${limite_linhas}`;
     } else {
@@ -85,7 +85,7 @@ function buscarRegistrosRedeEmTempoReal() {
                         ON l.fkComponenteDispositivo = cd.id
                         LEFT JOIN tipoComponente tc
                         ON cd.fktipoComponente = tc.id
-                        where cd.fkDispositivo = 3
+                        where cd.fkDispositivo = 2
                         AND tc.nome COLLATE utf8mb4_general_ci = 'REDE'
                         order by l.id desc limit 1`;
     } else {
@@ -110,7 +110,7 @@ function buscarUltimosRegistrosCpu(limite_linhas) {
         ON l.fkComponenteDispositivo = cd.id
         LEFT JOIN tipoComponente tc
         ON cd.fktipoComponente = tc.id
-        where cd.fkDispositivo = 3 
+        where cd.fkDispositivo = 2 
         AND tc.nome COLLATE utf8mb4_general_ci = 'CPU'
         order by l.id desc limit ${limite_linhas}`;
     } else {
@@ -133,7 +133,7 @@ function buscarRegistrosCpuEmTempoReal() {
                         ON l.fkComponenteDispositivo = cd.id
                         LEFT JOIN tipoComponente tc
                         ON cd.fktipoComponente = tc.id
-                        where cd.fkDispositivo = 3
+                        where cd.fkDispositivo = 2
                         AND tc.nome COLLATE utf8mb4_general_ci = 'CPU'
                         order by l.id desc limit 1`;
     } else {
@@ -158,7 +158,7 @@ function buscarUltimosRegistrosDisco(limite_linhas) {
         ON l.fkComponenteDispositivo = cd.id
         LEFT JOIN tipoComponente tc
         ON cd.fktipoComponente = tc.id
-        where cd.fkDispositivo = 3 
+        where cd.fkDispositivo = 2 
         AND tc.nome COLLATE utf8mb4_general_ci = 'DISCO'
         order by l.id desc limit ${limite_linhas}`;
     } else {
@@ -181,7 +181,7 @@ function buscarRegistrosDiscoEmTempoReal() {
                         ON l.fkComponenteDispositivo = cd.id
                         LEFT JOIN tipoComponente tc
                         ON cd.fktipoComponente = tc.id
-                        where cd.fkDispositivo = 3
+                        where cd.fkDispositivo = 2
                         AND tc.nome COLLATE utf8mb4_general_ci = 'DISCO'
                         order by l.id desc limit 1`;
     } else {

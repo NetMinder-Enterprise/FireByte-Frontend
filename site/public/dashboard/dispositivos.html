@@ -691,6 +691,12 @@
           console.log(data);
 
           const captura = novoRegistro[0].captura;
+          
+          showNotification(captura, 'RAM');
+
+          
+          console.log("Estou no shownotification, captura: " + captura)
+          showNotification(captura);
 
           if (novoRegistro[0].momento_grafico === data.labels[data.labels.length - 1]) {
             console.log("---------------------------------------------------------------")
@@ -738,6 +744,8 @@
           console.log(dataRede);
 
           const captura = novoRegistro[0].captura;
+          
+          showNotification(captura, 'REDE');
 
           if (novoRegistro[0].momento_grafico === dataRede.labels[dataRede.labels.length - 1]) {
             console.log("---------------------------------------------------------------")
@@ -780,7 +788,10 @@
           console.log(`Dados atuais do gráfico:`);
           console.log(dataCpu);
 
-          const captura = novoRegistro[0].captura;
+          const captura = novoRegistro[0].captura; 
+
+          showNotification(captura, 'CPU');
+       
 
           if (novoRegistro[0].momento_grafico === dataCpu.labels[dataCpu.labels.length - 1]) {
             console.log("---------------------------------------------------------------")
@@ -824,6 +835,8 @@
           console.log(dataDisco);
 
           const captura = novoRegistro[0].captura;
+          
+          showNotification(captura, 'DISCO');
 
           if (novoRegistro[0].momento_grafico === dataDisco.labels[dataDisco.labels.length - 1]) {
             console.log("---------------------------------------------------------------")
@@ -857,27 +870,14 @@
       console.error(`Erro na obtenção dos dados para o gráfico: ${error.message}`);
     });
   }
-
-
-    // ** Estrutura para parametrizar indicadores de alertas **
-    // --------------------------------------------------------
-    // if (captura >= 4 && captura <= 6) {
-    // dados.datasets[0].borderColor = '#52f90d';
-    // dados.datasets[0].label = 'Medida ideal'
-    // } else if (
-    // (captura >= 2.1 && captura <= 3.9) ||
-    // (captura >= 6.1 && captura <= 7.9)
-    // ) {
-    // dados.datasets[0].borderColor = '#c7a941';
-    // dados.datasets[0].label = 'Medida em alerta'
-    // } else if (captura > 8) {
-    // dados.datasets[0].borderColor = '#c60a14';
-    // dados.datasets[0].label = 'Medida excedida'
-    // }else {
-    // dados.datasets[0].borderColor = '#c60a14';
-    // dados.datasets[0].label = 'Medida abaixo'
-    // }
     
 </script>
+
+<!-- JavaScript para notificações Toastr -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css">
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
+<script src="../js/notificacoesToastr.js"></script>
+
 </html>
 

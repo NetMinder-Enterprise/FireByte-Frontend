@@ -5,8 +5,8 @@ var sql = require('mssql');
 var sqlServerConfig = {
     server: "52.70.210.153",
     database: "firebyteDB",
-    user: "netminder",
-    password: "esqueci@senha",
+    user: "root",
+    password: "Lobinho@10",
     pool: {
         max: 10,
         min: 0,
@@ -22,7 +22,7 @@ var mySqlConfig = {
     host: "localhost",
     database: "firebyteDB",
     user: "root",
-    password: "root"
+    password: "Lobinho@10"
 };
 
 function executar(instrucao) {
