@@ -281,6 +281,19 @@ setTimeout(() => {
 }
 
 
+// Validação para cada campo e lógica de exibição de erro
+function validateAndDisplayError(input, alertMessage, erroEncontrado) {
+  const value = parseFloat(input.value);
+
+  if (input.value === '' || value < 0 || isNaN(value)) {
+      input.style.borderColor = 'red';
+      div_erro.innerHTML = alertMessage;
+      return true; // Indica que ocorreu um erro
+  } else {
+      input.style.borderColor = 'var(--primary-color)';
+      return erroEncontrado; // Retorna o estado atual de erroEncontrado
+  }
+}
 
 
 

@@ -96,42 +96,8 @@ function verificar_email(req, res) {
     }
 }
 
-
-
-function configuracao_dispo(req, res) {
-    var nome = req.body.nomeServer;
-    var descricao = req.body.descricaoServer;  
-    var fkEmpresa = req.body.fkEmpresaServer;
-
-    if (nome == undefined) {
-        res.status(400).send("Seu nome está undefined!");
-    } else if (descricao == undefined) {
-        res.status(400).send("Seu email está undefined!");
-    } else if (fkEmpresa == undefined) {
-        res.status(400).send("Sua opção está undefined!"); 
-    } else {
-
-        usuarioModel.configuracao_dispo(nome, descricao, fkEmpresa)
-            .then(
-                function (resultado) {
-                    res.json(resultado);
-                }
-            ).catch(
-                function (erro) {
-                    console.log(erro);
-                    console.log(
-                        "\nHouve um erro ao realizar o cadastro! Erro: ",
-                        erro.sqlMessage
-                    );
-                    res.status(500).json(erro.sqlMessage);
-                }
-            );
-
-    }
-}
 module.exports = {
     cadastrar_funcionario,
     entrar,
-    verificar_email,
-    configuracao_dispo
+    verificar_email
 }
