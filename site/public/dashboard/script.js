@@ -48,7 +48,8 @@ replaceButton.addEventListener('click', function () {
   fileInput.click();
 });
 
-/*Botão de notificação*/
+
+/*Botão de notificação ---------------------------------------------------------------------------*/
 var notificationCount = 0;
 
 function updateNotificationBadge() {
@@ -114,27 +115,34 @@ function openNotificationFile(fileUrl) {
   window.open(fileUrl, "_blank");
 }
 
-function toggleOrderModal() {
-  var modal = document.getElementById("order-modal");
-  modal.classList.toggle("show");
-}
-
 var notificationButton = document.getElementById("notification-button");
 notificationButton.addEventListener("click", toggleNotificationModal);
 
 var clearButton = document.getElementById("clear-button");
 clearButton.addEventListener("click", clearNotifications);
 
-var orderButton = document.getElementById("order-button");
-orderButton.addEventListener("click", toggleOrderModal);
 
-// Adicione suas notificações
 addNotification("Nova Máquina detectada.", "blue", "/dashboard/cadastro/form2.html");
 addNotification("CPU atingiu 70%", "yellow", "./dispositivos.html");
 addNotification("Falha de rede, reinicie o dispositivo", "red", "./dispositivos.html");
 addNotification("Memória atingiu 80%", "yellow", "./dispositivos.html");
 
-/*Barra de porcentagem*/
+/*Botão ordenar -------------------------------------------------------------------------------------*/
+function toggleOrderModal() {
+  console.log("Abrindo modal")
+  var modal = document.getElementById("order-modal");
+  modal.classList.toggle("show");
+}
+
+function openOrderFile(fileUrl) {
+  window.open(fileUrl, "_blank");
+}
+
+var orderButton = document.getElementById("order-button");
+orderButton.addEventListener("click", toggleOrderModal);
+
+
+/*Barra de porcentagem ------------------------------------------------------------------------------*/
 function updateProgressBar(percentage, fillId, percentageId) {
   const fill = document.getElementById(fillId);
   const percentageDiv = document.getElementById(percentageId);
@@ -165,7 +173,7 @@ updateProgressBar(95, 'fill8', 'percentage8');
 updateProgressBar(72, 'fill9', 'percentage9');
 
 
-
+/*Notifcações ------------------------------------------------------------------------------------------------*/
 function abrirModal() {
   Swal.fire({
     title: "Tem certeza que deseja excluir?",

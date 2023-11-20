@@ -150,10 +150,46 @@ function delete_dispositivo(req, res) {
             );
     }
 
+    
+function salvar(req, res) {
+    const imagem = req.file.filename;
+    const idUsuario = req.params.idUsuario;
+
+    usuarioModel.salvar(idUsuario, imagem)
+    .then(resultado => {
+      res.status(201).send("Usuario criado com sucesso");
+    }).catch(err => {
+      res.status(500).send(err);
+    });
+  }
+  
+ 
+function ver_imagem(req, res){
+    const idUsuario = req.params.idUsuario;
+    
+    usuarioModel.ver_imagem(idUsuario)
+    .then(function (resultado) {
+        if (resultado.length > 0) {
+            res.status(200).json(resultado);
+            console.log(resultado);
+        } else {
+            res.status(204).send("Nenhum resultado encontrado!")
+        }
+    }).catch(
+        function (erro) {
+            console.log(erro);
+            console.log("Houve um erro ao realizar a consulta! Erro: ", erro.sqlMessage);
+            res.status(500).json(erro.sqlMessage);
+        }
+    );
+}
+ 
 module.exports = {
     cadastrar_funcionario,
     entrar,
     verificar_email,
     configuracao_dispo,
-    delete_dispositivo
+    delete_dispositivo,
+    salvar,
+    ver_imagem
 }

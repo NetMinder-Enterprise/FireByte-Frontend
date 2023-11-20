@@ -58,10 +58,30 @@ function delete_dispositivo(id) {
     return database.executar(deleteDispo);
 }
 
+
+function salvar(idUsuario, imagem) {
+    const instrucao = 
+    `UPDATE firebytedb.usuario SET imagem_perfil = '${imagem}' where id = ${idUsuario}`;
+   
+    return database.executar(instrucao);
+  }
+  
+
+  function ver_imagem(idUsuario){
+    var instrucao = `
+    SELECT imagem_perfil FROM usuario WHERE id = ${idUsuario};
+    `;
+
+    return database.executar(instrucao);
+}
+
+
 module.exports = {
     cadastrar_funcionario,
     verificar_email,
     entrar,
     configuracao_dispo,
-    delete_dispositivo
+    delete_dispositivo,
+    salvar,
+    ver_imagem
 };
