@@ -5,8 +5,8 @@ const userImage = document.getElementById('userImage');
 const imageModal = document.getElementById('imageModal');
 const closeModal = document.getElementById('closeModal');
 const modalImage = document.getElementById('modalImage');
-const removeButton = document.getElementById('removeButton');
-const replaceButton = document.getElementById('replaceButton');
+// const removeButton = document.getElementById('removeButton');
+// const replaceButton = document.getElementById('replaceButton');
 
 // Abrir a modal ao clicar no botão "Carregar Imagem"
 uploadButton.addEventListener('click', function () {
@@ -20,10 +20,10 @@ closeModal.addEventListener('click', function () {
 });
 
 // Remover a imagem ao clicar no botão "Remover"
-removeButton.addEventListener('click', function () {
-  userImage.src = '../assets/do-utilizador 1.png';
-  imageModal.style.display = 'none';
-});
+// removeButton.addEventListener('click', function () {
+//   userImage.src = '../assets/do-utilizador 1.png';
+//   imageModal.style.display = 'none';
+// });
 
 // Adicionar um ouvinte de eventos ao elemento input de arquivo
 fileInput.addEventListener('change', function () {
@@ -44,9 +44,9 @@ fileInput.addEventListener('change', function () {
 });
 
 // Trocar a imagem ao clicar no botão "Trocar"
-replaceButton.addEventListener('click', function () {
-  fileInput.click();
-});
+// replaceButton.addEventListener('click', function () {
+//   fileInput.click();
+// });
 
 
 /*Botão de notificação ---------------------------------------------------------------------------*/
@@ -288,6 +288,29 @@ function abrirConfirmacaoDispo() {
     window.location = "/dashboard/cadastro/form3.html";
   }, 2000);
 
+}
+
+function imagemCadastrada() {
+  const Toast = Swal.mixin({
+    toast: true,
+    position: "top-end",
+    showConfirmButton: false,
+    timer: 3000,
+    timerProgressBar: true,
+    didOpen: (toast) => {
+      toast.onmouseenter = Swal.stopTimer;
+      toast.onmouseleave = Swal.resumeTimer;
+    }
+  });
+
+  Toast.fire({
+    icon: "success",
+    title: "Nova imagem de perfil!"
+  });
+
+  setTimeout(() => {
+    location.reload();
+  }, 2000);
 }
 
 

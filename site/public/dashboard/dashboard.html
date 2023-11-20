@@ -21,7 +21,7 @@
     <!-- <script src="../js/notificacoesToastr.js"></script> -->
     <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
-    <script src="./script.js"></script>
+
 </head>
 
 <body onload="ver_imagem(sessionStorage.ID_USUARIO)">
@@ -48,10 +48,12 @@
                         </li>
                     </div>
 
-                    <div id="imageModal" class="modal-user" style="display: none;">
+                    <div id="imageModal" class="modal-user" style="display: none;" >
                         <div class="modal-contente">
                             <span class="close" id="closeModal">&times;</span>
-                            <img id="imagemPerfil" src="../assets/do-utilizador 1.png" alt="Imagem do perfil">
+                            <!-- <div class="image-container" id="imagemPerfil">
+                           
+                            </div> -->
                             <!-- id="modalImage" -->
                             <h5>Para melhor visualização coloque uma imagem redonda ou quadrada</h5>
                             <div class="divisor-bottons">
@@ -214,7 +216,7 @@
             </div>
         </div>
     </div>
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+
 
     <!-- Aqui vão os cards dos dispositivos -->
     <div id="cards" class="cardsContainer">
@@ -296,7 +298,7 @@
                 body: formData
             })
                 .then(res => {
-                    window.alert("deu certo")
+                    imagemCadastrada(); 
                     // window.location = "./dashboard.html"
                 })
                 .catch(err => {
@@ -338,6 +340,8 @@
     <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
     <script src="../js/changeTheme.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+    <script src="./script.js"></script>
 </body>
 
 </html>
