@@ -23,5 +23,8 @@ router.post("/cadastrar_parametro_rede", function (req, res){
     dispositivosController.cadastrar_parametro_rede(req, res);
 });
 
+router.get("/buscarDispositivos/:fkEmpresa", function (req, res){
+    dispositivosController.buscarDispositivos(req, res);
+});
 
 module.exports = router;
