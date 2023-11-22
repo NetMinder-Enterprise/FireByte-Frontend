@@ -2,6 +2,11 @@
     justify-content: space-between;
 }
 
+.h3{
+    font-size: 1rem;
+    
+}
+
 /*Card com as informações do dispositivo*/
 
 .cards-principal {
