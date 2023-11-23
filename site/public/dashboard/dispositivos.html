@@ -401,8 +401,8 @@
         document.getElementById('myChart'),
         config
     );
-        setTimeout(() => updateProgressBar(captura, 'fill2', 'percentage2'), 1000);
-        setTimeout(() => atualizarGrafico(data, myChart), 2000);
+        setTimeout(() => updateProgressBar(captura, 'fill2', 'percentage2'), 3000);
+        setTimeout(() => atualizarGraficoRAM(data, myChart), 3000);
     }
 
     /*REDE*/
@@ -480,8 +480,8 @@
             document.getElementById('myChart4'),
             configRede
         );
-            setTimeout(() => updateProgressBar(capturaRede, 'fill4', 'percentage4'), 1000);
-            setTimeout(() => atualizarGraficoRede(dataRede, myChartRede), 2000);
+            setTimeout(() => updateProgressBar(capturaRede, 'fill4', 'percentage4'), 3000);
+            setTimeout(() => atualizarGraficoREDE(dataRede, myChartRede), 3000);
     }
 
     /*CPU*/
@@ -558,8 +558,8 @@
         document.getElementById('myChart2'),
         configCpu
     );
-        setTimeout(() => updateProgressBar(capturaCpu, 'fill1', 'percentage1'), 1000);
-        setTimeout(() => atualizarGraficoCpu(dataCpu, myChartCpu), 2000);
+        setTimeout(() => updateProgressBar(capturaCpu, 'fill1', 'percentage1'), 3000);
+        setTimeout(() => atualizarGraficoCPU(dataCpu, myChartCpu), 3000);
     }
 
         /*DISCO*/
@@ -636,8 +636,8 @@
         document.getElementById('myChart3'),
         configDisco
     );
-        setTimeout(() => updateProgressBar(capturaDisco, 'fill3', 'percentage3'), 1000);
-        setTimeout(() => atualizarGraficoDisco(dataDisco, myChartDisco), 2000);
+        setTimeout(() => updateProgressBar(capturaDisco, 'fill3', 'percentage3'), 3000);
+        setTimeout(() => atualizarGraficoDISCO(dataDisco, myChartDisco), 3000);
     }
 
     //Atualizações de gráficos
@@ -677,31 +677,31 @@
             }
 
             // Altere aqui o valor em ms se quiser que o gráfico atualize mais rápido ou mais devagar
-            proximaAtualizacao = setTimeout(() => updateProgressBar(captura, fillId, percentageId), 1000);
-            proximaAtualizacao = setTimeout(() => atualizarGrafico(url, data, myChart, fillId, percentageId), 1000);
+            proximaAtualizacao = setTimeout(() => updateProgressBar(captura, fillId, percentageId), 3000);
+            proximaAtualizacao = setTimeout(() => atualizarGrafico(url, data, myChart, fillId, percentageId), 3000);
         })
         .catch(function (error) {
             console.error(`Erro na obtenção dos dados para o gráfico: ${error.message}`);
             // Altere aqui o valor em ms se quiser que o gráfico atualize mais rápido ou mais devagar
-            proximaAtualizacao = setTimeout(() => updateProgressBar(captura, fillId, percentageId), 1000);
-            proximaAtualizacao = setTimeout(() => atualizarGrafico(url, data, myChart, fillId, percentageId), 1000);
+            proximaAtualizacao = setTimeout(() => updateProgressBar(captura, fillId, percentageId), 3000);
+            proximaAtualizacao = setTimeout(() => atualizarGrafico(url, data, myChart, fillId, percentageId), 3000);
         });
     }
 
     // Chamando atualizações de gráfico
     function atualizarGraficoCPU(data, myChart) {
-        atualizarGrafico(`/dashboard/tempo-real/${sessionStorage.ID_DISPOSITIVO}/${'CPU'}`, data, myChart, 'fill2', 'percentage2');
+        atualizarGrafico(`/dashboard/tempo-real/${sessionStorage.ID_DISPOSITIVO}/${'CPU'}`, data, myChart, 'fill1', 'percentage1');
     }
 
     function atualizarGraficoRAM(data, myChart) {
         atualizarGrafico(`/dashboard/tempo-real/${sessionStorage.ID_DISPOSITIVO}/${'RAM'}`, data, myChart, 'fill2', 'percentage2');
     }
 
-    function atualizarGraficoDisco(data, myChart) {
+    function atualizarGraficoDISCO(data, myChart) {
         atualizarGrafico(`/dashboard/tempo-real/${sessionStorage.ID_DISPOSITIVO}/${'DISCO'}`, data, myChart, 'fill3', 'percentage3');
     }
 
-    function atualizarGraficoRede(data, myChart) {
+    function atualizarGraficoREDE(data, myChart) {
         atualizarGrafico(`/dashboard/tempo-real/${sessionStorage.ID_DISPOSITIVO}/${'REDE'}`, data, myChart, 'fill4', 'percentage4');
     }
     

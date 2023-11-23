@@ -2,9 +2,9 @@
     justify-content: space-between;
 }
 
-.h3{
-    font-size: 1rem;
-    
+#nameDispositivo{
+    font-size: 2rem;
+    white-space: nowrap;
 }
 
 /*Card com as informações do dispositivo*/
