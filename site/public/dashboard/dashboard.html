@@ -21,10 +21,10 @@
     <!-- <script src="../js/notificacoesToastr.js"></script> -->
     <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
-
+    <script src="./script.js"></script>
 </head>
 
-<body onload="ver_imagem(sessionStorage.ID_USUARIO)">
+<body>
 
     <div class="Header">
         <div class="body">
@@ -36,8 +36,8 @@
                 </div>
                 <ul class="nav_list">
                     <div class="profile">
-                        <div class="image-container" id="imagemPerfil">
-                           
+                        <div class="image-container">
+                            <img id="userImage" src="../assets/do-utilizador 1.png" alt="Imagem do perfil">
                         </div>
                         <button id="uploadButton" class="small">
                             <i class='bx bxs-pencil'></i>
@@ -51,21 +51,14 @@
                     <div id="imageModal" class="modal-user" style="display: none;" >
                         <div class="modal-contente">
                             <span class="close" id="closeModal">&times;</span>
-                            <!-- <div class="image-container" id="imagemPerfil">
-                           
-                            </div> -->
+                            <img id="imagemPerfil" src="../assets/do-utilizador 1.png" alt="Imagem do perfil">
                             <!-- id="modalImage" -->
                             <h5>Para melhor visualização coloque uma imagem redonda ou quadrada</h5>
                             <div class="divisor-bottons">
-                                <!-- <input type="number" id="buscaInput"> -->
-                                <!-- <button onclick="buscarPeloId()">Buscar</button> -->
-                                <!-- <input type="file" id="fileInput" accept="image/*" style="display: none;"> -->
-
-                                <input name="foto" id="foto" type="file" />
-                                <button class="small-button" onclick="enviar(sessionStorage.ID_USUARIO)">Trocar</button>
+                                <button id="removeButton" class="small-button">Remover</button>
+                                <input type="file" id="fileInput" accept="image/*" style="display: none;">
+                                <button id="replaceButton" class="small-button">Trocar</button>
                             </div>
-                            <!-- id="replaceButton" class="small-button" -->
-                            <!-- id="removeButton" class="small-button"  -->
                         </div>
                     </div>
                     <div class="divisao-botoes">
@@ -146,7 +139,7 @@
                     </div>
 
                     <div class="order">
-                        <button id="order-button" class="button" onclick="toggleOrderModal()">
+                        <button id="order-button" class="button">
                             <!-- <span id="order-badge" class="order-badge">0</span> -->
                             <svg class="bell2" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <path
@@ -183,7 +176,7 @@
                     </div>
 
                     <div class="notification">
-                        <button id="notification-button" class="button" onclick="toggleNotificationModal()">
+                        <button id="notification-button" class="button">
                             <span id="notification-badge" class="notification-badge">0</span>
                             <svg viewBox="0 0 448 512" class="bell">
                                 <path
@@ -270,12 +263,12 @@
         });
     </script>
 
-    
+    <script src="script.js"></script>
 
     <script>
+
         var funcionario = sessionStorage.NOME_USUARIO;
         name_user.innerHTML = funcionario;
-        var idUsuario = sessionStorage.ID_USUARIO;
 
         menuNivelUsuario();
         function menuNivelUsuario() {
@@ -298,8 +291,7 @@
                 body: formData
             })
                 .then(res => {
-                    console.log(res)
-                    // imagemCadastrada(); 
+                    window.alert("deu certo")
                     // window.location = "./dashboard.html"
                 })
                 .catch(err => {
@@ -307,8 +299,8 @@
                 })
         }
 
-        async function ver_imagem(idUsuario) {
-            await fetch(`/usuarios/ver_imagem/${idUsuario}`, {
+        function ver_imagem(idUsuario) {
+            fetch(`/usuarios/ver_imagem/${idUsuario}`, {
                 method: 'GET'
             }).then(function (resposta) {
                 if (resposta.ok) {

@@ -268,17 +268,13 @@ body {
 
 /*Imagem menu*/
 .image-container {
-  width: 55px;
-  height: 55px;
+  width: 60%;
+  height: 4%;
+  max-width: 100px;
   border-radius: 50%;
   overflow: hidden;
   margin: 0 auto;
   z-index: 1;
-}
-
-.image-container img{
-  width: 55px;
-  height: 55px;
 }
 
 /*imagem*/
