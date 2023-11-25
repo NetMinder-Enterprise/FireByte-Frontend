@@ -298,7 +298,8 @@
                 body: formData
             })
                 .then(res => {
-                    imagemCadastrada(); 
+                    console.log(res)
+                    // imagemCadastrada(); 
                     // window.location = "./dashboard.html"
                 })
                 .catch(err => {
@@ -306,8 +307,8 @@
                 })
         }
 
-        function ver_imagem(idUsuario) {
-            fetch(`/usuarios/ver_imagem/${idUsuario}`, {
+        async function ver_imagem(idUsuario) {
+            await fetch(`/usuarios/ver_imagem/${idUsuario}`, {
                 method: 'GET'
             }).then(function (resposta) {
                 if (resposta.ok) {
