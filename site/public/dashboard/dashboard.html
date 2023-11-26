@@ -25,8 +25,8 @@
     <script src="./notificacoes.js"></script>
 </head>
 
-<body  onload="ver_imagem(sessionStorage.ID_USUARIO)" >
- 
+<body onload="ver_imagem(sessionStorage.ID_USUARIO)">
+
     <div class="Header">
         <div class="body">
             <div class="sidebar">
@@ -216,7 +216,7 @@
         </div>
     </div>
 
-   
+
 
     <!-- Aqui vão os cards dos dispositivos -->
     <div id="cards" class="cardsContainer">
@@ -270,6 +270,7 @@
         });
     </script>
 
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="script.js"></script>
 
     <script>
@@ -324,7 +325,7 @@
                         if (imagemPerfil) {
                             console.log("Caminho da imagem: ", resposta);
 
-                            imagemPerfil.innerHTML =` <img  src="../assets/${resposta[0].imagem_perfil}" alt="Imagem do perfil">`;
+                            imagemPerfil.innerHTML = ` <img  src="../assets/${resposta[0].imagem_perfil}" alt="Imagem do perfil">`;
                         } else {
                             console.error("Elemento 'imagemPerfil' não encontrado no HTML.");
                         }

@@ -24,7 +24,7 @@
             </div>
         </div>
         <div class="content">
-            <h1>Novo dispositivo detectado</h1>
+            <h1>Renomei as configurações do dispositivo <span id="name"></span></h1>
             <h4>Você pode nomear e escreva uma descrição sobre esse dispositivo</h4>
             <div class="form1">
                 <div class="input-group1">
@@ -37,7 +37,7 @@
                     <textarea type="text" autocomplete="off" class="input" cols="20" rows="5" id="descricao"
                         placeholder="Descrição"></textarea>
                 </div>
-                <button class="loginBtn" onclick="configuracao_dispo()"><span>Continuar</span></button>
+                <button class="loginBtn" onclick="editar_dispositivo(idDispositivo)">Editar</button>
                 <div id="div_erro"></div>
             </div>
         </div>
@@ -53,43 +53,48 @@
 <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
 <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
 
+
+<!-- Editar dispositivos -->
+
 <script>
-    function configuracao_dispo() {
+    //Get idDispositivo from url and put into nameDispositivo html
+    var url = new URL(window.location.href);
+    var idDispositivo = url.searchParams.get("idDispositivo");
+    document.getElementById("nameDispositivo").innerHTML += idDispositivo;
+</script>
+
+<script>
     var nomeVar = rename.value;
     var descricaoVar = descricao.value;
-    var fkEmpresa = sessionStorage.ID_EMPRESA;
-    const div_erro = document.getElementById("div_erro");
+    // var fkEmpresa = sessionStorage.ID_EMPRESA;
+    var dispositivo = sessionStorage.NOME_USUARIO;
+    name.innerHTML = dispositivo;
 
-    rename.value = ``;
-    descricao.value = ``;
-
-    if (nomeVar === "" || descricaoVar === "") {
-        div_erro.innerHTML = `Campos inválidos`;
-    } else {
-        fetch("/usuarios/configuracao_dispo", {
-            method: "POST",
+    function editar_dispositivo(idDispositivo) {
+        fetch(`/usuarios/editar_dispositivo/${idDispositivo}`, {
+            method: 'PUT',
             headers: {
                 "Content-Type": "application/json"
             },
             body: JSON.stringify({
                 nomeServer: nomeVar,
                 descricaoServer: descricaoVar,
-                fkEmpresaServer: fkEmpresa
+               
             }),
         })
-        .then(function (resposta) {
-            if (resposta.ok) {
-                abrirConfirmacaoDispo();  
-            } else {
-                throw new Error("Houve um erro ao tentar realizar o cadastro!");
-            }
-        })
-        .catch(function (resposta) {
-            console.log("#ERRO: " + resposta);
-        });
+            .then(function (resposta) {
+                if (resposta.ok) {
+                    editadoComSucesso();
+                } else {
+                    throw new Error("Houve um erro ao tentar realizar o cadastro!");
+                    window.alert("deu erro");
+                }
+            })
+            .catch(function (resposta) {
+                console.log("#ERRO: " + resposta);
+            });
 
         return false;
     }
-}
-
+</script>
 </script>

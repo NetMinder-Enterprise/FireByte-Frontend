@@ -23,6 +23,10 @@ router.put("/delete_dispositivo/:id", function (req, res) {
     usuarioController.delete_dispositivo(req, res);
 });
 
+router.put("/editar_dispositivo/:id", function (req, res) {
+    usuarioController.editar_dispositivo(req, res);
+});
+
 router.put('/cadastro/:idUsuario', upload.single('foto'), (req, res) => {
     usuarioController.salvar(req, res);
 });

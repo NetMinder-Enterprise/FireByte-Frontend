@@ -58,21 +58,48 @@ function delete_dispositivo(id) {
     return database.executar(deleteDispo);
 }
 
+
+function delete_dispositivo(id) {
+    console.log("ACESSEI O USUARIO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function cadastrar_funcionario():", id);
+
+    var deleteDispo = `
+    UPDATE firebytedb.dispositivo SET status = 0 where id = ${id}`;
+
+    console.log("Executando a instrução SQL: \n" + deleteDispo);
+    return database.executar(deleteDispo);
+}
+
+function editar_dispositivo(id, nome, descricao) {
+    console.log("ACESSEI O USUARIO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function cadastrar_funcionario():", id, nome, descricao);
+
+    var editeDispo = `
+    UPDATE dispositivo
+    SET titulo = '${nome}', descricao = '${descricao}'
+    WHERE id = ${id};`
+
+    console.log("Executando a instrução SQL: \n" + editeDispo);
+    return database.executar(editeDispo);
+}
+
+
+
 function salvar(idUsuario, imagem) {
-    const instrucao = 
-    `UPDATE firebytedb.usuario SET imagem_perfil = '${imagem}' where id = ${idUsuario}`;
+    const instrucao =
+        `UPDATE firebytedb.usuario SET imagem_perfil = '${imagem}' where id = ${idUsuario}`;
 
     return database.executar(instrucao);
-  }
+}
 
 
-  function ver_imagem(idUsuario){
+function ver_imagem(idUsuario) {
     var instrucao = `
     SELECT imagem_perfil FROM usuario WHERE id = ${idUsuario};
     `;
 
     return database.executar(instrucao);
 }
+
+
 
 module.exports = {
     cadastrar_funcionario,
@@ -81,5 +108,6 @@ module.exports = {
     configuracao_dispo,
     delete_dispositivo,
     salvar,
-    ver_imagem
+    ver_imagem,
+    editar_dispositivo
 };

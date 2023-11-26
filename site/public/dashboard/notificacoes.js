@@ -20,6 +20,42 @@ function abrirModal() {
     });
   }
 
+  // Ir para tela de editar
+  function abrirModalEditar() {
+    Swal.fire({
+      title: "Editar dispositivos",
+      text: "Deseja editar as configurações do dispositivo?",
+      icon: "question"
+    }).then(() => {
+      window.location = "./cadastro/formEdite.html";
+    });
+  }
+
+  // editado com sucesso 
+  function editadoComSucesso() {
+    const Toast = Swal.mixin({
+      toast: true,
+      position: "top-end",
+      showConfirmButton: false,
+      timer: 3000,
+      timerProgressBar: true,
+      didOpen: (toast) => {
+        toast.onmouseenter = Swal.stopTimer;
+        toast.onmouseleave = Swal.resumeTimer;
+      }
+    });
+
+    Toast.fire({
+      icon: "success",
+      title: "Dispositivo editado com sucesso!"
+    });
+
+    setTimeout(() => {
+      window.location = "../../dashboard/dispositivos.html";
+    }, 3000);
+  }
+
+
 function abrirConfirmacao() {
     const Toast = Swal.mixin({
       toast: true,
