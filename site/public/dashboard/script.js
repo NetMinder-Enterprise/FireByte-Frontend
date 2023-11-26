@@ -63,8 +63,12 @@ function updateNotificationBadge() {
 }
 
 function addNotification(notification, notificationColor, fileUrl) {
+    const fill = document.getElementById(fillId);
+    const percentageDiv = document.getElementById(percentageId);
     var notificationList = document.getElementById("notification-list");
     var listItem = document.createElement("li");
+    var notificationId = 1 + notificationCount;
+    listItem.setAttribute('id', notificationId);
     listItem.style.display = "flex";
     listItem.style.alignItems = "center";
 
@@ -88,14 +92,13 @@ function addNotification(notification, notificationColor, fileUrl) {
     }
 
     notificationList.appendChild(listItem);
-
     notificationCount++;
     updateNotificationBadge();
 }
 
 function clearNotifications() {
     var notificationList = document.getElementById("notification-list");
-    notificationList.innerHTML = "";
+    notificationList = "";
     notificationCount = 0;
     updateNotificationBadge();
 }
@@ -129,9 +132,8 @@ var orderButton = document.getElementById("order-button");
 orderButton.addEventListener("click", toggleOrderModal);
 
 // Adicione suas notificações
-addNotification("CPU atingiu 70%", "yellow", "./dispositivos.html");
-addNotification("Falha de rede, reinicie o dispositivo", "red", "./dispositivos.html");
-addNotification("Memória atingiu 80%", "yellow", "./dispositivos.html");
+//addNotification(`${componente} atingiu ${captura}${metrica}`, `./dispositivos.html?idDispositivo=${idDispositivo}&tituloDispositivo=${titulo}&descrition=${descricao}`, captura);
+
 
 /*Barra de porcentagem*/
 function updateProgressBar(percentage, fillId, percentageId) {

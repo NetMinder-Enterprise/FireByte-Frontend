@@ -718,22 +718,22 @@
 
     // Chamando atualizações de gráfico
     function atualizarGraficoCPU(data, myChart) {
-        var url = `/dashboard/ultimas/${idDispositivo}/${'CPU'}`; 
+        var url = `/dashboard/tempo-real/${idDispositivo}/${'CPU'}`; 
         atualizarGrafico(url, data, myChart, 'fill2', 'percentage2');
     }
 
     function atualizarGraficoRAM(data, myChart) {
-        var url = `/dashboard/ultimas/${idDispositivo}/${'RAM'}`; 
+        var url = `/dashboard/tempo-real/${idDispositivo}/${'RAM'}`; 
         atualizarGrafico(url, data, myChart, 'fill2', 'percentage2');
     }
 
     function atualizarGraficoDisco(data, myChart) {
-        var url = `/dashboard/ultimas/${idDispositivo}/${'DISCO'}`; 
+        var url = `/dashboard/tempo-real/${idDispositivo}/${'DISCO'}`; 
         atualizarGrafico(url, data, myChart, 'fill3', 'percentage3');
     }
 
     function atualizarGraficoRede(data, myChart) {
-        var url = `/dashboard/ultimas/${idDispositivo}/${'REDE'}`; 
+        var url = `/dashboard/tempo-real/${idDispositivo}/${'REDE'}`; 
         atualizarGrafico(url, data, myChart, 'fill4', 'percentage4');
     }
 

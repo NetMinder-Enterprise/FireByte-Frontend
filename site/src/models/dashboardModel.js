@@ -30,7 +30,8 @@ function buscarRegistrosEmTempoReal(fkDispositivo, componente) {
         instrucaoSql = `select
                         l.captura, 
                         l.dataHora,
-                        DATE_FORMAT(l.dataHora,'%H:%i:%s') as momento_grafico
+                        DATE_FORMAT(l.dataHora,'%H:%i:%s') as momento_grafico,
+                        tc.nome
                         from log l
                         LEFT JOIN componentesDispositivos cd 
                         ON l.fkComponenteDispositivo = cd.id
