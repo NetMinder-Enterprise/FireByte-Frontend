@@ -12,7 +12,7 @@
     <link rel="stylesheet" href="../../css/global.css">
 </head>
 
-<body>
+<body onload="buscarDispositivo()">
     <div class="container">
         <div class="go-out">
             <a href="../dashboard.html"><ion-icon name="chevron-back-outline"></ion-icon></a>
@@ -37,7 +37,7 @@
                     <textarea type="text" autocomplete="off" class="input" cols="20" rows="5" id="descricao"
                         placeholder="Descrição"></textarea>
                 </div>
-                <button class="loginBtn" onclick="configuracao_dispositivo()"><span>Continuar</span></button>
+                <button class="loginBtn" onclick="editar_dispositivo()"><span>Continuar</span></button>
                 <div id="div_erro"></div>
             </div>
         </div>
@@ -52,10 +52,40 @@
 <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
 
 <script>
-    function configuracao_dispositivo() {
-    var nomeVar = rename.value;
-    var descricaoVar = descricao.value;
-    var fkEmpresa = sessionStorage.ID_EMPRESA;
+    function buscarDispositivo(){
+        var url = new URL(window.location.href);
+        var id = url.searchParams.get("id");
+
+        fetch(`/dispositivos/buscarDispositivo/${id}`, {
+            method: "GET",
+            headers: {
+                "Content-Type": "application/json"
+            },
+        })
+        .then(function (resposta) {
+            if (resposta.ok) {
+                resposta.json()
+                    .then(function (dispositivo) {
+                        console.log(dispositivo);
+                        console.log("OK");
+                        document.getElementById('rename').value = dispositivo[0].titulo ?? "";
+                        document.getElementById('descricao').value = dispositivo[0].descricao ?? "";
+                        console.log(`Dados recebidos: ${JSON.stringify(dispositivo)}`);
+                    })  
+            } else {
+                throw new Error("Houve um erro ao buscar dispositivo!");
+            }
+        })
+        .catch(function (resposta) {
+            console.log("#ERRO: " + resposta);
+        });
+    }
+
+    function editar_dispositivo() {
+    var nomeVar = document.getElementById('rename').value;
+    var descricaoVar = document.getElementById('descricao').value;
+    var url = new URL(window.location.href);
+    var id = url.searchParams.get("id");
     const div_erro = document.getElementById("div_erro");
 
     rename.value = ``;
@@ -64,20 +94,20 @@
     if (nomeVar === "" || descricaoVar === "") {
         div_erro.innerHTML = `Campos inválidos`;
     } else {
-        fetch("/dispositivos/configurar_dispositivo", {
-            method: "POST",
+        fetch(`/dispositivos/configurar_dispositivo/edit/${id}`, {
+            method: "PUT",
             headers: {
                 "Content-Type": "application/json"
             },
             body: JSON.stringify({
                 nomeServer: nomeVar,
                 descricaoServer: descricaoVar,
-                fkEmpresaServer: fkEmpresa
+                id: id
             }),
         })
         .then(function (resposta) {
             if (resposta.ok) {
-                abrirConfirmacaoDispo();  
+                abrirConfirmacaoDispo(id);  
             } else {
                 throw new Error("Houve um erro ao tentar realizar o cadastro!");
             }

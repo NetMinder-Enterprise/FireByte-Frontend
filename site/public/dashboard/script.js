@@ -129,7 +129,6 @@ var orderButton = document.getElementById("order-button");
 orderButton.addEventListener("click", toggleOrderModal);
 
 // Adicione suas notificações
-addNotification("Nova Máquina detectada.", "blue", "/dashboard/cadastro/form2.html");
 addNotification("CPU atingiu 70%", "yellow", "./dispositivos.html");
 addNotification("Falha de rede, reinicie o dispositivo", "red", "./dispositivos.html");
 addNotification("Memória atingiu 80%", "yellow", "./dispositivos.html");
@@ -256,7 +255,7 @@ setTimeout(() => {
 }
 
 
-function abrirConfirmacaoDispo(){
+function abrirConfirmacaoDispo(id){
   const Toast = Swal.mixin({
     toast: true,
     position: "top-end",
@@ -275,7 +274,7 @@ Toast.fire({
 });
 
 setTimeout(() => {
-  window.location = "/dashboard/cadastro/form3.html";
+  window.location = `/dashboard/cadastro/form3.html?dispId=${id}`;
 }, 2000);
 
 }

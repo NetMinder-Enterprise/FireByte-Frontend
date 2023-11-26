@@ -93,7 +93,7 @@
         <div class="content">
             <div class="content-bottons">
                 <div class="title">
-                    <h1 id="nameDispositivo">Dispositivo </h1>
+                    <h1 id="nameDispositivo"></h1>
                 </div>
                 <div class="buttons">
                     <div class="notification">
@@ -197,8 +197,7 @@
             </div>
             <div class="card-segury2">
                 <h4>Descrição </h4>
-                <p>Firewall 2 está localizado no 11º andar e é responsavel por monitorar do 5º andar até o 12º andar.
-                </p>
+                <p id="descricao"></p>
             </div>
         </div>
     </div>
@@ -272,12 +271,32 @@
 
 <script>
     //Get idDispositivo from url and put into nameDispositivo html
+
+    // Supondo que você tenha elementos HTML com os IDs 'nameDispositivo' e 'descricao'
     var url = new URL(window.location.href);
     var idDispositivo = url.searchParams.get("idDispositivo");
-    document.getElementById("nameDispositivo").innerHTML += idDispositivo;
+    var tituloDispositivo = url.searchParams.get("tituloDispositivo");
+    var descricaoDispositivo = url.searchParams.get("descrition");
+
+    // Função para decodificar a descrição
+    function decodeDescription(description) {
+        return decodeURIComponent(description.replace(/\+/g, ' '));
+    }
+
+    // Atribuindo os valores aos elementos HTML
+    var nameDispositivo = document.getElementById('nameDispositivo');
+    var descricao = document.getElementById('descricao');
+
+    // Verifica se os elementos HTML existem antes de atribuir valores
+    if (nameDispositivo && descricao) {
+        nameDispositivo.innerHTML = tituloDispositivo ? tituloDispositivo.toString() : 'Sem título';
+        descricao.innerHTML = descricaoDispositivo ? decodeDescription(descricaoDispositivo) : 'Sem descrição';
+    }
+
 </script>
 
 <script>
+    const urlParams = new URLSearchParams(window.location.search);
 
     //Este bloco recebe do localStorage o thema definido pelo usuário e aplica a está página.
     var backgroundColor;
@@ -318,10 +337,17 @@
     if (proximaAtualizacao != undefined) {
         clearTimeout(proximaAtualizacao);
     }
-        obterDadosGrafico(`/dashboard/ultimas/${sessionStorage.ID_DISPOSITIVO}/${'CPU'}`, plotarGraficoCPU);
-        obterDadosGrafico(`/dashboard/ultimas/${sessionStorage.ID_DISPOSITIVO}/${'RAM'}`, plotarGraficoRAM);
-        obterDadosGrafico(`/dashboard/ultimas/${sessionStorage.ID_DISPOSITIVO}/${'DISCO'}`, plotarGraficoDISCO);
-        obterDadosGrafico(`/dashboard/ultimas/${sessionStorage.ID_DISPOSITIVO}/${'REDE'}`, plotarGraficoREDE);
+        const urlParams = new URLSearchParams(window.location.search);
+        const idDispositivo = urlParams.get('idDispositivo');
+        var urlCpu = `/dashboard/ultimas/${idDispositivo}/${'CPU'}`;
+        var urlRam = `/dashboard/ultimas/${idDispositivo}/${'RAM'}`;
+        var urlDisco = `/dashboard/ultimas/${idDispositivo}/${'DISCO'}`;
+        var urlRede = `/dashboard/ultimas/${idDispositivo}/${'REDE'}`;
+
+        obterDadosGrafico(urlCpu, plotarGraficoCPU);
+        obterDadosGrafico(urlRam, plotarGraficoRAM);
+        obterDadosGrafico(urlDisco, plotarGraficoDISCO);
+        obterDadosGrafico(urlRede, plotarGraficoREDE);
     }
     
     /*RAM*/
@@ -688,23 +714,29 @@
         });
     }
 
+
+
     // Chamando atualizações de gráfico
     function atualizarGraficoCPU(data, myChart) {
-        atualizarGrafico(`/dashboard/tempo-real/${sessionStorage.ID_DISPOSITIVO}/${'CPU'}`, data, myChart, 'fill2', 'percentage2');
+        var url = `/dashboard/ultimas/${idDispositivo}/${'CPU'}`; 
+        atualizarGrafico(url, data, myChart, 'fill2', 'percentage2');
     }
 
     function atualizarGraficoRAM(data, myChart) {
-        atualizarGrafico(`/dashboard/tempo-real/${sessionStorage.ID_DISPOSITIVO}/${'RAM'}`, data, myChart, 'fill2', 'percentage2');
+        var url = `/dashboard/ultimas/${idDispositivo}/${'RAM'}`; 
+        atualizarGrafico(url, data, myChart, 'fill2', 'percentage2');
     }
 
     function atualizarGraficoDisco(data, myChart) {
-        atualizarGrafico(`/dashboard/tempo-real/${sessionStorage.ID_DISPOSITIVO}/${'DISCO'}`, data, myChart, 'fill3', 'percentage3');
+        var url = `/dashboard/ultimas/${idDispositivo}/${'DISCO'}`; 
+        atualizarGrafico(url, data, myChart, 'fill3', 'percentage3');
     }
 
     function atualizarGraficoRede(data, myChart) {
-        atualizarGrafico(`/dashboard/tempo-real/${sessionStorage.ID_DISPOSITIVO}/${'REDE'}`, data, myChart, 'fill4', 'percentage4');
+        var url = `/dashboard/ultimas/${idDispositivo}/${'REDE'}`; 
+        atualizarGrafico(url, data, myChart, 'fill4', 'percentage4');
     }
-    
+
 </script>
 </html>
 

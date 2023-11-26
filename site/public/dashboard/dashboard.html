@@ -23,7 +23,7 @@
     <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
 </head>
 
-<body onload="obterDispositivos()">
+<body onload="obterDispositivos(), obterDispositivosNovos()">
     <div class="Header">
         <div class="body">
             <div class="sidebar">
@@ -230,6 +230,32 @@
 
 <script>
     sessionStorage.removeItem("ID_DISPOSITIVO");
+    sessionStorage.removeItem("TITULO_DISPOSITIVO");
+    sessionStorage.removeItem("DESCRICAO_DISPOSITIVO");
+
+    function obterDispositivosNovos(){
+    console.log('Recebendo dispositivos Novos...');
+    fetch(`/dispositivos/buscarNovosDispositivos/${sessionStorage.ID_EMPRESA}`, { cache: 'no-store' })
+        .then(function (response) {
+            if (response.ok) {
+                response.json()
+                    .then(function (resposta) {
+                        console.log(resposta);
+                        console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
+                        resposta.reverse();
+                        //adicionar notificação
+                        resposta.map((dispositivoNovo) =>{
+                            addNotification("Nova Máquina detectada.", "blue", `/dashboard/cadastro/form2.html?id=${dispositivoNovo.id}`);
+                        })
+                    });
+            } else {
+                console.error('Nenhum dado encontrado ou erro na API');
+            }
+        })
+        .catch(function (error) {
+            console.error(`Erro na obtenção dos dados p/ gráfico de CPU: ${error.message}`);
+        });
+    }
 
     function obterDispositivos(){
     console.log('Recebendo dispositivos...');
@@ -275,10 +301,11 @@
         const cardElement = document.createElement("div");
         cardElement.classList.add("box-dispositivo");
         cardElement.setAttribute("idDispositivo", idDispositivo);
+        cardElement.setAttribute("tituloDispositivo", titulo);
+        cardElement.setAttribute("descrition", descricao);
         cardElement.innerHTML = `
             <div class='descrition-dispo'>
-                <h4 class='h4'>Dispositivo ${i + 1}</h4>
-                <h3>${titulo}</h3>
+                <h3 id="tituloDispositivo">${titulo}<h4 id="idDispositivo"></h4></h3>
                 <p class='descrition'>${descricao}</p>
             </div>
             <div class='status-dispo'>
@@ -295,9 +322,11 @@
         `;
 
         cardElement.addEventListener("click", function () {
-            const id = this.getAttribute("idDispositivo");
-            sessionStorage.setItem("ID_DISPOSITIVO", id);
-            window.location.href = `./dispositivos.html?idDispositivo=${id}`;
+            const idDispositivo = this.getAttribute("idDispositivo");
+            const titulo = this.getAttribute("tituloDispositivo");
+            const descricao = this.getAttribute("descrition");
+            window.location.href = `./dispositivos.html?idDispositivo=${idDispositivo}&tituloDispositivo=${titulo}&descrition=${descricao}`;
+            
         });
 
         cardsContainer.appendChild(cardElement);

@@ -14,80 +14,6 @@ CREATE TABLE IF NOT EXISTS empresa (
 );
 
 -- -----------------------------------------------------
--- Table Dispositivo
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS dispositivo (
-  id INT AUTO_INCREMENT NOT NULL,
-  enderecoMAC VARCHAR(25) NOT NULL,
-  fkEmpresa INT NOT NULL,
-  titulo VARCHAR(45) NULL,
-  descricao VARCHAR(255),
-  ativo TINYINT,
-  taxaAtualizacao INT,
-  PRIMARY KEY (id),
-  FOREIGN KEY (fkEmpresa) REFERENCES empresa (id)
-);
-
--- -----------------------------------------------------
--- Table Componente
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS tipoComponente (
-  id INT AUTO_INCREMENT NOT NULL,
-  nome VARCHAR(45),
-  PRIMARY KEY (id)
-);
-
-CREATE TABLE IF NOT EXISTS componentesDispositivos(
-    id INT AUTO_INCREMENT NOT NULL,
-    fkTipoComponente INT NOT NULL,
-    fkDispositivo INT NOT NULL,
-    PRIMARY KEY (id, fkTipoComponente, fkDispositivo),
-    FOREIGN KEY (fkTipoComponente) REFERENCES tipoComponente(id),
-    FOREIGN KEY (fkDispositivo) REFERENCES dispositivo(id)
-);
-
-
--- -----------------------------------------------------
--- Table Log
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS log (
-  id INT AUTO_INCREMENT NOT NULL,
-  fkcomponenteDispositivo INT NOT NULL,
-  dataHora DATETIME NOT NULL,
-  captura INT NOT NULL,
-  PRIMARY KEY (id, fkcomponenteDispositivo),
-  FOREIGN KEY (fkcomponenteDispositivo) REFERENCES componentesDispositivos (id)
-);
-
-
--- -----------------------------------------------------
--- Table NivelAcesso
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS nivelAcesso (
-  id INT AUTO_INCREMENT NOT NULL,
-  tipo VARCHAR(45) NOT NULL,
-  ativo TINYINT,
-  PRIMARY KEY (id)
-);
-
-
--- -----------------------------------------------------
--- Table Usuario
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS usuario (
-  id INT AUTO_INCREMENT NOT NULL,
-  fkEmpresa INT NOT NULL,
-  fkNivelAcesso INT NOT NULL,
-  nome VARCHAR(45),
-  email VARCHAR(100) NOT NULL,
-  senha VARCHAR(45) NOT NULL,
-  PRIMARY KEY (id, fkNivelAcesso),
-  FOREIGN KEY (fkEmpresa) REFERENCES empresa (id),
-  FOREIGN KEY (fkNivelAcesso) REFERENCES nivelAcesso (id)
-);
-
-
--- -----------------------------------------------------
 -- Table Contato
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS contato (
@@ -115,18 +41,119 @@ CREATE TABLE IF NOT EXISTS endereco (
   FOREIGN KEY (fkEmpresa) REFERENCES empresa (id)
 );
 
+-- -----------------------------------------------------
+-- Table NivelAcesso
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS nivelAcesso (
+  id INT AUTO_INCREMENT NOT NULL,
+  tipo VARCHAR(45) NOT NULL,
+  ativo TINYINT,
+  PRIMARY KEY (id)
+);
+
+-- -----------------------------------------------------
+-- Table Usuario
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS usuario (
+  id INT AUTO_INCREMENT NOT NULL,
+  fkEmpresa INT NOT NULL,
+  fkNivelAcesso INT NOT NULL,
+  nome VARCHAR(45),
+  email VARCHAR(100) NOT NULL,
+  senha VARCHAR(45) NOT NULL,
+  PRIMARY KEY (id, fkNivelAcesso),
+  FOREIGN KEY (fkEmpresa) REFERENCES empresa (id),
+  FOREIGN KEY (fkNivelAcesso) REFERENCES nivelAcesso (id)
+);
+
+-- -----------------------------------------------------
+-- Table Dispositivo
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS dispositivo (
+  id INT AUTO_INCREMENT NOT NULL,
+  enderecoMAC VARCHAR(25) NOT NULL,
+  fkEmpresa INT NOT NULL,
+  titulo VARCHAR(45) NULL,
+  descricao VARCHAR(255),
+  ativo TINYINT,
+  taxaAtualizacao INT,
+  PRIMARY KEY (id),
+  FOREIGN KEY (fkEmpresa) REFERENCES empresa (id)
+);
+
+-- -----------------------------------------------------
+-- Table Componente
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS tipoComponente (
+  id INT AUTO_INCREMENT NOT NULL,
+  nome VARCHAR(45),
+  PRIMARY KEY (id)
+);
 
 -- -----------------------------------------------------
 -- Table Parametro
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS parametro (
   id INT AUTO_INCREMENT NOT NULL,
-  fkEmpresa INT NOT NULL,
   fkComponente INT NOT NULL,
   limiteMax VARCHAR(45) NOT NULL,
   limiteMin VARCHAR(45) NOT NULL,
   metricaParametro VARCHAR(45) NOT NULL,
-  PRIMARY KEY (id, fkEmpresa, fkComponente),
-  FOREIGN KEY (fkComponente) REFERENCES tipoComponente (id),
-  FOREIGN KEY (fkEmpresa) REFERENCES empresa (id)
+  PRIMARY KEY (id, fkComponente),
+  FOREIGN KEY (fkComponente) REFERENCES tipoComponente (id)
 );
+
+CREATE TABLE IF NOT EXISTS componentesDispositivos(
+    id INT AUTO_INCREMENT NOT NULL,
+    fkTipoComponente INT NOT NULL,
+    fkDispositivo INT NOT NULL,
+    fkParametro INT NOT NULL,
+    PRIMARY KEY (id, fkTipoComponente, fkDispositivo, fkParametro),
+    FOREIGN KEY (fkTipoComponente) REFERENCES tipoComponente(id),
+    FOREIGN KEY (fkDispositivo) REFERENCES dispositivo(id),
+    FOREIGN KEY (fkParametro) REFERENCES parametro(id)
+);
+
+-- -----------------------------------------------------
+-- Table Log
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS log (
+  id INT AUTO_INCREMENT NOT NULL,
+  fkcomponenteDispositivo INT NOT NULL,
+  dataHora DATETIME NOT NULL,
+  captura INT NOT NULL,
+  PRIMARY KEY (id, fkcomponenteDispositivo),
+  FOREIGN KEY (fkcomponenteDispositivo) REFERENCES componentesDispositivos (id)
+);
+
+-- -----------------------------------------------------
+-- INSERT
+-- -----------------------------------------------------
+
+-- Inserir dados na tabela Empresa
+INSERT INTO empresa (nomeFantasia, razaoSocial, CNPJ) VALUES 
+('NetMinder', 'NetMinder LTDA', '12345678901234');
+
+-- Inserir dados na tabela Contato
+INSERT INTO contato (fkEmpresa, telefone, celular, email) VALUES 
+(1, '1234567890', '987654321', 'email@netminder.com');
+
+-- Inserir dados na tabela Endereco
+INSERT INTO endereco (fkEmpresa, cep, logradouro, numero, complemento) VALUES 
+(1, '12345-678', 'Rua Exemplo 123', '456', 'Complemento A');
+
+-- Inserir dados na tabela NivelAcesso
+INSERT INTO nivelAcesso (tipo, ativo) VALUES 
+('admin', 1),
+('convencional', 1);
+
+-- Inserir dados na tabela Usuario
+INSERT INTO usuario (fkEmpresa, fkNivelAcesso, nome, email, senha) VALUES 
+(1, 1, 'admin', 'rian-neris@hotmail.com', '123');
+
+-- Inserir dados na tabela tipo componente
+INSERT INTO tipoComponente (nome) VALUES 
+('CPU'),
+('RAM'),
+('DISCO'),
+('REDE');

@@ -11,7 +11,9 @@ function entrar(email, senha) {
 
 
 function cadastrar_funcionario(nome, email, senha, tipo, fkEmpresa) {
-    console.log("ACESSEI O USUARIO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function cadastrar_funcionario():", nome, email, senha, tipo);
+    console.log("ACESSEI O USUARIO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect" + 
+    "ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >>" +  
+    "e se o servidor de seu BD está rodando corretamente. \n\n function cadastrar_funcionario():", nome, email, senha, tipo);
 
     var instrucao = `
     INSERT INTO  firebytedb.usuario (fkNivelAcesso, fkEmpresa, nome, email, senha)
@@ -34,7 +36,9 @@ function verificar_email(email) {
 }
 
 function configuracao_dispo(nome, descricao, fkEmpresa) {
-    console.log("ACESSEI O USUARIO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function cadastrar_funcionario():", fkEmpresa, nome, descricao);
+    console.log("ACESSEI O USUARIO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect" +
+    "ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >>" + 
+    "e se o servidor de seu BD está rodando corretamente. \n\n function cadastrar_funcionario():", fkEmpresa, nome, descricao);
 
     var instrucao = `
     INSERT INTO  firebytedb.dispositivo (fkEmpresa, titulo, descricao)
