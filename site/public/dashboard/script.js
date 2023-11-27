@@ -107,6 +107,38 @@ document.addEventListener("DOMContentLoaded", function () {
   function toggleOrderModal() {
     var modal = document.getElementById("order-modal");
     modal.classList.toggle("show");
+}
+
+var notificationButton = document.getElementById("notification-button");
+notificationButton.addEventListener("click", toggleNotificationModal);
+
+var clearButton = document.getElementById("clear-button");
+clearButton.addEventListener("click", clearNotifications);
+
+var orderButton = document.getElementById("order-button");
+orderButton.addEventListener("click", toggleOrderModal);
+
+// Adicione suas notificações
+addNotification("CPU atingiu 70%", "yellow", "./dispositivos.html");
+addNotification("Falha de rede, reinicie o dispositivo", "red", "./dispositivos.html");
+addNotification("Memória atingiu 80%", "yellow", "./dispositivos.html");
+
+/*Barra de porcentagem*/
+function updateProgressBar(percentage, fillId, percentageId) {
+  const fill = document.getElementById(fillId);
+  const percentageDiv = document.getElementById(percentageId);
+
+  percentageDiv.textContent = percentage + '%';
+
+  if (percentage <= 50) {
+    fill.style.width = percentage + '%';
+    fill.className = 'fill blue';
+  } else if (percentage <= 75) {
+    fill.style.width = percentage + '%';
+    fill.className = 'fill yellow';
+  } else {
+    fill.style.width = percentage + '%';
+    fill.className = 'fill red';
   }
 
   var notificationButton = document.getElementById("notification-button");
@@ -131,15 +163,16 @@ document.addEventListener("DOMContentLoaded", function () {
 
     percentageDiv.textContent = percentage + '%';
 
-    if (percentage <= 50) {
-      fill.style.width = percentage + '%';
-      fill.className = 'fill blue';
-    } else if (percentage <= 75) {
-      fill.style.width = percentage + '%';
-      fill.className = 'fill yellow';
-    } else {
-      fill.style.width = percentage + '%';
-      fill.className = 'fill red';
+function abrirConfirmacaoDispo(id){
+  const Toast = Swal.mixin({
+    toast: true,
+    position: "top-end",
+    showConfirmButton: false,
+    timer: 3000,
+    timerProgressBar: true,
+    didOpen: (toast) => {
+        toast.onmouseenter = Swal.stopTimer;
+        toast.onmouseleave = Swal.resumeTimer;
     }
   }
 
@@ -156,7 +189,7 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 setTimeout(() => {
-  window.location = "/dashboard/cadastro/form3.html";
+  window.location = `/dashboard/cadastro/form3.html?dispId=${id}`;
 }, 2000);
 
 }

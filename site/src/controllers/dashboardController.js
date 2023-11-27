@@ -4,7 +4,7 @@ function buscarUltimosRegistros(req, res) {
     const fkDispositivo = req.params.fkDispositivo;
     const componente = req.params.componente;
     const limite_linhas = 7;
-    
+        
     console.log(`Recuperando as ultimas ${limite_linhas} medidas de: ${componente} do dispositivo: ${fkDispositivo}`);
     dashboardModel.buscarUltimosRegistros(fkDispositivo, componente, limite_linhas).then(function (resultado) {
         if (resultado.length > 0) {

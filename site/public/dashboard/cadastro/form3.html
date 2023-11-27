@@ -1,333 +1,427 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard - Configuração</title>
 
-    <link rel="shortcut icon" href="../../assets/favicon.png" type="image/x-icon">
-    <link rel="stylesheet" href="./css/index.css">
-    <link rel="stylesheet" href="../../css/global.css">
-</head>
-<body>
+    <link
+      rel="shortcut icon"
+      href="../../assets/favicon.png"
+      type="image/x-icon"
+    />
+    <link rel="stylesheet" href="./css/index.css" />
+    <link rel="stylesheet" href="../../css/global.css" />
+  </head>
+  <body>
     <div class="container">
-        <div class="go-out">
-            <a href="form2.html"><ion-icon name="chevron-back-outline"></ion-icon></a>
-            <div class="switch">
-                <label class="checkboxWrap">
-                    <input type="checkbox" id="themeSwitcher" class="checkboxInput">
-                    <span class="checkboxMark"></span>
-                </label>
-            </div>
+      <div class="go-out">
+        <a href="form2.html"
+          ><ion-icon name="chevron-back-outline"></ion-icon
+        ></a>
+        <div class="switch">
+          <label class="checkboxWrap">
+            <input type="checkbox" id="themeSwitcher" class="checkboxInput" />
+            <span class="checkboxMark"></span>
+          </label>
         </div>
-        <div class="content">
-                <h1>Precisamos saber mais sobre seu dispositivo</h1>
-                <h4>Selecione quais componentes deseja monitorar:</h4>
-            
-            <div class="form">
-                <div class="divisoria">
+      </div>
+      <div class="content">
+        <h1>Precisamos saber mais sobre seu dispositivo</h1>
+        <h4>Selecione quais componentes deseja monitorar:</h4>
 
-                    <input type="checkbox" id="option1" onchange="toggleInputs('option1')" class="checkbox">
-                    <label for="option1">CPU</label>
-                    <div id="inputs1" class="hidden">
-                        <div class="hidden2">
-                            <div class="hidden3">
-                                <p>Limite para alerta: </p>
-                                <input required="" type="number" name="text" autocomplete="off" class="input" id="limitAlert1"
-                                    placeholder="xx%" >
-                            </div>
-                            <div class="hidden3">
-                                <p>Limite para crítico: </p>
-                                <input required="" type="number" name="text" autocomplete="off" class="input" id="limitCritico1"
-                                    placeholder="xx%">
-                            </div>
-                        </div>
-                    </div>
+        <div class="form">
+          <div class="divisoria">
+            <input
+              type="checkbox"
+              id="option1"
+              onchange="toggleInputs('option1')"
+              class="checkbox"
+            />
+            <label for="option1">CPU</label>
+            <div id="inputs1" class="hidden">
+              <div class="hidden2">
+                <div class="hidden3">
+                  <p>Limite para alerta:</p>
+                  <input
+                    required=""
+                    type="number"
+                    name="text"
+                    autocomplete="off"
+                    class="input"
+                    id="limitAlert1"
+                    placeholder="xx%"
+                  />
                 </div>
+                <div class="hidden3">
+                  <p>Limite para crítico:</p>
+                  <input
+                    required=""
+                    type="number"
+                    name="text"
+                    autocomplete="off"
+                    class="input"
+                    id="limitCritico1"
+                    placeholder="xx%"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
 
-                <div class="divisoria">
-                    <input type="checkbox" id="option2" onchange="toggleInputs('option2')" class="checkbox">
-                    <label for="option2">RAM</label>
-                    <div id="inputs2" class="hidden">
-                        <div class="hidden2">
-                            <div class="hidden3">
-                                <p>Limite para alerta: </p>
-                                <input required="" type="number" name="text" autocomplete="off" class="input" id="limitAlert2"
-                                    placeholder="xx%">
-                            </div>
-                            <div class="hidden3">
-                                <p>Limite para crítico: </p>
-                                <input required="" type="number" name="text" autocomplete="off" class="input"  id="limitCritico2"
-                                    placeholder="xx%">
-                            </div>
-                        </div>
-                    </div>
+          <div class="divisoria">
+            <input
+              type="checkbox"
+              id="option2"
+              onchange="toggleInputs('option2')"
+              class="checkbox"
+            />
+            <label for="option2">RAM</label>
+            <div id="inputs2" class="hidden">
+              <div class="hidden2">
+                <div class="hidden3">
+                  <p>Limite para alerta:</p>
+                  <input
+                    required=""
+                    type="number"
+                    name="text"
+                    autocomplete="off"
+                    class="input"
+                    id="limitAlert2"
+                    placeholder="xx%"
+                  />
                 </div>
+                <div class="hidden3">
+                  <p>Limite para crítico:</p>
+                  <input
+                    required=""
+                    type="number"
+                    name="text"
+                    autocomplete="off"
+                    class="input"
+                    id="limitCritico2"
+                    placeholder="xx%"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
 
-                <div class="divisoria">
-                    <input type="checkbox" id="option3" onchange="toggleInputs('option3')" class="checkbox">
-                    <label for="option3">Disco</label>
-                    <div id="inputs3" class="hidden">
-                        <div class="hidden2">
-                            <div class="hidden3">
-                                <p>Limite para alerta: </p>
-                                <input required="" type="number" name="text" autocomplete="off" class="input"id="limitAlert3"
-                                    placeholder="xx%">
-                            </div>
-                            <div class="hidden3">
-                                <p>Limite para crítico: </p>
-                                <input required="" type="number" name="text" autocomplete="off" class="input"  id="limitCritico3"
-                                    placeholder="xx%">
-                            </div>
-                        </div>
-                    </div>
+          <div class="divisoria">
+            <input
+              type="checkbox"
+              id="option3"
+              onchange="toggleInputs('option3')"
+              class="checkbox"
+            />
+            <label for="option3">Disco</label>
+            <div id="inputs3" class="hidden">
+              <div class="hidden2">
+                <div class="hidden3">
+                  <p>Limite para alerta:</p>
+                  <input
+                    required=""
+                    type="number"
+                    name="text"
+                    autocomplete="off"
+                    class="input"
+                    id="limitAlert3"
+                    placeholder="xx%"
+                  />
                 </div>
+                <div class="hidden3">
+                  <p>Limite para crítico:</p>
+                  <input
+                    required=""
+                    type="number"
+                    name="text"
+                    autocomplete="off"
+                    class="input"
+                    id="limitCritico3"
+                    placeholder="xx%"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
 
-                <div class="divisoria">
-                    <input type="checkbox" id="option4" onchange="toggleInputs('option4')" class="checkbox">
-                    <label for="option3">Rede</label>
-                    <div id="inputs4" class="hidden">
-                        <div class="hidden2">
-                            <div class="hidden3">
-                                <p>Limite para alerta: </p>
-                                <input required="" type="number" name="text" autocomplete="off" class="input" id="limitAlert4"
-                                    placeholder="xx%">
-                            </div>
-                            <div class="hidden3">
-                                <p>Limite para crítico: </p>
-                                <input required="" type="number" name="text" autocomplete="off" class="input" id="limitCritico4"
-                                    placeholder="xx%">
-                            </div>
-                        </div>
-                    </div>
+          <div class="divisoria">
+            <input
+              type="checkbox"
+              id="option4"
+              onchange="toggleInputs('option4')"
+              class="checkbox"
+            />
+            <label for="option3">Rede</label>
+            <div id="inputs4" class="hidden">
+              <div class="hidden2">
+                <div class="hidden3">
+                  <p>Limite para alerta:</p>
+                  <input
+                    required=""
+                    type="number"
+                    name="text"
+                    autocomplete="off"
+                    class="input"
+                    id="limitAlert4"
+                    placeholder="xx%"
+                  />
                 </div>
-                <button class="loginBtn1" onclick="configurar_componente_parametro()"><span>Cadastrar</span></button>
-                <div id="div_erro"></div>
-                <!-- <div id="myModal" class="modalzinha">
+                <div class="hidden3">
+                  <p>Limite para crítico:</p>
+                  <input
+                    required=""
+                    type="number"
+                    name="text"
+                    autocomplete="off"
+                    class="input"
+                    id="limitCritico4"
+                    placeholder="xx%"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+          <button class="loginBtn1" onclick="configurar_componente_parametro()">
+            <span>Cadastrar</span>
+          </button>
+          <div id="div_erro"></div>
+          <!-- <div id="myModal" class="modalzinha">
                     <div class="modalzinha-content">
                         <p>Dispositivo Cadastrado Com Sucesso!</p>
                     </div>
                 </div> -->
-            </div>
         </div>
+      </div>
     </div>
 
     <script src="../notificacoes.js"></script>
     <script src="../script.js"></script>
 
     <script>
-        function toggleInputs(option) {
-            var inputDiv = document.getElementById('inputs' + option.substr(option.length - 1));
-            var checkbox = document.getElementById(option);
-            if (checkbox.checked) {
-                inputDiv.style.display = 'block';
-            } else {
-                inputDiv.style.display = 'none';
-            }
+      function toggleInputs(option) {
+        var inputDiv = document.getElementById(
+          "inputs" + option.substr(option.length - 1)
+        );
+        var checkbox = document.getElementById(option);
+        if (checkbox.checked) {
+          inputDiv.style.display = "block";
+        } else {
+          inputDiv.style.display = "none";
         }
+      }
     </script>
 
-<script>
-    function exibirModal() {
+    <script>
+      function exibirModal() {
         var modal = document.getElementById("myModal");
         modal.style.display = "block"; // Exibe a modal
 
         // Redireciona o usuário após 2 segundos
         setTimeout(function () {
-            window.location.href = "/dashboard/dashboard.html";
+          window.location.href = "/dashboard/dashboard.html";
         }, 2000);
-    }
-</script>
-</body>
-
+      }
+    </script>
+  </body>
 </html>
 
 <script src="../../js/changeTheme.js"></script>
-<script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
-<script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+<script
+  type="module"
+  src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"
+></script>
+<script
+  nomodule
+  src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"
+></script>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
 <script>
+  function configurar_componente_parametro() {
+    div_erro.innerHTML = "";
+    /*Var opção*/
+    var cpuVar = document.getElementById("option1").checked;
+    var ramVar = document.getElementById("option2").checked;
+    var discoVar = document.getElementById("option3").checked;
+    var redeVar = document.getElementById("option4").checked;
 
-    function configurar_componente_parametro(){
-        div_erro.innerHTML = '';
-        /*Var opção*/
-        var cpuVar = document.getElementById('option1').checked;
-        var ramVar = document.getElementById('option2').checked;
-        var discoVar = document.getElementById('option3').checked;
-        var redeVar = document.getElementById('option4').checked;
+    /*Var alertas*/
+    var alertaCPUVar = Number(limitAlert1.value);
+    var criticoCPUVar = Number(limitCritico1.value);
+    var alertaRAMVar = Number(limitAlert2.value);
+    var criticoRAMVar = Number(limitCritico2.value);
+    var alertaDiscoVar = Number(limitAlert3.value);
+    var criticoDiscoVar = Number(limitCritico3.value);
+    var alertaRedeVar = Number(limitAlert4.value);
+    var criticoRedeVar = Number(limitCritico4.value);
+    var fkEmpresa = sessionStorage.ID_EMPRESA;
 
-        /*Var alertas*/
-        var alertaCPUVar = Number(limitAlert1.value);
-        var criticoCPUVar = Number(limitCritico1.value);
-        var alertaRAMVar = Number(limitAlert2.value);
-        var criticoRAMVar = Number(limitCritico2.value);
-        var alertaDiscoVar = Number(limitAlert3.value);
-        var criticoDiscoVar = Number(limitCritico3.value);
-        var alertaRedeVar = Number(limitAlert4.value);
-        var criticoRedeVar = Number(limitCritico4.value);
-        var fkEmpresa = sessionStorage.ID_EMPRESA;
+    if (cpuVar || ramVar || discoVar || redeVar) {
+      let erroEncontrado = false;
 
-        if (cpuVar || ramVar || discoVar || redeVar) {
-            let erroEncontrado = false;
+      limitAlert1.addEventListener("input", function () {
+        validateAndDisplayError(limitAlert1);
+      });
 
-            limitAlert1.addEventListener('input', function () {
-                validateAndDisplayError(limitAlert1);
-            });
+      limitCritico1.addEventListener("input", function () {
+        validateAndDisplayError(limitCritico1);
+      });
 
-            limitCritico1.addEventListener('input', function () {
-                validateAndDisplayError(limitCritico1);
-            });
+      limitAlert2.addEventListener("input", function () {
+        validateAndDisplayError(limitAlert2);
+      });
 
-            limitAlert2.addEventListener('input', function () {
-                validateAndDisplayError(limitAlert2);
-            });
+      limitCritico2.addEventListener("input", function () {
+        validateAndDisplayError(limitCritico2);
+      });
 
-            limitCritico2.addEventListener('input', function () {
-                validateAndDisplayError(limitCritico2);
-            }); 
+      limitAlert3.addEventListener("input", function () {
+        validateAndDisplayError(limitAlert3);
+      });
 
-            limitAlert3.addEventListener('input', function () {
-                validateAndDisplayError(limitAlert3);
-            });
+      limitCritico3.addEventListener("input", function () {
+        validateAndDisplayError(limitCritico3);
+      });
 
-            limitCritico3.addEventListener('input', function () {
-                validateAndDisplayError(limitCritico3);
-            });
+      limitAlert4.addEventListener("input", function () {
+        validateAndDisplayError(limitAlert4);
+      });
 
-            limitAlert4.addEventListener('input', function () {
-                validateAndDisplayError(limitAlert4);
-            });
+      limitCritico4.addEventListener("input", function () {
+        validateAndDisplayError(limitCritico4);
+      });
 
-            limitCritico4.addEventListener('input', function () {
-                validateAndDisplayError(limitCritico4);
-            });
+      if (cpuVar && (alertaCPUVar <= 0 || criticoCPUVar <= 0)) {
+        erroEncontrado = validateAndDisplayError(
+          limitAlert1,
+          "Valores inválidos. Os valores devem ser maiores que zero.<br>",
+          erroEncontrado
+        );
+        erroEncontrado = validateAndDisplayError(
+          limitCritico1,
+          "Valores inválidos. Os valores devem ser maiores que zero.<br>",
+          erroEncontrado
+        );
+      }
 
+      if (ramVar && (alertaRAMVar <= 0 || criticoRAMVar <= 0)) {
+        erroEncontrado = validateAndDisplayError(
+          limitAlert2,
+          "Valores inválidos. Os valores devem ser maiores que zero.<br>",
+          erroEncontrado
+        );
+        erroEncontrado = validateAndDisplayError(
+          limitCritico2,
+          "Valores inválidos. Os valores devem ser maiores que zero.<br>",
+          erroEncontrado
+        );
+      }
 
-            if (cpuVar && (alertaCPUVar <= 0 || criticoCPUVar <= 0)) {
-                erroEncontrado = validateAndDisplayError(limitAlert1, 'Valores inválidos. Os valores devem ser maiores que zero.<br>', erroEncontrado);
-                erroEncontrado = validateAndDisplayError(limitCritico1, 'Valores inválidos. Os valores devem ser maiores que zero.<br>', erroEncontrado);
+      if (discoVar && (alertaDiscoVar <= 0 || criticoDiscoVar <= 0)) {
+        erroEncontrado = validateAndDisplayError(
+          limitAlert3,
+          "Valores inválidos. Os valores devem ser maiores que zero.<br>",
+          erroEncontrado
+        );
+        erroEncontrado = validateAndDisplayError(
+          limitCritico3,
+          "Valores inválidos. Os valores devem ser maiores que zero.<br>",
+          erroEncontrado
+        );
+      }
+
+      if (redeVar && (alertaRedeVar <= 0 || criticoRedeVar <= 0)) {
+        erroEncontrado = validateAndDisplayError(
+          limitAlert4,
+          "Valores inválidos. Os valores devem ser maiores que zero.<br>",
+          erroEncontrado
+        );
+        erroEncontrado = validateAndDisplayError(
+          limitCritico4,
+          "Valores inválidos . Os valores devem ser maiores que zero.<br>",
+          erroEncontrado
+        );
+      }
+
+      function cadastrarParametros(componente, limiteAlert, limiteCritico) {
+        var url = new URL(window.location.href);
+        var idDispositivo = url.searchParams.get("dispId");
+
+        console.log(`Inserindo parâmetros...`);
+        fetch(`/dispositivos/cadastrar_parametro`, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            limiteAlertServer: limiteAlert,
+            limiteCriticoServer: limiteCritico,
+            componente:componente
+          }),
+        })
+          .then(function (resposta) {
+            if (resposta.ok) {
+              return resposta.json(); // Retorna a resposta como JSON
+            } else {
+              throw new Error(
+                `Houve um erro ao tentar cadastrar ${componente}!`
+              );
             }
-
-            if (ramVar && (alertaRAMVar <= 0 || criticoRAMVar <= 0)) {
-                erroEncontrado = validateAndDisplayError(limitAlert2, 'Valores inválidos. Os valores devem ser maiores que zero.<br>', erroEncontrado);
-                erroEncontrado = validateAndDisplayError(limitCritico2, 'Valores inválidos. Os valores devem ser maiores que zero.<br>', erroEncontrado);
+          })
+          .then(function (parametro) {
+            JSON.stringify(parametro);
+            // Utiliza o ID do parâmetro retornado para cadastrar no dispositivo
+            console.log("Parâmetro cadastrado:", parametro);
+            console.log("id do parametro: ", parametro.insertId);
+            return fetch(`/dispositivos/cadastrar_parametroAoDispositivo`, {
+              method: "POST",
+              headers: {
+                "Content-Type": "application/json",
+              },
+              body: JSON.stringify({
+                parametro: parametro.insertId,
+                dispositivo: idDispositivo,
+                componente: componente
+              }),
+            });
+          })
+          .then(function (resposta) {
+            if (resposta.ok) {
+              console.log("Parâmetro associado ao dispositivo com sucesso!");
+              console.log("");
+              console.log("Ativando seu dispositivo...");
+              return fetch(`/dispositivos/ativarDispositivo/activate/${idDispositivo}`, {
+              method: "PUT",
+              headers: {
+                "Content-Type": "application/json",
+              },
+            });
+            } else {
+              throw new Error("Erro ao associar o parâmetro ao dispositivo!");
             }
+          })
+          .catch(function (erro) {
+            console.log(`#ERRO ao cadastrar ${componente}: ${erro}`);
+          });
+      }
 
-
-            if (discoVar && (alertaDiscoVar <= 0 || criticoDiscoVar <= 0)) {
-                erroEncontrado = validateAndDisplayError(limitAlert3, 'Valores inválidos. Os valores devem ser maiores que zero.<br>', erroEncontrado);
-                erroEncontrado = validateAndDisplayError(limitCritico3, 'Valores inválidos. Os valores devem ser maiores que zero.<br>', erroEncontrado);
-            }
-
-
-            if (redeVar && (alertaRedeVar <= 0 || criticoRedeVar <= 0)) {
-                erroEncontrado = validateAndDisplayError(limitAlert4, 'Valores inválidos. Os valores devem ser maiores que zero.<br>', erroEncontrado);
-                erroEncontrado = validateAndDisplayError(limitCritico4, 'Valores inválidos . Os valores devem ser maiores que zero.<br>', erroEncontrado);
-            }
-
-
-            if (!erroEncontrado) {
-                if(cpuVar){
-                    const componente = 'CPU';
-                    console.log('Inserindo valores de CPU...');
-                    fetch("/dispositivos/cadastrar_parametro_cpu", {
-                        method: "POST",
-                        headers: {
-                            "Content-Type": "application/json"
-                        },
-                        body: JSON.stringify({
-                            limiteAlertServer: alertaCPUVar,
-                            limiteCriticoServer: criticoCPUVar,
-                            componenteServer: componente,
-                            fkEmpresaServer: fkEmpresa
-                        }),
-                        }).then(function (resposta) {
-                            if (resposta.ok) {
-                                console.log('valores cadastrados: ' + resposta);
-                            } else {
-                                throw new Error("Houve um erro ao tentar realizar o cadastro!");
-                            }
-                        }).catch(function (resposta) {
-                            console.log("#ERRO: " + resposta);
-                    });
-                }
-                if(ramVar){
-                    const componente = 'RAM';
-                    console.log('Inserindo valores de RAM...');
-                    fetch("/dispositivos/cadastrar_parametro_ram", {
-                        method: "POST",
-                        headers: {
-                            "Content-Type": "application/json"
-                        },
-                        body: JSON.stringify({
-                            limiteAlertServer: alertaRAMVar,
-                            limiteCriticoServer: criticoRAMVar,
-                            componenteServer: componente,
-                            fkEmpresaServer: fkEmpresa
-                        }),
-                        }).then(function (resposta) {
-                            if (resposta.ok) {
-                                console.log('valores cadastrados: ' + resposta);
-                            } else {
-                                throw new Error("Houve um erro ao tentar realizar o cadastro!");
-                            }
-                        }).catch(function (resposta) {
-                            console.log("#ERRO: " + resposta);
-                    });
-                }
-                if(discoVar){
-                    const componente = 'DISCO';
-                    console.log('Inserindo valores de Disco...');
-                    fetch("/dispositivos/cadastrar_parametro_disco", {
-                        method: "POST",
-                        headers: {
-                            "Content-Type": "application/json"
-                        },
-                        body: JSON.stringify({
-                            limiteAlertServer: alertaDiscoVar,
-                            limiteCriticoServer: criticoDiscoVar,
-                            componenteServer: componente,
-                            fkEmpresaServer: fkEmpresa
-                        }),
-                        }).then(function (resposta) {
-                            if (resposta.ok) {
-                                console.log('valores cadastrados: ' + resposta);
-                            } else {
-                                throw new Error("Houve um erro ao tentar realizar o cadastro!");
-                            }
-                        }).catch(function (resposta) {
-                            console.log("#ERRO: " + resposta);
-                    });
-                }
-                if(redeVar){
-                    const componente = 'REDE';
-                    console.log('Inserindo valores de Rede...');
-                    fetch("/dispositivos/cadastrar_parametro_rede", {
-                        method: "POST",
-                        headers: {
-                            "Content-Type": "application/json"
-                        },
-                        body: JSON.stringify({
-                            limiteAlertServer: alertaRedeVar,
-                            limiteCriticoServer: criticoRedeVar,
-                            componenteServer: componente,
-                            fkEmpresaServer: fkEmpresa
-                        }),
-                        }).then(function (resposta) {
-                            if (resposta.ok) {
-                                console.log('valores cadastrados: ' + resposta);
-                            } else {
-                                throw new Error("Houve um erro ao tentar realizar o cadastro!");
-                            }
-                        }).catch(function (resposta) {
-                            console.log("#ERRO: " + resposta);
-                    });
-                }
-            }
-        } else {
-            div_erro.innerHTML = `Selecione ao menos um componente.`;
+      if (!erroEncontrado) {
+        if (cpuVar) {
+          cadastrarParametros("CPU", alertaCPUVar, criticoCPUVar);
         }
+        if (ramVar) {
+          cadastrarParametros("RAM", alertaRAMVar, criticoRAMVar);
+        }
+        if (discoVar) {
+          cadastrarParametros("DISCO", alertaDiscoVar,criticoDiscoVar);
+        }
+        if (redeVar) {
+          cadastrarParametros("REDE", alertaRedeVar, criticoRedeVar);
+        }
+      } else {
+        div_erro.innerHTML = `Selecione ao menos um componente.`;
+      }
     }
+  }
 </script>
