@@ -24,9 +24,8 @@
     <script src="./script.js"></script>
     <script src="./notificacoes.js"></script>
 </head>
-
-<body onload="ver_imagem(sessionStorage.ID_USUARIO)">
-
+  
+<body onload="obterDispositivos(), ver_imagem(sessionStorage.ID_USUARIO)">
     <div class="Header">
         <div class="body">
             <div class="sidebar">
@@ -221,55 +220,7 @@
     <!-- Aqui vão os cards dos dispositivos -->
     <div id="cards" class="cardsContainer">
     </div>
-
-    <script>
-        function plotCards() {
-            for (let i = 1; i <= 10; i++) {
-                var backgroundColor;
-                if (i % 2 == 0) {
-                    var backgroundColor = "green";
-                } else if (i % 3 == 0) {
-                    var backgroundColor = "red";
-                } else {
-                    var backgroundColor = "yellow";
-                }
-                document.getElementById("cards").innerHTML += `
-                <div class="box-dispositivo" idDispositivo="${i}">
-                    <div class='descrition-dispo'>
-                        <h4 class='h4'>Dispositivo ${i}</h4>
-                        <p class='descrition'>Insira uma descrição de onde ele está ou coisas assim para o dispositivo ${i}</p>
-                    </div>
-                    <div class='status-dispo'>
-                        <div class='alrtImg'>
-                            <p>Status:</p>
-                            <div style="background-color: ${backgroundColor}" class="imgOKBox"></div>
-                        </div>
-                        <div class='restart'>
-                            <button class='restartBtn'>
-                                <img class='restartBtnImg' id='restartBtnImg' src='../assets/restart.png' alt='restart'>
-                            </button>
-                        </div>
-                    </div>
-                </div>
-                `;
-            }
-        }
-
-        //Quando carregar a pagina vai plotar os cards e quando clicar no card vai para a página de dispositivos passando o ID
-        document.addEventListener("DOMContentLoaded", function () {
-            plotCards();
-
-            const dispositivos = document.getElementsByClassName("box-dispositivo");
-
-            for (let i = 0; i < dispositivos.length; i++) {
-                dispositivos[i].addEventListener("click", function () {
-                    const id = this.getAttribute("idDispositivo");
-                    window.location.href = `./dispositivos.html?idDispositivo=${id}`;
-                });
-            }
-        });
-    </script>
-
+  
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="script.js"></script>
 
@@ -287,7 +238,6 @@
             if (tipo == "convencional") {
                 menu.style.display = "none";
             }
-
         }
 
         // foto do usuario
@@ -346,5 +296,82 @@
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
     <script src="./script.js"></script>
 </body>
-
 </html>
+
+<script>
+    sessionStorage.removeItem("ID_DISPOSITIVO");
+
+    function obterDispositivos(){
+    console.log('Recebendo dispositivos...');
+    fetch(`/dispositivos/buscarDispositivos/${sessionStorage.ID_EMPRESA}`, { cache: 'no-store' })
+        .then(function (response) {
+            if (response.ok) {
+                response.json()
+                    .then(function (resposta) {
+                        console.log(resposta);
+                        console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
+                        resposta.reverse();
+                        plotCards(resposta);
+                    });
+            } else {
+                console.error('Nenhum dado encontrado ou erro na API');
+            }
+        })
+        .catch(function (error) {
+            console.error(`Erro na obtenção dos dados p/ gráfico de CPU: ${error.message}`);
+        });
+    }
+
+    function plotCards(resposta) {
+    const cardsContainer = document.getElementById("cards");
+    cardsContainer.innerHTML = ""; // Limpar o conteúdo antes de adicionar novos cards
+
+    for (var i = 0; i < resposta.length; i++) {
+        var idDispositivo = resposta[i].id;
+        var titulo = resposta[i].titulo;
+        var descricao = resposta[i].descricao;
+
+        // Definir cor de fundo com base no índice
+        var backgroundColor;
+        if (i % 2 === 0) {
+            backgroundColor = "green";
+        } else if (i % 3 === 0) {
+            backgroundColor = "red";
+        } else {
+            backgroundColor = "yellow";
+        }
+
+        // Criar o elemento do card e atribuir ao contêiner
+        const cardElement = document.createElement("div");
+        cardElement.classList.add("box-dispositivo");
+        cardElement.setAttribute("idDispositivo", idDispositivo);
+        cardElement.innerHTML = `
+            <div class='descrition-dispo'>
+                <h4 class='h4'>Dispositivo ${i + 1}</h4>
+                <h3>${titulo}</h3>
+                <p class='descrition'>${descricao}</p>
+            </div>
+            <div class='status-dispo'>
+                <div class='alrtImg'>
+                    <p>Status:</p>
+                    <div style="background-color: ${backgroundColor}" class="imgOKBox"></div>
+                </div>
+                <div class='restart'>
+                    <button class='restartBtn'>
+                        <img class='restartBtnImg' id='restartBtnImg' src='../assets/restart.png' alt='restart'>
+                    </button>
+                </div>
+            </div>
+        `;
+
+        cardElement.addEventListener("click", function () {
+            const id = this.getAttribute("idDispositivo");
+            sessionStorage.setItem("ID_DISPOSITIVO", id);
+            window.location.href = `./dispositivos.html?idDispositivo=${id}`;
+        });
+
+        cardsContainer.appendChild(cardElement);
+        }
+    }
+
+</script>

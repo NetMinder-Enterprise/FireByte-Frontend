@@ -590,7 +590,8 @@
 /*Card dos dispositivos*/
 .box-dispositivo {
     aspect-ratio: 1.5/1;
-    max-width: 20%;
+    width: 307px;
+    height: 204px;
     border: 2px solid var(--text-color);
     border-radius: 10px;
     background-color: rgba(217, 217, 217, 0.1);

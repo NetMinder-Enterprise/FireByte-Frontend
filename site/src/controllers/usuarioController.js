@@ -96,8 +96,6 @@ function verificar_email(req, res) {
     }
 }
 
-
-
 function configuracao_dispo(req, res) {
     var nome = req.body.nomeServer;
     var descricao = req.body.descricaoServer;

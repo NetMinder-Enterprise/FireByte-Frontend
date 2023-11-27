@@ -102,7 +102,8 @@
                         </div>
                     </div>
                 </div>
-                <button class="loginBtn1" onclick="abrirConfirmacao()"><span>Cadastrar</span></button>
+                <button class="loginBtn1" onclick="configurar_componente_parametro()"><span>Cadastrar</span></button>
+                <div id="div_erro"></div>
                 <!-- <div id="myModal" class="modalzinha">
                     <div class="modalzinha-content">
                         <p>Dispositivo Cadastrado Com Sucesso!</p>
@@ -148,22 +149,185 @@
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
 <script>
-    function cadastrar_dispositivo(){
-        
+
+    function configurar_componente_parametro(){
+        div_erro.innerHTML = '';
         /*Var opção*/
-        var cpuVar =  document.getElementById('option1').value;
-        var ramVar =  document.getElementById('option1').value;
-        var discoVar =  document.getElementById('option1').value;
-        var redeVar =  document.getElementById('option1').value;
+        var cpuVar = document.getElementById('option1').checked;
+        var ramVar = document.getElementById('option2').checked;
+        var discoVar = document.getElementById('option3').checked;
+        var redeVar = document.getElementById('option4').checked;
 
         /*Var alertas*/
         var alertaCPUVar = Number(limitAlert1.value);
-        var criticoCPUVar = Number(limitCritico1.value); 
+        var criticoCPUVar = Number(limitCritico1.value);
         var alertaRAMVar = Number(limitAlert2.value);
-        var criticoRAMVar = Number(limitCritico2.value); 
+        var criticoRAMVar = Number(limitCritico2.value);
         var alertaDiscoVar = Number(limitAlert3.value);
-        var criticoDiscoVar = Number(limitCritico3.value); 
+        var criticoDiscoVar = Number(limitCritico3.value);
         var alertaRedeVar = Number(limitAlert4.value);
-        var criticoRedeVar = Number(limitCritico4.value); 
-    }    
+        var criticoRedeVar = Number(limitCritico4.value);
+        var fkEmpresa = sessionStorage.ID_EMPRESA;
+
+        if (cpuVar || ramVar || discoVar || redeVar) {
+            let erroEncontrado = false;
+
+            limitAlert1.addEventListener('input', function () {
+                validateAndDisplayError(limitAlert1);
+            });
+
+            limitCritico1.addEventListener('input', function () {
+                validateAndDisplayError(limitCritico1);
+            });
+
+            limitAlert2.addEventListener('input', function () {
+                validateAndDisplayError(limitAlert2);
+            });
+
+            limitCritico2.addEventListener('input', function () {
+                validateAndDisplayError(limitCritico2);
+            }); 
+
+            limitAlert3.addEventListener('input', function () {
+                validateAndDisplayError(limitAlert3);
+            });
+
+            limitCritico3.addEventListener('input', function () {
+                validateAndDisplayError(limitCritico3);
+            });
+
+            limitAlert4.addEventListener('input', function () {
+                validateAndDisplayError(limitAlert4);
+            });
+
+            limitCritico4.addEventListener('input', function () {
+                validateAndDisplayError(limitCritico4);
+            });
+
+
+            if (cpuVar && (alertaCPUVar <= 0 || criticoCPUVar <= 0)) {
+                erroEncontrado = validateAndDisplayError(limitAlert1, 'Valores inválidos. Os valores devem ser maiores que zero.<br>', erroEncontrado);
+                erroEncontrado = validateAndDisplayError(limitCritico1, 'Valores inválidos. Os valores devem ser maiores que zero.<br>', erroEncontrado);
+            }
+
+            if (ramVar && (alertaRAMVar <= 0 || criticoRAMVar <= 0)) {
+                erroEncontrado = validateAndDisplayError(limitAlert2, 'Valores inválidos. Os valores devem ser maiores que zero.<br>', erroEncontrado);
+                erroEncontrado = validateAndDisplayError(limitCritico2, 'Valores inválidos. Os valores devem ser maiores que zero.<br>', erroEncontrado);
+            }
+
+
+            if (discoVar && (alertaDiscoVar <= 0 || criticoDiscoVar <= 0)) {
+                erroEncontrado = validateAndDisplayError(limitAlert3, 'Valores inválidos. Os valores devem ser maiores que zero.<br>', erroEncontrado);
+                erroEncontrado = validateAndDisplayError(limitCritico3, 'Valores inválidos. Os valores devem ser maiores que zero.<br>', erroEncontrado);
+            }
+
+
+            if (redeVar && (alertaRedeVar <= 0 || criticoRedeVar <= 0)) {
+                erroEncontrado = validateAndDisplayError(limitAlert4, 'Valores inválidos. Os valores devem ser maiores que zero.<br>', erroEncontrado);
+                erroEncontrado = validateAndDisplayError(limitCritico4, 'Valores inválidos . Os valores devem ser maiores que zero.<br>', erroEncontrado);
+            }
+
+
+            if (!erroEncontrado) {
+                if(cpuVar){
+                    const componente = 'CPU';
+                    console.log('Inserindo valores de CPU...');
+                    fetch("/dispositivos/cadastrar_parametro_cpu", {
+                        method: "POST",
+                        headers: {
+                            "Content-Type": "application/json"
+                        },
+                        body: JSON.stringify({
+                            limiteAlertServer: alertaCPUVar,
+                            limiteCriticoServer: criticoCPUVar,
+                            componenteServer: componente,
+                            fkEmpresaServer: fkEmpresa
+                        }),
+                        }).then(function (resposta) {
+                            if (resposta.ok) {
+                                console.log('valores cadastrados: ' + resposta);
+                            } else {
+                                throw new Error("Houve um erro ao tentar realizar o cadastro!");
+                            }
+                        }).catch(function (resposta) {
+                            console.log("#ERRO: " + resposta);
+                    });
+                }
+                if(ramVar){
+                    const componente = 'RAM';
+                    console.log('Inserindo valores de RAM...');
+                    fetch("/dispositivos/cadastrar_parametro_ram", {
+                        method: "POST",
+                        headers: {
+                            "Content-Type": "application/json"
+                        },
+                        body: JSON.stringify({
+                            limiteAlertServer: alertaRAMVar,
+                            limiteCriticoServer: criticoRAMVar,
+                            componenteServer: componente,
+                            fkEmpresaServer: fkEmpresa
+                        }),
+                        }).then(function (resposta) {
+                            if (resposta.ok) {
+                                console.log('valores cadastrados: ' + resposta);
+                            } else {
+                                throw new Error("Houve um erro ao tentar realizar o cadastro!");
+                            }
+                        }).catch(function (resposta) {
+                            console.log("#ERRO: " + resposta);
+                    });
+                }
+                if(discoVar){
+                    const componente = 'DISCO';
+                    console.log('Inserindo valores de Disco...');
+                    fetch("/dispositivos/cadastrar_parametro_disco", {
+                        method: "POST",
+                        headers: {
+                            "Content-Type": "application/json"
+                        },
+                        body: JSON.stringify({
+                            limiteAlertServer: alertaDiscoVar,
+                            limiteCriticoServer: criticoDiscoVar,
+                            componenteServer: componente,
+                            fkEmpresaServer: fkEmpresa
+                        }),
+                        }).then(function (resposta) {
+                            if (resposta.ok) {
+                                console.log('valores cadastrados: ' + resposta);
+                            } else {
+                                throw new Error("Houve um erro ao tentar realizar o cadastro!");
+                            }
+                        }).catch(function (resposta) {
+                            console.log("#ERRO: " + resposta);
+                    });
+                }
+                if(redeVar){
+                    const componente = 'REDE';
+                    console.log('Inserindo valores de Rede...');
+                    fetch("/dispositivos/cadastrar_parametro_rede", {
+                        method: "POST",
+                        headers: {
+                            "Content-Type": "application/json"
+                        },
+                        body: JSON.stringify({
+                            limiteAlertServer: alertaRedeVar,
+                            limiteCriticoServer: criticoRedeVar,
+                            componenteServer: componente,
+                            fkEmpresaServer: fkEmpresa
+                        }),
+                        }).then(function (resposta) {
+                            if (resposta.ok) {
+                                console.log('valores cadastrados: ' + resposta);
+                            } else {
+                                throw new Error("Houve um erro ao tentar realizar o cadastro!");
+                            }
+                        }).catch(function (resposta) {
+                            console.log("#ERRO: " + resposta);
+                    });
+                }
+            }
+        } else {
+            div_erro.innerHTML = `Selecione ao menos um componente.`;
+        }
+    }
 </script>

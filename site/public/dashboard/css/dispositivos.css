@@ -2,6 +2,11 @@
     justify-content: space-between;
 }
 
+#nameDispositivo{
+    font-size: 2rem;
+    white-space: nowrap;
+}
+
 /*Card com as informações do dispositivo*/
 
 .cards-principal {
