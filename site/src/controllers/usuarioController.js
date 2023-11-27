@@ -48,7 +48,7 @@ function cadastrar_funcionario(req, res) {
     } else if (opcao == undefined) {
         res.status(400).send("Sua opção está undefined!");
     } else if (fkEmpresa == undefined) {
-        res.status(400).send("Sua opção está undefined!"); 
+        res.status(400).send("Sua opção está undefined!");
     } else {
 
         usuarioModel.cadastrar_funcionario(nome, email, senha, opcao, fkEmpresa)
@@ -96,8 +96,127 @@ function verificar_email(req, res) {
     }
 }
 
+function configuracao_dispo(req, res) {
+    var nome = req.body.nomeServer;
+    var descricao = req.body.descricaoServer;
+    var fkEmpresa = req.body.fkEmpresaServer;
+
+    if (nome == undefined) {
+        res.status(400).send("Seu nome está undefined!");
+    } else if (descricao == undefined) {
+        res.status(400).send("Seu email está undefined!");
+    } else if (fkEmpresa == undefined) {
+        res.status(400).send("Sua opção está undefined!");
+    } else {
+
+        usuarioModel.configuracao_dispo(nome, descricao, fkEmpresa)
+            .then(
+                function (resultado) {
+                    res.json(resultado);
+                }
+            ).catch(
+                function (erro) {
+                    console.log(erro);
+                    console.log(
+                        "\nHouve um erro ao realizar o cadastro! Erro: ",
+                        erro.sqlMessage
+                    );
+                    res.status(500).json(erro.sqlMessage);
+                }
+            );
+
+    }
+}
+
+function delete_dispositivo(req, res) {
+    var id = req.params.id;
+
+    usuarioModel.delete_dispositivo(id)
+        .then(
+            function (resultado) {
+                res.json(resultado);
+            }
+        ).catch(
+            function (erro) {
+                console.log(erro);
+                console.log(
+                    "\nHouve um erro ao realizar o cadastro! Erro: ",
+                    erro.sqlMessage
+                );
+                res.status(500).json(erro.sqlMessage);
+            }
+        );
+}
+
+function editar_dispositivo(req, res) {
+    var id = req.params.id;
+    var nome = req.body.nomeServer;
+    var descricao = req.body.descricaoServer;
+
+    if (nome == undefined) {
+        res.status(400).send("Seu nome está undefined!");
+    } else if (descricao == undefined) {
+        res.status(400).send("Seu email está undefined!");
+    } else {
+        usuarioModel.editar_dispositivo(id, nome, descricao)
+            .then(
+                function (resultado) {
+                    res.json(resultado);
+                }
+            ).catch(
+                function (erro) {
+                    console.log(erro);
+                    console.log(
+                        "\nHouve um erro ao realizar o cadastro! Erro: ",
+                        erro.sqlMessage
+                    );
+                    res.status(500).json(erro.sqlMessage);
+                }
+            );
+    }
+}
+
+
+function salvar(req, res) {
+    const imagem = req.file.filename;
+    const idUsuario = req.params.idUsuario;
+
+    usuarioModel.salvar(idUsuario, imagem)
+        .then(resultado => {
+            res.status(201).send("Usuario criado com sucesso");
+        }).catch(err => {
+            res.status(500).send(err);
+        });
+}
+
+
+function ver_imagem(req, res) {
+    const idUsuario = req.params.idUsuario;
+
+    usuarioModel.ver_imagem(idUsuario)
+        .then(function (resultado) {
+            if (resultado.length > 0) {
+                res.status(200).json(resultado);
+                console.log(resultado);
+            } else {
+                res.status(204).send("Nenhum resultado encontrado!")
+            }
+        }).catch(
+            function (erro) {
+                console.log(erro);
+                console.log("Houve um erro ao realizar a consulta! Erro: ", erro.sqlMessage);
+                res.status(500).json(erro.sqlMessage);
+            }
+        );
+}
+
 module.exports = {
     cadastrar_funcionario,
     entrar,
-    verificar_email
+    verificar_email,
+    configuracao_dispo,
+    delete_dispositivo,
+    ver_imagem,
+    salvar,
+    editar_dispositivo
 }

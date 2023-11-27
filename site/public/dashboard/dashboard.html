@@ -21,9 +21,11 @@
     <!-- <script src="../js/notificacoesToastr.js"></script> -->
     <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+    <script src="./script.js"></script>
+    <script src="./notificacoes.js"></script>
 </head>
-
-<body onload="obterDispositivos()">
+  
+<body onload="obterDispositivos(), ver_imagem(sessionStorage.ID_USUARIO)">
     <div class="Header">
         <div class="body">
             <div class="sidebar">
@@ -33,25 +35,34 @@
                     <i class='bx bx-menu' id="btn"></i>
                 </div>
                 <ul class="nav_list">
+
                     <div class="profile">
-                        <div class="image-container">
-                            <img id="userImage" src="../assets/do-utilizador 1.png" alt="Imagem do perfil">
+                        <div class="image-container" id="imagemPerfil">
+                            <img src="../assets/do-utilizador 1.png">
                         </div>
-                        <button id="uploadButton" class="small">
-                            <i class='bx bxs-pencil'></i>
-                        </button>
-                        <p><span id="name_user">Nicolly</span></p>
+                        <li>
+                            <button id="uploadButton" class="small">
+                                <i class='bx bxs-pencil'></i>
+                            </button>
+                        </li>
+                        <a>
+                            <span class="links_name" id="name_user">Ncolly juliani </span>
+                        </a>
                     </div>
+
 
                     <div id="imageModal" class="modal-user" style="display: none;">
                         <div class="modal-contente">
                             <span class="close" id="closeModal">&times;</span>
-                            <img id="modalImage" src="../assets/do-utilizador 1.png" alt="Imagem do perfil">
+                            <!-- <img id="imagemPerfil" src="../assets/do-utilizador 1.png" alt="Imagem do perfil"> -->
+                            <!-- id="modalImage" -->
                             <h5>Para melhor visualização coloque uma imagem redonda ou quadrada</h5>
                             <div class="divisor-bottons">
-                                <button id="removeButton" class="small-button">Remover</button>
-                                <input type="file" id="fileInput" accept="image/*" style="display: none;">
-                                <button id="replaceButton" class="small-button">Trocar</button>
+                                <!-- <button id="removeButton" class="small-button">Remover</button>
+                                <input type="file" id="fileInput" accept="image/*" style="display: none;"> -->
+                                <!-- <button id="replaceButton" class="small-button">Trocar</button> -->
+                                <input name="foto" id="foto" type="file" />
+                                <button class="small-button" onclick="enviar(sessionStorage.ID_USUARIO)">Trocar</button>
                             </div>
                         </div>
                     </div>
@@ -103,15 +114,6 @@
     <div class="container">
         <div class="content">
             <div class="content-bottons">
-                <!-- <div class="order">
-                <label for="ordernar">Ordenado por: </label> <br>
-                <select id="opcao" name="estado">
-                    <option value="opcao1">Alerta</option>
-                    <option value="opcao2">Atenção</option>
-                    <option value="opcao3">Dispositivo</option>
-                    <option value="opcao3">Alfabetica</option>
-                </select>
-            </div> -->
                 <div class="legenda">
                     <div class="meter">
                         <div class="time-meter">
@@ -161,9 +163,19 @@
                                 <div class="divisao">
                                     <h2>Ordenar dispositivos</h2>
                                 </div>
-                                <button>Alerta</button>
-                                <button>Atenção</button>
-                                <button>Alfabetica</button>
+                                <div class="divisao2">
+                                    <button class="btn">Alerta
+                                        <div class="background"></div>
+                                    </button>
+
+                                    <button class="btn">Atenção
+                                        <div class="background"></div>
+                                    </button>
+
+                                    <button class="btn">Alfabetica
+                                        <div class="background"></div>
+                                    </button>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -204,13 +216,20 @@
     </div>
 
 
+
     <!-- Aqui vão os cards dos dispositivos -->
     <div id="cards" class="cardsContainer">
     </div>
-
+  
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="script.js"></script>
-   
+
     <script>
+
+        var funcionario = sessionStorage.NOME_USUARIO;
+        name_user.innerHTML = funcionario;
+        var idUsuario = sessionStorage.ID_USUARIO;
+
         menuNivelUsuario();
         function menuNivelUsuario() {
             var tipo = sessionStorage.TIPO_USUARIO;
@@ -220,11 +239,62 @@
                 menu.style.display = "none";
             }
         }
+
+        // foto do usuario
+        function enviar(idUsuario) {
+            const formData = new FormData();
+            formData.append('foto', foto.files[0])
+
+            fetch(`/usuarios/cadastro/${idUsuario}`, {
+                method: "PUT",
+                body: formData
+            })
+                .then(res => {
+                    // window.alert("deu certo")
+                    imagemCadastrada();
+                    // window.location = "./dashboard.html"
+                })
+                .catch(err => {
+                    console.log(err);
+                })
+        }
+
+        function ver_imagem(idUsuario) {
+            fetch(`/usuarios/ver_imagem/${idUsuario}`, {
+                method: 'GET'
+            }).then(function (resposta) {
+                if (resposta.ok) {
+                    if (resposta.status == 204) {
+                        console.log("Nenhuma resposta encontrada");
+                    }
+                    resposta.json().then(function (resposta) {
+                        console.log("Dados recebidos: ");
+                        console.log(resposta);
+
+                        var imagemPerfil = document.getElementById('imagemPerfil');
+                        if (imagemPerfil) {
+                            console.log("Caminho da imagem: ", resposta);
+
+                            imagemPerfil.innerHTML = ` <img  src="../assets/${resposta[0].imagem_perfil}" alt="Imagem do perfil">`;
+                        } else {
+                            console.error("Elemento 'imagemPerfil' não encontrado no HTML.");
+                        }
+                    });
+                } else {
+                    throw ('Houve um erro na API!');
+                }
+            }).catch(function (resposta) {
+                console.error(resposta);
+            });
+        }
+
     </script>
 
     <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
     <script src="../js/changeTheme.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+    <script src="./script.js"></script>
 </body>
 </html>
 

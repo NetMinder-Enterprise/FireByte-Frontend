@@ -1,6 +1,6 @@
 var express = require("express");
 var router = express.Router();
-
+const upload = require('./configUpload'); // ARQUIVO COM A CONFIGURAÇÃO DO UPLOAD
 var usuarioController = require("../controllers/usuarioController");
 
 router.post("/autenticar", function (req, res) {
@@ -19,7 +19,20 @@ router.post("/configuracao_dispo", function (req, res) {
     usuarioController.configuracao_dispo(req, res);
 });
 
+router.put("/delete_dispositivo/:id", function (req, res) {
+    usuarioController.delete_dispositivo(req, res);
+});
+
+router.put("/editar_dispositivo/:id", function (req, res) {
+    usuarioController.editar_dispositivo(req, res);
+});
+
+router.put('/cadastro/:idUsuario', upload.single('foto'), (req, res) => {
+    usuarioController.salvar(req, res);
+});
 
 
-
+router.get("/ver_imagem/:idUsuario", function (req, res) {
+    usuarioController.ver_imagem(req, res);
+});
 module.exports = router;
