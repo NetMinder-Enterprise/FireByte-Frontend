@@ -12,7 +12,7 @@
     <link rel="stylesheet" href="../../css/global.css">
 </head>
 
-<body onload="buscarDispositivo()">
+<body>
     <div class="container">
         <div class="go-out">
             <a href="../dashboard.html"><ion-icon name="chevron-back-outline"></ion-icon></a>
@@ -24,7 +24,7 @@
             </div>
         </div>
         <div class="content">
-            <h1>Novo dispositivo detectado</h1>
+            <h1>Renomei as configurações do dispositivo <span id="name"></span></h1>
             <h4>Você pode nomear e escreva uma descrição sobre esse dispositivo</h4>
             <div class="form1">
                 <div class="input-group1">
@@ -37,7 +37,7 @@
                     <textarea type="text" autocomplete="off" class="input" cols="20" rows="5" id="descricao"
                         placeholder="Descrição"></textarea>
                 </div>
-                <button class="loginBtn" onclick="editar_dispositivo()"><span>Continuar</span></button>
+                <button class="loginBtn" onclick="editar_dispositivo(idDispositivo)">Editar</button>
                 <div id="div_erro"></div>
             </div>
         </div>
@@ -53,73 +53,48 @@
 <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
 <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
 
+
+<!-- Editar dispositivos -->
+
 <script>
-    function buscarDispositivo(){
-        var url = new URL(window.location.href);
-        var id = url.searchParams.get("id");
-
-        fetch(`/dispositivos/buscarDispositivo/${id}`, {
-            method: "GET",
-            headers: {
-                "Content-Type": "application/json"
-            },
-        })
-        .then(function (resposta) {
-            if (resposta.ok) {
-                resposta.json()
-                    .then(function (dispositivo) {
-                        console.log(dispositivo);
-                        console.log("OK");
-                        document.getElementById('rename').value = dispositivo[0].titulo ?? "";
-                        document.getElementById('descricao').value = dispositivo[0].descricao ?? "";
-                        console.log(`Dados recebidos: ${JSON.stringify(dispositivo)}`);
-                    })  
-            } else {
-                throw new Error("Houve um erro ao buscar dispositivo!");
-            }
-        })
-        .catch(function (resposta) {
-            console.log("#ERRO: " + resposta);
-        });
-    }
-
-    function editar_dispositivo() {
-    var nomeVar = document.getElementById('rename').value;
-    var descricaoVar = document.getElementById('descricao').value;
+    //Get idDispositivo from url and put into nameDispositivo html
     var url = new URL(window.location.href);
-    var id = url.searchParams.get("id");
-    const div_erro = document.getElementById("div_erro");
+    var idDispositivo = url.searchParams.get("idDispositivo");
+    document.getElementById("nameDispositivo").innerHTML += idDispositivo;
+</script>
 
-    rename.value = ``;
-    descricao.value = ``;
+<script>
+    var nomeVar = rename.value;
+    var descricaoVar = descricao.value;
+    // var fkEmpresa = sessionStorage.ID_EMPRESA;
+    var dispositivo = sessionStorage.NOME_USUARIO;
+    name.innerHTML = dispositivo;
 
-    if (nomeVar === "" || descricaoVar === "") {
-        div_erro.innerHTML = `Campos inválidos`;
-    } else {
-        fetch(`/dispositivos/configurar_dispositivo/edit/${id}`, {
-            method: "PUT",
+    function editar_dispositivo(idDispositivo) {
+        fetch(`/usuarios/editar_dispositivo/${idDispositivo}`, {
+            method: 'PUT',
             headers: {
                 "Content-Type": "application/json"
             },
             body: JSON.stringify({
                 nomeServer: nomeVar,
                 descricaoServer: descricaoVar,
-                id: id
+               
             }),
         })
-        .then(function (resposta) {
-            if (resposta.ok) {
-                abrirConfirmacaoDispo(id);  
-            } else {
-                throw new Error("Houve um erro ao tentar realizar o cadastro!");
-            }
-        })
-        .catch(function (resposta) {
-            console.log("#ERRO: " + resposta);
-        });
+            .then(function (resposta) {
+                if (resposta.ok) {
+                    editadoComSucesso();
+                } else {
+                    throw new Error("Houve um erro ao tentar realizar o cadastro!");
+                    window.alert("deu erro");
+                }
+            })
+            .catch(function (resposta) {
+                console.log("#ERRO: " + resposta);
+            });
 
         return false;
     }
-}
-
+</script>
 </script>

@@ -18,7 +18,17 @@
     gap: 1em;
 }
 
-.buttons{
+.title-dispositivo {
+    width: 90%;
+}
+
+.buttons-separation {
+    display: flex;
+    flex-direction: row;
+    width: 20%;
+}
+
+.buttons {
     display: flex;
     flex-direction: row;
     gap: 10px;
@@ -155,6 +165,7 @@
 .button:hover .bell {
     animation: bellRing 0.9s both;
 }
+
 .button:hover .bell2 {
     animation: bellRing 0.2s both;
 }
@@ -252,6 +263,51 @@
     display: block;
 }
 
+.btn {
+    /* position: absolute; */
+    /* top: 50%;
+    left: 50%; */
+    transform: translate(-50%, -50%);
+    font-size: 20px;
+    font-weight: 600;
+    width: 120px;
+    height: 40px;
+    /* line-height: 40px; */
+    cursor: pointer;
+    background-color: inherit;
+    border: none;
+    outline: none;
+    color: #f1f1f1;
+    margin-top: 5%;
+    margin-left: 90%;
+}
+
+.btn:hover .background {
+    height: inherit;
+    /* width: 120%; */
+    top: 50%;
+}
+
+.btn .background {
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    height: 3px;
+    width: 100%;
+    background-color: #006b92;
+    z-index: -1;
+    border-radius: 5px;
+    transition: all 0.3s;
+}
+
+.divisao2 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
 .modal-content {
     /* background-color: #fff; */
     border-radius: 5px;
@@ -276,7 +332,7 @@
     margin: 0;
     cursor: pointer;
 }
-  
+
 #notification-list li {
     width: 270px;
     height: 45px;
@@ -450,7 +506,7 @@
 
 
 /* box dos dispositivos */
-.cardsContainer{
+.cardsContainer {
     width: 90%;
     display: flex;
     flex-direction: row;
@@ -467,8 +523,8 @@
 }
 
 /*legenda de cor */
-.legenda{
-    width: 20%;
+.legenda {
+    width: 30%;
     height: 60px;
     border: 2px solid var(--text-color);
     border-radius: 10px;
@@ -480,8 +536,8 @@
 .time-meter {
     display: flex;
     flex-direction: row;
-    gap: 18px;
-    margin-left: 11%;
+    gap: 30px;
+    margin-left: 15%;
     /* padding: 10px 34px; */
 }
 
@@ -494,15 +550,15 @@
 }
 
 .meter-cor1 {
-    width: 65px;
+    width: 85px;
     height: 8px;
     background-color: green;
     border-radius: 50px;
-    
+
 }
 
 .meter-cor2 {
-    width: 70px;
+    width: 90px;
     height: 8px;
     background-color: yellow;
     border-radius: 50px;
@@ -510,25 +566,25 @@
 }
 
 .meter-cor3 {
-    width: 60px;
+    width: 80px;
     height: 8px;
     background-color: red;
     border-radius: 50px;
     margin-left: -2%;
 }
 
-.h3{
+.h3 {
     font-size: 1rem;
 }
 
-.box-disp2{
+.box-disp2 {
     display: flex;
     flex-direction: row;
     gap: 15px;
     width: 100%;
-   justify-content: center;
-   align-items: center;
-   margin-top: 2%;
+    justify-content: center;
+    align-items: center;
+    margin-top: 2%;
 }
 
 /*Card dos dispositivos*/
@@ -573,7 +629,7 @@
     align-items: center;
 }
 
-.alrtImg{
+.alrtImg {
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -581,7 +637,7 @@
     gap: 0.5em;
 }
 
-.restartBtn{
+.restartBtn {
     height: 40px;
     width: 50px;
     display: flex;
@@ -595,19 +651,19 @@
     border-radius: 5px;
 }
 
-.restartBtn:hover{
+.restartBtn:hover {
     background-color: var(--dimmed-background-color);
     cursor: pointer;
 }
 
-.restartBtnImg{
+.restartBtnImg {
     width: auto;
     height: 100%;
     filter: brightness(0);
 }
 
 /*Imagem status*/
-.imgOKBox{
+.imgOKBox {
     width: 40px;
     height: 40px;
     border-radius: 50%;
