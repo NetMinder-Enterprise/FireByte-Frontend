@@ -167,6 +167,27 @@ function ativarDispositivo(req, res) {
     });
 }
 
+function desligarDispositivo(req, res) {
+    var idDispositivo = req.params.id;
+
+    console.log(`Desligando Dispositivo...`);
+    dispositivosModel.desligarDispositivo(idDispositivo)
+    .then(
+        function (resultado) {
+            res.json(resultado);
+        }
+    ).catch(
+        function (erro) {
+            console.log(erro);
+            console.log(
+                "\nHouve um erro ao cadastrar parametro! Erro: ",
+                erro.sqlMessage
+            );
+            res.status(500).json(erro.sqlMessage);
+        }
+    );
+}
+
 
 
 module.exports = {
@@ -177,5 +198,6 @@ module.exports = {
     buscarDispositivosNovos,
     configuracao_dispositivo,
     cadastrar_parametro,
-    buscarDispositivos
+    buscarDispositivos,
+    desligarDispositivo
 }

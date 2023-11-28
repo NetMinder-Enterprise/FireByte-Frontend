@@ -93,6 +93,15 @@ function ativarDispositivo(idDispositivo) {
     return database.executar(query);
 }
 
+function desligarDispositivo(idDispositivo) {
+    var query = `
+    UPDATE dispositivo SET ativo = 0 WHERE id = ${idDispositivo}
+    `;
+    
+    console.log("Executando a instrução SQL: \n" + query);
+    return database.executar(query);
+}
+
 module.exports = {
     ativarDispositivo,
     buscarDispositivo,
@@ -101,5 +110,6 @@ module.exports = {
     configuracao_dispositivo,
     cadastrar_componenteAoDispositivo,
     cadastrar_parametro,
-    buscarTodosDispositivos
+    buscarTodosDispositivos,
+    desligarDispositivo
 };

@@ -34,4 +34,8 @@ router.get("/buscarDispositivos/:fkEmpresa", function (req, res){
 router.get("/buscarNovosDispositivos/:fkEmpresa", function (req, res){
     dispositivosController.buscarDispositivosNovos(req, res);
 });
+
+router.put("/desligarDispositivo/deactivate/:id", function (req, res){
+    dispositivosController.desligarDispositivo(req, res);
+});
 module.exports = router;

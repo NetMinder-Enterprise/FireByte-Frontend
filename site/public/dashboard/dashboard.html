@@ -387,12 +387,15 @@
             </div>
         `;
 
-        cardElement.addEventListener("click", function () {
+        cardElement.addEventListener("click", function (event) {
             const idDispositivo = this.getAttribute("idDispositivo");
             const titulo = this.getAttribute("tituloDispositivo");
             const descricao = this.getAttribute("descrition");
-            window.location.href = `./dispositivos.html?idDispositivo=${idDispositivo}&tituloDispositivo=${titulo}&descrition=${descricao}`;
-            
+            if(event.target.classList.contains("restartBtn") || event.target.classList.contains("restart") || event.target.classList.contains("restartBtnImg")){
+                restart(idDispositivo);
+            }else{
+                window.location.href = `./dispositivos.html?idDispositivo=${idDispositivo}&tituloDispositivo=${titulo}&descrition=${descricao}`;
+            }
         });
 
         cardsContainer.appendChild(cardElement);
@@ -400,4 +403,24 @@
     }
 
 </script>
+
+<script>
+    //Reinicia o Dispositivo.
+    function restart(idDispositivo) {
+        console.log("Reiniciando dispositivo: ", idDispositivo);
+        fetch(`/dispositivos/desligarDispositivo/deactivate/${idDispositivo}`, {
+            method: 'PUT'
+        }).then(function (resposta) {
+            Swal.fire({
+                        icon: 'success',
+                        title: 'Dispositivo reiniciado com sucesso!',
+                        showConfirmButton: false,
+                        timer: 1500
+                    })
+        }).catch(function (resposta) {
+            console.error(resposta);
+        });
+    }
+</script>
+
 <script src="./script.js"></script>
