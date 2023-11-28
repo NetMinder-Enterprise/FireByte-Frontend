@@ -3,7 +3,7 @@ var sql = require('mssql');
 
 // CONEXÃO DO SQL SERVER - AZURE (NUVEM)
 var sqlServerConfig = {
-    server: "52.70.210.153",
+    server: "44.209.179.217",
     database: "firebyteDB",
     user: "netminder",
     password: "esqueci@senha",

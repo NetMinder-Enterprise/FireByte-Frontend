@@ -348,62 +348,39 @@
         var url = new URL(window.location.href);
         var idDispositivo = url.searchParams.get("dispId");
 
-        console.log(`Inserindo parâmetros...`);
-        fetch(`/dispositivos/cadastrar_parametro`, {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({
-            limiteAlertServer: limiteAlert,
-            limiteCriticoServer: limiteCritico,
-            componente:componente
-          }),
-        })
-          .then(function (resposta) {
-            if (resposta.ok) {
-              return resposta.json(); // Retorna a resposta como JSON
-            } else {
-              throw new Error(
-                `Houve um erro ao tentar cadastrar ${componente}!`
-              );
-            }
-          })
-          .then(function (parametro) {
-            JSON.stringify(parametro);
-            // Utiliza o ID do parâmetro retornado para cadastrar no dispositivo
-            console.log("Parâmetro cadastrado:", parametro);
-            console.log("id do parametro: ", parametro.insertId);
-            return fetch(`/dispositivos/cadastrar_parametroAoDispositivo`, {
-              method: "POST",
-              headers: {
-                "Content-Type": "application/json",
-              },
-              body: JSON.stringify({
-                parametro: parametro.insertId,
-                dispositivo: idDispositivo,
-                componente: componente
-              }),
-            });
-          })
-          .then(function (resposta) {
-            if (resposta.ok) {
-              console.log("Parâmetro associado ao dispositivo com sucesso!");
-              console.log("");
-              console.log("Ativando seu dispositivo...");
-              return fetch(`/dispositivos/ativarDispositivo/activate/${idDispositivo}`, {
-              method: "PUT",
-              headers: {
-                "Content-Type": "application/json",
-              },
-            });
-            } else {
-              throw new Error("Erro ao associar o parâmetro ao dispositivo!");
-            }
+        fetch(`/dispositivos/cadastrar_parametroAoDispositivo`, {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+              dispositivo: idDispositivo,
+              componente: componente
+            }),
           })
           .catch(function (erro) {
-            console.log(`#ERRO ao cadastrar ${componente}: ${erro}`);
+          console.log(`#ERRO ao cadastrar ${componente}: ${erro}`);
           });
+
+        
+        fetch(`/dispositivos/ativarDispositivo/activate/${idDispositivo}`, {
+            method: "PUT",
+            headers: {
+              "Content-Type": "application/json",
+            },
+        })
+        .then(function (response) {
+          if (response.status == 200) {
+            console.log(`Dispositivo ativado com sucesso!`);
+            window.location.href = `/dashboard/dashboard.html`;
+          } else {
+            console.log(`#ERRO ao ativar dispositivo: ${response.status}`);
+            window.location.href = `/dashboard/dashboard.html`;
+          }
+        })
+        .catch(function (erro) {
+          console.log(`#ERRO ao cadastrar ${componente}: ${erro}`);
+        });
       }
 
       if (!erroEncontrado) {

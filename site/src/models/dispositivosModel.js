@@ -17,7 +17,7 @@ function configuracao_dispositivo(nome, descricao, fkEmpresa) {
     "e se o servidor de seu BD está rodando corretamente. \n\n function configuracao_dispositivo():", fkEmpresa, nome, descricao);
 
     var instrucao = `
-    INSERT INTO  firebytedb.dispositivo (fkEmpresa, titulo, descricao)
+    INSERT INTO  dispositivo (fkEmpresa, titulo, descricao)
     VALUES (
         ${fkEmpresa},
         '${nome}',
@@ -30,20 +30,16 @@ function configuracao_dispositivo(nome, descricao, fkEmpresa) {
 
 function editar_dispositivo(nome, descricao, idDispositivo) {
     var instrucao = `
-    UPDATE firebytedb.dispositivo SET titulo = '${nome}', descricao = '${descricao}' WHERE id = ${idDispositivo}`;
+    UPDATE dispositivo SET titulo = '${nome}', descricao = '${descricao}' WHERE id = ${idDispositivo}`;
 
     console.log("Executando a instrução SQL: \n" + instrucao);
     return database.executar(instrucao);
 }
 
-function cadastrar_componenteAoDispositivo(componente, dispositivo, parametro) {
-    console.log("ACESSEI O DISPOSITIVOS MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect" +  
-    "ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >>" +  
-    "e se o servidor de seu BD está rodando corretamente. \n\n function cadastrar_componenteAoDispositivo():", componente, dispositivo, parametro);
-    
+function cadastrar_componenteAoDispositivo(componente, dispositivo) {
     var queryCadastroComponente = `
-    INSERT INTO firebytedb.componentesDispositivos (fkTipoComponente, fkDispositivo, fkParametro)
-    VALUES ((SELECT id FROM tipoComponente WHERE nome = '${componente}'), ${dispositivo}, ${parametro})`;
+    INSERT INTO componentesDispositivos (fkTipoComponente, fkDispositivo, fkParametro)
+    VALUES ((SELECT id FROM tipoComponente WHERE nome = '${componente}'), ${dispositivo}, ${8})`;
 
     console.log("Executando a instrução SQL: \n" + queryCadastroComponente);
     return database.executar(queryCadastroComponente);
@@ -54,7 +50,7 @@ function cadastrar_parametro(limiteMin, limiteMax, componente) {
     "ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >>" +  
     "e se o servidor de seu BD está rodando corretamente. \n\n function cadastrar_parametro():", limiteMin, limiteMax, componente);
     var queryCadastroParametro = `
-    INSERT INTO firebytedb.parametro (fkComponente, limiteMin, limiteMax, metricaParametro)
+    INSERT INTO parametro (fkTipoComponente, limiteMin, limiteMax, metricaParametro)
     VALUES ((SELECT id FROM tipoComponente WHERE nome = '${componente}'), ${limiteMin}, ${limiteMax}, '%')`;
   
     console.log("Executando a instrução SQL: \n" + queryCadastroParametro);

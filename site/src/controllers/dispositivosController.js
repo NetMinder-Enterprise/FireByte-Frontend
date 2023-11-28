@@ -36,7 +36,7 @@ function editar_dispositivo(req, res) {
     var idDispositivo = req.body.id;
 
     if (nome == undefined) {
-        res.status(400).send("Seu nome está undefined!");s
+        res.status(400).send("Seu nome está undefined!");
     } else if (descricao == undefined) {
         res.status(400).send("Seu email está undefined!");
     } else if (idDispositivo == undefined) {
@@ -135,10 +135,9 @@ function buscarDispositivo(req, res) {
 function cadastrarParametroAoDispositivo(req, res) {
     var dispositivo = req.body.dispositivo;
     var componente = req.body.componente;
-    var parametro = req.body.parametro;
 
     console.log(`Buscando Dispositivo...`);
-    dispositivosModel.cadastrar_componenteAoDispositivo(componente, dispositivo, parametro).then(function (resultado) {
+    dispositivosModel.cadastrar_componenteAoDispositivo(componente, dispositivo).then(function (resultado) {
         if (resultado.length > 0) {
             res.status(200).json(resultado);
         } else {

@@ -427,11 +427,11 @@
       
     //Adicionando o gráfico da RAM em DIV
     const myChart = new Chart(
-        document.getElementById('myChart'),
+        document.getElementById('myChart2'),
         config
     );
-        setTimeout(() => updateProgressBar(captura, 'fill2', 'percentage2'), 3000);
-        setTimeout(() => atualizarGraficoRAM(data, myChart), 3000);
+        setTimeout(() => updateProgressBar(captura, 'fill2', 'percentage2'), 2000);
+        setTimeout(() => atualizarGraficoRAM(data, myChart), 2000);
     }
 
     /*REDE*/
@@ -509,8 +509,8 @@
             document.getElementById('myChart4'),
             configRede
         );
-          setTimeout(() => updateProgressBar(capturaRede, 'fill4', 'percentage4'), 3000);
-          setTimeout(() => atualizarGraficoREDE(dataRede, myChartRede), 3000);
+          setTimeout(() => updateProgressBar(capturaRede, 'fill4', 'percentage4'), 2000);
+          setTimeout(() => atualizarGraficoREDE(dataRede, myChartRede), 2000);
     }
 
     /*CPU*/
@@ -583,11 +583,11 @@
         };
     //Adicionando o gráfico da CPU em DIV
     const myChartCpu = new Chart(
-        document.getElementById('myChart2'),
+        document.getElementById('myChart'),
         configCpu
     );
-        setTimeout(() => updateProgressBar(capturaCpu, 'fill1', 'percentage1'), 3000);
-        setTimeout(() => atualizarGraficoCPU(dataCpu, myChartCpu), 3000);
+        setTimeout(() => updateProgressBar(capturaCpu, 'fill1', 'percentage1'), 2000);
+        setTimeout(() => atualizarGraficoCPU(dataCpu, myChartCpu), 2000);
     }
 
     /*DISCO*/
@@ -663,8 +663,8 @@
         document.getElementById('myChart3'),
         configDisco
     );
-        setTimeout(() => updateProgressBar(capturaDisco, 'fill3', 'percentage3'), 3000);
-        setTimeout(() => atualizarGraficoDISCO(dataDisco, myChartDisco), 3000);
+        setTimeout(() => updateProgressBar(capturaDisco, 'fill3', 'percentage3'), 2000);
+        setTimeout(() => atualizarGraficoDISCO(dataDisco, myChartDisco), 2000);
     }
 
     //Atualizações de gráficos
@@ -704,14 +704,14 @@
             }
 
             // Altere aqui o valor em ms se quiser que o gráfico atualize mais rápido ou mais devagar
-            proximaAtualizacao = setTimeout(() => updateProgressBar(captura, fillId, percentageId), 3000);
-            proximaAtualizacao = setTimeout(() => atualizarGrafico(url, data, myChart, fillId, percentageId), 3000);
+            proximaAtualizacao = setTimeout(() => updateProgressBar(captura, fillId, percentageId), 2000);
+            proximaAtualizacao = setTimeout(() => atualizarGrafico(url, data, myChart, fillId, percentageId), 2000);
         })
         .catch(function (error) {
             console.error(`Erro na obtenção dos dados para o gráfico: ${error.message}`);
             // Altere aqui o valor em ms se quiser que o gráfico atualize mais rápido ou mais devagar
-            proximaAtualizacao = setTimeout(() => updateProgressBar(captura, fillId, percentageId), 3000);
-            proximaAtualizacao = setTimeout(() => atualizarGrafico(url, data, myChart, fillId, percentageId), 3000);
+            proximaAtualizacao = setTimeout(() => updateProgressBar(captura, fillId, percentageId), 2000);
+            proximaAtualizacao = setTimeout(() => atualizarGrafico(url, data, myChart, fillId, percentageId), 2000);
         });
     }
 
@@ -720,7 +720,7 @@
     // Chamando atualizações de gráfico
     function atualizarGraficoCPU(data, myChart) {
         var url = `/dashboard/ultimas/${idDispositivo}/${'CPU'}`; 
-        atualizarGrafico(url, data, myChart, 'fill2', 'percentage2');
+        atualizarGrafico(url, data, myChart, 'fill1', 'percentage1');
         //MAIN
         //atualizarGrafico(`/dashboard/tempo-real/${sessionStorage.ID_DISPOSITIVO}/${'CPU'}`, data, myChart, 'fill1', 'percentage1');
     }
@@ -730,12 +730,12 @@
         atualizarGrafico(url, data, myChart, 'fill2', 'percentage2');
     }
   
-    function atualizarGraficoDisco(data, myChart) {
+    function atualizarGraficoDISCO(data, myChart) {
         var url = `/dashboard/ultimas/${idDispositivo}/${'DISCO'}`; 
         atualizarGrafico(url, data, myChart, 'fill3', 'percentage3');
     }
 
-    function atualizarGraficoRede(data, myChart) {
+    function atualizarGraficoREDE(data, myChart) {
         var url = `/dashboard/ultimas/${idDispositivo}/${'REDE'}`; 
         atualizarGrafico(url, data, myChart, 'fill4', 'percentage4');
     }
