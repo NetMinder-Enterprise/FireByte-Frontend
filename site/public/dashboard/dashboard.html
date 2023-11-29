@@ -22,8 +22,12 @@
     <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
     <script src="./notificacoes.js"></script>
+
+<!-- Start of netminderhelp Zendesk Widget script -->
+<script id="ze-snippet" src="https://static.zdassets.com/ekr/snippet.js?key=29780f1b-8247-4ac9-a238-69e6d843dee4"> </script>
+<!-- End of netminderhelp Zendesk Widget script -->
 </head>
-<body onload="obterDispositivos(), ver_imagem(sessionStorage.ID_USUARIO), obterDispositivosNovos()">
+<body onload="obterDispositivos(), obterDispositivosNovos()">
     <div class="Header">
         <div class="body">
             <div class="sidebar">
@@ -254,35 +258,6 @@
                 .catch(err => {
                     console.log(err);
                 })
-        }
-
-        function ver_imagem(idUsuario) {
-            fetch(`/usuarios/ver_imagem/${idUsuario}`, {
-                method: 'GET'
-            }).then(function (resposta) {
-                if (resposta.ok) {
-                    if (resposta.status == 204) {
-                        console.log("Nenhuma resposta encontrada");
-                    }
-                    resposta.json().then(function (resposta) {
-                        console.log("Dados recebidos: ");
-                        console.log(resposta);
-
-                        var imagemPerfil = document.getElementById('imagemPerfil');
-                        if (imagemPerfil) {
-                            console.log("Caminho da imagem: ", resposta);
-
-                            imagemPerfil.innerHTML = ` <img  src="../assets/${resposta[0].imagem_perfil}" alt="Imagem do perfil">`;
-                        } else {
-                            console.error("Elemento 'imagemPerfil' não encontrado no HTML.");
-                        }
-                    });
-                } else {
-                    throw ('Houve um erro na API!');
-                }
-            }).catch(function (resposta) {
-                console.error(resposta);
-            });
         }
 
     </script>

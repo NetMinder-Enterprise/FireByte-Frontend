@@ -284,19 +284,7 @@
             body: JSON.stringify({
             }),
           })
-            .then(function (resposta) {
-              if (resposta.ok) {
-                 abrirModal();
-              } else {
-                throw new Error("Houve um erro ao tentar realizar o cadastro!");
-               window.alert("deu erro");
-              }
-            })
-            .catch(function (resposta) {
-              console.log("#ERRO: " + resposta);
-            });
-
-          return false;
+         abrirModal();
         }
 </script>
 <script>

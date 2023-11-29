@@ -5,7 +5,7 @@ var sql = require('mssql');
 var sqlServerConfig = {
     server: "44.209.179.217",
     database: "firebyteDB",
-    user: "netminder",
+    user: "sa",
     password: "esqueci@senha",
     pool: {
         max: 10,

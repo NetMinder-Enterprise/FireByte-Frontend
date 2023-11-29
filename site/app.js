@@ -4,7 +4,7 @@ process.env.AMBIENTE_PROCESSO = "producao";
 var express = require("express");
 var cors = require("cors");
 var path = require("path");
-var PORTA = process.env.AMBIENTE_PROCESSO == "desenvolvimento" ? 3333 : 8080;
+var PORTA = 8080;
 
 var app = express();
 
@@ -23,9 +23,6 @@ app.use("/", indexRouter);
 app.use("/usuarios", userRouter);
 app.use("/dashboard", dashboardRouter);
 app.use("/dispositivos", dispositivosRouter);
-
-// Configurar o mecanismo de visualização (substitua 'ejs' pelo mecanismo que você está usando)
-app.set('view engine', 'ejs');
 
 app.listen(PORTA, function () {
     console.log(`Servidor do seu site já está rodando! Acesse o caminho a seguir para visualizar: http://localhost:${PORTA} \n
